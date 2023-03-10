@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -52,6 +52,8 @@
 
 
   <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -180,6 +182,12 @@
           
         
         
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -273,7 +281,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/03/09/BUUCTF/" target="_self">
         <div>
-          BUUCTF  Writeup EasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***
+          BUUCTF  WriteupEasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***1
         </div>
       </a>
 

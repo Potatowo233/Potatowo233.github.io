@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -16,12 +16,12 @@
   <meta name="author" content="Potat0w0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="BUUCTF  Writeup EasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***">
+    <meta name="description" content="BUUCTF  WriteupEasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BUUCTF">
 <meta property="og:url" content="http://example.com/2023/03/09/BUUCTF/index.html">
 <meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="BUUCTF  Writeup EasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***">
+<meta property="og:description" content="BUUCTF  WriteupEasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***1">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230213012236141.png">
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230213013114976.png">
@@ -57,7 +57,7 @@
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230214030039533.png">
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230214030227918.png">
 <meta property="article:published_time" content="2023-03-09T15:15:22.000Z">
-<meta property="article:modified_time" content="2023-03-09T16:33:05.750Z">
+<meta property="article:modified_time" content="2023-03-09T17:29:44.918Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta name="twitter:card" content="summary_large_image">
@@ -95,6 +95,8 @@
 
 
   <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -223,6 +225,12 @@
           
         
         
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -327,8 +335,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="BUUCTF-Writeup"><a href="#BUUCTF-Writeup" class="headerlink" title="BUUCTF  Writeup"></a><em>BUUCTF  Writeup</em></h1><hr>
-<h2 id="EasySql"><a href="#EasySql" class="headerlink" title="EasySql"></a>EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
+                <h1 id="BUUCTF-Writeup"><a href="#BUUCTF-Writeup" class="headerlink" title="BUUCTF  Writeup"></a><em>BUUCTF  Writeup</em></h1><h2 id="EasySql"><a href="#EasySql" class="headerlink" title="EasySql"></a>EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
 <p><img src="/2023/03/09/BUUCTF/image-20230213012236141.png" srcset="/img/loading.gif" lazyload></p>
 <p>密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。</p>
 <p><img src="/2023/03/09/BUUCTF/image-20230213013114976.png" srcset="/img/loading.gif" lazyload></p>
