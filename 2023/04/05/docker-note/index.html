@@ -16,17 +16,33 @@
   <meta name="author" content="Potat0w0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="fl4g{we1c0me_tO_My_B1og}">
+    <meta name="description" content="Docker学习记录复现CTF赛题环境作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（ 123#给了Dockerfile的情况docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略docker run -idP &lt;容器名&gt;  12#给了docker-compose.yml的情况docker-compose up -d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker_note">
 <meta property="og:url" content="http://example.com/2023/04/05/docker-note/index.html">
 <meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="fl4g{we1c0me_tO_My_B1og}">
+<meta property="og:description" content="Docker学习记录复现CTF赛题环境作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（ 123#给了Dockerfile的情况docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略docker run -idP &lt;容器名&gt;  12#给了docker-compose.yml的情况docker-compose up -d">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/04/05/docker-note/image-20230405151409875.png">
+<meta property="og:image" content="http://example.com/image-20230405151607565.png">
+<meta property="og:image" content="http://example.com/image-20230405151900721.png">
+<meta property="og:image" content="http://example.com/image-20230405152208455.png">
+<meta property="og:image" content="http://example.com/image-20230405152453409.png">
+<meta property="og:image" content="http://example.com/image-20230405152752058.png">
+<meta property="og:image" content="http://example.com/image-20230405153402534.png">
+<meta property="og:image" content="http://example.com/image-20230405153636733.png">
+<meta property="og:image" content="http://example.com/image-20230405153831456.png">
+<meta property="og:image" content="http://example.com/image-20230405154618159.png">
+<meta property="og:image" content="http://example.com/image-20230405154729584.png">
+<meta property="og:image" content="http://example.com/image-20230405155352141.png">
+<meta property="og:image" content="http://example.com/image-20230405155430720.png">
+<meta property="og:image" content="http://example.com/image-20230405155849636.png">
 <meta property="article:published_time" content="2023-04-05T06:45:22.000Z">
-<meta property="article:modified_time" content="2023-04-05T06:45:22.171Z">
+<meta property="article:modified_time" content="2023-04-05T08:01:09.591Z">
 <meta property="article:author" content="Potat0w0">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/04/05/docker-note/image-20230405151409875.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -238,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.6k words
         
       </span>
     
@@ -249,7 +265,7 @@
         
         
         
-          1 mins
+          14 mins
         
       </span>
     
@@ -300,7 +316,672 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="Docker学习记录"><a href="#Docker学习记录" class="headerlink" title="Docker学习记录"></a>Docker学习记录</h1><h2 id="复现CTF赛题环境"><a href="#复现CTF赛题环境" class="headerlink" title="复现CTF赛题环境"></a>复现CTF赛题环境</h2><p>作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">给了Dockerfile的情况</span><br>docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略<br>docker run -idP &lt;容器名&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">给了docker-compose.yml的情况</span><br>docker-compose up -d<br></code></pre></td></tr></table></figure>
+
+<h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run ubuntu:20.04 /bin/echo &quot;hello world&quot;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">run 代表运行一个容器，unbuntu:20.04代表镜像(images)，由ubuntu:20.04镜像创建一个新的容器并运行。后面的/bin/echo代表执行该容器/bin/下的<span class="hljs-built_in">echo</span>命令</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/05/docker-note/image-20230405151409875.png" srcset="/img/loading.gif" lazyload alt="image-20230405151409875"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -it ubuntu:20.04 /bin/bash<br><span class="hljs-meta prompt_">#</span><span class="language-bash">-i：允许容器内的标准输出进行交互</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">-t：在新容器内指定一个伪终端或终端</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果不存在该镜像则自动拉取安装一个</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405151607565.png" srcset="/img/loading.gif" lazyload alt="image-20230405151607565"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">进入容器之后想退出</span><br>root@&lt;容器ID&gt;:/# exit<br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405151900721.png" srcset="/img/loading.gif" lazyload alt="image-20230405151900721"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d ubuntu:20.04 /bin/echo &quot;hello world&quot;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">-d表示在后台运行</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">上述指令执行完之后并没有回显<span class="hljs-string">&quot;hello world&quot;</span>,而是显示容器的ID，说明容器被启动</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405152208455.png" srcset="/img/loading.gif" lazyload alt="image-20230405152208455"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker ps#查看正在运行的容器<br>docker ps -a#查看所有容器<br>docker ps -l#查看最后一次创建的容器<br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405152453409.png" srcset="/img/loading.gif" lazyload alt="image-20230405152453409"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker logs &lt;ID/容器名&gt; #查看容器标准输出<br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405152752058.png" srcset="/img/loading.gif" lazyload alt="image-20230405152752058"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker stop &lt;ID/容器名&gt;#停止容器<br>docker restart &lt;ID/容器名&gt;#重启容器<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull &lt;镜像名&gt;#拉取镜像<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -itd --name &lt;容器名&gt; &lt;镜像名&gt; /bin/bash<br><span class="hljs-meta prompt_">#</span><span class="language-bash">希望容器在后台运行，并给该容器命名</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">要注意的是加上<span class="hljs-string">&quot;-d&quot;</span>默认在后台运行不进入容器，要进入容器用docker attach或docker <span class="hljs-built_in">exec</span></span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405153402534.png" srcset="/img/loading.gif" lazyload alt="image-20230405153402534"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker attach &lt;ID/容器名&gt;#进入容器，exit后容器停止<br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405153636733.png" srcset="/img/loading.gif" lazyload alt="image-20230405153636733"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker exec -it &lt;ID/容器名&gt; /bin/bash#exit之后容器在后台运行不关闭<br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405153831456.png" srcset="/img/loading.gif" lazyload alt="image-20230405153831456"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker export &lt;ID/容器名&gt; &gt; ./ubuntu.tar#向当前目录导出某个容器<br>cat ./ubuntu.tar | docker import -&lt;容器名&gt;:&lt;tag&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker rm -f &lt;ID/容器名&gt; #删除某容器<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker rename &lt;old_name&gt; &lt;new_name&gt;#重命名某容器<br></code></pre></td></tr></table></figure>
+
+<h3 id="Web应用"><a href="#Web应用" class="headerlink" title="Web应用"></a>Web应用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d -P training/webapp python app.py<br><span class="hljs-meta prompt_">#</span><span class="language-bash">大写的-P代表随机映射一个端口</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405154618159.png" srcset="/img/loading.gif" lazyload alt="image-20230405154618159"></p>
+<p>访问本地32768端口</p>
+<p><img src="/image-20230405154729584.png" srcset="/img/loading.gif" lazyload alt="image-20230405154729584"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">小写的-p代表指定映射的ip和端口，但是在一个指定端口上只能绑定一个容器</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">格式：hostPort:containerPort、ip:hostPort:containerPort、ip::containerPort</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405155352141.png" srcset="/img/loading.gif" lazyload alt="image-20230405155352141"></p>
+<p>访问本地23333端口</p>
+<p><img src="/image-20230405155430720.png" srcset="/img/loading.gif" lazyload alt="image-20230405155430720"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker logs &lt;ID/容器名&gt;#查看截止当前的web应用日志（静态）<br>docker logs -f &lt;ID/容器名&gt;#查看实时web日志（动态）<br></code></pre></td></tr></table></figure>
+
+<p><img src="/image-20230405155849636.png" srcset="/img/loading.gif" lazyload alt="image-20230405155849636"></p>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker rmi &lt;镜像名&gt;#删除镜像，rmi中的i是images的意思<br>docker images#查看镜像，复现Dockerfile第一步命令后可以用一下看看是否创建成功镜像<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
               </div>
             
@@ -308,6 +989,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/docker/">#docker</a>
+      
+    </div>
   
 </div>
 
