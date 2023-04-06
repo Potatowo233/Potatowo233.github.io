@@ -176,7 +176,7 @@
     <link href="/2023/03/28/DVWA/"/>
     <url>/2023/03/28/DVWA/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="搭建DVWA靶场"><a href="#搭建DVWA靶场" class="headerlink" title="搭建DVWA靶场"></a>搭建DVWA靶场</h1><h2 id="前提："><a href="#前提：" class="headerlink" title="前提："></a>前提：</h2><p>(1)<a href="https://blog.csdn.net/qq_44803335/article/details/108806851">本地配置好php环境</a></p><p>(2)下载DVWA源码：<a href="https://github.com/digininja/DVWA/archive/master.zip">https://github.com/digininja/DVWA/archive/master.zip</a></p><h2 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h2><p>1、下载并安装PHPstudy；</p><p>2、将解压后的DVWA源码放置在phpstudy安装目录的WWW文件夹；</p><p><img src="/2023/03/28/DVWA/image-20230406231241712.png"></p><p>3.进入DVWA&#x2F;config目录，将config.inc.php.dist最后的.dist删去；</p><p>4、打开刚刚重命名的config.inc.php文件，修改db_user和db_password为”root”、”root”；</p><p><img src="/2023/03/28/DVWA/image-20230406231943662.png"></p><p>5、PHPstudy中启动服务器，访问<a href="http://127.0.0.1/DVWA/setup.php(%E6%88%96http://localhost/DVWA/setup.php)%E7%82%B9%E5%87%BB%E6%9C%80%E4%B8%8B%E6%96%B9%E7%9A%84Creat">http://127.0.0.1/DVWA/setup.php(或http://localhost/DVWA/setup.php)点击最下方的Creat</a> Database；</p><p><img src="/2023/03/28/DVWA/image-20230406232851826.png"></p><p>如图所示就算启动成功了。</p><p>6、访问<a href="http://127.0.0.1/DVWA/(%E6%88%96http://localhost/DVWA/)%EF%BC%8C%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%22admin%22%E5%AF%86%E7%A0%81%22password%22%E7%99%BB%E5%BD%95%E5%8D%B3%E5%8F%AF">http://127.0.0.1/DVWA/(或http://localhost/DVWA/)，输入用户名&quot;admin&quot;密码&quot;password&quot;登录即可</a></p><h1 id="DVWA靶场学习记录"><a href="#DVWA靶场学习记录" class="headerlink" title="DVWA靶场学习记录"></a>DVWA靶场学习记录</h1>]]></content>
     
     
     
