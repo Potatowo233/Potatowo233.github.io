@@ -16,12 +16,12 @@
   <meta name="author" content="Potat0w0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Docker学习记录复现CTF赛题环境作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（ 123#给了Dockerfile的情况docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略docker run -idP &lt;容器名&gt;  12#给了docker-compose.yml的情况docker-compose up -d">
+    <meta name="description" content="Docker学习记录Windows上一定要先安装WSL。 复现CTF赛题环境作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（ 123#给了Dockerfile的情况docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略docker run -idP &lt;容器名&gt;  12#给了docker-compose.yml的情况doc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker_note">
 <meta property="og:url" content="http://example.com/2023/04/05/docker-note/index.html">
 <meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="Docker学习记录复现CTF赛题环境作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（ 123#给了Dockerfile的情况docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略docker run -idP &lt;容器名&gt;  12#给了docker-compose.yml的情况docker-compose up -d">
+<meta property="og:description" content="Docker学习记录Windows上一定要先安装WSL。 复现CTF赛题环境作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（ 123#给了Dockerfile的情况docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略docker run -idP &lt;容器名&gt;  12#给了docker-compose.yml的情况doc">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/04/05/docker-note/image-20230405151409875.png">
 <meta property="og:image" content="http://example.com/2023/04/05/docker-note/image-20230405151607565.png">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://example.com/2023/04/05/docker-note/image-20230405155430720.png">
 <meta property="og:image" content="http://example.com/2023/04/05/docker-note/image-20230405155849636.png">
 <meta property="article:published_time" content="2023-04-05T06:45:22.000Z">
-<meta property="article:modified_time" content="2023-04-05T08:15:42.201Z">
+<meta property="article:modified_time" content="2023-04-07T06:06:26.608Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -316,7 +316,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Docker学习记录"><a href="#Docker学习记录" class="headerlink" title="Docker学习记录"></a>Docker学习记录</h1><h2 id="复现CTF赛题环境"><a href="#复现CTF赛题环境" class="headerlink" title="复现CTF赛题环境"></a>复现CTF赛题环境</h2><p>作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（</p>
+                <h1 id="Docker学习记录"><a href="#Docker学习记录" class="headerlink" title="Docker学习记录"></a>Docker学习记录</h1><p>Windows上一定要先安装WSL。</p>
+<h2 id="复现CTF赛题环境"><a href="#复现CTF赛题环境" class="headerlink" title="复现CTF赛题环境"></a>复现CTF赛题环境</h2><p>作为一名CTF萌新，一切的一切的一切先从如何复现环境开始（</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">给了Dockerfile的情况</span><br>docker build -t &lt;容器名&gt; .#注意这里最后有个&quot;.&quot;不能省略<br>docker run -idP &lt;容器名&gt;<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">给了docker-compose.yml的情况</span><br>docker-compose up -d<br></code></pre></td></tr></table></figure>

@@ -26,12 +26,6 @@
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213012236141.png">
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213013114976.png">
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213013848916.png">
-<meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213015433704.png">
-<meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213021555716.png">
-<meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213024856357.png">
-<meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213113603645.png">
-<meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213113736893.png">
-<meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213114000858.png">
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213133221152.png">
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213140043405.png">
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213140715876.png">
@@ -46,7 +40,7 @@
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213163140720.png">
 <meta property="og:image" content="http://example.com/2023/04/05/SQLI/image-20230213164015355.png">
 <meta property="article:published_time" content="2023-04-05T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-04-06T09:57:29.914Z">
+<meta property="article:modified_time" content="2023-04-07T06:07:19.298Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Wed">
 <meta property="article:tag" content="sqli">
@@ -263,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k words
+          3.5k words
         
       </span>
     
@@ -274,7 +268,7 @@
         
         
         
-          58 mins
+          30 mins
         
       </span>
     
@@ -336,53 +330,6 @@
 <p><em><strong>or (ascii(substr(database(),0,1))&lt;128)#’</strong></em></p>
 <p>虽然用户名密码判断是错的，但是数据库名的第一个字符的ascii码确实小于128，为真，二者用or相连，返回为true，故登陆成功获取到flag；</p>
 <p>但是这样做实际上是走弯路了，这道题布尔盲注不是最优解，实际上直接构造密码为***1’ or 1&#x3D;1#***在原理上是和上面误打误撞拿到flag是一样的，但是少走了很多弯路。</p>
-<hr>
-<h2 id="WarmUp"><a href="#WarmUp" class="headerlink" title="WarmUp"></a>WarmUp</h2><p>嗯。。一打开是一个滑稽脸直接一眼ctrl+u查看源代码，查找到注释提示source.php，进入source.php看到是php代码审计。</p>
-<p><img src="/2023/04/05/SQLI/image-20230213015433704.png" srcset="/img/loading.gif" lazyload></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">emmm</span></span><br><span class="hljs-class">    </span>&#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;<span class="hljs-variable">$page</span></span>)</span><br><span class="hljs-function">        </span>&#123;<br>            <span class="hljs-variable">$whitelist</span> = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br>            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$page</span>) || !<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$page</span>)) &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br><br>            <span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">mb_substr</span>(<br>                <span class="hljs-variable">$page</span>,<br>                <span class="hljs-number">0</span>,<br>                <span class="hljs-title function_ invoke__">mb_strpos</span>(<span class="hljs-variable">$page</span> . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br><br>            <span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$page</span>);<br>            <span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">mb_substr</span>(<br>                <span class="hljs-variable">$_page</span>,<br>                <span class="hljs-number">0</span>,<br>                <span class="hljs-title function_ invoke__">mb_strpos</span>(<span class="hljs-variable">$_page</span> . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; <span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; emmm::<span class="hljs-title function_ invoke__">checkFile</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>    ) &#123;<br>        <span class="hljs-keyword">include</span> <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br>        <span class="hljs-keyword">exit</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;<br>    &#125;  <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>先看代码主体部分</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>       &amp;&amp; <span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>       &amp;&amp; emmm::<span class="hljs-title function_ invoke__">checkFile</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>   ) &#123;<br>       <span class="hljs-keyword">include</span> <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br>       <span class="hljs-keyword">exit</span>;<br>   &#125; <span class="hljs-keyword">else</span> &#123;<br>       <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;<br>   &#125;  <br></code></pre></td></tr></table></figure>
-
-<p>明确了传入一个参数file，并且如果满足：</p>
-<p>file不为空（被赋值）；是字符串；传入emmm类中的checkFile()方法后返回值为真。则能够将file包含。</p>
-<p>审计emmm类，</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$whitelist</span> = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br></code></pre></td></tr></table></figure>
-
-<p>白名单中包含”source.php”和”hint.php”，source.php就是本页面，传入file&#x3D;hint.php对hint.php进行包含（一开始做的时候真的以为是什么提示硬是想不看提示自己琢磨结果发现无论如何还是得看的呜呜呜呜呜）</p>
-<p><img src="/2023/04/05/SQLI/image-20230213021555716.png" srcset="/img/loading.gif" lazyload></p>
-<p>告诉了我们得到flag不是在这，而是在ffffllllaaaagggg，继续审计，</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$page</span>) || !<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$page</span>)) &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br></code></pre></td></tr></table></figure>
-
-<p>$page必须是有被赋值而且是字符串。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br></code></pre></td></tr></table></figure>
-
-<p>$page如果在白名单内（source.php和hint.php）则返回true。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">mb_substr</span>(<br>                <span class="hljs-variable">$page</span>,<br>                <span class="hljs-number">0</span>,<br>                <span class="hljs-title function_ invoke__">mb_strpos</span>(<span class="hljs-variable">$page</span> . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br></code></pre></td></tr></table></figure>
-
-<p>mb_substr(a,b,c)，对a字符串进行截取，从第b位开始，截取c个字符串长度，返回截取的字符串；</p>
-<p>mb_strpos(a,b)，返回字符串b在字符串a中<em><strong>第一次</strong></em>出现的位置，如果没出现过则返回false；</p>
-<p>mb_substr()截取$page，从第一个字符开始，截取长度为mb_strpos($page.’?’,’?’)，即问号在字符串page$.’?’（就是$page字符串最后面跟一个问号）中<em><strong>第一次</strong></em>出现的位置，记住是第一次，$page.’?’末尾的问号未必是第一次出现的位置。截取到的字符串赋值给$_page。（注意分清变量名）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>如果$_page在白名单里，则返回true，$_page的值我们是可以决定的，所以传入的file的值应以字符串”hint.php?”或者”source.php?”开头，这样一来经过mb_sudstr()的截取最终将”hint.php”或”source.php”与白名单进行对比返回为true。</p>
-<p>到此为止已经满足了主体部分的三个条件了，结合hint.php的提示flag在ffffllllaaaagggg，传参?file&#x3D;hint.php?ffffllllaaaagggg，没有结果判断flag不在本目录，盲猜在根目录，于是</p>
-<p>payload：</p>
-<p>?file&#x3D;hint.php?.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg  或  ?file&#x3D;source?.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg</p>
-<p><img src="/2023/04/05/SQLI/image-20230213024856357.png" srcset="/img/loading.gif" lazyload></p>
-<hr>
-<h2 id="新生赛include1"><a href="#新生赛include1" class="headerlink" title="新生赛include1"></a><strong>新生赛include1</strong></h2><p>一开始只有一个tips超链接，点击，提示“Can you find out the flag?”。查看源代码没有任何收获，发现url的位置是通过file传参，file&#x3D;flag.php。想到应该是主页源码含有文件包含，通过包含参数file。尝试php伪协议。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">?file=php://input<br></code></pre></td></tr></table></figure>
-
-<p>页面发出警告“hacker!”尝试大写绕过失败，尝试filter伪协议读取网页源码。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">php://filter/read=convert.base64-encode/resource=flag.php<br></code></pre></td></tr></table></figure>
-
-<p><img src="/2023/04/05/SQLI/image-20230213113603645.png" srcset="/img/loading.gif" lazyload></p>
-<p>base64解码后拿到flag</p>
-<p><img src="/2023/04/05/SQLI/image-20230213113736893.png" srcset="/img/loading.gif" lazyload></p>
-<p>题后反思：用同样的方法查看了一下index.php源码</p>
-<p><img src="/2023/04/05/SQLI/image-20230213114000858.png" srcset="/img/loading.gif" lazyload></p>
-<p>过滤函数使用的是stristr()是不区分大小写的，strstr()则区分，同样还过滤掉了zip:&#x2F;&#x2F;和phar:&#x2F;&#x2F;还有data:&#x2F;&#x2F;。顺路学了下文件上传的zip:&#x2F;&#x2F;和phar:&#x2F;&#x2F;协议注入。</p>
 <hr>
 <h2 id="easy-sql"><a href="#easy-sql" class="headerlink" title="easy_sql"></a>easy_sql</h2><p>先传入1，返回一个字符串，传入1’，报错</p>
 <p><img src="/2023/04/05/SQLI/image-20230213133221152.png" srcset="/img/loading.gif" lazyload></p>
