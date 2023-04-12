@@ -1,68 +1,115 @@
-function snow() {
-    //  1、定义一片雪花模板
-    var flake = document.createElement('div');
-    // 雪花字符 ❉❅❆✻✼❈❊✥✺
-    flake.innerHTML = '❆';
-    flake.style.cssText = 'position:absolute;color:#fff;';
+(function() {
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+    };
+    window.requestAnimationFrame = requestAnimationFrame;
+})();
 
-    //获取页面的高度 相当于雪花下落结束时Y轴的位置
-    var documentHieght = window.innerHeight;
-    //获取页面的宽度，利用这个数来算出，雪花开始时left的值
-    var documentWidth = window.innerWidth;
+(function() {
+    var flakes = [],
+        canvas = document.getElementById("Snow"), //����ID������һ�������Ļ�����Ӧ
+        ctx = canvas.getContext("2d"),
+        flakeCount = 100,  //ѩ����������ֵԽ��ѩ������Խ��
+        mX = -100,
+        mY = -100;
 
-    //定义生成一片雪花的毫秒数
-    var millisec = 100;
-    //2、设置第一个定时器，周期性定时器，每隔一段时间（millisec）生成一片雪花；
-    setInterval(function() { //页面加载之后，定时器就开始工作
-        //随机生成雪花下落 开始 时left的值，相当于开始时X轴的位置
-        var startLeft = Math.random() * documentWidth;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        //随机生成雪花下落 结束 时left的值，相当于结束时X轴的位置
-        var endLeft = Math.random() * documentWidth;
+    function snow() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        //随机生成雪花大小
-        var flakeSize = 5 + 20 * Math.random();
+        for (var i = 0; i < flakeCount; i++) {
+            var flake = flakes[i],
+                x = mX,
+                y = mY,
+                minDist = 350,  //ѩ���������ָ�����Сֵ��С����������ѩ�����ܵ������ų�
+                x2 = flake.x,
+                y2 = flake.y;
 
-        //随机生成雪花下落持续时间
-        var durationTime = 4000 + 7000 * Math.random();
+            var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y)),
+                dx = x2 - x,
+                dy = y2 - y;
 
-        //随机生成雪花下落 开始 时的透明度
-        var startOpacity = 0.7 + 0.3 * Math.random();
+            if (dist < minDist) {
+                var force = minDist / (dist * dist),
+                    xcomp = (x - x2) / dist,
+                    ycomp = (y - y2) / dist,
+                    deltaV = force / 2;
 
-        //随机生成雪花下落 结束 时的透明度
-        var endOpacity = 0.2 + 0.2 * Math.random();
+                flake.velX -= deltaV * xcomp;
+                flake.velY -= deltaV * ycomp;
 
-        //克隆一个雪花模板
-        var cloneFlake = flake.cloneNode(true);
+            } else {
+                flake.velX *= .98;
+                if (flake.velY <= flake.speed) {
+                    flake.velY = flake.speed
+                }
+                flake.velX += Math.cos(flake.step += .05) * flake.stepSize;
+            }
 
-        //第一次修改样式，定义克隆出来的雪花的样式
-        cloneFlake.style.cssText += `
-                left: ${startLeft}px;
-                opacity: ${startOpacity};
-                font-size:${flakeSize}px;
-                top:-25px;
-                    transition:${durationTime}ms;
-            `;
+            ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";  //ѩ����ɫ
+            flake.y += flake.velY;
+            flake.x += flake.velX;
 
-        //拼接到页面中
-        document.body.appendChild(cloneFlake);
+            if (flake.y >= canvas.height || flake.y <= 0) {
+                reset(flake);
+            }
 
-        //设置第二个定时器，一次性定时器，
-        //当第一个定时器生成雪花，并在页面上渲染出来后，修改雪花的样式，让雪花动起来；
-        setTimeout(function() {
-            //第二次修改样式
-            cloneFlake.style.cssText += `
-                        left: ${endLeft}px;
-                        top:${documentHieght}px;
-                        opacity:${endOpacity};
-                    `;
+            if (flake.x >= canvas.width || flake.x <= 0) {
+                reset(flake);
+            }
 
-            //4、设置第三个定时器，当雪花落下后，删除雪花。
-            setTimeout(function() {
-                cloneFlake.remove();
-            }, durationTime);
-        }, 0);
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        requestAnimationFrame(snow);
+    };
 
-    }, millisec);
-}
-snow();
+    function reset(flake) {
+        flake.x = Math.floor(Math.random() * canvas.width);
+        flake.y = 0;
+        flake.size = (Math.random() * 3) + 2;  //�Ӻź����ֵ��ѩ����С��Ϊ��׼ֵ����ֵԽ��ѩ��Խ��
+        flake.speed = (Math.random() * 1) + 1;  //�Ӻź����ֵ��ѩ���ٶȣ�Ϊ��׼ֵ����ֵԽ��ѩ���ٶ�Խ��
+        flake.velY = flake.speed;
+        flake.velX = 0;
+        flake.opacity = (Math.random() * 0.5) + 0.3;  //�Ӻź����ֵ��Ϊ��׼ֵ����Χ0~1
+    }
+
+    function init() {
+        for (var i = 0; i < flakeCount; i++) {
+            var x = Math.floor(Math.random() * canvas.width),
+                y = Math.floor(Math.random() * canvas.height),
+                size = (Math.random() * 3) + 2,  //�Ӻź����ֵ��ѩ����С��Ϊ��׼ֵ����ֵԽ��ѩ��Խ��
+                speed = (Math.random() * 1) + 1,  //�Ӻź����ֵ��ѩ���ٶȣ�Ϊ��׼ֵ����ֵԽ��ѩ���ٶ�Խ��
+                opacity = (Math.random() * 0.5) + 0.3;  //�Ӻź����ֵ��Ϊ��׼ֵ����Χ0~1
+
+            flakes.push({
+                speed: speed,
+                velY: speed,
+                velX: 0,
+                x: x,
+                y: y,
+                size: size,
+                stepSize: (Math.random()) / 30 * 2,  //�˺ź����ֵ��ѩ�����Ʒ��ȣ�Ϊ��׼ֵ����ֵԽ��ѩ�����Ʒ���Խ��0Ϊ��ֱ����
+                step: 0,
+                angle: 180,
+                opacity: opacity
+            });
+        }
+
+        snow();
+    };
+
+    document.addEventListener("mousemove", function(e) {
+        mX = e.clientX,
+        mY = e.clientY
+    });
+    window.addEventListener("resize", function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+    init();
+})();
