@@ -16,13 +16,15 @@
   <meta name="author" content="Potat0w0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="BUUCTF-EasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***1’ or (as">
+    <meta name="description" content="CTF After Dark-Injection Perfection因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容： 12345678910111213141516171819202122232425262728293031323334353">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLI">
 <meta property="og:url" content="http://example.com/2023/02/09/SQLI/index.html">
 <meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="BUUCTF-EasySql先用用户名:1  密码:1’  测试注入，页面报错，可能存在注入点，并且是字符型。  密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。  准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。  题后反思：因为传入***1’ or (as">
+<meta property="og:description" content="CTF After Dark-Injection Perfection因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容： 12345678910111213141516171819202122232425262728293031323334353">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412122726143.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123052991.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213012236141.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013114976.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013848916.png">
@@ -47,12 +49,12 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230411013245234.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412103314980.png">
 <meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-04-12T02:49:32.647Z">
+<meta property="article:modified_time" content="2023-04-12T04:31:17.382Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Wed">
 <meta property="article:tag" content="sqli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/02/09/SQLI/image-20230213012236141.png">
+<meta name="twitter:image" content="http://example.com/2023/02/09/SQLI/image-20230412122726143.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -264,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k words
+          18k words
         
       </span>
     
@@ -275,7 +277,7 @@
         
         
         
-          120 mins
+          149 mins
         
       </span>
     
@@ -326,7 +328,41 @@
             
               <div class="markdown-body">
                 
-                <h2 id="BUUCTF-EasySql"><a href="#BUUCTF-EasySql" class="headerlink" title="BUUCTF-EasySql"></a>BUUCTF-EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
+                <h2 id="CTF-After-Dark-Injection-Perfection"><a href="#CTF-After-Dark-Injection-Perfection" class="headerlink" title="CTF After Dark-Injection Perfection"></a>CTF After Dark-Injection Perfection</h2><p>因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);<br><br><span class="hljs-keyword">const</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;multer&#x27;</span>);<br><span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;body-parser&#x27;</span>);<br><br><span class="hljs-keyword">const</span> port = <span class="hljs-built_in">parseInt</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">PORT</span>) || <span class="hljs-number">8080</span>;<br><br><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>);<br><span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.<span class="hljs-title class_">Database</span>(<span class="hljs-string">&#x27;app.db&#x27;</span>, sqlite3.<span class="hljs-property">OPEN_READONLY</span>);<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><span class="hljs-keyword">const</span> upload = <span class="hljs-title function_">multer</span>();<br>app.<span class="hljs-title function_">use</span>(bodyParser.<span class="hljs-title function_">urlencoded</span>(&#123; <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> &#125;));<br>app.<span class="hljs-title function_">use</span>(upload.<span class="hljs-title function_">array</span>());<br>app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">static</span>(<span class="hljs-string">&#x27;public&#x27;</span>));<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getFavColor</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">username</span>) =&gt; &#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>		db.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;SELECT fav_color FROM users WHERE username=?&#x27;</span>, username, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> &#123;<br>			<span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(err);<br>			<span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(row.<span class="hljs-property">fav_color</span>);<br>		&#125;);<br>	&#125;);<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">attemptLogin</span> = (<span class="hljs-params">username, password</span>) =&gt; &#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>		db.<span class="hljs-title function_">get</span>(<span class="hljs-string">`SELECT username, password FROM users WHERE username=&#x27;<span class="hljs-subst">$&#123;username&#125;</span>&#x27;`</span>, <span class="hljs-keyword">async</span> (err, row) =&gt; &#123;<br>			<span class="hljs-keyword">if</span> (err)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(err);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (row === <span class="hljs-literal">undefined</span>)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;Invalid User&#x27;</span>);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (password === row.<span class="hljs-property">password</span>)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-string">`My favorite color is <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> getFavColor(row.username)&#125;</span>`</span>);<br>			<span class="hljs-keyword">else</span><br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;incorrect password&#x27;</span>);<br>		&#125;);<br>	&#125;)<br>&#125;;<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>	res.<span class="hljs-title function_">sendFile</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;login.html&#x27;</span>));<br>&#125;);<br><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; &#123;<br>	<span class="hljs-keyword">const</span> username = req.<span class="hljs-property">body</span>.<span class="hljs-property">username</span>;<br>	<span class="hljs-keyword">const</span> password = req.<span class="hljs-property">body</span>.<span class="hljs-property">password</span>;<br><br>	<span class="hljs-keyword">if</span> (!username || !password)<br>		<span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Invalid Login&quot;</span>);<br>	<br>	<span class="hljs-keyword">try</span> &#123;<br>		<span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">200</span>).<span class="hljs-title function_">send</span>(<span class="hljs-keyword">await</span> <span class="hljs-title function_">attemptLogin</span>(username, password));<br>	&#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>		<span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(err);<br>	&#125;<br>&#125;);<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>	res.<span class="hljs-title function_">status</span>(<span class="hljs-number">404</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;not found&#x27;</span>);<br>&#125;);<br><br>app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Listening on port <span class="hljs-subst">$&#123;port&#125;</span>`</span>);<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>本题重点在第29行这个回调函数，从数据库调数据与用户输入进行比对，那就看看这个后端判断登录的逻辑是什么样的吧：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js">db.<span class="hljs-title function_">get</span>(<span class="hljs-string">`SELECT username, password FROM users WHERE username=&#x27;<span class="hljs-subst">$&#123;username&#125;</span>&#x27;`</span>, <span class="hljs-keyword">async</span> (err, row) =&gt; &#123;<br>			<span class="hljs-keyword">if</span> (err)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(err);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (row === <span class="hljs-literal">undefined</span>)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;Invalid User&#x27;</span>);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (password === row.<span class="hljs-property">password</span>)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-string">`My favorite color is <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> getFavColor(row.username)&#125;</span>`</span>);<br>			<span class="hljs-keyword">else</span><br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;incorrect password&#x27;</span>);<br>		&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>显然如果存在sql注入的话<code>username</code>将会是注入点，可以看出逻辑为：</p>
+<p>从数据库的<code>users</code>表查名为用户输入的<code>username</code>的行中的<code>username</code>和<code>password</code>字段，将结果存入<code>row</code>数组中，如果用户输入的<code>password</code>等于数据库查到的<code>row.password</code>，也就是登陆成功，则执行一个<code>getFavColor()</code>方法</p>
+<p>getFavColor():</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">getFavColor</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">username</span>) =&gt; &#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>		db.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;SELECT fav_color FROM users WHERE username=?&#x27;</span>, username, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> &#123;<br>			<span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(err);<br>			<span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(row.<span class="hljs-property">fav_color</span>);<br>		&#125;);<br>	&#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>大概users里存着三个字段：username、password、fav_color。<code>getColor()</code>方法是当用户登陆成功后查询登录账户最喜欢的颜色并返回，题目要求使用admin登录，盲猜admin最喜欢的颜色就是flag啦（。</p>
+<p>再回到登录验证部分。那么怎么样才能输入用户名”admin”，然后输入密码对应的是”admin”对应的密码呢？一开始陷入了这个思维陷阱没跳出来，实际上，可以这样：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada">username:*&#x27; UNION <span class="hljs-keyword">SELECT</span> <span class="hljs-string">&quot;admin&quot;</span>,<span class="hljs-string">&quot;123&quot;</span><span class="hljs-comment">--+</span><br>password:<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure>
+
+<p>用户名中的”*”指的是一个数据库中不存在的用户名，空着也行，然后单引号闭合。SELECT “admin” 和 “123”，最后”–+”闭合语句，这样一来整个sql语句的查询结果就变成了</p>
+<table>
+<thead>
+<tr>
+<th>username</th>
+<th>password</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>admin</td>
+<td>123</td>
+</tr>
+</tbody></table>
+<p>那么当用户输入密码为”123”自然就等于row.password了，登陆成功。</p>
+<p>为便于理解，我们本地创建一个表<code>user_info</code>，表如下：</p>
+<p><img src="/2023/02/09/SQLI/image-20230412122726143.png" srcset="/img/loading.gif" lazyload></p>
+<p>本地测试结果如下：</p>
+<p><img src="/2023/02/09/SQLI/image-20230412123052991.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h2 id="BUUCTF-EasySql"><a href="#BUUCTF-EasySql" class="headerlink" title="BUUCTF-EasySql"></a>BUUCTF-EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
 <p><img src="/2023/02/09/SQLI/image-20230213012236141.png" srcset="/img/loading.gif" lazyload></p>
 <p>密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。</p>
 <p><img src="/2023/02/09/SQLI/image-20230213013114976.png" srcset="/img/loading.gif" lazyload></p>
