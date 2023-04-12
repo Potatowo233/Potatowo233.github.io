@@ -19,23 +19,23 @@
     <meta name="description" content="BUUCTF_ WarmUp嗯。。一打开是一个滑稽脸直接一眼ctrl+u查看源代码，查找到注释提示source.php，进入source.php看到是php代码审计。  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;?php    highlight_file">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件包含">
-<meta property="og:url" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/index.html">
+<meta property="og:url" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/index.html">
 <meta property="og:site_name" content="Potat0w0">
 <meta property="og:description" content="BUUCTF_ WarmUp嗯。。一打开是一个滑稽脸直接一眼ctrl+u查看源代码，查找到注释提示source.php，进入source.php看到是php代码审计。  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;?php    highlight_file">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213015433704.png">
-<meta property="og:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213021555716.png">
-<meta property="og:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213024856357.png">
-<meta property="og:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113603645.png">
-<meta property="og:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113736893.png">
-<meta property="og:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213114000858.png">
-<meta property="article:published_time" content="2023-04-05T08:31:12.000Z">
-<meta property="article:modified_time" content="2023-04-09T10:27:19.148Z">
+<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213015433704.png">
+<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213021555716.png">
+<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213024856357.png">
+<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113603645.png">
+<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113736893.png">
+<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213114000858.png">
+<meta property="article:published_time" content="2023-02-09T08:31:12.000Z">
+<meta property="article:modified_time" content="2023-04-12T02:50:29.509Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="文件包含">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213015433704.png">
+<meta name="twitter:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213015433704.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -235,8 +235,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-05 16:31" pubdate>
-          April 5, 2023 pm
+        <time datetime="2023-02-09 16:31" pubdate>
+          February 9, 2023 pm
         </time>
       </span>
     
@@ -310,7 +310,7 @@
               <div class="markdown-body">
                 
                 <h2 id="BUUCTF-WarmUp"><a href="#BUUCTF-WarmUp" class="headerlink" title="BUUCTF_ WarmUp"></a>BUUCTF_ WarmUp</h2><p>嗯。。一打开是一个滑稽脸直接一眼ctrl+u查看源代码，查找到注释提示source.php，进入source.php看到是php代码审计。</p>
-<p><img src="/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213015433704.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213015433704.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">emmm</span></span><br><span class="hljs-class">    </span>&#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;<span class="hljs-variable">$page</span></span>)</span><br><span class="hljs-function">        </span>&#123;<br>            <span class="hljs-variable">$whitelist</span> = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br>            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$page</span>) || !<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$page</span>)) &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br><br>            <span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">mb_substr</span>(<br>                <span class="hljs-variable">$page</span>,<br>                <span class="hljs-number">0</span>,<br>                <span class="hljs-title function_ invoke__">mb_strpos</span>(<span class="hljs-variable">$page</span> . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br><br>            <span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$page</span>);<br>            <span class="hljs-variable">$_page</span> = <span class="hljs-title function_ invoke__">mb_substr</span>(<br>                <span class="hljs-variable">$_page</span>,<br>                <span class="hljs-number">0</span>,<br>                <span class="hljs-title function_ invoke__">mb_strpos</span>(<span class="hljs-variable">$_page</span> . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; <span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; emmm::<span class="hljs-title function_ invoke__">checkFile</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>    ) &#123;<br>        <span class="hljs-keyword">include</span> <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br>        <span class="hljs-keyword">exit</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;<br>    &#125;  <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>先看代码主体部分</p>
@@ -322,7 +322,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$whitelist</span> = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br></code></pre></td></tr></table></figure>
 
 <p>白名单中包含”source.php”和”hint.php”，source.php就是本页面，传入file&#x3D;hint.php对hint.php进行包含（一开始做的时候真的以为是什么提示硬是想不看提示自己琢磨结果发现无论如何还是得看的呜呜呜呜呜）</p>
-<p><img src="/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213021555716.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213021555716.png" srcset="/img/loading.gif" lazyload></p>
 <p>告诉了我们得到flag不是在这，而是在ffffllllaaaagggg，继续审计，</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$page</span>) || !<span class="hljs-title function_ invoke__">is_string</span>(<span class="hljs-variable">$page</span>)) &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br></code></pre></td></tr></table></figure>
 
@@ -341,7 +341,7 @@
 <p>到此为止已经满足了主体部分的三个条件了，结合hint.php的提示flag在ffffllllaaaagggg，传参?file&#x3D;hint.php?ffffllllaaaagggg，没有结果判断flag不在本目录，盲猜在根目录，于是</p>
 <p>payload：</p>
 <p>?file&#x3D;hint.php?.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg  或  ?file&#x3D;source?.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg</p>
-<p><img src="/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213024856357.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213024856357.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h2 id="BUUCTF-新生赛include1"><a href="#BUUCTF-新生赛include1" class="headerlink" title="BUUCTF_新生赛include1"></a>BUUCTF_<strong>新生赛include1</strong></h2><p>一开始只有一个tips超链接，点击，提示“Can you find out the flag?”。查看源代码没有任何收获，发现url的位置是通过file传参，file&#x3D;flag.php。想到应该是主页源码含有文件包含，通过包含参数file。尝试php伪协议。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">?file=php://input<br></code></pre></td></tr></table></figure>
@@ -349,11 +349,11 @@
 <p>页面发出警告“hacker!”尝试大写绕过失败，尝试filter伪协议读取网页源码。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">php://filter/read=convert.base64-encode/resource=flag.php<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113603645.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113603645.png" srcset="/img/loading.gif" lazyload></p>
 <p>base64解码后拿到flag</p>
-<p><img src="/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113736893.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213113736893.png" srcset="/img/loading.gif" lazyload></p>
 <p>题后反思：用同样的方法查看了一下index.php源码</p>
-<p><img src="/2023/04/05/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213114000858.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/image-20230213114000858.png" srcset="/img/loading.gif" lazyload></p>
 <p>过滤函数使用的是stristr()是不区分大小写的，strstr()则区分，同样还过滤掉了zip:&#x2F;&#x2F;和phar:&#x2F;&#x2F;还有data:&#x2F;&#x2F;。顺路学了下文件上传的zip:&#x2F;&#x2F;和phar:&#x2F;&#x2F;协议注入。</p>
 <hr>
 
@@ -412,9 +412,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/05/ssti/" title="ssti">
+                      <a href="/2023/02/09/ssti/" title="SSTI">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ssti</span>
+                        <span class="hidden-mobile">SSTI</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -422,7 +422,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/05/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="文件上传">
+                      <a href="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="文件上传">
                         <span class="hidden-mobile">文件上传</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
