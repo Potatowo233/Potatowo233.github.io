@@ -25,6 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412122726143.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123052991.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123949128.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213012236141.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013114976.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013848916.png">
@@ -49,7 +50,7 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230411013245234.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412103314980.png">
 <meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-04-12T04:31:17.382Z">
+<meta property="article:modified_time" content="2023-04-12T04:39:54.629Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Wed">
 <meta property="article:tag" content="sqli">
@@ -361,6 +362,8 @@
 <p><img src="/2023/02/09/SQLI/image-20230412122726143.png" srcset="/img/loading.gif" lazyload></p>
 <p>本地测试结果如下：</p>
 <p><img src="/2023/02/09/SQLI/image-20230412123052991.png" srcset="/img/loading.gif" lazyload></p>
+<p>表中不存在”21112”的用户，因此此处无查询结果，联合查询利用select直接返回字符串。如果username填入已有用户，查询结果如下：</p>
+<p><img src="/2023/02/09/SQLI/image-20230412123949128.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h2 id="BUUCTF-EasySql"><a href="#BUUCTF-EasySql" class="headerlink" title="BUUCTF-EasySql"></a>BUUCTF-EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
 <p><img src="/2023/02/09/SQLI/image-20230213012236141.png" srcset="/img/loading.gif" lazyload></p>
