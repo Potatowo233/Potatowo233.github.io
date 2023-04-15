@@ -393,7 +393,7 @@ clickEffect();//调用
       }, 100);
   })();
 
-/*
+
   var a_idx = 0;
 jQuery(document).ready(function($) {
     $("body").click(function(e) {
@@ -421,4 +421,3 @@ jQuery(document).ready(function($) {
         });
     });
 });
-*/
