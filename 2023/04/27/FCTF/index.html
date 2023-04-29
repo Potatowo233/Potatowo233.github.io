@@ -43,17 +43,17 @@
 <meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429195640928.png">
 <meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429195803084.png">
 <meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429195958840.png">
-<meta property="og:image" content="http://example.com/image-20230430041531911.png">
-<meta property="og:image" content="http://example.com/image-20230430043203297.png">
-<meta property="og:image" content="http://example.com/image-20230430043711587.png">
-<meta property="og:image" content="http://example.com/image-20230430044130507.png">
-<meta property="og:image" content="http://example.com/image-20230430044803732.png">
-<meta property="og:image" content="http://example.com/image-20230430045240866.png">
-<meta property="og:image" content="http://example.com/image-20230430045440795.png">
-<meta property="og:image" content="http://example.com/image-20230430050104649.png">
-<meta property="og:image" content="http://example.com/image-20230430051023113.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430041531911.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430043203297.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430043711587.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430044130507.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430044803732.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430045240866.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430045440795.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430050104649.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430051023113.png">
 <meta property="article:published_time" content="2023-04-26T16:46:11.000Z">
-<meta property="article:modified_time" content="2023-04-29T21:13:43.814Z">
+<meta property="article:modified_time" content="2023-04-29T21:14:46.685Z">
 <meta property="article:author" content="Potat0w0">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/04/27/FCTF/image-20230427005335078.png">
@@ -385,27 +385,27 @@
 <p><img src="/2023/04/27/FCTF/image-20230429195958840.png" srcset="/img/loading.gif" lazyload></p>
 <p>上传文件，获取flag。</p>
 <h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="png"><a href="#png" class="headerlink" title="png"></a>png</h4><p>附件下载下来是一张png图片，</p>
-<p><img src="/image-20230430041531911.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430041531911.png" srcset="/img/loading.gif" lazyload></p>
 <p>010打开划拉到最底部发现冗余数据，部分flag<code>FCTF&#123;To</code>，</p>
-<p><img src="/image-20230430043203297.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430043203297.png" srcset="/img/loading.gif" lazyload></p>
 <p>010跑PNGTemplate。bt脚本报错，左下提示CRC不匹配，说明修改了高宽却没有修改CRC导致读取报错，图片宽高很可能被修改过。</p>
-<p><img src="/image-20230430043711587.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430043711587.png" srcset="/img/loading.gif" lazyload></p>
 <p>进行一个高度的改，将高度640改为700</p>
-<p><img src="/image-20230430044130507.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430044130507.png" srcset="/img/loading.gif" lazyload></p>
 <p>文件头数据块IHDR包含的第一部分数据就是图片宽高，分别对应第二行中的第一组四个字节和第二组四个字节，掏出计算器算算高度拉长点。</p>
-<p><img src="/image-20230430044803732.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430044803732.png" srcset="/img/loading.gif" lazyload></p>
 <p>得到另一部分flag<code>_the_flawless_</code></p>
-<p><img src="/image-20230430045240866.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430045240866.png" srcset="/img/loading.gif" lazyload></p>
 <p>然后就是做这道题时比较懵逼的一个地方了，招最后一部分flag。先开起zsteg看看能拿到什么吧。查到了之前找到的<code>FCTF&#123;To</code>，但是愣是没发现最后一部分flag，如果有LSB隐写那zsteg也应该能淦出来才对呀？</p>
-<p><img src="/image-20230430045440795.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430045440795.png" srcset="/img/loading.gif" lazyload></p>
 <p>由于过于依赖工具，死磕这条路坚信不存在lsb隐写。愣是没用Stegsolve手搓，到处找，查IDAT块、翻EXIF信息…最后还得感谢ixout手搓LSB出来。</p>
-<p><img src="/image-20230430050104649.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430050104649.png" srcset="/img/loading.gif" lazyload></p>
 <p>呜呜呜呜呜呜呜呜呜呜。</p>
 <p>最后三段flag拼接起来得到flag。</p>
 <p>呜呜呜呜呜呜呜呜呜呜。</p>
 <h4 id="cet6"><a href="#cet6" class="headerlink" title="cet6"></a>cet6</h4><h4 id="zip套娃"><a href="#zip套娃" class="headerlink" title="zip套娃"></a>zip套娃</h4><p>第一层：</p>
 <p>binwalk无法分离，不是伪加密。没给其他条件明文攻击也不太行，那就爆破试试吧（。</p>
-<p><img src="/image-20230430051023113.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430051023113.png" srcset="/img/loading.gif" lazyload></p>
 <p>ARCHPR开起来，攻击方式字典，选的是kali字典。跑了一段时间后拿到第一层密码。</p>
 <h2 id="正式赛"><a href="#正式赛" class="headerlink" title="正式赛"></a>正式赛</h2>
                 
