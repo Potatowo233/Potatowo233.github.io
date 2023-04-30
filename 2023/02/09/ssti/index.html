@@ -16,19 +16,35 @@
   <meta name="author" content="Potat0w0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="fl4g{we1c0me_tO_My_B1og}">
+    <meta name="description" content="2023FCTF热身赛filechecker_mini打开题目，让我们上传一个文件：  桌面上随便丢了个php文件进去提交看看会有啥情况：  判断文件类型，(MIME绕过预定) 附件下载下来先看源码： index.html：  可以看出该网页使用模块渲染将result值渲染进index对应位置，那么就看下后端代码app.py： 12345678910111213141516171819202122">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSTI">
 <meta property="og:url" content="http://example.com/2023/02/09/ssti/index.html">
 <meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="fl4g{we1c0me_tO_My_B1og}">
+<meta property="og:description" content="2023FCTF热身赛filechecker_mini打开题目，让我们上传一个文件：  桌面上随便丢了个php文件进去提交看看会有啥情况：  判断文件类型，(MIME绕过预定) 附件下载下来先看源码： index.html：  可以看出该网页使用模块渲染将result值渲染进index对应位置，那么就看下后端代码app.py： 12345678910111213141516171819202122">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429032204160.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429032353870.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429030651913.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429032742576.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429034451879.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429191534591.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429191635511.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429191927593.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429193849800.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429193915755.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429194117415.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429194209528.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429195640928.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429195803084.png">
+<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429195958840.png">
 <meta property="article:published_time" content="2023-02-09T08:31:25.000Z">
-<meta property="article:modified_time" content="2023-04-27T09:54:30.899Z">
+<meta property="article:modified_time" content="2023-04-30T09:05:48.228Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="ssti">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/02/09/ssti/image-20230429032204160.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -240,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          2.5k words
         
       </span>
     
@@ -251,7 +267,7 @@
         
         
         
-          1 mins
+          21 mins
         
       </span>
     
@@ -302,7 +318,46 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="2023FCTF热身赛filechecker-mini"><a href="#2023FCTF热身赛filechecker-mini" class="headerlink" title="2023FCTF热身赛filechecker_mini"></a>2023FCTF热身赛filechecker_mini</h2><p>打开题目，让我们上传一个文件：</p>
+<p><img src="/2023/02/09/ssti/image-20230429032204160.png" srcset="/img/loading.gif" lazyload></p>
+<p>桌面上随便丢了个php文件进去提交看看会有啥情况：</p>
+<p><img src="/2023/02/09/ssti/image-20230429032353870.png" srcset="/img/loading.gif" lazyload></p>
+<p>判断文件类型，(MIME绕过预定)</p>
+<p>附件下载下来先看源码：</p>
+<p>index.html：</p>
+<p><img src="/2023/02/09/ssti/image-20230429030651913.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看出该网页使用模块渲染将result值渲染进index对应位置，那么就看下后端代码app.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, render_template, render_template_string<br><span class="hljs-keyword">from</span> waitress <span class="hljs-keyword">import</span> serve<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> subprocess<br><br>app_dir = os.path.split(os.path.realpath(__file__))[<span class="hljs-number">0</span>]<br>app = Flask(__name__)<br>app.config[<span class="hljs-string">&#x27;UPLOAD_FOLDER&#x27;</span>] = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;app_dir&#125;</span>/upload/&#x27;</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>,<span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>():<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;GET&#x27;</span>:<br>            <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>,result=<span class="hljs-string">&quot;ヽ(=^･ω･^=)丿 ヽ(=^･ω･^=)丿 ヽ(=^･ω･^=)丿&quot;</span>)<br><br>        <span class="hljs-keyword">elif</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:<br>            f = request.files[<span class="hljs-string">&#x27;file-upload&#x27;</span>]<br>            filepath = os.path.join(app.config[<span class="hljs-string">&#x27;UPLOAD_FOLDER&#x27;</span>], f.filename)<br><br>            <span class="hljs-keyword">if</span> os.path.exists(filepath) <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;..&quot;</span> <span class="hljs-keyword">in</span> filepath:<br>                <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>, result=<span class="hljs-string">&quot;Don&#x27;t (^=◕ᴥ◕=^) (^=◕ᴥ◕=^) (^=◕ᴥ◕=^)&quot;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                f.save(filepath)<br>                file_check_res = subprocess.check_output(<br>                    [<span class="hljs-string">&quot;/bin/file&quot;</span>, <span class="hljs-string">&quot;-b&quot;</span>, filepath], <br>                    shell=<span class="hljs-literal">False</span>, <br>                    encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>                    timeout=<span class="hljs-number">1</span><br>                )<br>                os.remove(filepath)<br>                <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;empty&quot;</span> <span class="hljs-keyword">in</span> file_check_res <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;cannot open&quot;</span> <span class="hljs-keyword">in</span> file_check_res:<br>                    file_check_res=<span class="hljs-string">&quot;wafxixi ฅ•ω•ฅ ฅ•ω•ฅ ฅ•ω•ฅ&quot;</span><br>                <span class="hljs-keyword">return</span> render_template_string(file_check_res)<br><br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>, result=<span class="hljs-string">&#x27;Error ฅ(๑*д*๑)ฅ ฅ(๑*д*๑)ฅ ฅ(๑*д*๑)ฅ&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    serve(app, host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>, port=<span class="hljs-number">3000</span>, threads=<span class="hljs-number">1000</span>, cleanup_interval=<span class="hljs-number">30</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/02/09/ssti/image-20230429032742576.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面大家都用<code>render_template()</code>就你爱用<code>render_template_string()</code>是吧（指指点点，一眼模板注入，那么我们就希望<code>file_check_res</code>里有我们能够执行的rce代码。<code>file_check_res</code>哪来的？倒退往上看。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">f.save(filepath)<br>file_check_res = subprocess.check_output(<br>	[<span class="hljs-string">&quot;/bin/file&quot;</span>, <span class="hljs-string">&quot;-b&quot;</span>, filepath], <br>	shell=<span class="hljs-literal">False</span>, <br>	encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>	imeout=<span class="hljs-number">1</span><br>	)<br>os.remove(filepath)<br></code></pre></td></tr></table></figure>
+
+<p>先保存filepath这样一个文件，<code>subprocess.check_output(command)</code>返回Linux命令行输出，然后再把filepath文件删除，那么这里的<code>file_check_res</code>就是<code>file -b &#123;filepath&#125;</code>的结果。往上看filepath其实就是将上传文件目录的绝对路径和该文件的文件名拼接起来来标定用户上传的这个文件在容器中的绝对位置。逻辑搞明白了，现在的重点就在于如何对一个文件使用<code>file -b</code> 命令后返回值中能回显我们所期望的值。动手操作下flie命令，发现其不会输出文件的内容只会输出其类型，</p>
+<p><img src="/2023/02/09/ssti/image-20230429034451879.png" srcset="/img/loading.gif" lazyload></p>
+<p>代码中的-b参数作用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b 　#列出辨识结果时，不显示文件名称。<br></code></pre></td></tr></table></figure>
+
+<p>所以在文件名上动手脚的想法也破灭了（悲。</p>
+<p>卡住了，向大佬博客寻求帮助，去guthub查找file命令源码。第一个仓库点开。<img src="/2023/02/09/ssti/image-20230429191534591.png" srcset="/img/loading.gif" lazyload></p>
+<p>点开tests里面是各种针对该<code>file</code>命令的<a target="_blank" rel="noopener" href="https://github.com/file/file/tree/master/tests">测试结果</a></p>
+<p><img src="/2023/02/09/ssti/image-20230429191635511.png" srcset="/img/loading.gif" lazyload></p>
+<p>这8个分别分别是在文本中写入bash脚本的4种情况和对应的用<code>file</code>命令执行的输出结果，可以看出如果文本内容为<code>#!/usr/bin</code>开头的那么输出结果中会显示文本中的其他内容。</p>
+<p><img src="/2023/02/09/ssti/image-20230429191927593.png" srcset="/img/loading.gif" lazyload></p>
+<p>本地做测试：创建一个文本文件修改内容如下</p>
+<p><img src="/2023/02/09/ssti/image-20230429193849800.png" srcset="/img/loading.gif" lazyload></p>
+<p>测试结果如下：</p>
+<p><img src="/2023/02/09/ssti/image-20230429193915755.png" srcset="/img/loading.gif" lazyload></p>
+<p>显而易见，输出可控，可以进行模板渲染。新建一个文本文件内容如下，上传文件</p>
+<p><img src="/2023/02/09/ssti/image-20230429194117415.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429194209528.png" srcset="/img/loading.gif" lazyload></p>
+<p>存在ssti漏洞，开始利用，调用os模块</p>
+<p><img src="/2023/02/09/ssti/image-20230429195640928.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429195803084.png" srcset="/img/loading.gif" lazyload></p>
+<p>调用popen()方法。</p>
+<p><img src="/2023/02/09/ssti/image-20230429195958840.png" srcset="/img/loading.gif" lazyload></p>
+<p>上传文件，获取flag。</p>
+
                 
               </div>
             
