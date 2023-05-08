@@ -33,7 +33,7 @@
     <link href="/2023/04/24/java-note/"/>
     <url>/2023/04/24/java-note/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="浅记Java学习记录"><a href="#浅记Java学习记录" class="headerlink" title="浅记Java学习记录"></a>浅记Java学习记录</h1><p>JRE：运行Java字节码的虚拟机</p><p>JDK：如果只有Java源码，要编译成Java字节码，就需要JDK，因为JDK除了包含JRE，还提供了编译器、调试器等开发工具。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ascii"> ┌─    ┌──────────────────────────────────┐<br> │     │     Compiler, debugger, etc.     │<br> │     └──────────────────────────────────┘<br>JDK ┌─ ┌──────────────────────────────────┐<br> │  │  │                                  │<br> │ JRE │      JVM + Runtime Library       │<br> │  │  │                                  │<br> └─ └─ └──────────────────────────────────┘<br>       ┌───────┐┌───────┐┌───────┐┌───────┐<br>       │Windows││ Linux ││ macOS ││others │<br>       └───────┘└───────┘└───────┘└───────┘<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
