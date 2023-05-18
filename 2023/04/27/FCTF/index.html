@@ -68,8 +68,15 @@
 <meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161219428.png">
 <meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161254433.png">
 <meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161318849.png">
+<meta property="og:image" content="http://example.com/image-20230519013136127.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519013017814.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519013824840.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519014312145.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519021831370.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519021849222.png">
+<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519022132076.png">
 <meta property="article:published_time" content="2023-04-26T16:46:11.000Z">
-<meta property="article:modified_time" content="2023-04-30T08:54:46.336Z">
+<meta property="article:modified_time" content="2023-05-18T18:24:33.775Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="Misc">
@@ -288,7 +295,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.7k words
+          7.1k words
         
       </span>
     
@@ -299,7 +306,7 @@
         
         
         
-          56 mins
+          60 mins
         
       </span>
     
@@ -512,7 +519,26 @@
 <p>使用theonlypwner时出了点问题，最开始忘记了flag中必含的”{“”}”字符，导致怎么都跑不出来，还是看了眼hint想起来应该修改脚本中的供选字符。如果感叹号是在4-6字节的那些文件的话肯定也跑不出来了，考虑问题还是不够周到。</p>
 <p>（大佬的博客：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ECJTUACM-873284962/p/9884416.html">https://www.cnblogs.com/ECJTUACM-873284962/p/9884416.html</a>）</p>
 <p>（CTFwiki：<a target="_blank" rel="noopener" href="https://ctf-wiki.org/misc/archive/zip/#_7%EF%BC%89">https://ctf-wiki.org/misc/archive/zip/#_7）</a></p>
-<h2 id="正式赛"><a href="#正式赛" class="headerlink" title="正式赛"></a>正式赛</h2>
+<hr>
+<h2 id="正式赛"><a href="#正式赛" class="headerlink" title="正式赛"></a>正式赛</h2><h3 id="Web-1"><a href="#Web-1" class="headerlink" title="Web"></a>Web</h3><h3 id="Misc-1"><a href="#Misc-1" class="headerlink" title="Misc"></a>Misc</h3><h4 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h4><p>附件如图所示：</p>
+<p><img src="/image-20230519013136127.png" srcset="/img/loading.gif" lazyload></p>
+<p>一整张图构成极其简单，想要藏什么数据的话大概率只能是IDAT块隐写了，pngcheck查看下</p>
+<p><img src="/2023/04/27/FCTF/image-20230519013017814.png" srcset="/img/loading.gif" lazyload></p>
+<p>9个IDAT块，块长度没有隐藏什么特殊信息，一张正常的png图片的IDAT块的前面的块应该都是填充满且相同大小的，这个check结果显然就不正常，感觉每一个块都单独成图。试着删除块。</p>
+<p>tweakpng：</p>
+<p><img src="/2023/04/27/FCTF/image-20230519013824840.png" srcset="/img/loading.gif" lazyload></p>
+<p>准备删IDAT块，九个块就拷贝九份先。删块的时候不要把IEND块删了，这是png格式的结尾标识。</p>
+<p>每个IDAT块单独成一张图片，已经很明显了，是一张二维码。</p>
+<p><img src="/2023/04/27/FCTF/image-20230519014312145.png" srcset="/img/loading.gif" lazyload></p>
+<p>自己对于二维码结构的认知只有三个定位块（悲），所以瞎拼，然后都没法扫（，根据学长放的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mq0036/p/14445719.html">hint</a>：</p>
+<p><img src="/2023/04/27/FCTF/image-20230519021831370.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519021849222.png" srcset="/img/loading.gif" lazyload></p>
+<p>归纳就是三个定位块的周围一个像素块的一圈必须是空白的，且相互之间有黑白像素块交叉分布的定时标志，根据特征拿到ps里拼了下</p>
+<p><img src="/2023/04/27/FCTF/image-20230519022132076.png" srcset="/img/loading.gif" lazyload></p>
+<p>扫一下，拿到flag：</p>
+<p><code>FCTF&#123;n1ce_puzzl3&#125;</code></p>
+<h4 id="自信音游人"><a href="#自信音游人" class="headerlink" title="自信音游人"></a>自信音游人</h4><p>附件是给的曲目选自阿卡伊的だいあるのーと。</p>
+
                 
               </div>
             
