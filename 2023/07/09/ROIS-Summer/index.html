@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://example.com/2023/07/09/ROIS-Summer/image-20230710143250340.png">
 <meta property="og:image" content="http://example.com/2023/07/09/ROIS-Summer/image-20230710144012932.png">
 <meta property="article:published_time" content="2023-07-09T05:17:05.000Z">
-<meta property="article:modified_time" content="2023-07-11T06:26:34.896Z">
+<meta property="article:modified_time" content="2023-07-11T07:45:52.708Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="MySQL">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k words
+          17k words
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          135 mins
+          139 mins
         
       </span>
     
@@ -518,7 +518,10 @@
 <p>语法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT<br>	...<br>FROM<br>	A<br>JOIN<br>	B<br>ON<br>	f(A,B)<br>JOIN<br>	C<br>ON<br>	g(A,C)<br>JOIN<br>	D<br>ON<br>	h(A,B)<br>#内连接外连接可以混合<br></code></pre></td></tr></table></figure>
 
-
+<p><strong>子查询：</strong></p>
+<p>select语句的嵌套</p>
+<p>where中的子查询：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select ename,sal from emp where sal &gt; min(sal);#这句语句是错误的，shiyong max()前未分组<br>select ename,sal from emp where sal &gt; (select min(sal) from emp);<br>+--------+---------+<br>| ename  | sal     |<br>+--------+---------+<br>| ALLEN  | 1600.00 |<br>| WARD   | 1250.00 |<br>| JONES  | 2975.00 |<br>| MARTIN | 1250.00 |<br>| BLAKE  | 2850.00 |<br>| CLARK  | 2450.00 |<br>| SCOTT  | 3000.00 |<br>| KING   | 5000.00 |<br>| TURNER | 1500.00 |<br>| ADAMS  | 1100.00 |<br>| JAMES  |  950.00 |<br>| FORD   | 3000.00 |<br>| MILLER | 1300.00 |<br>+--------+---------+<br></code></pre></td></tr></table></figure>
 
 
 
