@@ -85,8 +85,11 @@
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004823424.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004737058.png">
 <meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718005009949.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718083706449.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718084006936.png">
+<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718084437619.png">
 <meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-07-17T21:41:44.379Z">
+<meta property="article:modified_time" content="2023-07-18T17:44:42.948Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="sqli">
@@ -314,7 +317,7 @@
         
         
         
-          231 mins
+          233 mins
         
       </span>
     
@@ -707,6 +710,18 @@
 <p><img src="/2023/02/09/SQLI/image-20230718004737058.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/02/09/SQLI/image-20230718005009949.png" srcset="/img/loading.gif" lazyload></p>
 <p>时间盲注也行，但是可以用布尔盲注为什么要用时间盲注呢（笑</p>
+<h4 id="level29"><a href="#level29" class="headerlink" title="level29"></a>level29</h4><p>测试单引号出现报错加注释报错消失，也没有任何的过滤。。</p>
+<p>payload：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-variable">%27</span><span class="hljs-variable">%20</span><span class="hljs-keyword">and</span><span class="hljs-variable">%20</span><span class="hljs-keyword">extractvalue</span>(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>concat(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(<span class="hljs-keyword">select</span><span class="hljs-variable">%20</span>database())))--+<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/02/09/SQLI/image-20230718083706449.png" srcset="/img/loading.gif" lazyload></p>
+<p>Protected By The World’s Best Firewall。。。emmm</p>
+<p>感觉没那么简单，看了眼源代码，咋还有个login.php和hacked.php，找遍网页也没出现这俩，手动进login.php，看起来像是隐藏关卡？</p>
+<p><img src="/2023/02/09/SQLI/image-20230718084006936.png" srcset="/img/loading.gif" lazyload></p>
+<p>还多了两个pdf链接，应该是提示之类的，先不看，直接刚一下</p>
+<p>测试了下单引号双引号闭合，都炸了，如下</p>
+<p><img src="/2023/02/09/SQLI/image-20230718084437619.png" srcset="/img/loading.gif" lazyload></p>
+<p>啊？试了很久发现除了最中规中矩的纯数字，其他通通都会寄。。有点意思，那就看下源代码</p>
 
                 
               </div>
