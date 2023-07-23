@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Potat0w0">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="webIdoriot打开题目看了眼，登陆加注册感觉是二次注入之类的，登陆界面闭合注释啥的都试了下，结果长得都一样↓，点进注册页面看看  随便账号输了个单引号闭合闭合666’，密码随便输了个123，网页回显源代码： 1234567891011121314151617181920212223242526272829303132333435363738Welcome, User ID: 12618100">
+<meta property="og:type" content="article">
+<meta property="og:title" content="imaginary_ctf">
+<meta property="og:url" content="http://example.com/2023/07/23/imaginary-ctf/index.html">
+<meta property="og:site_name" content="Potat0w0">
+<meta property="og:description" content="webIdoriot打开题目看了眼，登陆加注册感觉是二次注入之类的，登陆界面闭合注释啥的都试了下，结果长得都一样↓，点进注册页面看看  随便账号输了个单引号闭合闭合666’，密码随便输了个123，网页回显源代码： 1234567891011121314151617181920212223242526272829303132333435363738Welcome, User ID: 12618100">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230723215418709.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230723233809415.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230723234155477.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724000333876.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724001412246.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724001455538.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724001513572.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724001833675.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724004055979.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724004125580.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724010604690.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724010756515.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724011741863.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724012342239.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724015219040.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724015352137.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724020238024.png">
+<meta property="article:published_time" content="2023-07-23T09:23:12.000Z">
+<meta property="article:modified_time" content="2023-07-23T18:06:06.734Z">
+<meta property="article:author" content="Potat0w0">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230723215418709.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>imaginary_ctf - Potat0w0</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Potat0w0&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="imaginary_ctf"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Potat0w0
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-23 17:23" pubdate>
+          July 23, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          85 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">imaginary_ctf</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="Idoriot"><a href="#Idoriot" class="headerlink" title="Idoriot"></a>Idoriot</h3><p>打开题目看了眼，登陆加注册感觉是二次注入之类的，登陆界面闭合注释啥的都试了下，结果长得都一样↓，点进注册页面看看</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230723215418709.png" srcset="/img/loading.gif" lazyload></p>
+<p>随便账号输了个单引号闭合闭合666’，密码随便输了个123，网页回显源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs php">Welcome, User ID: <span class="hljs-number">126181005</span><br>Source Code<br><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-title function_ invoke__">session_start</span>();<br><br><span class="hljs-comment">// Check if user is logged in</span><br><span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>])) &#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: login.php&quot;</span>);<br>    <span class="hljs-keyword">exit</span>();<br>&#125;<br><br><span class="hljs-comment">// Check if session is expired</span><br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">time</span>() &gt; <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;expires&#x27;</span>]) &#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: logout.php&quot;</span>);<br>    <span class="hljs-keyword">exit</span>();<br>&#125;<br><br><span class="hljs-comment">// Display user ID on landing page</span><br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Welcome, User ID: &quot;</span> . <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>]);<br><br><span class="hljs-comment">// Get the user for admin</span><br><span class="hljs-variable">$db</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>(<span class="hljs-string">&#x27;sqlite:memory:&#x27;</span>);<br><span class="hljs-variable">$admin</span> = <span class="hljs-variable">$db</span>-&gt;<span class="hljs-title function_ invoke__">query</span>(<span class="hljs-string">&#x27;SELECT * FROM users WHERE user_id = 0 LIMIT 1&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">fetch</span>();<br><br><span class="hljs-comment">// Check if the user is admin</span><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$admin</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>] === <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>]) &#123;<br>    <span class="hljs-comment">// Read the flag from flag.txt</span><br>    <span class="hljs-variable">$flag</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;flag.txt&#x27;</span>);<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Flag&lt;/h1&gt;&quot;</span>;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;<span class="hljs-subst">$flag</span>&lt;/p&gt;&quot;</span>;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// Display the source code for this file</span><br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Source Code&lt;/h1&gt;&quot;</span>;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>&#125;<br><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>从代码逻辑可以看出当执行sql语句<code>SELECT * FROM users WHERE user_id = 0 LIMIT 1</code>后第一行user_id的值和当前网页会话<code>SESSION[&#39;user_id&#39;]</code>相等时回显flag，从SQL查询语句容易得到就是要让<code>SESSION[&#39;user_id&#39;]</code>值为0，退出登录去logout.php，重新点注册，是session的话就说明是在提交表单环节设置的，bp抓个包,改post参数user_id为0，Forward。</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230723233809415.png" srcset="/img/loading.gif" lazyload></p>
+<p>getflag</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230723234155477.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="idoriot-revenge"><a href="#idoriot-revenge" class="headerlink" title="idoriot-revenge"></a>idoriot-revenge</h3><p>和上一题同样的开头，先注册点开</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724000333876.png" srcset="/img/loading.gif" lazyload></p>
+<p>随便一个账号密码回显源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs php">Welcome, User ID: <span class="hljs-number">736136856</span><br>Source Code<br><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-title function_ invoke__">session_start</span>();<br><br><span class="hljs-comment">// Check if user is logged in</span><br><span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>])) &#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: login.php&quot;</span>);<br>    <span class="hljs-keyword">exit</span>();<br>&#125;<br><br><span class="hljs-comment">// Check if session is expired</span><br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">time</span>() &gt; <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;expires&#x27;</span>]) &#123;<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location: logout.php&quot;</span>);<br>    <span class="hljs-keyword">exit</span>();<br>&#125;<br><br><span class="hljs-comment">// Display user ID on landing page</span><br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Welcome, User ID: &quot;</span> . <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>]);<br><br><span class="hljs-comment">// Get the user for admin</span><br><span class="hljs-variable">$db</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">PDO</span>(<span class="hljs-string">&#x27;sqlite:memory:&#x27;</span>);<br><span class="hljs-variable">$admin</span> = <span class="hljs-variable">$db</span>-&gt;<span class="hljs-title function_ invoke__">query</span>(<span class="hljs-string">&#x27;SELECT * FROM users WHERE username = &quot;admin&quot; LIMIT 1&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">fetch</span>();<br><br><span class="hljs-comment">// Check user_id</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>])) &#123;<br>    <span class="hljs-variable">$user_id</span> = (<span class="hljs-keyword">int</span>) <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>];<br>    <span class="hljs-comment">// Check if the user is admin</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$user_id</span> == <span class="hljs-string">&quot;php&quot;</span> &amp;&amp; <span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/&quot;</span>.<span class="hljs-variable">$admin</span>[<span class="hljs-string">&#x27;username&#x27;</span>].<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;username&#x27;</span>])) &#123;<br>        <span class="hljs-comment">// Read the flag from flag.txt</span><br>        <span class="hljs-variable">$flag</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;/flag.txt&#x27;</span>);<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Flag&lt;/h1&gt;&quot;</span>;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;<span class="hljs-subst">$flag</span>&lt;/p&gt;&quot;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// Display the source code for this file</span><br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Source Code&lt;/h1&gt;&quot;</span>;<br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>看下面这部分：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$admin</span> = <span class="hljs-variable">$db</span>-&gt;<span class="hljs-title function_ invoke__">query</span>(<span class="hljs-string">&#x27;SELECT * FROM users WHERE username = &quot;admin&quot; LIMIT 1&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">fetch</span>();<br><br><span class="hljs-comment">// Check user_id</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>])) &#123;<br>    <span class="hljs-variable">$user_id</span> = (<span class="hljs-keyword">int</span>) <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;user_id&#x27;</span>];<br>    <span class="hljs-comment">// Check if the user is admin</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$user_id</span> == <span class="hljs-string">&quot;php&quot;</span> &amp;&amp; <span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/&quot;</span>.<span class="hljs-variable">$admin</span>[<span class="hljs-string">&#x27;username&#x27;</span>].<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;username&#x27;</span>])) &#123;<br>        <span class="hljs-comment">// Read the flag from flag.txt</span><br>        <span class="hljs-variable">$flag</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-string">&#x27;/flag.txt&#x27;</span>);<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Flag&lt;/h1&gt;&quot;</span>;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;<span class="hljs-subst">$flag</span>&lt;/p&gt;&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>SQL查询语句查询结果<code>$admin[&#39;username&#39;]</code>的值显然为’admin’，这回是检验GET传参数<code>$user_id</code>是否弱等于’php’，以及<code>$_SESSION[&#39;username&#39;]</code>是否包含<code>$admin[&#39;username&#39;]</code>，即’admin’，若比较由于会类型转换再比较，因此直接修改GET参数user_id值为’php’即可，至于<code>preg_match(&quot;/&quot;.$admin[&#39;username&#39;].&quot;/&quot;, $_SESSION[&#39;username&#39;])</code>条件，注册时随便注册一个包含’admin’的字符串作为用户名即可，</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724001412246.png" srcset="/img/loading.gif" lazyload></p>
+<p>再改参数：</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724001455538.png" srcset="/img/loading.gif" lazyload></p>
+<p>getflag</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724001513572.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="roks"><a href="#roks" class="headerlink" title="roks"></a>roks</h3><p>网页内容：</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724001833675.png" srcset="/img/loading.gif" lazyload></p>
+<p>点’get rok picture’会随机显示一张石头的图片，查看源代码：</p>
+<p>index.php主要内容如下，点击鼠标触发事件随机获取一张图片的url，然后直接带着url参数跳转到&#x2F;file.php?file&#x3D;url页面，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php">button onclick=<span class="hljs-string">&quot;requestRandomImage()&quot;</span>&gt;get rok picture&lt;/button&gt;<br>    &lt;script&gt;<br>        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requestRandomImage</span>(<span class="hljs-params"></span>) </span>&#123;<br>	    <span class="hljs-keyword">var</span> imageList = [<span class="hljs-string">&quot;image1&quot;</span>, <span class="hljs-string">&quot;image2&quot;</span>, <span class="hljs-string">&quot;image3&quot;</span>, <span class="hljs-string">&quot;image4&quot;</span>, <span class="hljs-string">&quot;image5&quot;</span>, <span class="hljs-string">&quot;image6&quot;</span>, <span class="hljs-string">&quot;image7&quot;</span>, <span class="hljs-string">&quot;image8&quot;</span>, <span class="hljs-string">&quot;image9&quot;</span>, <span class="hljs-string">&quot;image10&quot;</span>]<br><br>            <span class="hljs-keyword">var</span> randomIndex = Math.<span class="hljs-title function_ invoke__">floor</span>(Math.<span class="hljs-title function_ invoke__">random</span>() * imageList.length);<br>            <span class="hljs-keyword">var</span> randomImageName = imageList[randomIndex];<br><br>            <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();<br>            xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>                <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span> &amp;&amp; xhr.status === <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-keyword">var</span> blob = xhr.response;<br>                    <span class="hljs-keyword">var</span> imageUrl = URL.<span class="hljs-title function_ invoke__">createObjectURL</span>(blob);<br>                    document.<span class="hljs-title function_ invoke__">getElementById</span>(<span class="hljs-string">&quot;randomImage&quot;</span>).src = imageUrl;<br>                &#125;<br>            &#125;;<br><br>            xhr.<span class="hljs-title function_ invoke__">open</span>(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;file.php?file=&quot;</span> + randomImageName, <span class="hljs-literal">true</span>);<br>            xhr.responseType = <span class="hljs-string">&quot;blob&quot;</span>;<br>            xhr.<span class="hljs-title function_ invoke__">send</span>();<br>        &#125;<br>    &lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>file.php内容如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>  <span class="hljs-variable">$filename</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;file&quot;</span>]);<br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">str_contains</span>(<span class="hljs-variable">$filename</span>, <span class="hljs-string">&quot;/&quot;</span>) <span class="hljs-keyword">or</span> <span class="hljs-title function_ invoke__">str_contains</span>(<span class="hljs-variable">$filename</span>, <span class="hljs-string">&quot;.&quot;</span>)) &#123;<br>    <span class="hljs-variable">$contentType</span> = <span class="hljs-title function_ invoke__">mime_content_type</span>(<span class="hljs-string">&quot;stopHacking.png&quot;</span>);<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-type: <span class="hljs-subst">$contentType</span>&quot;</span>);<br>    <span class="hljs-title function_ invoke__">readfile</span>(<span class="hljs-string">&quot;stopHacking.png&quot;</span>);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-variable">$filePath</span> = <span class="hljs-string">&quot;images/&quot;</span> . <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$filename</span>);<br>    <span class="hljs-variable">$contentType</span> = <span class="hljs-title function_ invoke__">mime_content_type</span>(<span class="hljs-variable">$filePath</span>);<br>    <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-type: <span class="hljs-subst">$contentType</span>&quot;</span>);<br>    <span class="hljs-title function_ invoke__">readfile</span>(<span class="hljs-variable">$filePath</span>);<br>  &#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>if (str_contains($filename, &quot;/&quot;) or str_contains($filename, &quot;.&quot;))</code>条件防止任意文件读取，但是注意看$filename是经过参数file进行url解码得到的，PHP在获取GET参数的时候解码一次(获取POST参数时不会)，总共需要进行两次解码，两次解码过后$filename不能含有<code>/</code>和<code>.</code>字符，因此，总共需要经过三次url编码，使得在不破坏url结构的同时能够绕过字符串过滤达到文件读取，那读什么文件呢，看下dockerfile，存在：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">COPY</span><span class="language-bash"> flag.png /</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724004055979.png" srcset="/img/loading.gif" lazyload></p>
+<p>传参：</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724004125580.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="blank"><a href="#blank" class="headerlink" title="blank"></a>blank</h3><p>后端最核心部分代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs javascript">...........<br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&#x27;login&#x27;</span>);<br>&#125;);<br><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> username = req.<span class="hljs-property">body</span>.<span class="hljs-property">username</span>;<br>  <span class="hljs-keyword">const</span> password = req.<span class="hljs-property">body</span>.<span class="hljs-property">password</span>;<br><br>  db.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;SELECT * FROM users WHERE username = &quot;&#x27;</span> + username + <span class="hljs-string">&#x27;&quot; and password = &quot;&#x27;</span> + password+ <span class="hljs-string">&#x27;&quot;&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(err);<br>      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Error retrieving user&#x27;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">if</span> (row) &#123;<br>        req.<span class="hljs-property">session</span>.<span class="hljs-property">loggedIn</span> = <span class="hljs-literal">true</span>;<br>        req.<span class="hljs-property">session</span>.<span class="hljs-property">username</span> = username;<br>        res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Login successful!&#x27;</span>);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Invalid username or password&#x27;</span>);<br>      &#125;<br>    &#125;<br>  &#125;);<br>&#125;);<br>..........<br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/flag&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">session</span>.<span class="hljs-property">username</span> == <span class="hljs-string">&quot;admin&quot;</span>) &#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Welcome admin. The flag is &#x27;</span> + fs.<span class="hljs-title function_">readFileSync</span>(<span class="hljs-string">&#x27;flag.txt&#x27;</span>, <span class="hljs-string">&#x27;utf8&#x27;</span>));<br>  &#125;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (req.<span class="hljs-property">session</span>.<span class="hljs-property">loggedIn</span>) &#123;<br>    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;You must be admin to get the flag.&#x27;</span>);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Unauthorized. Please login first.&#x27;</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><code>&#39;SELECT * FROM users WHERE username = &quot;&#39;</code>拼接<code>username</code>拼接<code>&#39;&quot; and password = &quot;&#39;</code>拼接<code>password</code>拼接<code>&#39;&quot;&#39;</code>最终username和password均为双引号闭合</p>
+<p>随便一个常规字符输入会显示<code>Invalid username or password</code>，但是传入双引号后出现<code>Error retrieving user</code>报错回显，这里注意，***sqlite3和Oracle不支持#号单行注释，只能使用–***，传入<code>&quot;--</code>，报错消失，再次变为<code>Invalid username or password</code>，探路完成，下面看源代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (row) &#123;<br>        req.<span class="hljs-property">session</span>.<span class="hljs-property">loggedIn</span> = <span class="hljs-literal">true</span>;<br>        req.<span class="hljs-property">session</span>.<span class="hljs-property">username</span> = username;<br>        res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Login successful!&#x27;</span>);<br>      &#125;<br></code></pre></td></tr></table></figure>
+
+<p>要查询到结果，才能登陆成功，并设置session，没有session直接访问&#x2F;flag会</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Unauthorized. Please login first.&#x27;</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里就是一个简单的利用select查询字符串，当然我们得让原来的查询语句无查询结果，或者联合查询完后用limit语句，来使得查询结果为一条对吧。</p>
+<p>之后第一个坑来了(个人做题时)，判断原查询结果字段数，别问，问就是上来没<code>order by</code>上来就是<code>union select 1,2</code>，默认只有用户名和密码两个字段了呜呜呜，结果咋地都是报错，卡了有一会，后面头脑发光，转过来了，欸，应该是有第三个字段，试了下<code>&quot; union select 1,2,3--</code>，欸，不出所料</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724010604690.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>判断字段数，很重要呜呜呜</strong></p>
+<p>然后捏，当我们满心欢喜拿到session去访问&#x2F;flag时，欸嘿</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724010756515.png" srcset="/img/loading.gif" lazyload></p>
+<p>好吧扭头回去看源代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (row) &#123;<br>        req.<span class="hljs-property">session</span>.<span class="hljs-property">loggedIn</span> = <span class="hljs-literal">true</span>;<br>        req.<span class="hljs-property">session</span>.<span class="hljs-property">username</span> = username;<br>        res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Login successful!&#x27;</span>);<br>      &#125;<br></code></pre></td></tr></table></figure>
+
+<p>session的username值是username赋的，username是我们传入的用户名(<code>const username = req.body.username;</code>)，所以就是说，弄了那么久，最后传进来的用户名是那一大坨”payload”，设置的session也是。。。不慌，想让传入的username值为admin，很好满足，别急，别忘了还有一个password注入点。</p>
+<p>这回我们直接传入username为admin，懒得判断原查询结果哪个字段是admin了，索性三个都弄成admin，上payload：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">username:admin<br>password:&quot; union <span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;admin&#x27;</span>,<span class="hljs-string">&#x27;admin&#x27;</span>,<span class="hljs-string">&#x27;admin&#x27;</span>--<br></code></pre></td></tr></table></figure>
+
+<p>之后SQL语句变为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sqlite">SELECT * FROM users WHERE username = &quot;admin&quot; and password = &quot;&quot; union select &#x27;admin&#x27;,&#x27;admin&#x27;,&#x27;admin&#x27;--&quot;<br></code></pre></td></tr></table></figure>
+
+<p>登陆成功后访问&#x2F;flag，拿到flag：</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724011741863.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h3><p>当你感觉什么都没有的时候，为什么不按下F12呢？  ————鲁迅</p>
+<p>直接传&#x2F;?source</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724012342239.png" srcset="/img/loading.gif" lazyload></p>
+<p>源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;source&#x27;</span>])) &#123;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-keyword">die</span>();<br>&#125;<br><br><span class="hljs-variable">$flag</span> = <span class="hljs-variable">$_ENV</span>[<span class="hljs-string">&#x27;FLAG&#x27;</span>] ?? <span class="hljs-string">&#x27;jctf&#123;test_flag&#125;&#x27;</span>;<br><span class="hljs-variable">$magic</span> = <span class="hljs-variable">$_ENV</span>[<span class="hljs-string">&#x27;MAGIC&#x27;</span>] ?? <span class="hljs-string">&#x27;aabbccdd11223344&#x27;</span>;<br><span class="hljs-variable">$db</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SQLite3</span>(<span class="hljs-string">&#x27;/db.sqlite3&#x27;</span>);<br><br><span class="hljs-variable">$username</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>] ?? <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-variable">$password</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>] ?? <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-variable">$magic</span>])) &#123;<br>    <span class="hljs-variable">$password</span> .= <span class="hljs-variable">$flag</span>;<br>&#125;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$username</span> &amp;&amp; <span class="hljs-variable">$password</span>) &#123;<br>    <span class="hljs-variable">$res</span> = <span class="hljs-variable">$db</span>-&gt;<span class="hljs-title function_ invoke__">querySingle</span>(<span class="hljs-string">&quot;SELECT username, pwhash FROM users WHERE username = &#x27;<span class="hljs-subst">$username</span>&#x27;&quot;</span>, <span class="hljs-literal">true</span>);<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-variable">$res</span>) &#123;<br>        <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;Invalid username or password&quot;</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-variable">$password</span>, <span class="hljs-variable">$res</span>[<span class="hljs-string">&#x27;pwhash&#x27;</span>])) &#123;<br>        <span class="hljs-variable">$u</span> = <span class="hljs-title function_ invoke__">htmlentities</span>(<span class="hljs-variable">$res</span>[<span class="hljs-string">&#x27;username&#x27;</span>]);<br>        <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;Welcome <span class="hljs-subst">$u</span>! But there is no flag here :P&quot;</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$res</span>[<span class="hljs-string">&#x27;username&#x27;</span>] === <span class="hljs-string">&#x27;admin&#x27;</span>) &#123;<br>            <span class="hljs-variable">$msg</span> .= <span class="hljs-string">&quot;&lt;!-- magic: <span class="hljs-subst">$magic</span> --&gt;&quot;</span>;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;Invalid username or password&quot;</span>;<br>    &#125;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br>    <br><span class="hljs-comment">#下面html中还嵌着一个&lt;?= $msg ?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>??</code>：php8新加入的，如果前面的变量不存在，就将后面的默认字符串赋值，</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$flag</span> = <span class="hljs-variable">$_ENV</span>[<span class="hljs-string">&#x27;FLAG&#x27;</span>] ?? <span class="hljs-string">&#x27;jctf&#123;test_flag&#125;&#x27;</span>;<span class="hljs-comment">#如果无法从环境变量中获取到FLAG，那么就把后面的那个赋值给$flag</span><br><span class="hljs-variable">$magic</span> = <span class="hljs-variable">$_ENV</span>[<span class="hljs-string">&#x27;MAGIC&#x27;</span>] ?? <span class="hljs-string">&#x27;aabbccdd11223344&#x27;</span>;<span class="hljs-comment">#同理</span><br><span class="hljs-comment">#主打的就是一个保险（</span><br></code></pre></td></tr></table></figure>
+
+<p>在学习安全的路上首次亮相<code>password_verify()</code>函数亮相，判断变量$password的hash值是否等于第二个参数(存入数据库当中的经哈希处理后的字符串)，然后还要$res[‘username’]为’admin’，怎么想了想和上一题blank好像很像，至于构造hash字符串编码，php中有对应的<code>password_hash()</code>函数，先随便生成个密码看看</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$input</span> = <span class="hljs-string">&quot;666&quot;</span>;<br><span class="hljs-variable">$hash</span> = <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-variable">$input</span>,PASSWORD_DEFAULT);<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$hash</span>;<br><br><span class="hljs-comment">#output:$2y$10$gJWTsCxZTfjNlqN7hVqCF.QKzQ6giNnSpayWxWvG6gnOUTikgJ3Im</span><br></code></pre></td></tr></table></figure>
+
+<p>嗯。。在这之前我一定测试过字段数，我一定不是随便写两个字段下去的</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724015219040.png" srcset="/img/loading.gif" lazyload></p>
+<p>总之和上一道题差不多的操作之后，成功让password验证成功，看一眼注释，拿到那个magic：</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724015352137.png" srcset="/img/loading.gif" lazyload></p>
+<p>回到源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-variable">$magic</span>])) &#123;<br>    <span class="hljs-variable">$password</span> .= <span class="hljs-variable">$flag</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>是的，没错。。是<code>.=</code>我从第一眼就没见到那个点点，这为我之后的懵逼历程埋下了大大的伏笔。。。</p>
+<p>什么意思呢，如果有GET传入$magic，也就是<code>688a35c685a7a654abc80f8e123ad9f0</code>，那么password变量就会与flag拼接起来，这也将是我们之后的突破口。</p>
+<p>然后开始懵逼，最开始没看到那个点点，一度想尝试过爆破逐一比对hash，结果捏，三四十个预选字符，长度大概二十多三十多吧，也就40多的30多次方种情况吧，不多不多（</p>
+<p>然后就求助与学长了，其实当时如果自己去php官网有目的性地查找，是能够查询到password_hash的相关特性的</p>
+<p>使用PASSWORD_BCRYPY算法加密，被加密字符串最多长72个字节，这是官方给出的描述</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724020238024.png" srcset="/img/loading.gif" lazyload></p>
+<p>当时我没去自己查相关特性，求助了L1ao学长，他给了个<a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/php-tricks-esp#password_hash-password_verify"><strong>trick</strong></a>，这个trick讲的其实更加直白，很容易看懂意图所在，但是真的从刚开始就把<code>.=</code>看成 <code>=</code>了呜呜呜呜呜，</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/09/ROIS-Summer/" title="ROIS_Summer">
+                        <span class="hidden-mobile">ROIS_Summer</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/click.js"></script>
+<script src="/js/snow.js"></script>
+<script src="/js/potato.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
