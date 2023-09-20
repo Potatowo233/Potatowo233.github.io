@@ -8,9 +8,15 @@
     <link href="/2023/09/19/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"/>
     <url>/2023/09/19/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="HTTP请求走私"><a href="#HTTP请求走私" class="headerlink" title="HTTP请求走私"></a>HTTP请求走私</h1><p>第一次接触该漏洞是从CSAW2023的一道题：</p><p>&#x2F;&#x2F;emmm比赛环境关闭了(尬)</p><p>&#x2F;&#x2F;总而言之就是利用CVE-2019-20372的nginx版本1.17.7以下的<a href="https://www.cnblogs.com/null1433/p/12778026.html">http请求走私漏洞</a></p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>Web</tag>
+      
+    </tags>
     
   </entry>
   
