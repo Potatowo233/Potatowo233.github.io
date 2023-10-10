@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=dark>
 
 
 
@@ -23,67 +23,16 @@
 <meta property="og:site_name" content="Potat0w0">
 <meta property="og:description" content="2023FCTF热身赛WebViewSource一道简单的前端题，根据提示ViewSource，ctrl+u查看源代码，这里网页代码被加密过了，直接往下看发现可疑段落  分析逻辑，用户输入your_flag，如果your_flag与my_flag相同，则弹窗my_flag 提供两种做法 既然my_flag变量在js代码中定义，那么我们就能用控制台把它输出  ctrl+s保存网页源代码用编辑器打开">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230427005335078.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230427010136529.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230427010344248.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230427010548568.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429201037517.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429032204160.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429032353870.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429030651913.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429032742576.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429034451879.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429191534591.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429191635511.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429191927593.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429193849800.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429193915755.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429194117415.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429194209528.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429195640928.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429195803084.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230429195958840.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430041531911.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430043203297.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430043711587.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430044130507.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430044803732.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430045240866.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430045440795.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430050104649.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430051023113.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430130335839.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430142037485.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430142135922.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430144529014.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430144651066.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430145433930.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430145615362.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430150510674.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430152951249.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430153333151.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430160710583.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430160744568.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161138948.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161219428.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161254433.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230430161318849.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519013136127.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519013017814.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519013824840.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519014312145.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519021831370.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519021849222.png">
-<meta property="og:image" content="http://example.com/2023/04/27/FCTF/image-20230519022132076.png">
+<meta property="og:image" content="http://example.com/img/cover/rois.jpg">
 <meta property="article:published_time" content="2023-04-26T16:46:11.000Z">
-<meta property="article:modified_time" content="2023-05-31T03:27:33.485Z">
+<meta property="article:modified_time" content="2023-10-10T05:41:51.410Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="Misc">
 <meta property="article:tag" content="ssrf">
 <meta property="article:tag" content="反序列化">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/04/27/FCTF/image-20230427005335078.png">
+<meta name="twitter:image" content="http://example.com/img/cover/rois.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -353,6 +302,14 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">2023FCTF</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 22 minutes ago
+                  
+                
+              </p>
             
             
               <div class="markdown-body">

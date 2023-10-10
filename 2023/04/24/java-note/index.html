@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=dark>
 
 
 
@@ -23,57 +23,13 @@
 <meta property="og:site_name" content="Potat0w0">
 <meta property="og:description" content="浅记Java学习记录JRE：运行Java字节码的虚拟机 JDK：如果只有Java源码，要编译成Java字节码，就需要JDK，因为JDK除了包含JRE，还提供了编译器、调试器等开发工具。 1234567891011 ┌─    ┌──────────────────────────────────┐ │     │     Compiler, debugger, etc.     │ │     └">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230822192334835.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202024115.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202203384.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230823214126600.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230911193326947.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230911193121681.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230911195730095.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230911200601071.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230912022112162.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230912023521736.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230912023807779.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202811559.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202827061.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202858252.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202913840.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913202945833.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913203027412.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913203122019.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913210930011.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230913211935707.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230914143800027.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230914143909131.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230914143925791.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230917022005936.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230917231837706.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230918000324954.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230918105410426.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230918110116884.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230918110132068.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230926153626238.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230926175236490.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230926175651544.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230929022335921.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20230929031952648.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231004031341411.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231004031429608.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231005025627972.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231005025729599.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231005025831737.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231005165817966.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231005200817826.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231006025222688.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231006025704759.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231006034341030.png">
-<meta property="og:image" content="http://example.com/2023/04/24/java-note/image-20231006125941000.png">
+<meta property="og:image" content="http://example.com/img/cover/8.jpg">
 <meta property="article:published_time" content="2023-04-24T05:43:43.000Z">
-<meta property="article:modified_time" content="2023-10-09T16:28:14.935Z">
+<meta property="article:modified_time" content="2023-10-10T05:43:46.517Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/04/24/java-note/image-20230822192334835.png">
+<meta name="twitter:image" content="http://example.com/img/cover/8.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -343,6 +299,14 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">java_note</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 20 minutes ago
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
