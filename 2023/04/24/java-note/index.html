@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/cover/8.jpg">
 <meta property="article:published_time" content="2023-04-24T05:43:43.000Z">
-<meta property="article:modified_time" content="2023-10-10T05:43:46.517Z">
+<meta property="article:modified_time" content="2023-10-11T05:44:48.849Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          31k words
+          34k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          261 mins
+          281 mins
         
       </span>
     
@@ -303,7 +303,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on an hour ago
+                    Last updated on 5 hours ago
                   
                 
               </p>
@@ -595,7 +595,42 @@
 
 <p><img src="/2023/04/24/java-note/image-20231006034341030.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/24/java-note/image-20231006125941000.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP:"></a>JSP:</h2><h2 id="Srping"><a href="#Srping" class="headerlink" title="Srping:"></a>Srping:</h2>
+<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP:"></a>JSP:</h2><h2 id="SrpingBoot"><a href="#SrpingBoot" class="headerlink" title="SrpingBoot:"></a>SrpingBoot:</h2><p>封装Maven依赖方式实现，封装好了各种常见依赖库(tomcat，spring-boot-starter-web等)，首次创建Spring项目时需要等待片刻等待Maven将依赖和插件安装好</p>
+<p>SpringBoot3及以上不支持Java17以下版本。</p>
+<p>application.properties，各种配置：</p>
+<p><img src="/2023/04/24/java-note/image-20231011130558008.png" srcset="/img/loading.gif" lazyload></p>
+<p>静态文件(js,css,img等)放在static目录下：</p>
+<p><img src="/2023/04/24/java-note/image-20231011130438734.png" srcset="/img/loading.gif" lazyload></p>
+<p>访问本地8848端口：</p>
+<p><img src="/2023/04/24/java-note/image-20231011130519453.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>@RestController</code>注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span>是Spring提供的而不是Springboot提供的<br>在类前加上<span class="hljs-meta">@RestController</span>，该类中所有SpringMVCUrl返回都是json，即数据传输为json格式<br></code></pre></td></tr></table></figure>
+
+<p><code>@Controller</code></p>
+<p>定义一个url映射@RequestMapping，使用@Controller来转到页面跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloworldService</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(&quot;/getUser&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;potato&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果希望返回json：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloworldService</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(&quot;/getUser&quot;)</span><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;potato&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>但是如果非常多接口方法希望返回json,这样做就显得冗余，使用<code>@RestController</code>注解，所有方法返回json：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloworldService</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(&quot;/getUser&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;potato&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>启动服务：</p>
+<p>DemoApplication.java：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.demo;<br><br><span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;<br><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;<br><span class="hljs-keyword">import</span> com.example.service.*;<br><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoApplication</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br><span class="hljs-comment">// 启动类入口：</span><br>        SpringApplication.run(HelloworldService.class, args);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>HelloworldService.java：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.service;<br><br><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-comment">//添加@EnableAutoConfiguration注解：</span><br><span class="hljs-meta">@EnableAutoConfiguration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloworldService</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(&quot;/getUser&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;potato&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>访问接口：</p>
+<p><img src="/2023/04/24/java-note/image-20231011133313395.png" srcset="/img/loading.gif" lazyload></p>
+<p>，将@RestController注解改为@Controller注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> com.example.service;<br><br><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><br><span class="hljs-meta">@Controller</span><br><span class="hljs-meta">@EnableAutoConfiguration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloworldService</span> &#123;<br>    <span class="hljs-meta">@RequestMapping(&quot;/getUser&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;potato&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>重启服务，去访问会出现404。加上@ResponseBody注解又可以访问了</p>
+<p>如果把主程序入口改为DemoApplication类呢？该如何去访问getUser接口呢？</p>
+
                 
               </div>
             
