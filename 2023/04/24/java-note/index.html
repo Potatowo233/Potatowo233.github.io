@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/cover/8.jpg">
 <meta property="article:published_time" content="2023-04-24T05:43:43.000Z">
-<meta property="article:modified_time" content="2023-10-16T05:48:01.478Z">
+<meta property="article:modified_time" content="2023-10-16T18:38:07.540Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          46k words
+          48k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          384 mins
+          402 mins
         
       </span>
     
@@ -303,7 +303,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on 6 hours ago
                   
                 
               </p>
@@ -724,14 +724,39 @@
 <p>访问并传参：</p>
 <p><img src="/2023/04/24/java-note/image-20231016021217437.png" srcset="/img/loading.gif" lazyload></p>
 <p>但是如果再次插入相同的id会报错，SQL那边的知识：主键</p>
-<h4 id="更完善些："><a href="#更完善些：" class="headerlink" title="更完善些："></a>更完善些：</h4><p>新建一个实体用户类，用于映射数据库中的用户表：</p>
+<p>UPDATE,DELETE,INSERT更新语句都是用update方法执行</p>
+<h4 id="更完善些："><a href="#更完善些：" class="headerlink" title="更完善些："></a>更完善些：</h4><p>我们简单写一个用户信息注册页面：</p>
+<p>在UserService下创建一个RegisterService接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">RegisterService</span><span class="hljs-params">(String userName,String passWord)</span>&#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">sql</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;INSERT INTO userInfo (username,password) values (?,?)&quot;</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">insert</span> <span class="hljs-operator">=</span> jdbcTemplate.update(sql,userName,passWord);<br>    <span class="hljs-keyword">return</span> insert &gt; <span class="hljs-number">0</span>?<span class="hljs-string">&quot;注册成功&quot;</span>:<span class="hljs-string">&quot;注册失败&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里可以注意到，同样是插入数据的操作，此处与上面案例的区别在于，我们只插入了username和pasword字段的值，那么不是还有个id吗？id怎么办，不会报错吗？是的，会报错。通常情况下id是作为主键，且值不为空，不能重复，但是我们在提交表单时往往不会说去提交一个id传上去，这时候就需要去设置一下，把id设为自动递增：</p>
+<p><img src="/2023/04/24/java-note/image-20231017023724602.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果都没设置，默认id不自动递增，会发生什么情况呢？</p>
+<p>出现报错：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">java<span class="hljs-selector-class">.sql</span><span class="hljs-selector-class">.SQLException</span>: Field <span class="hljs-string">&#x27;id&#x27;</span> doesn<span class="hljs-string">&#x27;t have a default value</span><br></code></pre></td></tr></table></figure>
+
+<p>并且网页出现404</p>
+<p><img src="/2023/04/24/java-note/image-20231017021015748.png" srcset="/img/loading.gif" lazyload></p>
+<p>新建一个实体用户类，用于映射数据库中的用户表：</p>
 <p><img src="/2023/04/24/java-note/image-20231016023544043.png" srcset="/img/loading.gif" lazyload></p>
 <p>这里以SELECT查询为例：</p>
 <p>介绍两个jdbcTemplate下的方法：</p>
-<p><code>query()</code>：执行查询结果映射为一个列表，下面是基本用法：</p>
+<h4 id="query"><a href="#query" class="headerlink" title="query()"></a>query()</h4><p><code>query()</code>：执行查询结果映射为一个列表，下面是基本用法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;T&gt; <span class="hljs-title function_">query</span><span class="hljs-params">(String sql,RowMapper&lt;T&gt; rowMapper,args)</span><br>    <span class="hljs-comment">//sql：要执行的sql语句</span><br>    <span class="hljs-comment">//rowMapper：行映射器，将结果映射为对象</span><br>    <span class="hljs-comment">//args，可选参数，用于传递给sql查询</span><br></code></pre></td></tr></table></figure>
 
-<p><code>queryForObject()</code>：执行查询返回单个结果，若无结果或多结果，将抛出异常，下面是基本用法：</p>
+<p>实例：</p>
+<p>在UserService中新建一个<code>InfoDisplay()</code>方法用于将表中所有用户的信息查询后存入一个<code>List&lt;User&gt;</code>对象中，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;User&gt; <span class="hljs-title function_">InfoDisplay</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">sql</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;SELECT * FROM userInfo&quot;</span>;<br>    <span class="hljs-keyword">return</span> jdbcTemplate.query(sql,(rs, rowNum) -&gt;<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<br>                    rs.getInt(<span class="hljs-string">&quot;id&quot;</span>),<br>                    rs.getString(<span class="hljs-string">&quot;userName&quot;</span>),<br>                    rs.getString(<span class="hljs-string">&quot;passWord&quot;</span>)<br>            )<br>            );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>UserInfoDisplay.java：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-meta">@Controller</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInfoDisplay</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserService userService;<br>    <span class="hljs-meta">@RequestMapping(&quot;/info&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">userInfo</span><span class="hljs-params">(Model model)</span>&#123;<br>        List&lt;User&gt; users = userService.InfoDisplay();<br>        model.addAttribute(<span class="hljs-string">&quot;users&quot;</span>,users);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;info1&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>直接将查询数据的结果映射到模板的users里，</p>
+<p>再看模板info1.html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>UserInfo<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>username<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>password<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">th:each</span>=<span class="hljs-string">&quot;user:$&#123;users&#125;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">&quot;$&#123;user.id&#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">&quot;$&#123;user.userName&#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">&quot;$&#123;user.passWord&#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://localhost:8848/login&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://localhost:8848/register&quot;</span>&gt;</span>注册<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>循环users对象，将其信息渲染到前端<img src="/2023/04/24/java-note/image-20231017015522001.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="queryForObject"><a href="#queryForObject" class="headerlink" title="queryForObject()"></a>queryForObject()</h4><p><code>queryForObject()</code>：执行查询返回单个结果，若无结果或多结果，将抛出异常，下面是基本用法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">T <span class="hljs-title function_">queryForObject</span><span class="hljs-params">(String sql,RowMapper&lt;T&gt; rowMapper,args)</span> <br>    <span class="hljs-comment">//参数解释同query</span><br></code></pre></td></tr></table></figure>
 
 <p>具体实例，以一个验证登录为例：</p>
@@ -761,6 +786,8 @@
 <p>上例中LoginRequest实体类：</p>
 <p><img src="/2023/04/24/java-note/image-20231016133400457.png" srcset="/img/loading.gif" lazyload></p>
 <p><code>th:utext</code>，此处th表达式不是用text而是utext，原因是text中的html实体会被转义掉，如果希望渲染什么js语句，就要使用utext</p>
+<p>以下是使用th:text的渲染结果：</p>
+<p><img src="/2023/04/24/java-note/image-20231016234632295.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
