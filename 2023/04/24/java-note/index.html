@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/cover/8.jpg">
 <meta property="article:published_time" content="2023-04-24T05:43:43.000Z">
-<meta property="article:modified_time" content="2023-10-16T18:38:07.540Z">
+<meta property="article:modified_time" content="2023-10-17T07:07:36.931Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          48k words
+          49k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          402 mins
+          407 mins
         
       </span>
     
@@ -303,7 +303,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 6 hours ago
+                    Last updated on 29 minutes ago
                   
                 
               </p>
@@ -788,6 +788,11 @@
 <p><code>th:utext</code>，此处th表达式不是用text而是utext，原因是text中的html实体会被转义掉，如果希望渲染什么js语句，就要使用utext</p>
 <p>以下是使用th:text的渲染结果：</p>
 <p><img src="/2023/04/24/java-note/image-20231016234632295.png" srcset="/img/loading.gif" lazyload></p>
+<p>删除数据和更新数据时同理，值得一提的是，在进行更新操作时有时候需要验证账号密码，如果未查询到结果，直接判断user是否为null不足以处理抛出的<code>EmptyResultDataAccessException</code>异常，需要用异常处理语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">CancelUser</span><span class="hljs-params">(String userName,String passWord)</span>&#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">sql</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;DELETE FROM userInfo WHERE username = ?&quot;</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> getUserByUserName(userName);<br>        <span class="hljs-keyword">if</span> (!user.getPassWord().equals(passWord))&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;密码错误&quot;</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (user == <span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;不存在该用户&quot;</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">delete</span> <span class="hljs-operator">=</span> jdbcTemplate.update(sql,userName);<br>        <span class="hljs-keyword">return</span> delete &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;已删除用户&quot;</span>+userName : <span class="hljs-string">&quot;删除失败&quot;</span>;<br>    &#125;<span class="hljs-keyword">catch</span> (EmptyResultDataAccessException e)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;不存在该用户&quot;</span>;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
 
                 
               </div>
