@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Potat0w0">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="CVE-2023-1773分析产品：信呼oa 影响版本：&lt;&#x3D;2.32 开源地址：https:&#x2F;&#x2F;github.com&#x2F;rainrocka&#x2F;xinhu&#x2F;commits&#x2F;master&#x2F; 该博客为本人第一篇代码审计相关文章，本人才疏学浅，博客乃用于记录个人所学，因此许多地方会较为赘述，细节，这些都是个人的收获，如觉繁琐请见谅 根据官网说明先搭建好框架环境：  在分析漏洞点所在之前，我们需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次CMS代码审计">
+<meta property="og:url" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Potat0w0">
+<meta property="og:description" content="CVE-2023-1773分析产品：信呼oa 影响版本：&lt;&#x3D;2.32 开源地址：https:&#x2F;&#x2F;github.com&#x2F;rainrocka&#x2F;xinhu&#x2F;commits&#x2F;master&#x2F; 该博客为本人第一篇代码审计相关文章，本人才疏学浅，博客乃用于记录个人所学，因此许多地方会较为赘述，细节，这些都是个人的收获，如觉繁琐请见谅 根据官网说明先搭建好框架环境：  在分析漏洞点所在之前，我们需">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231223220725299.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224012235078.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224022931965.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224023101719.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224023508227.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224030752422.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224031851702.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224135401990.png">
+<meta property="og:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224140348334.png">
+<meta property="article:published_time" content="2023-12-23T13:38:37.000Z">
+<meta property="article:modified_time" content="2023-12-24T06:14:40.542Z">
+<meta property="article:author" content="Potat0w0">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231223220725299.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>记一次CMS代码审计 - Potat0w0</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Potat0w0&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="记一次CMS代码审计"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Potat0w0
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-23 21:38" pubdate>
+          December 23, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">记一次CMS代码审计</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 15 minutes ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="CVE-2023-1773分析"><a href="#CVE-2023-1773分析" class="headerlink" title="CVE-2023-1773分析"></a>CVE-2023-1773分析</h1><p>产品：信呼oa</p>
+<p>影响版本：&lt;&#x3D;2.32</p>
+<p>开源地址：<a target="_blank" rel="noopener" href="https://github.com/rainrocka/xinhu/commits/master/">https://github.com/rainrocka/xinhu/commits/master/</a></p>
+<p><strong>该博客为本人第一篇代码审计相关文章，本人才疏学浅，博客乃用于记录个人所学，因此许多地方会较为赘述，细节，这些都是个人的收获，如觉繁琐请见谅</strong></p>
+<p>根据官网说明先搭建好框架环境：</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231223220725299.png" srcset="/img/loading.gif" lazyload></p>
+<p>在分析漏洞点所在之前，我们需要对框架的功能有一个了解，什么参数是起到什么作用，哪些变量我们可以控制哪些不行，着重观察GET或者POST值处</p>
+<h3 id="index-php"><a href="#index-php" class="headerlink" title="index.php"></a>index.php</h3><p>主程序入口在index.php，先对其进行审计</p>
+<p>代码不多，包含了个config.php是存放框架的各种配置。留意<code>$d</code>,<code>$m</code>,<code>$a</code>三个变量。有个函数$rock-&gt;get()，get()方法是什么？</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224012235078.png" srcset="/img/loading.gif" lazyload></p>
+<p>跟进$rock，<code>$rock      = new rockClass();</code>，那就看看get()在rockClass()类中是怎样定义的：</p>
+<p>代码也不多</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>,<span class="hljs-variable">$dev</span>=<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$lx</span>=<span class="hljs-number">0</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$val</span>=<span class="hljs-variable">$dev</span>;<br>    <span class="hljs-comment">//$val初始化</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-variable">$name</span>]))<span class="hljs-variable">$val</span>=<span class="hljs-variable">$_GET</span>[<span class="hljs-variable">$name</span>];<br>    <span class="hljs-comment">//从GET参数中获取值传给$val，</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">isempt</span>(<span class="hljs-variable">$val</span>))<span class="hljs-variable">$val</span>=<span class="hljs-variable">$dev</span>;<br>    <span class="hljs-comment">//判断$val是否为“空”，isempty()条件下述提到，若为空，则让$val重新为初始值</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">jmuncode</span>(<span class="hljs-variable">$val</span>, <span class="hljs-variable">$lx</span>, <span class="hljs-variable">$name</span>);<br>    <span class="hljs-comment">//返回jmuncode()操作后的值，该函数用于对参数进行安全操作</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>isempt()方法，即若传入字符为空(各种意义的空)<strong>并且</strong>字符不为数字则返回true：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isempt</span>(<span class="hljs-params"><span class="hljs-variable">$str</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$bool</span>=<span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">if</span>( (<span class="hljs-variable">$str</span>==<span class="hljs-string">&#x27;&#x27;</span>||<span class="hljs-variable">$str</span>==<span class="hljs-literal">NULL</span>||<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$str</span>)) &amp;&amp; (!<span class="hljs-title function_ invoke__">is_numeric</span>(<span class="hljs-variable">$str</span>)) )<span class="hljs-variable">$bool</span>=<span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$bool</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>jmuncode()代码暂且不赘述。总结get()方法的作用就是获取GET传参中的值，并做了一定的xss过滤等处理</p>
+<h3 id="View-php"><a href="#View-php" class="headerlink" title="View.php"></a>View.php</h3><p>到这了，那么看看谁用了<code>$d</code>,<code>$m</code>,<code>$a</code>这仨变量，Find Usages，发现在View.php中调用了这三个变量</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224022931965.png" srcset="/img/loading.gif" lazyload></p>
+<p>红色框为这三个变量赋初值(若未传入则为默认值)</p>
+<p>重点在黄色框，如果<code>$m</code>中存在’|’字符，则将m变量以’|’为分割划分为两部分<code>$m</code>和<code>$_m</code></p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224023101719.png" srcset="/img/loading.gif" lazyload></p>
+<p>下面引入了$rock中自定义的一个格式化字符串函数strformat()：</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224023508227.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">strformat</span>(<span class="hljs-params"><span class="hljs-variable">$str</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$len</span> = <span class="hljs-title function_ invoke__">func_num_args</span>();<br>    <span class="hljs-comment">//这里可以收获了func_num_args()获取传入函数的参数数量</span><br>    <span class="hljs-variable">$arr</span> = <span class="hljs-keyword">array</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-variable">$i</span>=<span class="hljs-number">1</span>; <span class="hljs-variable">$i</span>&lt;<span class="hljs-variable">$len</span>; <span class="hljs-variable">$i</span>++)<span class="hljs-variable">$arr</span>[] = <span class="hljs-title function_ invoke__">func_get_arg</span>(<span class="hljs-variable">$i</span>);<br>    <span class="hljs-comment">//func_get_arg()配合func_num_args()打组合拳自定义函数传入参数的数量</span><br>    <span class="hljs-comment">//为什么从i=1开始？因为格式化字符串函数传入的第一个参数是含占位符的待格式化字符串</span><br>    <span class="hljs-variable">$s</span>  = <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">stringformat</span>(<span class="hljs-variable">$str</span>, <span class="hljs-variable">$arr</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$s</span>;<br>&#125;<br>......<br>......<br><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stringformat</span>(<span class="hljs-params"><span class="hljs-variable">$str</span>, <span class="hljs-variable">$arr</span>=<span class="hljs-keyword">array</span>(<span class="hljs-params"></span>)</span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$s</span>	= <span class="hljs-variable">$str</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>; <span class="hljs-variable">$i</span>&lt;<span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$arr</span>); <span class="hljs-variable">$i</span>++)&#123;<br>        <span class="hljs-variable">$s</span>=<span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;?&#x27;</span>.<span class="hljs-variable">$i</span>.<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$arr</span>[<span class="hljs-variable">$i</span>], <span class="hljs-variable">$s</span>);<br>        <span class="hljs-comment">//一个简单的replace，占位符为&#x27;?&#x27;加上一个数字代表用后面第几个参数来填充该位置</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$s</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>例如这个：<code>include_once($rock-&gt;strformat(&#39;?0/?1/?1Action.php&#39;,ROOT_PATH, $p));</code>最终格式化后的字符串为：<code>&quot;ROOT_PATH/&quot;.$p.&quot;/&quot;.$p.&quot;Action.php&quot;</code>，看起来试图包含住一个以Action.php结尾的文件，正巧刚刚翻目录的时候看到了一堆一堆的Action结尾的文件。那么<code>ROOT_PATH</code>,<code>$p</code>，这俩又是什么东东呢？</p>
+<p>在config.php中对ROOT_PATH有定义：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&#x27;ROOT_PATH&#x27;</span>,<span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;\\&#x27;</span>,<span class="hljs-string">&#x27;/&#x27;</span>,<span class="hljs-title function_ invoke__">dirname</span>(<span class="hljs-title function_ invoke__">dirname</span>(<span class="hljs-keyword">__FILE__</span>))));   <span class="hljs-comment">//系统跟目录路径</span><br></code></pre></td></tr></table></figure>
+
+<p>$p变量向上跟进，为PROJECT，PROJECT再向上跟进，定义了它为’webmain’目录，此时p如果没有收到GET传参的p就会默认为’webmain’</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$p</span>        = PROJECT;<br>......<br><span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">defined</span>(<span class="hljs-string">&#x27;PROJECT&#x27;</span>))<span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&#x27;PROJECT&#x27;</span>, <span class="hljs-variable">$rock</span>-&gt;<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-string">&#x27;webmain&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>可以留意$ajaxbool变量，下面会用的<code>$ajaxbool   = $rock-&gt;get(&#39;ajaxbool&#39;, $ajaxbool);</code>，总之不要放过任何一个调用get()方法的变量，都是可控的</p>
+<h4 id="控制文件被包含"><a href="#控制文件被包含" class="headerlink" title="控制文件被包含"></a>控制文件被包含</h4><p>这里有个一路径中的变量<code>$actpath</code>，被两个下文被包含住的变量<code>$actfile</code>以及<code>$actfile1</code>给拼接，弄明白是如何构造的：</p>
+<p>用ROOT_PATH，$p，$d，$_m分别填充前面的一个格式化路径</p>
+<p>$_m我们可以控制GET传入m参数时’|’字符两边的字符串来控制，$p和ROOT_PATH，$d在上面存在一个简单的处理，如果不是以’&#x2F;‘结尾就给他加上’&#x2F;‘</p>
+<p>总结起来，假设我们的根目录是&#x2F;var&#x2F;www&#x2F;html&#x2F;，传入p&#x3D;webmain&amp;d&#x3D;task&amp;m&#x3D;file|api</p>
+<p>那么$actpath就是”&#x2F;var&#x2F;www&#x2F;html&#x2F;webmain&#x2F;task&#x2F;api”</p>
+<p>紧接着下面的$actfile就是”&#x2F;var&#x2F;www&#x2F;html&#x2F;webmain&#x2F;task&#x2F;api&#x2F;fileAction.php”，</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224030752422.png" srcset="/img/loading.gif" lazyload></p>
+<p>也就是该文件被包含：</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224031851702.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="控制类和方法"><a href="#控制类和方法" class="headerlink" title="控制类和方法"></a>控制类和方法</h4><p>其实actfile1我们并不能做到真正完全的可控，因为其最后的拼接是<code>$_m.$_m</code>，就意味着最后包含的php文件的前缀名必须与上级目录相同，具有一定的局限性，这里我们侧重观察actfile被包含后的操作(实际上actfile1被包含后也确实并没有进行更多的操作了)，接下来的分析围绕着actfile，$classname变量由$a和”ClassAction”拼接起来，$a可控。，$actname变量由$a和”Action”拼接起来，$a可控。如果ajaxbool为true那么$actname由$a和”Ajax”拼接，$ajaxbool可控(前文提到控制GET传参)。然后new一个名为$classname的值的类，判断该对象中是否存在名为$actname的方法，如果存在，就执行并把结果echo出来</p>
+<p>beforeAction()和afterAction()是父类Action类中的抽象方法</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224135401990.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果ajaxbool为false(默认)或者html，就进行模板渲染</p>
+<p><img src="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/image-20231224140348334.png" srcset="/img/loading.gif" lazyload></p>
+<p>至此，我们已经可以做到控制包含工作目录下的Action文件，并且控制执行其中的方法，接下来就是寻找一个Action文件中有可利用的类方法了</p>
+<h3 id="寻找可利用漏洞"><a href="#寻找可利用漏洞" class="headerlink" title="寻找可利用漏洞"></a>寻找可利用漏洞</h3>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/30/some-idea/" title="some_idea">
+                        <span class="hidden-mobile">some_idea</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
+
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/click.js"></script>
+<script src="/js/snow.js"></script>
+<script src="/js/potato.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

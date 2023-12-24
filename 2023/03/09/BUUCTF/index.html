@@ -50,8 +50,14 @@
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230214025933119.png">
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230214030039533.png">
 <meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20230214030227918.png">
+<meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20231128211406894.png">
+<meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20231128211705861.png">
+<meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20231128213712753.png">
+<meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20231128213750367.png">
+<meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20231128215519708.png">
+<meta property="og:image" content="http://example.com/2023/03/09/BUUCTF/image-20231128215453904.png">
 <meta property="article:published_time" content="2023-03-09T15:15:22.000Z">
-<meta property="article:modified_time" content="2023-10-21T05:45:51.658Z">
+<meta property="article:modified_time" content="2023-11-28T13:56:03.395Z">
 <meta property="article:author" content="Potat0w0">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="Misc">
@@ -268,7 +274,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.7k words
+          5.4k words
         
       </span>
     
@@ -279,7 +285,7 @@
         
         
         
-          40 mins
+          46 mins
         
       </span>
     
@@ -481,6 +487,24 @@
 <p>看来只有g的位置可以。然后注意到$a是代码中原有的变量，如果构造payload时用的是b变量会怎么样呢</p>
 <p><img src="/2023/03/09/BUUCTF/image-20230214030227918.png" srcset="/img/loading.gif" lazyload></p>
 <p>也是可行的</p>
+<h2 id="HCTF-2018-admin-1"><a href="#HCTF-2018-admin-1" class="headerlink" title="[HCTF 2018]admin 1"></a>[HCTF 2018]admin 1</h2><p>记一次flask的session伪造：</p>
+<p>先是发现admin用户被注册了，注册登陆界面经测试均不存在sql注入，先随便注册一个用户看看：</p>
+<p><img src="/2023/03/09/BUUCTF/image-20231128211406894.png" srcset="/img/loading.gif" lazyload></p>
+<p>挨个页面去检索信息，最后在修改密码的页面的源码中发现了网站项目的代码：<br><img src="/2023/03/09/BUUCTF/image-20231128211705861.png" srcset="/img/loading.gif" lazyload></p>
+<p>现在做发现已经仓库404了(悲)</p>
+<p>总而言之就是在flask在设置session时只是进行了简单的签名，然后放在前端的cookie中，</p>
+<p>Flask中的Session，它是存在于客户端的，也就是说我们在进行登录过后可以看到自己的Session值，而当我们对这个Session值进行base64解码后，就可以读取它的具体内容。 对应Flask，它在生成session时会使用app.config[‘SECRET_KEY’]中的值作为salt对session进行一个简单处理，那么这里的话，只要key不泄露，我们就只能得到具体内容，但是无法修改具体内容，因此这个时候就引发了一个问题，当key泄露的时候，就出现了内容伪造的情况，比如具体内容为{‘name’:’123’}，而当我们掌握key时，可修改内容为{‘name’:’admin’}</p>
+<p>这道题其实就是在源码中没有把敏感数据去除导致secret_key泄露，去网上找大家的secret_key：”ckj123”</p>
+<p>从cookie获取session：<br><img src="/2023/03/09/BUUCTF/image-20231128213712753.png" srcset="/img/loading.gif" lazyload></p>
+<p>用flask session工具解个码：</p>
+<p>用法参考：<a target="_blank" rel="noopener" href="https://github.com/noraj/flask-session-cookie-manager">https://github.com/noraj/flask-session-cookie-manager</a></p>
+<p><img src="/2023/03/09/BUUCTF/image-20231128213750367.png" srcset="/img/loading.gif" lazyload></p>
+<p>改成admin重新生成一下session：</p>
+<p><img src="/2023/03/09/BUUCTF/image-20231128215519708.png" srcset="/img/loading.gif" lazyload></p>
+<p>修改cookie：</p>
+<p><img src="/2023/03/09/BUUCTF/image-20231128215453904.png" srcset="/img/loading.gif" lazyload></p>
+<p>另外此题也有其他具有参考意义的两种解法，unicode欺诈还有条件竞争：</p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/164086">https://www.anquanke.com/post/id/164086</a></p>
 
                 
               </div>
