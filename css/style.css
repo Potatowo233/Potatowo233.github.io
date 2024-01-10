@@ -10760,7 +10760,7 @@ body > .section {
 }
 .card {
   overflow: visible;
-  border-radius: 4px;
+  border-radius: 15px;
 }
 .card + .card,
 .card + .column-right-shadow {
@@ -10768,8 +10768,8 @@ body > .section {
 }
 .card .card-image {
   overflow: hidden;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 .card .media + .media {
   border: none;
@@ -11423,7 +11423,7 @@ figure.highlight.foldable div.level-left {
   line-height: 0;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
-  border-radius: 4px;
+  border-radius: 15px;
 }
 .donate .qrcode img {
   max-width: 280px;
@@ -11527,7 +11527,7 @@ figure.highlight.foldable div.level-left {
   outline: none;
   padding: 8px 0;
   line-height: 24px;
-  border-radius: 4px;
+  border-radius: 15px;
   transform: translateY(120px);
   transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
 }
@@ -11607,7 +11607,7 @@ figure.highlight.foldable div.level-left {
   background-color: #fff !important;
 }
 .cc-window.cc-floating {
-  border-radius: 4px;
+  border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
 }
 .cc-window.cc-banner {
@@ -11676,4 +11676,24 @@ figure.highlight.foldable div.level-left {
   .section {
     padding: 1.5rem 1rem;
   }
+}
+body {
+  background: url("/img/default5.png") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.navbar {
+  background-color: rgba(255,255,255,0);
+  background-color: rgba(242,230,206,0.647);
+  backdrop-filter: blur(10px);
+}
+.heimu {
+  color: #000;
+  background-color: #000;
+}
+.heimu:hover {
+  color: #fff;
+}
+.card {
+  background-color: rgba(248,244,237,0.875);
 }
