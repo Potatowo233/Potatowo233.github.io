@@ -11684,8 +11684,8 @@ body {
 }
 .navbar {
   background-color: rgba(255,255,255,0);
-  background-color: rgba(242,230,206,0.647);
-  backdrop-filter: blur(10px);
+  background-color: rgba(248,244,237,0.875);
+  backdrop-filter: blur(5px);
 }
 .heimu {
   color: #000;
@@ -11695,5 +11695,7 @@ body {
   color: #fff;
 }
 .card {
+  background-color: rgba(255,255,255,0);
   background-color: rgba(248,244,237,0.875);
+  backdrop-filter: blur(5px);
 }
