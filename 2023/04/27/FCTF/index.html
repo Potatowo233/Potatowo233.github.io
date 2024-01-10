@@ -1,418 +1,135 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>2023FCTF - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="FCTF2023"><meta property="og:type" content="blog"><meta property="og:title" content="2023FCTF"><meta property="og:url" content="http://example.com/2023/04/27/FCTF/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="FCTF2023"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/default4.png"><meta property="article:published_time" content="2023-04-26T16:46:11.000Z"><meta property="article:modified_time" content="2024-01-10T09:46:28.022Z"><meta property="article:author" content="Potat0w0"><meta property="article:tag" content="Web"><meta property="article:tag" content="Misc"><meta property="article:tag" content="ssrf"><meta property="article:tag" content="反序列化"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/default4.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/04/27/FCTF/"},"headline":"2023FCTF","image":["http://example.com/img/default4.png"],"datePublished":"2023-04-26T16:46:11.000Z","dateModified":"2024-01-10T09:46:28.022Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://example.com/img/icon.jpg"}},"description":"FCTF2023"}</script><link rel="canonical" href="http://example.com/2023/04/27/FCTF/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=dark>
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/default4.png" alt="2023FCTF"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-04-26T16:46:11.000Z" title="2023/4/27 00:46:11">2023-04-27</time>发表</span><span class="level-item"><time dateTime="2024-01-10T09:46:28.022Z" title="2024/1/10 17:46:28">2024-01-10</time>更新</span><span class="level-item">20 分钟读完 (大约2961个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">2023FCTF</h1><div class="content"><!-- more -->
 
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
-  <link rel="icon" href="/img/icon.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Potat0w0">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="2023FCTF热身赛WebViewSource一道简单的前端题，根据提示ViewSource，ctrl+u查看源代码，这里网页代码被加密过了，直接往下看发现可疑段落  分析逻辑，用户输入your_flag，如果your_flag与my_flag相同，则弹窗my_flag 提供两种做法 既然my_flag变量在js代码中定义，那么我们就能用控制台把它输出  ctrl+s保存网页源代码用编辑器打开">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2023FCTF">
-<meta property="og:url" content="http://example.com/2023/04/27/FCTF/index.html">
-<meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="2023FCTF热身赛WebViewSource一道简单的前端题，根据提示ViewSource，ctrl+u查看源代码，这里网页代码被加密过了，直接往下看发现可疑段落  分析逻辑，用户输入your_flag，如果your_flag与my_flag相同，则弹窗my_flag 提供两种做法 既然my_flag变量在js代码中定义，那么我们就能用控制台把它输出  ctrl+s保存网页源代码用编辑器打开">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/cover/rois.jpg">
-<meta property="article:published_time" content="2023-04-26T16:46:11.000Z">
-<meta property="article:modified_time" content="2023-10-10T05:41:51.410Z">
-<meta property="article:author" content="Potat0w0">
-<meta property="article:tag" content="Web">
-<meta property="article:tag" content="Misc">
-<meta property="article:tag" content="ssrf">
-<meta property="article:tag" content="反序列化">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/cover/rois.jpg">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>2023FCTF - Potat0w0</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Potat0w0&#39;s Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Links</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="2023FCTF"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        Potat0w0
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-27 00:46" pubdate>
-          April 27, 2023 am
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          7.1k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          60 mins
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> views
-        </span>
-        
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">2023FCTF</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    Last updated on 3 months ago
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="2023FCTF"><a href="#2023FCTF" class="headerlink" title="2023FCTF"></a>2023FCTF</h1><h2 id="热身赛"><a href="#热身赛" class="headerlink" title="热身赛"></a>热身赛</h2><h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="ViewSource"><a href="#ViewSource" class="headerlink" title="ViewSource"></a>ViewSource</h4><p>一道简单的前端题，根据提示ViewSource，<code>ctrl+u</code>查看源代码，这里网页代码被加密过了，直接往下看发现可疑段落</p>
-<p><img src="/2023/04/27/FCTF/image-20230427005335078.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="2023FCTF"><a href="#2023FCTF" class="headerlink" title="2023FCTF"></a>2023FCTF</h1><h2 id="热身赛"><a href="#热身赛" class="headerlink" title="热身赛"></a>热身赛</h2><h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><h4 id="ViewSource"><a href="#ViewSource" class="headerlink" title="ViewSource"></a>ViewSource</h4><p>一道简单的前端题，根据提示ViewSource，<code>ctrl+u</code>查看源代码，这里网页代码被加密过了，直接往下看发现可疑段落</p>
+<p><img src="/2023/04/27/FCTF/image-20230427005335078.png"></p>
 <p>分析逻辑，用户输入<code>your_flag</code>，如果<code>your_flag</code>与<code>my_flag</code>相同，则弹窗<code>my_flag</code></p>
 <p>提供两种做法</p>
 <p>既然<code>my_flag</code>变量在js代码中定义，那么我们就能用控制台把它输出</p>
-<p><img src="/2023/04/27/FCTF/image-20230427010136529.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230427010136529.png"></p>
 <p><code>ctrl+s</code>保存网页源代码用编辑器打开</p>
-<p><img src="/2023/04/27/FCTF/image-20230427010344248.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230427010344248.png"></p>
 <p>修改代码逻辑，如果用户输入的<code>your_flag</code>与实际flag不相等则弹窗<code>my_flag</code>，保存，打开html文件往输入框里随便输个什么提交</p>
-<p><img src="/2023/04/27/FCTF/image-20230427010548568.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230427010548568.png"></p>
 <hr>
-<h4 id="javaDeserialize-1"><a href="#javaDeserialize-1" class="headerlink" title="javaDeserialize-1"></a>javaDeserialize-1</h4><p><img src="/2023/04/27/FCTF/image-20230429201037517.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="javaDeserialize-1"><a href="#javaDeserialize-1" class="headerlink" title="javaDeserialize-1"></a>javaDeserialize-1</h4><p><img src="/2023/04/27/FCTF/image-20230429201037517.png"></p>
 <p>点开题目，</p>
 <hr>
 <h4 id="javaDeserialize-2"><a href="#javaDeserialize-2" class="headerlink" title="javaDeserialize-2"></a>javaDeserialize-2</h4><hr>
 <h4 id="filechecker-mini"><a href="#filechecker-mini" class="headerlink" title="filechecker_mini"></a>filechecker_mini</h4><p>打开题目，让我们上传一个文件：</p>
-<p><img src="/2023/04/27/FCTF/image-20230429032204160.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429032204160.png"></p>
 <p>桌面上随便丢了个php文件进去提交看看会有啥情况：</p>
-<p><img src="/2023/04/27/FCTF/image-20230429032353870.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429032353870.png"></p>
 <p>判断文件类型，(MIME绕过预定)</p>
 <p>附件下载下来先看源码：</p>
 <p>index.html：</p>
-<p><img src="/2023/04/27/FCTF/image-20230429030651913.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429030651913.png"></p>
 <p>可以看出该网页使用模块渲染将result值渲染进index对应位置，那么就看下后端代码app.py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, render_template, render_template_string<br><span class="hljs-keyword">from</span> waitress <span class="hljs-keyword">import</span> serve<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> subprocess<br><br>app_dir = os.path.split(os.path.realpath(__file__))[<span class="hljs-number">0</span>]<br>app = Flask(__name__)<br>app.config[<span class="hljs-string">&#x27;UPLOAD_FOLDER&#x27;</span>] = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;app_dir&#125;</span>/upload/&#x27;</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>,<span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>():<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;GET&#x27;</span>:<br>            <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>,result=<span class="hljs-string">&quot;ヽ(=^･ω･^=)丿 ヽ(=^･ω･^=)丿 ヽ(=^･ω･^=)丿&quot;</span>)<br><br>        <span class="hljs-keyword">elif</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:<br>            f = request.files[<span class="hljs-string">&#x27;file-upload&#x27;</span>]<br>            filepath = os.path.join(app.config[<span class="hljs-string">&#x27;UPLOAD_FOLDER&#x27;</span>], f.filename)<br><br>            <span class="hljs-keyword">if</span> os.path.exists(filepath) <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;..&quot;</span> <span class="hljs-keyword">in</span> filepath:<br>                <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>, result=<span class="hljs-string">&quot;Don&#x27;t (^=◕ᴥ◕=^) (^=◕ᴥ◕=^) (^=◕ᴥ◕=^)&quot;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                f.save(filepath)<br>                file_check_res = subprocess.check_output(<br>                    [<span class="hljs-string">&quot;/bin/file&quot;</span>, <span class="hljs-string">&quot;-b&quot;</span>, filepath], <br>                    shell=<span class="hljs-literal">False</span>, <br>                    encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>                    timeout=<span class="hljs-number">1</span><br>                )<br>                os.remove(filepath)<br>                <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;empty&quot;</span> <span class="hljs-keyword">in</span> file_check_res <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;cannot open&quot;</span> <span class="hljs-keyword">in</span> file_check_res:<br>                    file_check_res=<span class="hljs-string">&quot;wafxixi ฅ•ω•ฅ ฅ•ω•ฅ ฅ•ω•ฅ&quot;</span><br>                <span class="hljs-keyword">return</span> render_template_string(file_check_res)<br><br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>, result=<span class="hljs-string">&#x27;Error ฅ(๑*д*๑)ฅ ฅ(๑*д*๑)ฅ ฅ(๑*д*๑)ฅ&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    serve(app, host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>, port=<span class="hljs-number">3000</span>, threads=<span class="hljs-number">1000</span>, cleanup_interval=<span class="hljs-number">30</span>)<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/27/FCTF/image-20230429032742576.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429032742576.png"></p>
 <p>上面大家都用<code>render_template()</code>就你爱用<code>render_template_string()</code>是吧（指指点点，一眼模板注入，那么我们就希望<code>file_check_res</code>里有我们能够执行的rce代码。<code>file_check_res</code>哪来的？倒退往上看。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">f.save(filepath)<br>file_check_res = subprocess.check_output(<br>	[<span class="hljs-string">&quot;/bin/file&quot;</span>, <span class="hljs-string">&quot;-b&quot;</span>, filepath], <br>	shell=<span class="hljs-literal">False</span>, <br>	encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>	imeout=<span class="hljs-number">1</span><br>	)<br>os.remove(filepath)<br></code></pre></td></tr></table></figure>
 
 <p>先保存filepath这样一个文件，<code>subprocess.check_output(command)</code>返回Linux命令行输出，然后再把filepath文件删除，那么这里的<code>file_check_res</code>就是<code>file -b &#123;filepath&#125;</code>的结果。往上看filepath其实就是将上传文件目录的绝对路径和该文件的文件名拼接起来来标定用户上传的这个文件在容器中的绝对位置。逻辑搞明白了，现在的重点就在于如何对一个文件使用<code>file -b</code> 命令后返回值中能回显我们所期望的值。动手操作下flie命令，发现其不会输出文件的内容只会输出其类型，</p>
-<p><img src="/2023/04/27/FCTF/image-20230429034451879.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429034451879.png"></p>
 <p>代码中的-b参数作用：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b 　#列出辨识结果时，不显示文件名称。<br></code></pre></td></tr></table></figure>
 
 <p>所以在文件名上动手脚的想法也破灭了（悲。</p>
-<p>卡住了，向大佬博客寻求帮助，去guthub查找file命令源码。第一个仓库点开。<img src="/2023/04/27/FCTF/image-20230429191534591.png" srcset="/img/loading.gif" lazyload></p>
+<p>卡住了，向大佬博客寻求帮助，去guthub查找file命令源码。第一个仓库点开。<img src="/2023/04/27/FCTF/image-20230429191534591.png"></p>
 <p>点开tests里面是各种针对该<code>file</code>命令的<a target="_blank" rel="noopener" href="https://github.com/file/file/tree/master/tests">测试结果</a></p>
-<p><img src="/2023/04/27/FCTF/image-20230429191635511.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429191635511.png"></p>
 <p>这8个分别分别是在文本中写入bash脚本的4种情况和对应的用<code>file</code>命令执行的输出结果，可以看出如果文本内容为<code>#!/usr/bin</code>开头的那么输出结果中会显示文本中的其他内容。</p>
-<p><img src="/2023/04/27/FCTF/image-20230429191927593.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429191927593.png"></p>
 <p>本地做测试：创建一个文本文件修改内容如下</p>
-<p><img src="/2023/04/27/FCTF/image-20230429193849800.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429193849800.png"></p>
 <p>测试结果如下：</p>
-<p><img src="/2023/04/27/FCTF/image-20230429193915755.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429193915755.png"></p>
 <p>显而易见，输出可控，可以进行模板渲染。新建一个文本文件内容如下，上传文件</p>
-<p><img src="/2023/04/27/FCTF/image-20230429194117415.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/27/FCTF/image-20230429194209528.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429194117415.png"></p>
+<p><img src="/2023/04/27/FCTF/image-20230429194209528.png"></p>
 <p>存在ssti漏洞，开始利用，调用os模块</p>
-<p><img src="/2023/04/27/FCTF/image-20230429195640928.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/27/FCTF/image-20230429195803084.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429195640928.png"></p>
+<p><img src="/2023/04/27/FCTF/image-20230429195803084.png"></p>
 <p>调用popen()方法。</p>
-<p><img src="/2023/04/27/FCTF/image-20230429195958840.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230429195958840.png"></p>
 <p>上传文件，获取flag。</p>
 <h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><h4 id="png"><a href="#png" class="headerlink" title="png"></a>png</h4><p>附件下载下来是一张png图片，</p>
-<p><img src="/2023/04/27/FCTF/image-20230430041531911.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430041531911.png"></p>
 <p>010打开划拉到最底部发现冗余数据，部分flag<code>FCTF&#123;To</code>，</p>
-<p><img src="/2023/04/27/FCTF/image-20230430043203297.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430043203297.png"></p>
 <p>010跑PNGTemplate.bt脚本报错，左下提示CRC不匹配，说明修改了高宽却没有修改CRC导致读取报错，图片宽高很可能被修改过。(或者放入kali中无法打开)</p>
-<p><img src="/2023/04/27/FCTF/image-20230430043711587.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430043711587.png"></p>
 <p>进行一个高度的改，将高度640改为700</p>
-<p><img src="/2023/04/27/FCTF/image-20230430044130507.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430044130507.png"></p>
 <p>文件头数据块IHDR包含的第一部分数据就是图片宽高，分别对应第二行中的第一组四个字节和第二组四个字节，掏出计算器算算高度拉长点。</p>
-<p><img src="/2023/04/27/FCTF/image-20230430044803732.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430044803732.png"></p>
 <p>得到另一部分flag：<code>_the_flawless_</code></p>
-<p><img src="/2023/04/27/FCTF/image-20230430045240866.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430045240866.png"></p>
 <p>然后就是做这道题时比较懵逼的一个地方了，招最后一部分flag。先开起zsteg看看能拿到什么吧。查到了之前找到的<code>FCTF&#123;To</code>，但是愣是没发现最后一部分flag，如果有LSB隐写那zsteg也应该能淦出来才对呀？</p>
-<p><img src="/2023/04/27/FCTF/image-20230430045440795.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430045440795.png"></p>
 <p>由于过于依赖工具，死磕这条路坚信不存在lsb隐写。愣是没用Stegsolve手搓，到处找，查IDAT块、翻EXIF信息…最后还得感谢ixout手搓LSB出来。</p>
-<p><img src="/2023/04/27/FCTF/image-20230430050104649.png" srcset="/img/loading.gif" lazyload> </p>
+<p><img src="/2023/04/27/FCTF/image-20230430050104649.png"> </p>
 <p>呜呜呜呜呜呜呜呜呜呜。</p>
 <p>最后三段flag拼接起来得到flag。</p>
 <p>呜呜呜呜呜呜呜呜呜呜。</p>
 <h4 id="cet6"><a href="#cet6" class="headerlink" title="cet6"></a>cet6</h4><p>一道基础的USB取证题，但是不太常规。。。</p>
 <h4 id="zip套娃"><a href="#zip套娃" class="headerlink" title="zip套娃"></a>zip套娃</h4><p>第一层：</p>
 <p>binwalk无法分离，不是伪加密。没给其他条件明文攻击也不太行，那就爆破试试吧（。</p>
-<p><img src="/2023/04/27/FCTF/image-20230430051023113.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430051023113.png"></p>
 <p>ARCHPR开起来，攻击方式字典，选的是kali字典。跑了一段时间后成功拿到第一层密码。</p>
-<p><img src="/2023/04/27/FCTF/image-20230430130335839.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430130335839.png"></p>
 <p>第二层：</p>
 <p>依然先丢到kali里binwalk试下，分离成功，伪加密</p>
-<p><img src="/2023/04/27/FCTF/image-20230430142037485.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430142037485.png"></p>
 <p>分离出来的东西多了个0.zip打开其实就是第二层的包不过问题不大，直接看第三层的压缩包</p>
-<p><img src="/2023/04/27/FCTF/image-20230430142135922.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430142135922.png"></p>
 <p>第三层：</p>
 <p>打开压缩包看到了一个支点.txt文件，同时第二层解压出来后也有一个支点.txt，支点.txt文件大小大于12字节，大胆猜测是明文攻击。</p>
-<p><img src="/2023/04/27/FCTF/image-20230430144529014.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430144529014.png"></p>
 <p>WinRAR将泄密出来的文件压缩为zip，开始明文攻击，然后就。。。</p>
-<p><img src="/2023/04/27/FCTF/image-20230430144651066.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430144651066.png"></p>
 <p>相信不止我一个人遇到这种情况。。。这里我们忽略了一些细节，加密文件是通过什么方式压缩的呢？不同压缩软件采用的压缩算法也会不同，自然会出现不匹配的情况，这里多尝试几次，鼠标右键发送到压缩文件可行，开始明文攻击</p>
-<p><img src="/2023/04/27/FCTF/image-20230430145433930.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/27/FCTF/image-20230430145615362.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430145433930.png"></p>
+<p><img src="/2023/04/27/FCTF/image-20230430145615362.png"></p>
 <p>等待了一段时间之后拿到秘钥(btw这一坨是啥。。。)</p>
-<p><img src="/2023/04/27/FCTF/image-20230430150510674.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430150510674.png"></p>
 <p>第四层：</p>
 <p>字典、明文、伪加密，各种姿势都试过了，打开压缩包看一眼，分散成这么多小文件，大胆猜测CRC碰撞</p>
-<p><img src="/2023/04/27/FCTF/image-20230430152951249.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430152951249.png"></p>
 <p>EXIF查看一下压缩文件数据，CRC32、字节数等等</p>
-<p><img src="/2023/04/27/FCTF/image-20230430153333151.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430153333151.png"></p>
 <p>大致整理下6个文本文件的CRC32、字节数：</p>
 <table>
 <thead>
@@ -458,20 +175,20 @@
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">2bytes</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><span class="hljs-keyword">import</span> binascii<br><span class="hljs-keyword">import</span> string<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">crack_crc</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-------------Start Crack CRC-------------&#x27;</span>)<br>    crc_list = [<span class="hljs-number">0xe3f20a9d</span>]<span class="hljs-comment">#文件的CRC32值列表，注意顺序</span><br>    comment = <span class="hljs-string">&#x27;&#x27;</span><br>    chars = string.printable<br>    <span class="hljs-keyword">for</span> crc_value <span class="hljs-keyword">in</span> crc_list:<br>        <span class="hljs-keyword">for</span> char1 <span class="hljs-keyword">in</span> chars:<br>            <span class="hljs-keyword">for</span> char2 <span class="hljs-keyword">in</span> chars:<br>                res_char = char1 + char2<span class="hljs-comment">#获取遍历的任意2Byte字符</span><br>                char_crc = binascii.crc32(res_char.encode())<span class="hljs-comment">#获取遍历字符的CRC32值</span><br>                calc_crc = char_crc &amp; <span class="hljs-number">0xffffffff</span><span class="hljs-comment">#将获取到的字符的CRC32值与0xffffffff进行与运算</span><br>                <span class="hljs-keyword">if</span> calc_crc == crc_value:<span class="hljs-comment">#将获取字符的CRC32值与每个文件的CRC32值进行匹配</span><br>                    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;[+] &#123;&#125;: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">hex</span>(crc_value),res_char))<br>                    comment += res_char<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-----------CRC Crack Completed-----------&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Result: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(comment))<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    crack_crc()<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/27/FCTF/image-20230430160710583.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430160710583.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">3bytes</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">import</span> binascii<br><span class="hljs-keyword">import</span> string<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">crack_crc</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-------------Start Crack CRC-------------&#x27;</span>)<br>    crc_list = [<span class="hljs-number">0x92716b7c</span>, <span class="hljs-number">0x1ab6bb72</span>, <span class="hljs-number">0xfcf21afd</span>, <span class="hljs-number">0x89a155cb</span>, <span class="hljs-number">0x2d09a3d6</span>, <span class="hljs-number">0xe3f20a9d</span>]<span class="hljs-comment">#文件的CRC32值列表，注意顺序</span><br>    comment = <span class="hljs-string">&#x27;&#x27;</span><br>    chars = string.printable<br>    <span class="hljs-keyword">for</span> crc_value <span class="hljs-keyword">in</span> crc_list:<br>        <span class="hljs-keyword">for</span> char1 <span class="hljs-keyword">in</span> chars:<br>            <span class="hljs-keyword">for</span> char2 <span class="hljs-keyword">in</span> chars:<br>                <span class="hljs-keyword">for</span> char3 <span class="hljs-keyword">in</span> chars:<br>                    res_char = char1 + char2 + char3<span class="hljs-comment">#获取遍历的任意3Byte字符</span><br>                    char_crc = binascii.crc32(res_char.encode())<span class="hljs-comment">#获取遍历字符的CRC32值</span><br>                    calc_crc = char_crc &amp; <span class="hljs-number">0xffffffff</span><span class="hljs-comment">#将遍历的字符的CRC32值与0xffffffff进行与运算</span><br>                    <span class="hljs-keyword">if</span> calc_crc == crc_value:<span class="hljs-comment">#将获取字符的CRC32值与每个文件的CRC32值进行匹配</span><br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;[+] &#123;&#125;: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">hex</span>(crc_value),res_char))<br>                        comment += res_char<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-----------CRC Crack Completed-----------&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Result: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(comment))<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    crack_crc()<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/27/FCTF/image-20230430160744568.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430160744568.png"></p>
 <p>4-6字节的使用<a target="_blank" rel="noopener" href="https://github.com/theonlypwner/crc32">theonlypwner</a>工具，修改供选字符</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">permitted_characters = <span class="hljs-built_in">set</span>(<br>    <span class="hljs-built_in">map</span>(<span class="hljs-built_in">ord</span>, <span class="hljs-string">&#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_&#123;&#125;!&#x27;</span>))  <span class="hljs-comment"># \w</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/27/FCTF/image-20230430161138948.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430161138948.png"></p>
 <p><code>FTCF&#123;</code></p>
-<p><img src="/2023/04/27/FCTF/image-20230430161219428.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430161219428.png"></p>
 <p><code>Y0u_</code></p>
-<p><img src="/2023/04/27/FCTF/image-20230430161254433.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430161254433.png"></p>
 <p><code>_z1p_</code></p>
-<p><img src="/2023/04/27/FCTF/image-20230430161318849.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230430161318849.png"></p>
 <p><code>master</code></p>
 <p>拼接起来就是<code>FTCF&#123;Y0u_4re_z1p_master!&#125;</code></p>
 <p>使用theonlypwner时出了点问题，最开始忘记了flag中必含的”{“”}”字符，导致怎么都跑不出来，还是看了眼hint想起来应该修改脚本中的供选字符。如果感叹号是在4-6字节的那些文件的话肯定也跑不出来了，考虑问题还是不够周到。</p>
@@ -479,341 +196,65 @@
 <p>（CTFwiki：<a target="_blank" rel="noopener" href="https://ctf-wiki.org/misc/archive/zip/#_7%EF%BC%89">https://ctf-wiki.org/misc/archive/zip/#_7）</a></p>
 <hr>
 <h2 id="正式赛"><a href="#正式赛" class="headerlink" title="正式赛"></a>正式赛</h2><h3 id="Web-1"><a href="#Web-1" class="headerlink" title="Web"></a>Web</h3><h3 id="Misc-1"><a href="#Misc-1" class="headerlink" title="Misc"></a>Misc</h3><h4 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h4><p>附件如图所示：</p>
-<p><img src="/2023/04/27/FCTF/image-20230519013136127.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519013136127.png"></p>
 <p>一整张图构成极其简单，想要藏什么数据的话大概率只能是IDAT块隐写了，pngcheck查看下</p>
-<p><img src="/2023/04/27/FCTF/image-20230519013017814.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519013017814.png"></p>
 <p>9个IDAT块，块长度没有隐藏什么特殊信息，一张正常的png图片的IDAT块的前面的块应该都是填充满且相同大小的，这个check结果显然就不正常，感觉每一个块都单独成图。试着删除块。</p>
 <p>tweakpng：</p>
-<p><img src="/2023/04/27/FCTF/image-20230519013824840.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519013824840.png"></p>
 <p>准备删IDAT块，九个块就拷贝九份先。删块的时候不要把IEND块删了，这是png格式的结尾标识。</p>
 <p>每个IDAT块单独成一张图片，已经很明显了，是一张二维码。</p>
-<p><img src="/2023/04/27/FCTF/image-20230519014312145.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519014312145.png"></p>
 <p>自己对于二维码结构的认知只有三个定位块（悲），所以瞎拼，然后都没法扫（，根据学长放的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mq0036/p/14445719.html">hint</a>：</p>
-<p><img src="/2023/04/27/FCTF/image-20230519021831370.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/27/FCTF/image-20230519021849222.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519021831370.png"></p>
+<p><img src="/2023/04/27/FCTF/image-20230519021849222.png"></p>
 <p>归纳就是三个定位块的周围一个像素块的一圈必须是空白的，且相互之间有黑白像素块交叉分布的定时标志，根据特征拿到ps里拼了下</p>
-<p><img src="/2023/04/27/FCTF/image-20230519022132076.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/27/FCTF/image-20230519022132076.png"></p>
 <p>扫一下，拿到flag：</p>
 <p><code>FCTF&#123;n1ce_puzzl3&#125;</code></p>
 <h4 id="自信音游人"><a href="#自信音游人" class="headerlink" title="自信音游人"></a>自信音游人</h4><p>附件是给的曲目选自阿卡伊的だいあるのーと。</p>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Web/">#Web</a>
-      
-        <a href="/tags/Misc/">#Misc</a>
-      
-        <a href="/tags/ssrf/">#ssrf</a>
-      
-        <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">#反序列化</a>
-      
-    </div>
-  
-</div>
-
-
-              
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/07/09/ROIS-Summer/" title="ROIS_Summer">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ROIS_Summer</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/04/24/java-note/" title="java_note">
-                        <span class="hidden-mobile">java_note</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
-
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  
-<script src="/js/click.js"></script>
-<script src="/js/snow.js"></script>
-<script src="/js/potato.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
-</html>
+</div><div class="article-licensing box"><div class="licensing-title"><p>2023FCTF</p><p><a href="http://example.com/2023/04/27/FCTF/">http://example.com/2023/04/27/FCTF/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-04-27</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Web/">Web</a><a class="link-muted mr-2" rel="tag" href="/tags/Misc/">Misc</a><a class="link-muted mr-2" rel="tag" href="/tags/ssrf/">ssrf</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/07/09/ROIS-Summer/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">ROIS_Summer</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/04/24/java-note/"><span class="level-item">java_note</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/icon.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">This is Potato&#039;s blog~</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Potatowo233" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/08/"><span class="level-start"><span class="level-item">八月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Misc/"><span class="tag">Misc</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">21</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cve/"><span class="tag">cve</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rce/"><span class="tag">rce</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sqli/"><span class="tag">sqli</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssrf/"><span class="tag">ssrf</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssti/"><span class="tag">ssti</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/xss/"><span class="tag">xss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="tag">反序列化</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><span class="tag">文件上传</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="tag">文件包含</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="tag">正则表达式</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">做题记录</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">学习记录</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">渗透工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%87%AA%E5%BB%BA%E9%9D%B6%E5%9C%BA/"><span class="level-start"><span class="level-item">自建靶场</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">常见漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">Web漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-07T04:46:48.000Z">2024-01-07</time></p><p class="title"><a href="/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/">Vim学习</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-01T08:06:34.000Z">2024-01-01</time></p><p class="title"><a href="/2024/01/01/16-PHP-Magic-Methods/">16_PHP_Magic_Methods</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:46:17.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/">CVE-2023-47130分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:19:30.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/">CVE-2023-41892分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-23T13:38:37.000Z">2023-12-23</time></p><p class="title"><a href="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">记一次CMS代码审计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

