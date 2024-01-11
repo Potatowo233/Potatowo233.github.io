@@ -11687,6 +11687,14 @@ body {
   background-color: rgba(248,244,237,0.875);
   backdrop-filter: blur(5px);
 }
+.navbar-menu .navbar-item:hover,
+.navbar-menu .navbar-item.is-active {
+  color: #2177b8;
+  background-color: rgba(242,222,182,0.647);
+}
+.footer {
+  background-color: rgba(242,230,206,0.647);
+}
 .heimu {
   color: #000;
   background-color: #000;
