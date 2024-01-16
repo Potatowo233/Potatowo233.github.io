@@ -3,11 +3,11 @@
   <title>Potat0w0</title>
   
   
-  <link href="http://example.com/rss.xml" rel="self"/>
+  <link href="http://potatowo233.github.io/rss.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://potatowo233.github.io/"/>
   <updated>2024-01-11T07:13:45.173Z</updated>
-  <id>http://example.com/</id>
+  <id>http://potatowo233.github.io/</id>
   
   <author>
     <name>Potat0w0</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Vim学习</title>
-    <link href="http://example.com/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://example.com/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/</id>
+    <link href="http://potatowo233.github.io/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://potatowo233.github.io/2024/01/07/Vim%E5%AD%A6%E4%B9%A0/</id>
     <published>2024-01-07T04:46:48.000Z</published>
     <updated>2024-01-11T07:13:45.173Z</updated>
     
@@ -35,8 +35,8 @@
   
   <entry>
     <title>PHP魔术方法</title>
-    <link href="http://example.com/2024/01/01/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/"/>
-    <id>http://example.com/2024/01/01/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/</id>
+    <link href="http://potatowo233.github.io/2024/01/01/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/"/>
+    <id>http://potatowo233.github.io/2024/01/01/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/</id>
     <published>2024-01-01T08:06:34.000Z</published>
     <updated>2024-01-10T17:32:34.844Z</updated>
     
@@ -52,8 +52,8 @@
   
   <entry>
     <title>CVE-2023-47130分析</title>
-    <link href="http://example.com/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/"/>
-    <id>http://example.com/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/</id>
+    <link href="http://potatowo233.github.io/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/"/>
+    <id>http://potatowo233.github.io/2023/12/30/CVE-2023-47130%E5%88%86%E6%9E%90/</id>
     <published>2023-12-29T18:46:17.000Z</published>
     <updated>2024-01-10T17:33:38.647Z</updated>
     
@@ -69,8 +69,8 @@
   
   <entry>
     <title>CVE-2023-41892分析</title>
-    <link href="http://example.com/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/"/>
-    <id>http://example.com/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/</id>
+    <link href="http://potatowo233.github.io/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/"/>
+    <id>http://potatowo233.github.io/2023/12/30/CVE-2023-41892%E5%88%86%E6%9E%90/</id>
     <published>2023-12-29T18:19:30.000Z</published>
     <updated>2024-01-16T04:36:58.141Z</updated>
     
@@ -86,8 +86,8 @@
   
   <entry>
     <title>记一次CMS代码审计</title>
-    <link href="http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    <id>http://example.com/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</id>
+    <link href="http://potatowo233.github.io/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    <id>http://potatowo233.github.io/2023/12/23/%E8%AE%B0%E4%B8%80%E6%AC%A1CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</id>
     <published>2023-12-23T13:38:37.000Z</published>
     <updated>2024-01-11T05:09:22.621Z</updated>
     
@@ -103,8 +103,8 @@
   
   <entry>
     <title>some_idea</title>
-    <link href="http://example.com/2023/11/30/some-idea/"/>
-    <id>http://example.com/2023/11/30/some-idea/</id>
+    <link href="http://potatowo233.github.io/2023/11/30/some-idea/"/>
+    <id>http://potatowo233.github.io/2023/11/30/some-idea/</id>
     <published>2023-11-29T17:07:23.000Z</published>
     <updated>2024-01-10T17:32:07.765Z</updated>
     
@@ -120,8 +120,8 @@
   
   <entry>
     <title>redis</title>
-    <link href="http://example.com/2023/11/28/redis/"/>
-    <id>http://example.com/2023/11/28/redis/</id>
+    <link href="http://potatowo233.github.io/2023/11/28/redis/"/>
+    <id>http://potatowo233.github.io/2023/11/28/redis/</id>
     <published>2023-11-28T12:36:10.000Z</published>
     <updated>2024-01-10T17:32:26.402Z</updated>
     
@@ -137,8 +137,8 @@
   
   <entry>
     <title>ACTF</title>
-    <link href="http://example.com/2023/11/01/ACTF/"/>
-    <id>http://example.com/2023/11/01/ACTF/</id>
+    <link href="http://potatowo233.github.io/2023/11/01/ACTF/"/>
+    <id>http://potatowo233.github.io/2023/11/01/ACTF/</id>
     <published>2023-11-01T02:32:37.000Z</published>
     <updated>2024-01-10T17:33:51.240Z</updated>
     
@@ -154,8 +154,8 @@
   
   <entry>
     <title>Minecraft-ApacheLog4j2</title>
-    <link href="http://example.com/2023/10/11/Minecraft-ApacheLog4j2/"/>
-    <id>http://example.com/2023/10/11/Minecraft-ApacheLog4j2/</id>
+    <link href="http://potatowo233.github.io/2023/10/11/Minecraft-ApacheLog4j2/"/>
+    <id>http://potatowo233.github.io/2023/10/11/Minecraft-ApacheLog4j2/</id>
     <published>2023-10-10T16:27:17.000Z</published>
     <updated>2023-10-10T16:27:17.000Z</updated>
     
@@ -167,14 +167,14 @@
     
     
     
-    <category term="cve" scheme="http://example.com/tags/cve/"/>
+    <category term="cve" scheme="http://potatowo233.github.io/tags/cve/"/>
     
   </entry>
   
   <entry>
     <title>php原生类</title>
-    <link href="http://example.com/2023/09/21/php%E5%8E%9F%E7%94%9F%E7%B1%BB/"/>
-    <id>http://example.com/2023/09/21/php%E5%8E%9F%E7%94%9F%E7%B1%BB/</id>
+    <link href="http://potatowo233.github.io/2023/09/21/php%E5%8E%9F%E7%94%9F%E7%B1%BB/"/>
+    <id>http://potatowo233.github.io/2023/09/21/php%E5%8E%9F%E7%94%9F%E7%B1%BB/</id>
     <published>2023-09-21T05:26:39.000Z</published>
     <updated>2024-01-10T17:32:31.688Z</updated>
     
@@ -186,16 +186,16 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="PHP" scheme="http://example.com/tags/PHP/"/>
+    <category term="PHP" scheme="http://potatowo233.github.io/tags/PHP/"/>
     
   </entry>
   
   <entry>
     <title>http请求走私</title>
-    <link href="http://example.com/2023/09/19/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"/>
-    <id>http://example.com/2023/09/19/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/</id>
+    <link href="http://potatowo233.github.io/2023/09/19/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/"/>
+    <id>http://potatowo233.github.io/2023/09/19/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/</id>
     <published>2023-09-19T08:48:59.000Z</published>
     <updated>2024-01-10T17:33:10.090Z</updated>
     
@@ -207,14 +207,14 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
   </entry>
   
   <entry>
     <title>WACONCTF2023</title>
-    <link href="http://example.com/2023/09/15/WACONCTF2023/"/>
-    <id>http://example.com/2023/09/15/WACONCTF2023/</id>
+    <link href="http://potatowo233.github.io/2023/09/15/WACONCTF2023/"/>
+    <id>http://potatowo233.github.io/2023/09/15/WACONCTF2023/</id>
     <published>2023-09-15T08:22:37.000Z</published>
     <updated>2024-01-10T17:22:30.055Z</updated>
     
@@ -230,8 +230,8 @@
   
   <entry>
     <title>Litctf2023</title>
-    <link href="http://example.com/2023/08/09/Litctf2023/"/>
-    <id>http://example.com/2023/08/09/Litctf2023/</id>
+    <link href="http://potatowo233.github.io/2023/08/09/Litctf2023/"/>
+    <id>http://potatowo233.github.io/2023/08/09/Litctf2023/</id>
     <published>2023-08-08T19:06:02.000Z</published>
     <updated>2024-01-10T17:32:52.629Z</updated>
     
@@ -243,16 +243,16 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
+    <category term="Misc" scheme="http://potatowo233.github.io/tags/Misc/"/>
     
   </entry>
   
   <entry>
     <title>HTB_note</title>
-    <link href="http://example.com/2023/08/03/HTB-note/"/>
-    <id>http://example.com/2023/08/03/HTB-note/</id>
+    <link href="http://potatowo233.github.io/2023/08/03/HTB-note/"/>
+    <id>http://potatowo233.github.io/2023/08/03/HTB-note/</id>
     <published>2023-08-03T09:49:46.000Z</published>
     <updated>2024-01-10T17:33:14.899Z</updated>
     
@@ -264,16 +264,16 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="正则表达式" scheme="http://example.com/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <category term="正则表达式" scheme="http://potatowo233.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>star_ctf</title>
-    <link href="http://example.com/2023/08/02/star-ctf/"/>
-    <id>http://example.com/2023/08/02/star-ctf/</id>
+    <link href="http://potatowo233.github.io/2023/08/02/star-ctf/"/>
+    <id>http://potatowo233.github.io/2023/08/02/star-ctf/</id>
     <published>2023-08-02T11:20:30.000Z</published>
     <updated>2024-01-10T17:26:05.172Z</updated>
     
@@ -285,14 +285,14 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
   </entry>
   
   <entry>
     <title>imaginary_ctf</title>
-    <link href="http://example.com/2023/07/23/imaginary-ctf/"/>
-    <id>http://example.com/2023/07/23/imaginary-ctf/</id>
+    <link href="http://potatowo233.github.io/2023/07/23/imaginary-ctf/"/>
+    <id>http://potatowo233.github.io/2023/07/23/imaginary-ctf/</id>
     <published>2023-07-23T09:23:12.000Z</published>
     <updated>2024-01-10T17:33:05.047Z</updated>
     
@@ -304,16 +304,16 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
+    <category term="Misc" scheme="http://potatowo233.github.io/tags/Misc/"/>
     
   </entry>
   
   <entry>
     <title>ROIS_Summer</title>
-    <link href="http://example.com/2023/07/09/ROIS-Summer/"/>
-    <id>http://example.com/2023/07/09/ROIS-Summer/</id>
+    <link href="http://potatowo233.github.io/2023/07/09/ROIS-Summer/"/>
+    <id>http://potatowo233.github.io/2023/07/09/ROIS-Summer/</id>
     <published>2023-07-09T05:17:05.000Z</published>
     <updated>2024-01-11T12:39:43.018Z</updated>
     
@@ -325,16 +325,16 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="MySQL" scheme="http://example.com/tags/MySQL/"/>
+    <category term="MySQL" scheme="http://potatowo233.github.io/tags/MySQL/"/>
     
   </entry>
   
   <entry>
     <title>2023FCTF</title>
-    <link href="http://example.com/2023/04/27/FCTF/"/>
-    <id>http://example.com/2023/04/27/FCTF/</id>
+    <link href="http://potatowo233.github.io/2023/04/27/FCTF/"/>
+    <id>http://potatowo233.github.io/2023/04/27/FCTF/</id>
     <published>2023-04-26T16:46:11.000Z</published>
     <updated>2024-01-10T17:33:23.141Z</updated>
     
@@ -346,20 +346,20 @@
     
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
+    <category term="Misc" scheme="http://potatowo233.github.io/tags/Misc/"/>
     
-    <category term="ssrf" scheme="http://example.com/tags/ssrf/"/>
+    <category term="ssrf" scheme="http://potatowo233.github.io/tags/ssrf/"/>
     
-    <category term="反序列化" scheme="http://example.com/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    <category term="反序列化" scheme="http://potatowo233.github.io/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
     
   </entry>
   
   <entry>
     <title>java_note</title>
-    <link href="http://example.com/2023/04/24/java-note/"/>
-    <id>http://example.com/2023/04/24/java-note/</id>
+    <link href="http://potatowo233.github.io/2023/04/24/java-note/"/>
+    <id>http://potatowo233.github.io/2023/04/24/java-note/</id>
     <published>2023-04-24T05:43:43.000Z</published>
     <updated>2024-01-11T07:14:24.074Z</updated>
     
@@ -371,14 +371,14 @@
     
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    <category term="Java" scheme="http://potatowo233.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>无字母数字RCE</title>
-    <link href="http://example.com/2023/04/09/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE/"/>
-    <id>http://example.com/2023/04/09/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE/</id>
+    <link href="http://potatowo233.github.io/2023/04/09/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE/"/>
+    <id>http://potatowo233.github.io/2023/04/09/%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97RCE/</id>
     <published>2023-04-09T08:18:42.000Z</published>
     <updated>2024-01-10T17:33:55.304Z</updated>
     
@@ -389,14 +389,14 @@
     
     
     
-    <category term="学习记录" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <category term="学习记录" scheme="http://potatowo233.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
-    <category term="笔记" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="http://potatowo233.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
+    <category term="Web" scheme="http://potatowo233.github.io/tags/Web/"/>
     
-    <category term="rce" scheme="http://example.com/tags/rce/"/>
+    <category term="rce" scheme="http://potatowo233.github.io/tags/rce/"/>
     
   </entry>
   
