@@ -11678,12 +11678,13 @@ figure.highlight.foldable div.level-left {
   }
 }
 body {
-  background: url("/img/default5.png") no-repeat;
+  background: url("/img/ni.jpg") no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 .navbar {
-  background-color: rgba(255,255,255,0.65);
+  background-color: rgba(255,255,255,0);
+  background-color: rgba(248,244,237,0.875);
   backdrop-filter: blur(5px);
 }
 .navbar-menu .navbar-item:hover,
@@ -11692,7 +11693,7 @@ body {
   background-color: rgba(242,222,182,0.647);
 }
 .footer {
-  background-color: rgba(255,255,255,0.65);
+  background-color: rgba(242,230,206,0.647);
 }
 .heimu {
   color: #000;
@@ -11702,6 +11703,7 @@ body {
   color: #fff;
 }
 .card {
-  background-color: rgba(255,255,255,0.65);
+  background-color: rgba(255,255,255,0);
+  background-color: rgba(248,244,237,0.875);
   backdrop-filter: blur(5px);
 }
