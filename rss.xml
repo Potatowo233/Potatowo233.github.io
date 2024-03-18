@@ -67,7 +67,7 @@
     <link href="http://potatowo233.github.io/2024/01/28/Js%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/"/>
     <id>http://potatowo233.github.io/2024/01/28/Js%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/</id>
     <published>2024-01-27T18:45:28.000Z</published>
-    <updated>2024-01-27T18:56:28.607Z</updated>
+    <updated>2024-01-28T03:31:40.529Z</updated>
     
     <content type="html"><![CDATA[<!-- more --><h1 id="JavaScript原型链污染"><a href="#JavaScript原型链污染" class="headerlink" title="JavaScript原型链污染"></a>JavaScript原型链污染</h1><p>Js作为前端js其即使有漏洞也不会对后台服务器本身造成什么影响。但是Node就不一样了，作为服务端的Js，其许多特性与前端js是共通的，原型链就是一个相同点。在前面对js的学习中我们已经了解到了原型这一重要概念。</p>]]></content>
     
