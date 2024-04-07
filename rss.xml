@@ -6,7 +6,7 @@
   <link href="http://potatowo233.github.io/rss.xml" rel="self"/>
   
   <link href="http://potatowo233.github.io/"/>
-  <updated>2024-03-28T08:48:57.254Z</updated>
+  <updated>2024-03-31T17:22:30.399Z</updated>
   <id>http://potatowo233.github.io/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>初识Fine-tuning</title>
-    <link href="http://potatowo233.github.io/2024/03/28/%E5%88%9D%E8%AF%86Fine-tuning/"/>
-    <id>http://potatowo233.github.io/2024/03/28/%E5%88%9D%E8%AF%86Fine-tuning/</id>
-    <published>2024-03-28T08:25:17.000Z</published>
-    <updated>2024-03-28T08:48:57.254Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="初识Fine-tuning"><a href="#初识Fine-tuning" class="headerlink" title="初识Fine-tuning"></a>初识Fine-tuning</h1><p>简单地说就是能在Python里调用<code>openai</code>库来进行一些交互了，ai镶嵌进编程中</p><h2 id="角色："><a href="#角色：" class="headerlink" title="角色："></a>角色：</h2><p>在Fine-tuning中，主要有三种角色：”system”、”user”以及”assistant”，分别代表最高的系统指令，用户，还有ai的反馈</p>]]></content>
-    
-    
-    <summary type="html">简单学点AI</summary>
-    
-    
-    
-    <category term="AI" scheme="http://potatowo233.github.io/categories/AI/"/>
-    
-    
-    <category term="AI" scheme="http://potatowo233.github.io/tags/AI/"/>
-    
-  </entry>
   
   <entry>
     <title>CSP_Bypass</title>
@@ -442,6 +421,27 @@
     
     
     <category term="各种靶场" scheme="http://potatowo233.github.io/categories/%E5%90%84%E7%A7%8D%E9%9D%B6%E5%9C%BA/"/>
+    
+    
+    <category term="CTF" scheme="http://potatowo233.github.io/tags/CTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>star_ctf</title>
+    <link href="http://potatowo233.github.io/2023/08/02/star-ctf/"/>
+    <id>http://potatowo233.github.io/2023/08/02/star-ctf/</id>
+    <published>2023-08-02T11:20:30.000Z</published>
+    <updated>2024-01-18T19:29:53.136Z</updated>
+    
+    <content type="html"><![CDATA[<!-- more --><h2 id="CTF"><a href="#CTF" class="headerlink" title="*CTF"></a>*CTF</h2>]]></content>
+    
+    
+    <summary type="html">STAR_CTF</summary>
+    
+    
+    
+    <category term="各种CTF" scheme="http://potatowo233.github.io/categories/%E5%90%84%E7%A7%8DCTF/"/>
     
     
     <category term="CTF" scheme="http://potatowo233.github.io/tags/CTF/"/>
