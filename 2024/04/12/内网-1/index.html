@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>内网 - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="内网渗透域工作组按功能或部门给不同的计算机划分到不同的组 域是一种比工作组更加高级的计算机资源管理模式，工作组只适合于资产规模较小，对安全把控要求不高的情况下。当组织中的计算机网络越来越庞大的时候就需要统一的管理和集中的身份验证。在域环境中，左右用户账户、用户组、计算机、打印机和其他安全主体都在一个或多个域控制器的中央数据库中注册。当域用户想要访问域中的资源时，必须通过域控制器集中进行身份验证，通"><meta property="og:type" content="blog"><meta property="og:title" content="内网"><meta property="og:url" content="http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="内网渗透域工作组按功能或部门给不同的计算机划分到不同的组 域是一种比工作组更加高级的计算机资源管理模式，工作组只适合于资产规模较小，对安全把控要求不高的情况下。当组织中的计算机网络越来越庞大的时候就需要统一的管理和集中的身份验证。在域环境中，左右用户账户、用户组、计算机、打印机和其他安全主体都在一个或多个域控制器的中央数据库中注册。当域用户想要访问域中的资源时，必须通过域控制器集中进行身份验证，通"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112000143.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112108231.png"><meta property="article:published_time" content="2024-04-11T18:40:40.000Z"><meta property="article:modified_time" content="2024-04-12T16:27:34.811Z"><meta property="article:author" content="Potat0w0"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112000143.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/"},"headline":"内网","image":["http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112000143.png","http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112108231.png"],"datePublished":"2024-04-11T18:40:40.000Z","dateModified":"2024-04-12T16:27:34.811Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://potatowo233.github.io/img/title.png"}},"description":"内网渗透域工作组按功能或部门给不同的计算机划分到不同的组 域是一种比工作组更加高级的计算机资源管理模式，工作组只适合于资产规模较小，对安全把控要求不高的情况下。当组织中的计算机网络越来越庞大的时候就需要统一的管理和集中的身份验证。在域环境中，左右用户账户、用户组、计算机、打印机和其他安全主体都在一个或多个域控制器的中央数据库中注册。当域用户想要访问域中的资源时，必须通过域控制器集中进行身份验证，通"}</script><link rel="canonical" href="http://potatowo233.github.io/2024/04/12/%E5%86%85%E7%BD%91-1/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="Potat0w0" type="application/atom+xml">
+</head><body class="is-3-column"><script type="text/javascript" color="30,144,255" opacity="0.5" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/title.png" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/link">友链</a><a class="navbar-item" href="/map">索引</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Follow_me" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-11T18:40:40.000Z" title="2024/4/12 02:40:40">2024-04-12</time>发表</span><span class="level-item"><time dateTime="2024-04-12T16:27:34.811Z" title="2024/4/13 00:27:34">2024-04-13</time>更新</span><span class="level-item">6 分钟读完 (大约965个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">内网</h1><div class="content"><h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><h3 id="工作组"><a href="#工作组" class="headerlink" title="工作组"></a>工作组</h3><p>按功能或部门给不同的计算机划分到不同的组</p>
+<h3 id="域-1"><a href="#域-1" class="headerlink" title="域"></a>域</h3><p>是一种比工作组更加高级的计算机资源管理模式，工作组只适合于资产规模较小，对安全把控要求不高的情况下。当组织中的计算机网络越来越庞大的时候就需要统一的管理和集中的身份验证。在域环境中，左右用户账户、用户组、计算机、打印机和其他安全主体都在<strong>一个或多个域控制器的中央数据库</strong>中注册。当域用户想要访问域中的资源时，必须通过<strong>域控制器集中进行身份验证</strong>，通过身份验证的域用户对域中的资源具有什么样的访问权限<strong>取决于域用户在域中的身份</strong>。</p>
+<p><strong>域管理员</strong>是最强大的用户，在整个域中具有最高访问权限和最高管理权限，可以通过域控制器集中管理组织中的计算机网络资源</p>
+<h3 id="单域"><a href="#单域" class="headerlink" title="单域"></a>单域</h3><p>单域是指网络环境中只有一个域，在一个计算机数量较少，地理位置固定的小规模组织中单域足矣</p>
+<h3 id="父域和子域"><a href="#父域和子域" class="headerlink" title="父域和子域"></a>父域和子域</h3><p>在一个域中划分出多个域，被划分的域称为父域，划分出来的称为子域，每个子域都能有自己的安全策略。各子域之间使用<code>&#39;.&#39;</code>来分割。例potato.com是父域，pan.potato.com和mail.potato.com就是下面的两个子域</p>
+<h3 id="域树"><a href="#域树" class="headerlink" title="域树"></a>域树</h3><p>多个域通过建立信任关系组成的一个域集合。在域树中，所有域共享一个表结构和配置，所有域名形成一个连续的名字空间，域名层次越深级别越低。最高层次的是根(root)域，其对所有域有管理权限。<strong>父域无法管理子域</strong>，每个域都有自己的管理员，如果两个域之间需要互相访问，就需要建立信任关系</p>
+<p><img src="/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112000143.png"></p>
+<h3 id="域林"><a href="#域林" class="headerlink" title="域林"></a>域林</h3><p>是由一个或多个没有形成连续名字空间的域树组成的域树集合。域林中的所有域树仍<strong>共享同一个表结构、配置和全局目录</strong></p>
+<p><img src="/2024/04/12/%E5%86%85%E7%BD%91-1/image-20240412112108231.png"></p>
+<h3 id="域控制器"><a href="#域控制器" class="headerlink" title="域控制器"></a>域控制器</h3><p>是域环境中核心的服务器计算机，用于在域中响应安全身份认证请求，负责允许或拒绝发出请求的主机访问域内资源，以及对用户进行身份验证、储存用户账户信息并执行域的安全策略等。域控制器包含一个活动目录数据库，其中储存着整个域的账户、密码、计算机等信息。域控制器又成为域控。一个域环境可以有一台或多台域控，每台域控各自储存一份所在域的活动目录的可写副本，对活动目录的任何修改都可以从<strong>源域控</strong>同步复制到域、域树或者域林的其他域控上，即使其中一台域控瘫痪，另一台域控可以继续工作，以保证域环境的正常运行</p>
+<h2 id="活动目录"><a href="#活动目录" class="headerlink" title="活动目录"></a>活动目录</h2><p>Active Directory</p>
+<p>安装在域控上，为整个域环境提供集中式目录管理服务的组件。活动目录中存储了有关域环境中各种对象的信息，如域、用户、用户组、计算机、组织单位、共享资源、安全策略等。目录数据存储在域控制器的<code>ntds.dit</code>文件中</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>内网</p><p><a href="http://potatowo233.github.io/2024/04/12/内网-1/">http://potatowo233.github.io/2024/04/12/内网-1/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-04-12</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-13</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/wechatpay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Vulnstack红日靶场</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/04/11/%E5%86%85%E7%BD%91/"><span class="level-item">渗透用自查</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "99a286fe86d9c6e4e528e7ffc908f0c3",
+            repo: "blog_comments",
+            owner: "Potatowo233",
+            clientID: "de106bfe6211fc3ceedc",
+            clientSecret: "2b3fe4ea85fc7d402cf3c84e18d1e9ae175f1e2d",
+            admin: ["Potatowo233"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card is-hidden-mobile" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/head.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">Nice t0 th3 Intern3t</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">18</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://space.bilibili.com/26346947" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/rss.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#内网渗透"><span class="level-left"><span class="level-item">内网渗透</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#域"><span class="level-left"><span class="level-item">域</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#工作组"><span class="level-left"><span class="level-item">工作组</span></span></a></li><li><a class="level is-mobile" href="#域-1"><span class="level-left"><span class="level-item">域</span></span></a></li><li><a class="level is-mobile" href="#单域"><span class="level-left"><span class="level-item">单域</span></span></a></li><li><a class="level is-mobile" href="#父域和子域"><span class="level-left"><span class="level-item">父域和子域</span></span></a></li><li><a class="level is-mobile" href="#域树"><span class="level-left"><span class="level-item">域树</span></span></a></li><li><a class="level is-mobile" href="#域林"><span class="level-left"><span class="level-item">域林</span></span></a></li><li><a class="level is-mobile" href="#域控制器"><span class="level-left"><span class="level-item">域控制器</span></span></a></li></ul></li><li><a class="level is-mobile" href="#活动目录"><span class="level-left"><span class="level-item">活动目录</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/title.png" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

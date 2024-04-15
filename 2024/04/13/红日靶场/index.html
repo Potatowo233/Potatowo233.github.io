@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Vulnstack红日靶场 - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Vmware导入主机 攻击机kali linux Web服务器Windows7 域控Windows2008 域成员Windows2003  环境搭建网络配置win7作为web服务器，需要外部能够访问，因此网卡需要走NAT，同样攻击机kali也要能够被外部(主要是反弹shell)访问以及访问win7，因此kali也走NAT。域控、域成员不接触外网，因此需要设置其网卡为仅主机模式(网段需与NAT的不同"><meta property="og:type" content="blog"><meta property="og:title" content="Vulnstack红日靶场"><meta property="og:url" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="Vmware导入主机 攻击机kali linux Web服务器Windows7 域控Windows2008 域成员Windows2003  环境搭建网络配置win7作为web服务器，需要外部能够访问，因此网卡需要走NAT，同样攻击机kali也要能够被外部(主要是反弹shell)访问以及访问win7，因此kali也走NAT。域控、域成员不接触外网，因此需要设置其网卡为仅主机模式(网段需与NAT的不同"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133850745.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133612112.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134002608.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134120682.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134216130.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134335132.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134710347.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413135637310.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413135705571.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413140754720.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413140148443.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413142456689.png"><meta property="og:image" content="http://potatowo233.github.io/image-20240413144818420.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413145901762.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413150123333.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151043217.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151205358.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151446844.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413154444332.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413154409199.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155127634.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155326037.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155215071.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155438578.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155530667.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155547421.png"><meta property="article:published_time" content="2024-04-13T03:09:58.000Z"><meta property="article:modified_time" content="2024-04-14T04:24:06.817Z"><meta property="article:author" content="Potat0w0"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133850745.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/"},"headline":"Vulnstack红日靶场","image":["http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133850745.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133612112.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134002608.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134120682.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134216130.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134335132.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134710347.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413135637310.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413135705571.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413140754720.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413140148443.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413142456689.png","http://potatowo233.github.io/image-20240413144818420.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413145901762.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413150123333.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151043217.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151205358.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151446844.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413154444332.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413154409199.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155127634.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155326037.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155215071.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155438578.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155530667.png","http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155547421.png"],"datePublished":"2024-04-13T03:09:58.000Z","dateModified":"2024-04-14T04:24:06.817Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject","url":"http://potatowo233.github.io/img/title.png"}},"description":"Vmware导入主机 攻击机kali linux Web服务器Windows7 域控Windows2008 域成员Windows2003  环境搭建网络配置win7作为web服务器，需要外部能够访问，因此网卡需要走NAT，同样攻击机kali也要能够被外部(主要是反弹shell)访问以及访问win7，因此kali也走NAT。域控、域成员不接触外网，因此需要设置其网卡为仅主机模式(网段需与NAT的不同"}</script><link rel="canonical" href="http://potatowo233.github.io/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/"><link rel="icon" href="/img/icon.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="Potat0w0" type="application/atom+xml">
+</head><body class="is-3-column"><script type="text/javascript" color="30,144,255" opacity="0.5" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/title.png" alt="Potat0w0" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/link">友链</a><a class="navbar-item" href="/map">索引</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Follow_me" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-13T03:09:58.000Z" title="2024/4/13 11:09:58">2024-04-13</time>发表</span><span class="level-item"><time dateTime="2024-04-14T04:24:06.817Z" title="2024/4/14 12:24:06">2024-04-14</time>更新</span><span class="level-item">5 分钟读完 (大约743个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Vulnstack红日靶场</h1><div class="content"><h2 id="Vmware导入主机"><a href="#Vmware导入主机" class="headerlink" title="Vmware导入主机"></a>Vmware导入主机</h2><ul>
+<li>攻击机kali linux</li>
+<li>Web服务器Windows7</li>
+<li>域控Windows2008</li>
+<li>域成员Windows2003</li>
+</ul>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><p>win7作为web服务器，需要外部能够访问，因此网卡需要走NAT，同样攻击机kali也要能够被外部(主要是反弹shell)访问以及访问win7，因此kali也走NAT。域控、域成员不接触外网，因此需要设置其网卡为仅主机模式(网段需与NAT的不同)，同时win7需要能够访问内网，因此win7也得配置一张仅主机模式的网卡</p>
+<p>首先配置一下网络编辑器，三台主机一开始都被分配了固定的ip网段<code>192.168.52.0/24</code>了，因此需要添加一张仅主机模式、子网地址为<code>192.168.52.0</code>的网卡</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133850745.png"></p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413133612112.png"></p>
+<p>接下来是为四台主机配置网卡：</p>
+<p>Win7两张，一张内网一张外部访问：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134002608.png"></p>
+<p>域控(Windows2008)一张，用于内网：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134120682.png"></p>
+<p>域成员(Windows2003)一张，用于内网：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134216130.png"></p>
+<p>kali一张，NAT用于访问win7的web服务：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134335132.png"></p>
+<p>win7把防火墙关闭一下：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413134710347.png"></p>
+<p>最终的结果：</p>
+<ul>
+<li>win7能够ping通外部以及攻击机kali以及内网其他2台主机</li>
+<li>Windows2008能够ping通内网其他两台主机但是无法ping通外部以及kali</li>
+<li>Windows2003同上</li>
+<li>kali能够与外界访问，能够ping通win7的NAT的ip，无法Ping通所有52网段内网ip</li>
+</ul>
+<h3 id="各主机的ip"><a href="#各主机的ip" class="headerlink" title="各主机的ip"></a>各主机的ip</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">kali : 192.168.139.135<br>win7 : 192.168.139.136(NAT) 192.168.139.52.128<br>win08 : 192.168.52.138<br>win03 : 192.168.52.141<br></code></pre></td></tr></table></figure>
+
+<h3 id="启动web服务"><a href="#启动web服务" class="headerlink" title="启动web服务"></a>启动web服务</h3><p>win7的C盘下找到phpstudy并启动web服务：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413135637310.png"></p>
+<p>能够被外部访问：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413135705571.png"></p>
+<h2 id="外点getshell"><a href="#外点getshell" class="headerlink" title="外点getshell"></a>外点getshell</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>探针的页面下，MySQL弱口令存在root&#x2F;root，但是似乎是内网存在，外部无法连接上</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413140754720.png"></p>
+<p>扫目录下发现有phpMyAdmin后台以及phpinfo</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413140148443.png"></p>
+<h3 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h3><p>phpmyadmin使用root&#x2F;root弱口令登录：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413142456689.png"></p>
+<p>有SQL执行处，很自然的就想到使用mysql写shell提权，先查一下权限：</p>
+<p><code>secure_file_priv</code>是null，看来into outfile&#96;和UDF提权都跪了</p>
+<p><img src="/image-20240413144818420.png"></p>
+<p>注意到系统为Windows，可以试试日志写webshell，依旧先查权限</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413145901762.png"></p>
+<p>从phpinfo中查到Web根目录<code>C:/phpStudy/WWW/</code>：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413150123333.png"></p>
+<p>开启日志并修改日志路径</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151043217.png"></p>
+<p>查询一句话木马</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151205358.png"></p>
+<p>成功连上蚁剑，拿到webshell：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413151446844.png"></p>
+<p>上了蚁剑之后才发现其实还有一个yxcms和beifen.rar，但是dirsearch没有扫出来，补充了一下字典</p>
+<h2 id="后渗透阶段"><a href="#后渗透阶段" class="headerlink" title="后渗透阶段"></a>后渗透阶段</h2><h3 id="信息收集-1"><a href="#信息收集-1" class="headerlink" title="信息收集"></a>信息收集</h3><p>先执行<code>whoami</code>查看身份，发现是god域下的administrator权限</p>
+<p>执行<code>ipconfig</code>发现内网ip<code>192.168.139.52.128</code></p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413154444332.png"></p>
+<h3 id="上线CS"><a href="#上线CS" class="headerlink" title="上线CS"></a>上线CS</h3><p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413154409199.png"></p>
+<p>起个监听</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155127634.png"></p>
+<p>生成后门文件</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155326037.png"></p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155215071.png"></p>
+<p>把后门文件上传到靶机中：</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155438578.png"></p>
+<p>执行cs.exe后成功上线CS</p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155530667.png"></p>
+<p><img src="/2024/04/13/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/image-20240413155547421.png"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Vulnstack红日靶场</p><p><a href="http://potatowo233.github.io/2024/04/13/红日靶场/">http://potatowo233.github.io/2024/04/13/红日靶场/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-04-13</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-14</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/wechatpay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/04/12/%E5%86%85%E7%BD%91-1/"><span class="level-item">内网</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "2d895262ccb3af6d1b51bf3f247f1cc8",
+            repo: "blog_comments",
+            owner: "Potatowo233",
+            clientID: "de106bfe6211fc3ceedc",
+            clientSecret: "2b3fe4ea85fc7d402cf3c84e18d1e9ae175f1e2d",
+            admin: ["Potatowo233"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card is-hidden-mobile" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/head.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">Nice t0 th3 Intern3t</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">18</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://space.bilibili.com/26346947" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/rss.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Vmware导入主机"><span class="level-left"><span class="level-item">Vmware导入主机</span></span></a></li><li><a class="level is-mobile" href="#环境搭建"><span class="level-left"><span class="level-item">环境搭建</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#网络配置"><span class="level-left"><span class="level-item">网络配置</span></span></a></li><li><a class="level is-mobile" href="#各主机的ip"><span class="level-left"><span class="level-item">各主机的ip</span></span></a></li><li><a class="level is-mobile" href="#启动web服务"><span class="level-left"><span class="level-item">启动web服务</span></span></a></li></ul></li><li><a class="level is-mobile" href="#外点getshell"><span class="level-left"><span class="level-item">外点getshell</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#信息收集"><span class="level-left"><span class="level-item">信息收集</span></span></a></li><li><a class="level is-mobile" href="#getshell"><span class="level-left"><span class="level-item">getshell</span></span></a></li></ul></li><li><a class="level is-mobile" href="#后渗透阶段"><span class="level-left"><span class="level-item">后渗透阶段</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#信息收集-1"><span class="level-left"><span class="level-item">信息收集</span></span></a></li><li><a class="level is-mobile" href="#上线CS"><span class="level-left"><span class="level-item">上线CS</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/title.png" alt="Potat0w0" height="28"></a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
